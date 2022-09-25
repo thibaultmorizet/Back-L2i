@@ -2,12 +2,24 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
+#[ApiResource(
+    collectionOperations: [
+        "get", "post"
+    ],
+    itemOperations: ["get", "put", "delete"],
+    normalizationContext: ['groups' => "article:read"],
+    denormalizationContext: ['groups' => "article:write"],
+)]
+
 class Article
 {
     #[ORM\Id]
@@ -28,7 +40,7 @@ class Article
     private ?int $article_stock = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $article_book_isbn = null;
+    private ?string $article_book_isbn = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $article_book_image = null;
@@ -46,6 +58,9 @@ class Article
     #[ORM\ManyToOne(inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Editor $article_book_editor = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $article_book_year = null;
 
     public function __construct()
     {
@@ -107,12 +122,12 @@ class Article
         return $this;
     }
 
-    public function getArticleBookIsbn(): ?int
+    public function getArticleBookIsbn(): ?string
     {
         return $this->article_book_isbn;
     }
 
-    public function setArticleBookIsbn(int $article_book_isbn): self
+    public function setArticleBookIsbn(string $article_book_isbn): self
     {
         $this->article_book_isbn = $article_book_isbn;
 
@@ -199,6 +214,18 @@ class Article
     public function setArticleBookEditor(?Editor $article_book_editor): self
     {
         $this->article_book_editor = $article_book_editor;
+
+        return $this;
+    }
+
+    public function getArticleBookYear(): ?string
+    {
+        return $this->article_book_year;
+    }
+
+    public function setArticleBookYear(?string $article_book_year): self
+    {
+        $this->article_book_year = $article_book_year;
 
         return $this;
     }
