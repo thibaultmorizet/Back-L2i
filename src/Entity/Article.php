@@ -19,47 +19,58 @@ use Symfony\Component\Serializer\Annotation\Groups;
     normalizationContext: ['groups' => "article:read"],
     denormalizationContext: ['groups' => "article:write"],
 )]
-
 class Article
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["article:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["article:read"])]
     private ?string $article_title = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["article:read"])]
     private ?string $article_summary = null;
 
     #[ORM\Column]
+    #[Groups(["article:read"])]
     private ?float $article_unit_price = null;
 
     #[ORM\Column]
+    #[Groups(["article:read"])]
     private ?int $article_stock = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(["article:read"])]
     private ?string $article_book_isbn = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["article:read"])]
     private ?string $article_book_image = null;
 
     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'articles')]
+    #[Groups(["article:read"])]
     private Collection $article_book_author;
 
     #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'articles')]
+    #[Groups(["article:read"])]
     private Collection $article_book_type;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["article:read"])]
     private ?Format $article_book_format = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["article:read"])]
     private ?Editor $article_book_editor = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(["article:read"])]
     private ?string $article_book_year = null;
 
     public function __construct()

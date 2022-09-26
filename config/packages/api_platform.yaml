@@ -1,0 +1,15 @@
+api_platform:
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+    patch_formats:
+        json: ['application/merge-patch+json']
+    swagger:
+        versions: [3]
+    formats:
+        json: ['application/json']
+        html: ['text/html']
+    # defaults:
+    #     pagination_items_per_page: 5
+    # collection:
+    #     pagination:
+    #         page_parameter_name: page_number
