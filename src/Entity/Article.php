@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 #[ApiResource(
+    paginationItemsPerPage: 9,
     normalizationContext: ['groups' => "article:read"],
     denormalizationContext: ['groups' => "article:write"],
 )]
@@ -27,7 +28,7 @@ class Article
     #[Groups(["article:read"])]
     private ?string $article_title = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 10000, nullable: true)]
     #[Groups(["article:read"])]
     private ?string $article_summary = null;
 
