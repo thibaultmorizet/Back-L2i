@@ -6,6 +6,7 @@ use App\Repository\EditorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: EditorRepository::class)]
 class Editor
@@ -16,6 +17,7 @@ class Editor
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["article:read"])]
     private ?string $editor_name = null;
 
     #[ORM\OneToMany(mappedBy: 'article_book_editor', targetEntity: Article::class)]

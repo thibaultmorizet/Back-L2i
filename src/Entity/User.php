@@ -8,34 +8,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Metadata\ApiResource;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-#[ApiResource(
-    collectionOperations: [
-        'get' => [
-            'security' => 'is_granted("ROLE_ADMIN")',
-        ],        
-        'post' => [
-            'security' => 'is_granted("ROLE_ADMIN")',
-        ],
- 
-    ],
-    itemOperations: [
-        'get' => [
-            'security' => 'object == user or is_granted("ROLE_ADMIN")',
-        ],
-        'put' => [
-            'security' => 'object == user or is_granted("ROLE_ADMIN")',
-        ],
-        'delete' => [
-            'security' => 'is_granted("ROLE_ADMIN")',
-        ],
-    ],
-    denormalizationContext: ['groups' => ['user:write']],
-    normalizationContext: ['groups' => ['user:read']],
-)]
 class User implements PasswordAuthenticatedUserInterface, UserInterface
 {
     #[ORM\Id]

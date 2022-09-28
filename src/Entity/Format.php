@@ -6,6 +6,7 @@ use App\Repository\FormatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: FormatRepository::class)]
 class Format
@@ -16,6 +17,7 @@ class Format
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["article:read"])]
     private ?string $format_name = null;
 
     #[ORM\OneToMany(mappedBy: 'article_book_format', targetEntity: Article::class)]

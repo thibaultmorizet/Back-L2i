@@ -7,15 +7,11 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Metadata\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 #[ApiResource(
-    collectionOperations: [
-        "get", "post"
-    ],
-    itemOperations: ["get", "put", "delete"],
     normalizationContext: ['groups' => "article:read"],
     denormalizationContext: ['groups' => "article:write"],
 )]
