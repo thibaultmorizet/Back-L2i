@@ -13,8 +13,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: AuthorRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => "article:read"],
-    denormalizationContext: ['groups' => "article:write"]
+    normalizationContext: ['groups' => "book:read"],
+    denormalizationContext: ['groups' => "book:write"]
 )]
 #[ApiFilter(
     SearchFilter::class,
@@ -28,23 +28,23 @@ class Author
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["article:read"])]
+    #[Groups(["book:read"])]
     private ?string $author_firstname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["article:read"])]
+    #[Groups(["book:read"])]
     private ?string $author_lastname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["article:read"])]
+    #[Groups(["book:read"])]
     private ?string $author_language = null;
 
-    #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'article_book_author')]
-    private Collection $articles;
+    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'book_author')]
+    private Collection $books;
 
     public function __construct()
     {
-        $this->articles = new ArrayCollection();
+        $this->books = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,40 +88,40 @@ class Author
         return $this;
     }
 
-    public function getArticle(): ?Article
+    public function getBook(): ?Book
     {
-        return $this->article;
+        return $this->book;
     }
 
-    public function setArticle(?Article $article): self
+    public function setBook(?Book $book): self
     {
-        $this->article = $article;
+        $this->book = $book;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Article>
+     * @return Collection<int, Book>
      */
-    public function getArticles(): Collection
+    public function getBooks(): Collection
     {
-        return $this->articles;
+        return $this->books;
     }
 
-    public function addArticle(Article $article): self
+    public function addBook(Book $book): self
     {
-        if (!$this->articles->contains($article)) {
-            $this->articles->add($article);
-            $article->addArticleBookAuthor($this);
+        if (!$this->books->contains($book)) {
+            $this->books->add($book);
+            $book->addBookAuthor($this);
         }
 
         return $this;
     }
 
-    public function removeArticle(Article $article): self
+    public function removeBook(Book $book): self
     {
-        if ($this->articles->removeElement($article)) {
-            $article->removeArticleBookAuthor($this);
+        if ($this->books->removeElement($book)) {
+            $book->removeBookAuthor($this);
         }
 
         return $this;

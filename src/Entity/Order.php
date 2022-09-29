@@ -24,7 +24,7 @@ class Order
     private ?float $order_total_price = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private array $order_article_list = [];
+    private array $order_book_list = [];
 
     #[ORM\OneToOne(inversedBy: 'theorder', cascade: ['persist', 'remove'])]
     private ?Invoice $order_invoice = null;
@@ -66,14 +66,14 @@ class Order
         return $this;
     }
 
-    public function getOrderArticleList(): array
+    public function getOrderBookList(): array
     {
-        return $this->order_article_list;
+        return $this->order_book_list;
     }
 
-    public function setOrderArticleList(?array $order_article_list): self
+    public function setOrderBookList(?array $order_book_list): self
     {
-        $this->order_article_list = $order_article_list;
+        $this->order_book_list = $order_book_list;
 
         return $this;
     }

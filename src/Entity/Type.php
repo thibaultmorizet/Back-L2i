@@ -17,15 +17,15 @@ class Type
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["article:read"])]
+    #[Groups(["book:read"])]
     private ?string $type_name = null;
 
-    #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'article_book_type')]
-    private Collection $articles;
+    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'book_type')]
+    private Collection $books;
 
     public function __construct()
     {
-        $this->articles = new ArrayCollection();
+        $this->books = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -46,27 +46,27 @@ class Type
     }
 
     /**
-     * @return Collection<int, Article>
+     * @return Collection<int, Book>
      */
-    public function getArticles(): Collection
+    public function getBooks(): Collection
     {
-        return $this->articles;
+        return $this->books;
     }
 
-    public function addArticle(Article $article): self
+    public function addBook(Book $book): self
     {
-        if (!$this->articles->contains($article)) {
-            $this->articles->add($article);
-            $article->addArticleBookType($this);
+        if (!$this->books->contains($book)) {
+            $this->books->add($book);
+            $book->addBookType($this);
         }
 
         return $this;
     }
 
-    public function removeArticle(Article $article): self
+    public function removeBook(Book $book): self
     {
-        if ($this->articles->removeElement($article)) {
-            $article->removeArticleBookType($this);
+        if ($this->books->removeElement($book)) {
+            $book->removeBookType($this);
         }
 
         return $this;

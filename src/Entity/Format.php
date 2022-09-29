@@ -22,16 +22,16 @@ class Format
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["article:read", "format:read"])]
+    #[Groups(["book:read", "format:read"])]
     private ?string $format_name = null;
 
-    #[ORM\OneToMany(mappedBy: 'article_book_format', targetEntity: Article::class)]
+    #[ORM\OneToMany(mappedBy: 'book_format', targetEntity: Book::class)]
     #[Groups(["format:read"])]
-    private Collection $articles;
+    private Collection $books;
 
     public function __construct()
     {
-        $this->articles = new ArrayCollection();
+        $this->books = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -51,42 +51,42 @@ class Format
         return $this;
     }
 
-    public function getArticle(): ?Article
+    public function getBook(): ?Book
     {
-        return $this->article;
+        return $this->book;
     }
 
-    public function setArticle(?Article $article): self
+    public function setBook(?Book $book): self
     {
-        $this->article = $article;
+        $this->book = $book;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Article>
+     * @return Collection<int, Book>
      */
-    public function getArticles(): Collection
+    public function getBooks(): Collection
     {
-        return $this->articles;
+        return $this->books;
     }
 
-    public function addArticle(Article $article): self
+    public function addBook(Book $book): self
     {
-        if (!$this->articles->contains($article)) {
-            $this->articles->add($article);
-            $article->setArticleBookFormat($this);
+        if (!$this->books->contains($book)) {
+            $this->books->add($book);
+            $book->setBookFormat($this);
         }
 
         return $this;
     }
 
-    public function removeArticle(Article $article): self
+    public function removeBook(Book $book): self
     {
-        if ($this->articles->removeElement($article)) {
+        if ($this->books->removeElement($book)) {
             // set the owning side to null (unless already changed)
-            if ($article->getArticleBookFormat() === $this) {
-                $article->setArticleBookFormat(null);
+            if ($book->getBookFormat() === $this) {
+                $book->setBookFormat(null);
             }
         }
 
