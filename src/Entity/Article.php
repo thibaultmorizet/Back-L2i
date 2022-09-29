@@ -6,16 +6,29 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
-use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 #[ApiResource(
     paginationItemsPerPage: 9,
+    paginationClientItemsPerPage: true,
     normalizationContext: ['groups' => "article:read"],
     denormalizationContext: ['groups' => "article:write"],
+    order: ['article_visit_number' => 'DESC']
 )]
+#[ApiFilter(
+    RangeFilter::class,
+    properties: ['article_stock']
+)]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: ['article_book_format.format_name'=>"exact"]
+)]
+
 class Article
 {
     #[ORM\Id]
@@ -69,6 +82,10 @@ class Article
     #[ORM\Column(nullable: true)]
     #[Groups(["article:read"])]
     private ?string $article_book_year = null;
+
+    #[ORM\Column]
+    #[Groups(["article:read"])]
+    private ?int $article_visit_number = null;
 
     public function __construct()
     {
@@ -234,6 +251,18 @@ class Article
     public function setArticleBookYear(?string $article_book_year): self
     {
         $this->article_book_year = $article_book_year;
+
+        return $this;
+    }
+
+    public function getArticleVisitNumber(): ?int
+    {
+        return $this->article_visit_number;
+    }
+
+    public function setArticleVisitNumber(int $article_visit_number): self
+    {
+        $this->article_visit_number = $article_visit_number;
 
         return $this;
     }

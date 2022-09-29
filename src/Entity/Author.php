@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\AuthorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -9,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: AuthorRepository::class)]
+#[ApiResource(
+    normalizationContext: ['groups' => "article:read"],
+    denormalizationContext: ['groups' => "article:write"]
+)]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: ['author_firstname']
+)]
 class Author
 {
     #[ORM\Id]

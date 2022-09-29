@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\FormatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -9,6 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: FormatRepository::class)]
+#[ApiResource(
+    normalizationContext: ['groups' => "format:read"],
+    denormalizationContext: ['groups' => "format:write"]
+)]
 class Format
 {
     #[ORM\Id]
@@ -17,10 +22,11 @@ class Format
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["article:read"])]
+    #[Groups(["article:read", "format:read"])]
     private ?string $format_name = null;
 
     #[ORM\OneToMany(mappedBy: 'article_book_format', targetEntity: Article::class)]
+    #[Groups(["format:read"])]
     private Collection $articles;
 
     public function __construct()
