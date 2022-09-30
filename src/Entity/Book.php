@@ -26,7 +26,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 #[ApiFilter(
     SearchFilter::class,
-    properties: ['book_format.format_name'=>"exact"]
+    properties: ['book_format.format_name' => "exact", 'book_title' => "partial", 'book_author.author_firstname' => "partial", 'book_author.author_firstname' => "partial"]
 )]
 
 class Book
