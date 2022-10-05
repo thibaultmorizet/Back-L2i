@@ -16,10 +16,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
     normalizationContext: ['groups' => "book:read"],
     denormalizationContext: ['groups' => "book:write"]
 )]
-#[ApiFilter(
-    SearchFilter::class,
-    properties: ['author_firstname']
-)]
 class Author
 {
     #[ORM\Id]
