@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
-use ApiPlatform\Doctrine\Orm\Filter\CustomMultipleSearchFilter;
+use App\Filter\CustomMultipleSearchFilter;
 use ApiPlatform\Metadata\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -27,9 +27,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 #[ApiFilter(
     SearchFilter::class,
-    properties : ['book_format.format_name' => "iexact"]
+    properties : ['book_format.format_name' => "iexact",'book_type.type_name' => "iexact"]
 )]
-
 #[ApiFilter(
     CustomMultipleSearchFilter::class,
     properties : ['book_title' => "ipartial", 'book_author.author_firstname' => "ipartial", 'book_author.author_lastname' => "ipartial"]
