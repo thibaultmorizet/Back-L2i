@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
@@ -9,37 +11,72 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use ApiPlatform\Metadata\ApiResource;
+use App\State\UserStateProcessor;
+use Symfony\Component\Serializer\Annotation\Groups;
+
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Put;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-class User implements PasswordAuthenticatedUserInterface, UserInterface
+#[ApiResource(
+    //normalizationContext: ['groups' => ["user:read"]],
+    //denormalizationContext: ['groups' => ["user:write"]],
+    operations: [
+        new Get(),
+        new Put(),
+        new Delete(),
+        new GetCollection(),
+        new Post(),
+    ],
+   // processor: UserStateProcessor::class,
+)]
+
+
+#[ApiFilter(
+    SearchFilter::class,
+    properties: ["user_email" => "exact", "id" => "exact"]
+)]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\Column(type: 'integer')]
+    #[Groups(["user:read", "user:write"])]
+    private $id;
 
-    #[ORM\Column(length: 255)]
-    private ?string $user_lastname = null;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["user:read", "user:write"])]
+    private $user_lastname;
 
-    #[ORM\Column(length: 255)]
-    private ?string $user_firstname = null;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["user:read", "user:write"])]
+    private $user_firstname;
 
-    #[ORM\Column(length: 255)]
-    private ?string $user_email = null;
+    #[ORM\Column(type: 'string', length: 255, nullable: true, unique: true)]
+    #[Groups(["user:read", "user:write"])]
+    private $user_email;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $user_password = null;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["user:read", "user:write"])]
+    private $user_password;
 
     #[ORM\ManyToOne(inversedBy: 'users_billing')]
     #[ORM\JoinColumn(nullable: true)]
+    #[Groups(["user:read"])]
     private ?Address $user_billing_address = null;
 
     #[ORM\ManyToOne(inversedBy: 'users_delivery')]
     #[ORM\JoinColumn(nullable: true)]
+    #[Groups(["user:read"])]
     private ?Address $user_delivery_address = null;
 
     #[ORM\OneToMany(mappedBy: 'order_user', targetEntity: Order::class)]
+    #[Groups(["user:read"])]
     private Collection $orders;
 
     #[ORM\Column(type: 'json')]
