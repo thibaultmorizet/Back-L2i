@@ -2,28 +2,22 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
-use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+//use ApiPlatform\Metadata\ApiFilter;
+//use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use ApiPlatform\Metadata\ApiResource;
-use App\State\UserStateProcessor;
 use Symfony\Component\Serializer\Annotation\Groups;
-
-use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\Put;
-use ApiPlatform\Metadata\Delete;
-use ApiPlatform\Metadata\GetCollection;
-use ApiPlatform\Metadata\Post;
-
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-#[ApiResource(
+/* #[ApiResource(
     //normalizationContext: ['groups' => ["user:read"]],
     //denormalizationContext: ['groups' => ["user:write"]],
     operations: [
@@ -34,12 +28,20 @@ use ApiPlatform\Metadata\Post;
         new Post(),
     ],
    // processor: UserStateProcessor::class,
+)] */
+#[ApiResource(
+    collectionOperations: [
+        "get", "post"
+    ],
+    itemOperations: ["get", "put", "patch", "delete"],
+    normalizationContext: ['groups' => "user:read"],
+    denormalizationContext: ['groups' => "user:write"],
 )]
 
 
 #[ApiFilter(
     SearchFilter::class,
-    properties: ["user_email" => "exact", "id" => "exact"]
+    properties: ["email" => "exact"]
 )]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -51,36 +53,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write"])]
-    private $user_lastname;
+    private $lastname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write"])]
-    private $user_firstname;
+    private $firstname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true, unique: true)]
     #[Groups(["user:read", "user:write"])]
-    private $user_email;
+    private $email;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write"])]
-    private $user_password;
+    private $password;
 
     #[ORM\ManyToOne(inversedBy: 'users_billing')]
     #[ORM\JoinColumn(nullable: true)]
     #[Groups(["user:read"])]
-    private ?Address $user_billing_address = null;
+    private ?Address $billing_address = null;
 
     #[ORM\ManyToOne(inversedBy: 'users_delivery')]
     #[ORM\JoinColumn(nullable: true)]
     #[Groups(["user:read"])]
-    private ?Address $user_delivery_address = null;
+    private ?Address $delivery_address = null;
 
     #[ORM\OneToMany(mappedBy: 'order_user', targetEntity: Order::class)]
     #[Groups(["user:read"])]
     private Collection $orders;
 
     #[ORM\Column(type: 'json')]
-    private $user_roles = [];
+    private $roles = [];
 
     public function __construct()
     {
@@ -92,74 +94,74 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
-    public function getUserLastname(): ?string
+    public function getLastname(): ?string
     {
-        return $this->user_lastname;
+        return $this->lastname;
     }
 
-    public function setUserLastname(string $user_lastname): self
+    public function setLastname(string $lastname): self
     {
-        $this->user_lastname = $user_lastname;
+        $this->lastname = $lastname;
 
         return $this;
     }
 
-    public function getUserFirstname(): ?string
+    public function getFirstname(): ?string
     {
-        return $this->user_firstname;
+        return $this->firstname;
     }
 
-    public function setUserFirstname(string $user_firstname): self
+    public function setFirstname(string $firstname): self
     {
-        $this->user_firstname = $user_firstname;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
-    public function getUserEmail(): ?string
+    public function getEmail(): ?string
     {
-        return $this->user_email;
+        return $this->email;
     }
 
-    public function setUserEmail(string $user_email): self
+    public function setEmail(string $email): self
     {
-        $this->user_email = $user_email;
+        $this->email = $email;
 
         return $this;
     }
 
-    /*  public function getUserPassword(): ?string
+    /*  public function getPassword(): ?string
     {
-        return $this->user_password;
+        return $this->password;
     }
 
-    public function setUserPassword(string $user_password): self
+    public function setPassword(string $password): self
     {
-        $this->user_password = $user_password;
+        $this->password = $password;
 
         return $this;
     }
  */
-    public function getUserBillingAddress(): ?Address
+    public function getBillingAddress(): ?Address
     {
-        return $this->user_billing_address;
+        return $this->billing_address;
     }
 
-    public function setUserBillingAddress(?Address $user_billing_address): self
+    public function setBillingAddress(?Address $billing_address): self
     {
-        $this->user_billing_address = $user_billing_address;
+        $this->billing_address = $billing_address;
 
         return $this;
     }
 
-    public function getUserDeliveryAddress(): ?Address
+    public function getDeliveryAddress(): ?Address
     {
-        return $this->user_delivery_address;
+        return $this->delivery_address;
     }
 
-    public function setUserDeliveryAddress(?Address $user_delivery_address): self
+    public function setDeliveryAddress(?Address $delivery_address): self
     {
-        $this->user_delivery_address = $user_delivery_address;
+        $this->delivery_address = $delivery_address;
 
         return $this;
     }
@@ -199,24 +201,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getPassword(): string
     {
-        return $this->user_password;
+        return $this->password;
     }
 
     public function setPassword(string $password): self
     {
-        $this->user_password = $password;
+        $this->password = $password;
 
         return $this;
     }
 
     /* public function getUserRoles(): array
     {
-        return $this->user_roles;
+        return $this->roles;
     }
 
-    public function setUserRoles(array $user_roles): self
+    public function setUserRoles(array $roles): self
     {
-        $this->user_roles = $user_roles;
+        $this->roles = $roles;
 
         return $this;
     } */
@@ -226,7 +228,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->user_roles;
+        $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
@@ -235,7 +237,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setRoles(array $roles): self
     {
-        $this->user_roles = $roles;
+        $this->roles = $roles;
 
         return $this;
     }
@@ -256,6 +258,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->user_email;
+        return (string) $this->email;
     }
 }

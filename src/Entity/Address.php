@@ -27,10 +27,10 @@ class Address
     #[ORM\Column(length: 255)]
     private ?string $address_country = null;
 
-    #[ORM\OneToMany(mappedBy: 'user_billing_address', targetEntity: User::class)]
+    #[ORM\OneToMany(mappedBy: 'billing_address', targetEntity: User::class)]
     private Collection $users_billing;
 
-    #[ORM\OneToMany(mappedBy: 'user_delivery_address', targetEntity: User::class)]
+    #[ORM\OneToMany(mappedBy: 'delivery_address', targetEntity: User::class)]
     private Collection $users_delivery;
 
     public function __construct()

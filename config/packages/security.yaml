@@ -9,7 +9,7 @@ security:
     app_user_provider:
       entity:
         class: App\Entity\User
-        property: user_email
+        property: email
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -22,8 +22,8 @@ security:
     main:
       json_login:
         check_path: /authentication_token
-        username_path: user_email
-        password_path: user_password
+        username_path: email
+        password_path: password
         success_handler: lexik_jwt_authentication.handler.authentication_success
         failure_handler: lexik_jwt_authentication.handler.authentication_failure
 

@@ -32,23 +32,23 @@ class UserFixtures extends Fixture
         $manager->persist($address2);
         
         $user = new User();
-        $user->setUserEmail('thibaultmorizet@icloud.com');
+        $user->setEmail('thibaultmorizet@icloud.com');
         $user->setRoles(['ROLE_ADMIN']);
-        $user->setUserFirstname("Thibault");
-        $user->setUserLastname("Morizet");        
-        $user->setUserBillingAddress($address);        
-        $user->setUserDeliveryAddress($address);        
+        $user->setFirstname("Thibault");
+        $user->setLastname("Morizet");        
+        $user->setBillingAddress($address);        
+        $user->setDeliveryAddress($address);        
         $user->setPassword($this->passwordEncoder->hashPassword(
             $user,
             'Thibault14'
         ));
         $manager->persist($user);
         $user2 = new User();
-        $user2->setUserEmail('john.wick@gmail.com');
-        $user2->setUserFirstname("John");
-        $user2->setUserLastname("Wick");
-        $user2->setUserBillingAddress($address2);
-        $user2->setUserDeliveryAddress($address2);
+        $user2->setEmail('john.wick@gmail.com');
+        $user2->setFirstname("John");
+        $user2->setLastname("Wick");
+        $user2->setBillingAddress($address2);
+        $user2->setDeliveryAddress($address2);
         $user2->setPassword($this->passwordEncoder->hashPassword(
             $user2,
             'Wick'

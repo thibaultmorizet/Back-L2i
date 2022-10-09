@@ -13,248 +13,265 @@ declare(strict_types=1);
 
 namespace App\Filter;
 
-use ApiPlatform\Api\IdentifiersExtractorInterface;
-use ApiPlatform\Api\IriConverterInterface;
-use ApiPlatform\Doctrine\Common\Filter\SearchFilterInterface;
-use ApiPlatform\Doctrine\Common\Filter\SearchFilterTrait;
-use ApiPlatform\Doctrine\Orm\Util\QueryBuilderHelper;
-use ApiPlatform\Doctrine\Orm\Util\QueryNameGeneratorInterface;
-use ApiPlatform\Exception\InvalidArgumentException;
-use ApiPlatform\Metadata\Operation;
+use ApiPlatform\Core\Api\IdentifiersExtractorInterface;
+use ApiPlatform\Core\Api\IriConverterInterface;
+use ApiPlatform\Core\Bridge\Doctrine\Common\Filter\SearchFilterInterface;
+use ApiPlatform\Core\Bridge\Doctrine\Common\Filter\SearchFilterTrait;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryBuilderHelper;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
+use ApiPlatform\Core\Exception\InvalidArgumentException;
 use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
-use ApiPlatform\Doctrine\Orm\Filter\AbstractFilter;
-
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\AbstractContextAwareFilter;
 /**
  * Filter the collection by given properties.
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
  */
-final class CustomMultipleSearchFilter extends AbstractFilter implements SearchFilterInterface
+class CustomMultipleSearchFilter extends AbstractContextAwareFilter implements SearchFilterInterface
 {
-  use SearchFilterTrait;
+    use SearchFilterTrait;
 
-  public const DOCTRINE_INTEGER_TYPE = Types::INTEGER;
+    public const DOCTRINE_INTEGER_TYPE = Types::INTEGER;
 
-  public function __construct(ManagerRegistry $managerRegistry, IriConverterInterface $iriConverter, PropertyAccessorInterface $propertyAccessor = null, LoggerInterface $logger = null, array $properties = null, IdentifiersExtractorInterface $identifiersExtractor = null, NameConverterInterface $nameConverter = null)
-  {
-    parent::__construct($managerRegistry, $logger, $properties, $nameConverter);
+    public function __construct(ManagerRegistry $managerRegistry, ?RequestStack $requestStack, IriConverterInterface $iriConverter, PropertyAccessorInterface $propertyAccessor = null, LoggerInterface $logger = null, array $properties = null, IdentifiersExtractorInterface $identifiersExtractor = null, NameConverterInterface $nameConverter = null)
+    {
+        parent::__construct($managerRegistry, $requestStack, $logger, $properties, $nameConverter);
 
-    $this->iriConverter = $iriConverter;
-    $this->identifiersExtractor = $identifiersExtractor;
-    $this->propertyAccessor = $propertyAccessor ?: PropertyAccess::createPropertyAccessor();
-  }
-
-  protected function getIriConverter(): IriConverterInterface
-  {
-    return $this->iriConverter;
-  }
-
-  protected function getPropertyAccessor(): PropertyAccessorInterface
-  {
-    return $this->propertyAccessor;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function filterProperty(string $property, $value, QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, Operation $operation = null, array $context = []): void
-  { {
-      //var_dump($queryNameGenerator);
-      //var_dump($resourceClass);
-
-      if (
-        null === $value ||
-        !$this->isPropertyEnabled($property, $resourceClass) ||
-        !$this->isPropertyMapped($property, $resourceClass, true)
-      ) {
-        return;
-      }
-
-      $alias = $queryBuilder->getRootAliases()[0];
-      $field = $property;
-
-      $values = $this->normalizeValues((array) $value, $property);
-
-      if (null === $values) {
-        return;
-      }
-
-      $associations = [];
-      if ($this->isPropertyNested($property, $resourceClass)) {
-        [$alias, $field, $associations] = $this->addJoinsForNestedProperty($property, $alias, $queryBuilder, $queryNameGenerator, $resourceClass, Join::INNER_JOIN);
-      }
-
-      $caseSensitive = true;
-      $strategy = $this->properties[$property] ?? self::STRATEGY_EXACT;
-
-      // prefixing the strategy with i makes it case insensitive
-      if (str_starts_with($strategy, 'i')) {
-        $strategy = substr($strategy, 1);
-        $caseSensitive = false;
-      }
-
-      $metadata = $this->getNestedMetadata($resourceClass, $associations);
-
-      if ($metadata->hasField($field)) {
-        if ('id' === $field) {
-          $values = array_map($this->getIdFromValue(...), $values);
+        if (null === $identifiersExtractor) {
+            @trigger_error('Not injecting ItemIdentifiersExtractor is deprecated since API Platform 2.5 and can lead to unexpected behaviors, it will not be possible anymore in API Platform 3.0.', \E_USER_DEPRECATED);
         }
 
-        if (!$this->hasValidValues($values, $this->getDoctrineFieldType($property, $resourceClass))) {
-          $this->logger->notice('Invalid filter ignored', [
-            'exception' => new InvalidArgumentException(sprintf('Values for field "%s" are not valid according to the doctrine type.', $field)),
-          ]);
+        $this->iriConverter = $iriConverter;
+        $this->identifiersExtractor = $identifiersExtractor;
+        $this->propertyAccessor = $propertyAccessor ?: PropertyAccess::createPropertyAccessor();
+    }
 
-          return;
+    protected function getIriConverter(): IriConverterInterface
+    {
+        return $this->iriConverter;
+    }
+
+    protected function getPropertyAccessor(): PropertyAccessorInterface
+    {
+        return $this->propertyAccessor;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function filterProperty(string $property, $value, QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = null)
+    {
+        if (
+            null === $value ||
+            !$this->isPropertyEnabled($property, $resourceClass) ||
+            !$this->isPropertyMapped($property, $resourceClass, true)
+        ) {
+            return;
         }
 
-        $this->addWhereByStrategy($strategy, $queryBuilder, $queryNameGenerator, $alias, $field, $values, $caseSensitive);
+        $alias = $queryBuilder->getRootAliases()[0];
+        $field = $property;
 
-        return;
-      }
+        $values = $this->normalizeValues((array) $value, $property);
+        if (null === $values) {
+            return;
+        }
 
-      // metadata doesn't have the field, nor an association on the field
-      if (!$metadata->hasAssociation($field)) {
-        return;
-      }
+        $associations = [];
+        if ($this->isPropertyNested($property, $resourceClass)) {
+            [$alias, $field, $associations] = $this->addJoinsForNestedProperty($property, $alias, $queryBuilder, $queryNameGenerator, $resourceClass);
+        }
 
-      $values = array_map($this->getIdFromValue(...), $values);
+        $caseSensitive = true;
+        $strategy = $this->properties[$property] ?? self::STRATEGY_EXACT;
 
-      $associationResourceClass = $metadata->getAssociationTargetClass($field);
-      $associationFieldIdentifier = $metadata->getIdentifierFieldNames()[0];
-      $doctrineTypeField = $this->getDoctrineFieldType($associationFieldIdentifier, $associationResourceClass);
+        // prefixing the strategy with i makes it case insensitive
+        if (0 === strpos($strategy, 'i')) {
+            $strategy = substr($strategy, 1);
+            $caseSensitive = false;
+        }
 
-      if (!$this->hasValidValues($values, $doctrineTypeField)) {
-        $this->logger->notice('Invalid filter ignored', [
-          'exception' => new InvalidArgumentException(sprintf('Values for field "%s" are not valid according to the doctrine type.', $field)),
-        ]);
+        $metadata = $this->getNestedMetadata($resourceClass, $associations);
 
-        return;
-      }
+        if ($metadata->hasField($field)) {
+            if ('id' === $field) {
+                $values = array_map([$this, 'getIdFromValue'], $values);
+            }
 
-      $associationAlias = $alias;
-      $associationField = $field;
-      if ($metadata->isCollectionValuedAssociation($associationField) || $metadata->isAssociationInverseSide($field)) {
-        $associationAlias = QueryBuilderHelper::addJoinOnce($queryBuilder, $queryNameGenerator, $alias, $associationField);
-        $associationField = $associationFieldIdentifier;
-      }
+            if (!$this->hasValidValues($values, $this->getDoctrineFieldType($property, $resourceClass))) {
+                $this->logger->notice('Invalid filter ignored', [
+                    'exception' => new InvalidArgumentException(sprintf('Values for field "%s" are not valid according to the doctrine type.', $field)),
+                ]);
 
-      $this->addWhereByStrategy($strategy, $queryBuilder, $queryNameGenerator, $associationAlias, $associationField, $values, $caseSensitive);
-    }
-  }
-  /**
-   * Adds where clause according to the strategy.
-   *
-   * @throws InvalidArgumentException If strategy does not exist
-   */
-  protected function addWhereByStrategy(string $strategy, QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $alias, string $field, mixed $values, bool $caseSensitive): void
-  {
-    if (!\is_array($values)) {
-      $values = [$values];
-    }
+                return;
+            }
 
+            $this->addWhereByStrategy($strategy, $queryBuilder, $queryNameGenerator, $alias, $field, $values, $caseSensitive);
 
-    $wrapCase = $this->createWrapCase($caseSensitive);
-    $valueParameter = ':' . $queryNameGenerator->generateParameterName($field);
-    $aliasedField = sprintf('%s.%s', $alias, $field);
-    if (!$strategy || self::STRATEGY_EXACT === $strategy) {
-      if (1 === \count($values)) {
+            return;
+        }
 
-        $queryBuilder
-          ->andWhere($queryBuilder->expr()->eq($wrapCase($aliasedField), $wrapCase($valueParameter)))
-          ->setParameter($valueParameter, $values[0]);
+        // metadata doesn't have the field, nor an association on the field
+        if (!$metadata->hasAssociation($field)) {
+            return;
+        }
 
-        return;
-      }
+        $values = array_map([$this, 'getIdFromValue'], $values);
+        $associationFieldIdentifier = 'id';
+        $doctrineTypeField = $this->getDoctrineFieldType($property, $resourceClass);
 
-      $queryBuilder
-        ->andWhere($queryBuilder->expr()->in($wrapCase($aliasedField), $valueParameter))
-        ->setParameter($valueParameter, $caseSensitive ? $values : array_map('strtolower', $values));
+        if (null !== $this->identifiersExtractor) {
+            $associationResourceClass = $metadata->getAssociationTargetClass($field);
+            $associationFieldIdentifier = $this->identifiersExtractor->getIdentifiersFromResourceClass($associationResourceClass)[0];
+            $doctrineTypeField = $this->getDoctrineFieldType($associationFieldIdentifier, $associationResourceClass);
+        }
 
-      return;
-    }
+        if (!$this->hasValidValues($values, $doctrineTypeField)) {
+            $this->logger->notice('Invalid filter ignored', [
+                'exception' => new InvalidArgumentException(sprintf('Values for field "%s" are not valid according to the doctrine type.', $field)),
+            ]);
 
-    $ors = [];
-    $parameters = [];
-    foreach ($values as $key => $value) {
-      $keyValueParameter = sprintf('%s_%s', $valueParameter, $key);
-      $parameters[$caseSensitive ? $value : strtolower($value)] = $keyValueParameter;
+            return;
+        }
 
-      $ors[] = match ($strategy) {
-        self::STRATEGY_PARTIAL => $queryBuilder->expr()->like(
-          $wrapCase($aliasedField),
-          $wrapCase((string) $queryBuilder->expr()->concat("'%'", $keyValueParameter, "'%'"))
-        ),
-        self::STRATEGY_START => $queryBuilder->expr()->like(
-          $wrapCase($aliasedField),
-          $wrapCase((string) $queryBuilder->expr()->concat($keyValueParameter, "'%'"))
-        ),
-        self::STRATEGY_END => $queryBuilder->expr()->like(
-          $wrapCase($aliasedField),
-          $wrapCase((string) $queryBuilder->expr()->concat("'%'", $keyValueParameter))
-        ),
-        self::STRATEGY_WORD_START => $queryBuilder->expr()->orX(
-          $queryBuilder->expr()->like(
-            $wrapCase($aliasedField),
-            $wrapCase((string) $queryBuilder->expr()->concat($keyValueParameter, "'%'"))
-          ),
-          $queryBuilder->expr()->like(
-            $wrapCase($aliasedField),
-            $wrapCase((string) $queryBuilder->expr()->concat("'% '", $keyValueParameter, "'%'"))
-          )
-        ),
-        default => throw new InvalidArgumentException(sprintf('strategy %s does not exist.', $strategy)),
-      };
+        $associationAlias = $alias;
+        $associationField = $field;
+        if ($metadata->isCollectionValuedAssociation($associationField) || $metadata->isAssociationInverseSide($field)) {
+            $associationAlias = QueryBuilderHelper::addJoinOnce($queryBuilder, $queryNameGenerator, $alias, $associationField);
+            $associationField = $associationFieldIdentifier;
+        }
+
+        $this->addWhereByStrategy($strategy, $queryBuilder, $queryNameGenerator, $associationAlias, $associationField, $values, $caseSensitive);
     }
 
+    /**
+     * Adds where clause according to the strategy.
+     *
+     * @param mixed $values
+     *
+     * @throws InvalidArgumentException If strategy does not exist
+     */
+    protected function addWhereByStrategy(string $strategy, QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $alias, string $field, $values, bool $caseSensitive)
+    {
+        if (!\is_array($values)) {
+            $values = [$values];
+        }
 
+        $wrapCase = $this->createWrapCase($caseSensitive);
+        $valueParameter = ':'.$queryNameGenerator->generateParameterName($field);
+        $aliasedField = sprintf('%s.%s', $alias, $field);
 
-    if (strpos($ors[0]->getLeftExpr(), "book_title")) {
-      $queryBuilder->andWhere($queryBuilder->expr()->orX($ors[0]));
-    } else {
-      $queryBuilder->orWhere($queryBuilder->expr()->orX($ors[0]));
+        if (!$strategy || self::STRATEGY_EXACT === $strategy) {
+            if (1 === \count($values)) {
+                $queryBuilder
+                    ->andWhere($queryBuilder->expr()->eq($wrapCase($aliasedField), $wrapCase($valueParameter)))
+                    ->setParameter($valueParameter, $values[0]);
+
+                return;
+            }
+
+            $queryBuilder
+                ->andWhere($queryBuilder->expr()->in($wrapCase($aliasedField), $valueParameter))
+                ->setParameter($valueParameter, $caseSensitive ? $values : array_map('strtolower', $values));
+
+            return;
+        }
+
+        $ors = [];
+        $parameters = [];
+        foreach ($values as $key => $value) {
+            $keyValueParameter = sprintf('%s_%s', $valueParameter, $key);
+            $parameters[$caseSensitive ? $value : strtolower($value)] = $keyValueParameter;
+
+            switch ($strategy) {
+                case self::STRATEGY_PARTIAL:
+                    $ors[] = $queryBuilder->expr()->like(
+                        $wrapCase($aliasedField),
+                        $wrapCase((string) $queryBuilder->expr()->concat("'%'", $keyValueParameter, "'%'"))
+                    );
+                    break;
+                case self::STRATEGY_START:
+                    $ors[] = $queryBuilder->expr()->like(
+                        $wrapCase($aliasedField),
+                        $wrapCase((string) $queryBuilder->expr()->concat($keyValueParameter, "'%'"))
+                    );
+                    break;
+                case self::STRATEGY_END:
+                    $ors[] = $queryBuilder->expr()->like(
+                        $wrapCase($aliasedField),
+                        $wrapCase((string) $queryBuilder->expr()->concat("'%'", $keyValueParameter))
+                    );
+                    break;
+                case self::STRATEGY_WORD_START:
+                    $ors[] = $queryBuilder->expr()->orX(
+                        $queryBuilder->expr()->like($wrapCase($aliasedField), $wrapCase((string) $queryBuilder->expr()->concat($keyValueParameter, "'%'"))),
+                        $queryBuilder->expr()->like($wrapCase($aliasedField), $wrapCase((string) $queryBuilder->expr()->concat("'% '", $keyValueParameter, "'%'")))
+                    );
+                    break;
+                default:
+                    throw new InvalidArgumentException(sprintf('strategy %s does not exist.', $strategy));
+            }
+        }
+        if (strpos($ors[0]->getLeftExpr(), "book_title")) {
+            $queryBuilder->andWhere($queryBuilder->expr()->orX($ors[0]));
+          } else {
+            $queryBuilder->orWhere($queryBuilder->expr()->orX($ors[0]));
+          }
+        array_walk($parameters, [$queryBuilder, 'setParameter']);
     }
 
-    array_walk($parameters, $queryBuilder->setParameter(...));
-  }
+    /**
+     * Creates a function that will wrap a Doctrine expression according to the
+     * specified case sensitivity.
+     *
+     * For example, "o.name" will get wrapped into "LOWER(o.name)" when $caseSensitive
+     * is false.
+     */
+    protected function createWrapCase(bool $caseSensitive): \Closure
+    {
+        return static function (string $expr) use ($caseSensitive): string {
+            if ($caseSensitive) {
+                return $expr;
+            }
 
-  /**
-   * Creates a function that will wrap a Doctrine expression according to the
-   * specified case sensitivity.
-   *
-   * For example, "o.name" will get wrapped into "LOWER(o.name)" when $caseSensitive
-   * is false.
-   */
-  protected function createWrapCase(bool $caseSensitive): \Closure
-  {
-    return static function (string $expr) use ($caseSensitive): string {
-      if ($caseSensitive) {
-        return $expr;
-      }
+            return sprintf('LOWER(%s)', $expr);
+        };
+    }
 
-      return sprintf('LOWER(%s)', $expr);
-    };
-  }
+    /**
+     * {@inheritdoc}
+     */
+    protected function getType(string $doctrineType): string
+    {
+        switch ($doctrineType) {
+            case Types::ARRAY:
+                return 'array';
+            case Types::BIGINT:
+            case Types::INTEGER:
+            case Types::SMALLINT:
+                return 'int';
+            case Types::BOOLEAN:
+                return 'bool';
+            case Types::DATE_MUTABLE:
+            case Types::TIME_MUTABLE:
+            case Types::DATETIME_MUTABLE:
+            case Types::DATETIMETZ_MUTABLE:
+            case Types::DATE_IMMUTABLE:
+            case Types::TIME_IMMUTABLE:
+            case Types::DATETIME_IMMUTABLE:
+            case Types::DATETIMETZ_IMMUTABLE:
+                return \DateTimeInterface::class;
+            case Types::FLOAT:
+                return 'float';
+        }
 
-  /**
-   * {@inheritdoc}
-   */
-  protected function getType(string $doctrineType): string
-  {
-    return match ($doctrineType) {
-      Types::ARRAY => 'array',
-      Types::BIGINT, Types::INTEGER, Types::SMALLINT => 'int',
-      Types::BOOLEAN => 'bool',
-      Types::DATE_MUTABLE, Types::TIME_MUTABLE, Types::DATETIME_MUTABLE, Types::DATETIMETZ_MUTABLE, Types::DATE_IMMUTABLE, Types::TIME_IMMUTABLE, Types::DATETIME_IMMUTABLE, Types::DATETIMETZ_IMMUTABLE => \DateTimeInterface::class,
-      Types::FLOAT => 'float',
-      default => 'string',
-    };
-  }
+        return 'string';
+    }
 }
