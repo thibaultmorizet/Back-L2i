@@ -19,12 +19,15 @@ class Order
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Groups(["user:read", "user:write"])]
     private ?\DateTimeInterface $order_date = null;
 
     #[ORM\Column]
+    #[Groups(["user:read", "user:write"])]
     private ?float $order_total_price = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[Groups(["user:read", "user:write"])]
     private array $order_book_list = [];
 
     #[ORM\OneToOne(inversedBy: 'theorder', cascade: ['persist', 'remove'])]
