@@ -17,25 +17,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-/* #[ApiResource(
-    //normalizationContext: ['groups' => ["user:read"]],
-    //denormalizationContext: ['groups' => ["user:write"]],
-    operations: [
-        new Get(),
-        new Put(),
-        new Delete(),
-        new GetCollection(),
-        new Post(),
-    ],
-   // processor: UserStateProcessor::class,
-)] */
+
 #[ApiResource(
     collectionOperations: [
         "get", "post"
     ],
     itemOperations: ["get", "put", "patch", "delete"],
-    normalizationContext: ['groups' => "user:read"],
-    denormalizationContext: ['groups' => "user:write"],
 )]
 
 
@@ -48,37 +35,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["user:read", "user:write"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write"])]
     private $lastname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write"])]
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true, unique: true)]
-    #[Groups(["user:read", "user:write"])]
     private $email;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write"])]
     private $password;
 
     #[ORM\ManyToOne(inversedBy: 'users_billing')]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(["user:read"])]
     private ?Address $billing_address = null;
 
     #[ORM\ManyToOne(inversedBy: 'users_delivery')]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(["user:read"])]
     private ?Address $delivery_address = null;
 
     #[ORM\OneToMany(mappedBy: 'order_user', targetEntity: Order::class)]
-    #[Groups(["user:read"])]
     private Collection $orders;
 
     #[ORM\Column(type: 'json')]
