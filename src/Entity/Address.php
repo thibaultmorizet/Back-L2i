@@ -17,19 +17,15 @@ class Address
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["user:read"])]
     private ?string $address_street = null;
 
     #[ORM\Column]
-    #[Groups(["user:read"])]
     private ?int $address_postalcode = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["user:read"])]
     private ?string $address_city = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["user:read"])]
     private ?string $address_country = null;
 
     #[ORM\OneToMany(mappedBy: 'billing_address', targetEntity: User::class)]

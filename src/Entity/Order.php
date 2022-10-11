@@ -16,23 +16,18 @@ class Order
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["user:read"])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Groups(["user:read"])]
     private ?\DateTimeInterface $order_date = null;
 
     #[ORM\Column]
-    #[Groups(["user:read"])]
     private ?float $order_total_price = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    #[Groups(["user:read"])]
     private array $order_book_list = [];
 
     #[ORM\OneToOne(inversedBy: 'theorder', cascade: ['persist', 'remove'])]
-    #[Groups(["user:read"])]
     private ?Invoice $order_invoice = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
