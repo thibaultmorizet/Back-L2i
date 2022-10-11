@@ -6,6 +6,7 @@ use App\Repository\AddressRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: AddressRepository::class)]
 class Address
@@ -16,15 +17,19 @@ class Address
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["user:read"])]
     private ?string $address_street = null;
 
     #[ORM\Column]
+    #[Groups(["user:read"])]
     private ?int $address_postalcode = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["user:read"])]
     private ?string $address_city = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["user:read"])]
     private ?string $address_country = null;
 
     #[ORM\OneToMany(mappedBy: 'billing_address', targetEntity: User::class)]
