@@ -95,7 +95,7 @@ class Address
         return $this;
     }
 
-    public function getAddress_Country(): ?string
+    public function getAddressCountry(): ?string
     {
         return $this->address_country;
     }
