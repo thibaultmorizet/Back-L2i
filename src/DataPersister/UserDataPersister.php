@@ -24,7 +24,7 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
 
     public function persist($data, array $context = [])
     {        
-        if ($data->getPassword() && ($context['collection_operation_name'] ?? null) == "post") {
+        if ($data->getPassword() /* && ($context['collection_operation_name'] ?? null) == "post" */) {
             $data->setPassword(
                 $this->passwordEncoder->hashPassword($data, $data->getPassword())
             );
