@@ -23,6 +23,7 @@ class AddressRepository extends ServiceEntityRepository
 
     public function add(Address $entity, bool $flush = false): void
     {
+        var_dump($entity);
         $this->getEntityManager()->persist($entity);
 
         if ($flush) {
