@@ -59,7 +59,7 @@ class Address
         return $this->id;
     }
 
-    public function getAddress_Street(): ?string
+    public function getAddressStreet(): ?string
     {
         return $this->address_street;
     }
@@ -71,7 +71,7 @@ class Address
         return $this;
     }
 
-    public function getAddress_Postalcode(): ?int
+    public function getAddressPostalcode(): ?int
     {
         return $this->address_postalcode;
     }
@@ -83,7 +83,7 @@ class Address
         return $this;
     }
 
-    public function getAddress_City(): ?string
+    public function getAddressCity(): ?string
     {
         return $this->address_city;
     }
@@ -95,7 +95,7 @@ class Address
         return $this;
     }
 
-    public function getAddress_Country(): ?string
+    public function getAddressCountry(): ?string
     {
         return $this->address_country;
     }
