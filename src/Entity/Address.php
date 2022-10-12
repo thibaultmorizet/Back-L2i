@@ -67,7 +67,7 @@ class Address
     public function setAddress_Street(string $address_street): self
     {
         $this->address_street = $address_street;
-
+var_dump($this->address_street);
         return $this;
     }
 
