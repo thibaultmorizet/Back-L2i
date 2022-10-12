@@ -27,19 +27,19 @@ class Address
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
     private $address_street;
 
-    #[ORM\Column(type: 'integer', nullable: true)]
+    #[ORM\Column(type: 'integer')]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
     private $address_postalcode;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
     private $address_city;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
     private $address_country;
 
