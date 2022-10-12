@@ -29,19 +29,19 @@ class Address
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private $street;
+    private $address_street;
 
     #[ORM\Column(type: 'integer', nullable: true)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private $postalcode;
+    private $address_postalcode;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private $city;
+    private $address_city;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private $country;
+    private $address_country;
 
     #[ORM\OneToMany(mappedBy: 'billing_address', targetEntity: User::class)]
     private Collection $users_billing;
@@ -61,48 +61,48 @@ class Address
 
     public function getAddressStreet(): ?string
     {
-        return $this->street;
+        return $this->address_street;
     }
 
-    public function setAddressStreet(string $street): self
+    public function setAddressStreet(string $address_street): self
     {
-        $this->street = $street;
+        $this->address_street = $address_street;
 
         return $this;
     }
 
     public function getAddressPostalcode(): ?int
     {
-        return $this->postalcode;
+        return $this->address_postalcode;
     }
 
-    public function setAddressPostalcode(int $postalcode): self
+    public function setAddressPostalcode(int $address_postalcode): self
     {
-        $this->postalcode = $postalcode;
+        $this->address_postalcode = $address_postalcode;
 
         return $this;
     }
 
     public function getAddressCity(): ?string
     {
-        return $this->city;
+        return $this->address_city;
     }
 
-    public function setAddressCity(string $city): self
+    public function setAddressCity(string $address_city): self
     {
-        $this->city = $city;
+        $this->address_city = $address_city;
 
         return $this;
     }
 
     public function getAddressCountry(): ?string
     {
-        return $this->country;
+        return $this->address_country;
     }
 
-    public function setAddressCountry(string $country): self
+    public function setAddressCountry(string $address_country): self
     {
-        $this->country = $country;
+        $this->address_country = $address_country;
 
         return $this;
     }
@@ -119,7 +119,7 @@ class Address
     {
         if (!$this->users_billing->contains($user)) {
             $this->users_billing->add($user);
-            $user->setUserBillingAddress($this);
+            $user->setBillingAddress($this);
         }
 
         return $this;
@@ -129,8 +129,8 @@ class Address
     {
         if ($this->users_billing->removeElement($user)) {
             // set the owning side to null (unless already changed)
-            if ($user->getUserBillingAddress() === $this) {
-                $user->setUserBillingAddress(null);
+            if ($user->setBillingAddress() === $this) {
+                $user->setBillingAddress(null);
             }
         }
 
@@ -149,7 +149,7 @@ class Address
     {
         if (!$this->users_delivery->contains($user)) {
             $this->users_delivery->add($user);
-            $user->setUserDeliveryAddress($this);
+            $user->setDeliveryAddress($this);
         }
 
         return $this;
@@ -159,8 +159,8 @@ class Address
     {
         if ($this->users_delivery->removeElement($user)) {
             // set the owning side to null (unless already changed)
-            if ($user->getUserDeliveryAddress() === $this) {
-                $user->setUserDeliveryAddress(null);
+            if ($user->setDeliveryAddress() === $this) {
+                $user->setDeliveryAddress(null);
             }
         }
 
