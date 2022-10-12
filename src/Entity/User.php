@@ -64,7 +64,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?Address $delivery_address = null;
 
     #[ORM\OneToMany(mappedBy: 'order_user', targetEntity: Order::class)]
-    #[Groups(["user:read", "address:write", "user:write"])]
+    #[Groups(["user:read", "user:write"])]
     private Collection $orders;
 
     #[ORM\Column(type: 'json')]
