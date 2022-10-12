@@ -24,23 +24,23 @@ class Address
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["user:read", "user:write", "address:read", "address:write"])]
+    #[Groups(["user:read", "user:write", "address:read"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["user:read", "user:write", "address:read", "address:write"])]
+    #[Groups(["user:read", "user:write", "address:read"])]
     private $address_street;
 
     #[ORM\Column(type: 'integer')]
-    #[Groups(["user:read", "user:write", "address:read", "address:write"])]
+    #[Groups(["user:read", "user:write", "address:read"])]
     private $address_postalcode;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["user:read", "user:write", "address:read", "address:write"])]
+    #[Groups(["user:read", "user:write", "address:read"])]
     private $address_city;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["user:read", "user:write", "address:read", "address:write"])]
+    #[Groups(["user:read", "user:write", "address:read"])]
     private $address_country;
 
     #[ORM\OneToMany(mappedBy: 'billing_address', targetEntity: User::class)]

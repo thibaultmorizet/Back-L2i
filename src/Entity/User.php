@@ -60,11 +60,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToOne(inversedBy: 'users_delivery')]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(["user:read", "address:write"])]
+    #[Groups(["user:read", "address:write", "user:write"])]
     private ?Address $delivery_address = null;
 
     #[ORM\OneToMany(mappedBy: 'order_user', targetEntity: Order::class)]
-    #[Groups(["user:read", "address:write"])]
+    #[Groups(["user:read", "address:write", "user:write"])]
     private Collection $orders;
 
     #[ORM\Column(type: 'json')]
