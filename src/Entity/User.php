@@ -31,7 +31,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )] */
 #[ApiResource(
     collectionOperations: [
-        "get", "post"
+        "get", "post", "put"
     ],
     itemOperations: ["get", "put", "patch", "delete"],
     normalizationContext: ['groups' => "user:read"],
