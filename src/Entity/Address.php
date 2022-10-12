@@ -64,7 +64,7 @@ class Address
         return $this->address_street;
     }
 
-    public function setAddress_Street(string $address_street): self
+    public function setAddress_street(string $address_street): self
     {
         $this->address_street = $address_street;
 
@@ -76,7 +76,7 @@ class Address
         return $this->address_postalcode;
     }
 
-    public function setAddress_Postalcode(int $address_postalcode): self
+    public function setAddress_postalcode(int $address_postalcode): self
     {
         $this->address_postalcode = $address_postalcode;
 
@@ -88,7 +88,7 @@ class Address
         return $this->address_city;
     }
 
-    public function setAddress_City(string $address_city): self
+    public function setAddress_city(string $address_city): self
     {
         $this->address_city = $address_city;
 
@@ -100,7 +100,7 @@ class Address
         return $this->address_country;
     }
 
-    public function setAddress_Country(string $address_country): self
+    public function setAddress_country(string $address_country): self
     {
         $this->address_country = $address_country;
 
