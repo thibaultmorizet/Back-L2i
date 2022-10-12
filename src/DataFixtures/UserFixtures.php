@@ -18,17 +18,17 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager)
     { 
         $address = new Address();
-        $address->setAddressStreet('Impasse des coquelicots');
-        $address->setAddressPostalcode(84000);
-        $address->setAddressCity("Avignon");
-        $address->setAddressCountry("France");
+        $address->setAddress_Street('Impasse des coquelicots');
+        $address->setAddress_Postalcode(84000);
+        $address->setAddress_City("Avignon");
+        $address->setAddress_Country("France");
         $manager->persist($address);
 
         $address2 = new Address();
-        $address2->setAddressStreet('Rue du Paradis');
-        $address2->setAddressPostalcode(13006);
-        $address2->setAddressCity("Marseille");
-        $address2->setAddressCountry("France");
+        $address2->setAddress_Street('Rue du Paradis');
+        $address2->setAddress_Postalcode(13006);
+        $address2->setAddress_City("Marseille");
+        $address2->setAddress_Country("France");
         $manager->persist($address2);
         
         $user = new User();
