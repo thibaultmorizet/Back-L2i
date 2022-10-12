@@ -5,8 +5,6 @@ namespace App\Entity;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-//use ApiPlatform\Metadata\ApiFilter;
-//use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
@@ -17,18 +15,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-/* #[ApiResource(
-    //normalizationContext: ['groups' => ["user:read"]],
-    //denormalizationContext: ['groups' => ["user:write"]],
-    operations: [
-        new Get(),
-        new Put(),
-        new Delete(),
-        new GetCollection(),
-        new Post(),
-    ],
-   // processor: UserStateProcessor::class,
-)] */
 #[ApiResource(
     collectionOperations: [
         "get", "post"

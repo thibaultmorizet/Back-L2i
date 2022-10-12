@@ -10,7 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: AddressRepository::class)]
+#[ORM\Table(name: '`address`')]
 #[ApiResource(
+    collectionOperations: [
+        "get", "post"
+    ],
+    itemOperations: ["get", "put", "patch", "delete"],
     normalizationContext: ['groups' => "address:read"],
     denormalizationContext: ['groups' => "address:write"],
 )]
@@ -18,25 +23,25 @@ class Address
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private ?int $id = null;
+    private $id;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private ?string $address_street = null;
+    private $address_street;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer', nullable: true)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private ?int $address_postalcode = null;
+    private $address_postalcode;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private ?string $address_city = null;
+    private $address_city;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private ?string $address_country = null;
+    private $address_country;
 
     #[ORM\OneToMany(mappedBy: 'billing_address', targetEntity: User::class)]
     private Collection $users_billing;
