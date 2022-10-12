@@ -59,48 +59,48 @@ class Address
         return $this->id;
     }
 
-    public function getAddressStreet(): ?string
+    public function getAddress_Street(): ?string
     {
         return $this->address_street;
     }
 
-    public function setAddressStreet(string $address_street): self
+    public function setAddress_Street(string $address_street): self
     {
         $this->address_street = $address_street;
 
         return $this;
     }
 
-    public function getAddressPostalcode(): ?int
+    public function getAddress_Postalcode(): ?int
     {
         return $this->address_postalcode;
     }
 
-    public function setAddressPostalcode(int $address_postalcode): self
+    public function setAddress_Postalcode(int $address_postalcode): self
     {
         $this->address_postalcode = $address_postalcode;
 
         return $this;
     }
 
-    public function getAddressCity(): ?string
+    public function getAddress_City(): ?string
     {
         return $this->address_city;
     }
 
-    public function setAddressCity(string $address_city): self
+    public function setAddress_City(string $address_city): self
     {
         $this->address_city = $address_city;
 
         return $this;
     }
 
-    public function getAddressCountry(): ?string
+    public function getAddress_Country(): ?string
     {
         return $this->address_country;
     }
 
-    public function setAddressCountry(string $address_country): self
+    public function setAddress_Country(string $address_country): self
     {
         $this->address_country = $address_country;
 
