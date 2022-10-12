@@ -14,6 +14,7 @@ class Address
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["user:read", "user:write"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
