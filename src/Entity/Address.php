@@ -29,19 +29,19 @@ class Address
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private $address_street;
+    private $street;
 
     #[ORM\Column(type: 'integer', nullable: true)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private $address_postalcode;
+    private $postalcode;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private $address_city;
+    private $city;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
-    private $address_country;
+    private $country;
 
     #[ORM\OneToMany(mappedBy: 'billing_address', targetEntity: User::class)]
     private Collection $users_billing;
@@ -61,48 +61,48 @@ class Address
 
     public function getAddressStreet(): ?string
     {
-        return $this->address_street;
+        return $this->street;
     }
 
-    public function setAddressStreet(string $address_street): self
+    public function setAddressStreet(string $street): self
     {
-        $this->address_street = $address_street;
+        $this->street = $street;
 
         return $this;
     }
 
     public function getAddressPostalcode(): ?int
     {
-        return $this->address_postalcode;
+        return $this->postalcode;
     }
 
-    public function setAddressPostalcode(int $address_postalcode): self
+    public function setAddressPostalcode(int $postalcode): self
     {
-        $this->address_postalcode = $address_postalcode;
+        $this->postalcode = $postalcode;
 
         return $this;
     }
 
     public function getAddressCity(): ?string
     {
-        return $this->address_city;
+        return $this->city;
     }
 
-    public function setAddressCity(string $address_city): self
+    public function setAddressCity(string $city): self
     {
-        $this->address_city = $address_city;
+        $this->city = $city;
 
         return $this;
     }
 
     public function getAddressCountry(): ?string
     {
-        return $this->address_country;
+        return $this->country;
     }
 
-    public function setAddressCountry(string $address_country): self
+    public function setAddressCountry(string $country): self
     {
-        $this->address_country = $address_country;
+        $this->country = $country;
 
         return $this;
     }
