@@ -22,7 +22,7 @@ class Format
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read","book:write", "format:read"])]
+    #[Groups(["book:read", "book:write", "format:read", "format:write"])]
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'format', targetEntity: Book::class)]

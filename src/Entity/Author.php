@@ -13,8 +13,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: AuthorRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => "book:read"],
-    denormalizationContext: ['groups' => "book:write"]
+    normalizationContext: ['groups' => "author:read"],
+    denormalizationContext: ['groups' => "author:write"]
 )]
 class Author
 {
@@ -24,15 +24,15 @@ class Author
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read","book:write"])]
+    #[Groups(["book:read", "book:write", "author:read", "author:write"])]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read","book:write"])]
+    #[Groups(["book:read", "book:write", "author:read", "author:write"])]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read","book:write"])]
+    #[Groups(["book:read", "book:write", "author:read", "author:write"])]
     private ?string $language = null;
 
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'author')]
