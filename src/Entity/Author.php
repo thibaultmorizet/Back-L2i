@@ -24,15 +24,15 @@ class Author
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?string $author_firstname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?string $author_lastname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?string $author_language = null;
 
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'author')]

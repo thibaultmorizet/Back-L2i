@@ -39,57 +39,57 @@ class Book
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?string $title = null;
 
     #[ORM\Column(length: 10000, nullable: true)]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?string $summary = null;
 
     #[ORM\Column]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?float $unit_price = null;
 
     #[ORM\Column]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?int $stock = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?string $isbn = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?string $image = null;
 
     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books')]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private Collection $author;
 
     #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'books')]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private Collection $type;
 
     #[ORM\ManyToOne(inversedBy: 'books')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?Format $format = null;
 
     #[ORM\ManyToOne(inversedBy: 'books')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?Editor $editor = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?string $year = null;
 
     #[ORM\Column]
-    #[Groups(["book:read"])]
+    #[Groups(["book:read","book:write"])]
     private ?int $visit_number = null;
 
     public function __construct()

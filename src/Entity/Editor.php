@@ -22,7 +22,7 @@ class Editor
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read","editor:read"])]
+    #[Groups(["book:read","book:write","editor:read"])]
     private ?string $editor_name = null;
 
     #[ORM\OneToMany(mappedBy: 'editor', targetEntity: Book::class)]

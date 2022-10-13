@@ -22,7 +22,7 @@ class Type
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read", "type:read"])]
+    #[Groups(["book:read","book:write", "type:read"])]
     private ?string $type_name = null;
 
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'type')]
