@@ -23,7 +23,7 @@ class Format
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["book:read","book:write", "format:read"])]
-    private ?string $format_name = null;
+    private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'format', targetEntity: Book::class)]
     #[Groups(["format:read"])]
@@ -39,14 +39,14 @@ class Format
         return $this->id;
     }
 
-    public function getFormatName(): ?string
+    public function getName(): ?string
     {
-        return $this->format_name;
+        return $this->name;
     }
 
-    public function setFormatName(?string $format_name): self
+    public function setName(?string $name): self
     {
-        $this->format_name = $format_name;
+        $this->name = $name;
 
         return $this;
     }
@@ -75,7 +75,7 @@ class Format
     {
         if (!$this->books->contains($book)) {
             $this->books->add($book);
-            $book->setBookFormat($this);
+            $book->setFormat($this);
         }
 
         return $this;
@@ -85,8 +85,8 @@ class Format
     {
         if ($this->books->removeElement($book)) {
             // set the owning side to null (unless already changed)
-            if ($book->getBookFormat() === $this) {
-                $book->setBookFormat(null);
+            if ($book->getFormat() === $this) {
+                $book->setFormat(null);
             }
         }
 

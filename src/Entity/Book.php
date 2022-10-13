@@ -27,11 +27,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 #[ApiFilter(
     SearchFilter::class,
-    properties : ['format.format_name' => "iexact",'type.type_name' => "iexact"]
+    properties : ['format.name' => "iexact",'type.name' => "iexact"]
 )]
 #[ApiFilter(
     CustomMultipleSearchFilter::class,
-    properties : ['title' => "ipartial", 'author.author_firstname' => "ipartial", 'author.author_lastname' => "ipartial"]
+    properties : ['title' => "ipartial", 'author.firstname' => "ipartial", 'author.lastname' => "ipartial"]
 )]
 
 class Book
@@ -184,7 +184,7 @@ class Book
         return $this->author;
     }
 
-    public function addBookAuthor(Author $bookAuthor): self
+    public function addAuthor(Author $bookAuthor): self
     {
         if (!$this->author->contains($bookAuthor)) {
             $this->author->add($bookAuthor);
@@ -193,7 +193,7 @@ class Book
         return $this;
     }
 
-    public function removeBookAuthor(Author $bookAuthor): self
+    public function removeAuthor(Author $bookAuthor): self
     {
         $this->author->removeElement($bookAuthor);
 
@@ -208,7 +208,7 @@ class Book
         return $this->type;
     }
 
-    public function addBookType(Type $bookType): self
+    public function addType(Type $bookType): self
     {
         if (!$this->type->contains($bookType)) {
             $this->type->add($bookType);
@@ -217,7 +217,7 @@ class Book
         return $this;
     }
 
-    public function removeBookType(Type $bookType): self
+    public function removeType(Type $bookType): self
     {
         $this->type->removeElement($bookType);
 

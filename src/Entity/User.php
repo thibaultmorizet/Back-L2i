@@ -63,7 +63,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(["user:read"])]
     private ?Address $delivery_address = null;
 
-    #[ORM\OneToMany(mappedBy: 'order_user', targetEntity: Order::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class)]
     #[Groups(["user:read"])]
     private Collection $orders;
 
@@ -165,7 +165,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->orders->contains($order)) {
             $this->orders->add($order);
-            $order->setOrderUser($this);
+            $order->setUser($this);
         }
 
         return $this;
@@ -175,8 +175,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->orders->removeElement($order)) {
             // set the owning side to null (unless already changed)
-            if ($order->getOrderUser() === $this) {
-                $order->setOrderUser(null);
+            if ($order->getUser() === $this) {
+                $order->setUser(null);
             }
         }
 

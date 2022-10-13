@@ -13,7 +13,7 @@ class Invoice
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(mappedBy: 'order_invoice', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'invoice', cascade: ['persist', 'remove'])]
     private ?Order $theorder = null;
 
     public function getId(): ?int
@@ -30,12 +30,12 @@ class Invoice
     {
         // unset the owning side of the relation if necessary
         if ($theorder === null && $this->theorder !== null) {
-            $this->theorder->setOrderInvoice(null);
+            $this->theorder->setInvoice(null);
         }
 
         // set the owning side of the relation if necessary
-        if ($theorder !== null && $theorder->getOrderInvoice() !== $this) {
-            $theorder->setOrderInvoice($this);
+        if ($theorder !== null && $theorder->getInvoice() !== $this) {
+            $theorder->setInvoice($this);
         }
 
         $this->theorder = $theorder;

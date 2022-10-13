@@ -20,22 +20,22 @@ class Order
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Groups(["user:read", "user:write"])]
-    private ?\DateTimeInterface $order_date = null;
+    private ?\DateTimeInterface $date = null;
 
     #[ORM\Column]
     #[Groups(["user:read", "user:write"])]
-    private ?float $order_total_price = null;
+    private ?float $total_price = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     #[Groups(["user:read", "user:write"])]
-    private array $order_book_list = [];
+    private array $book_list = [];
 
     #[ORM\OneToOne(inversedBy: 'theorder', cascade: ['persist', 'remove'])]
-    private ?Invoice $order_invoice = null;
+    private ?Invoice $invoice = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $order_user = null;
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -46,62 +46,62 @@ class Order
         return $this->id;
     }
 
-    public function getOrderDate(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->order_date;
+        return $this->date;
     }
 
-    public function setOrderDate(\DateTimeInterface $order_date): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->order_date = $order_date;
+        $this->date = $date;
 
         return $this;
     }
 
-    public function getOrderTotalPrice(): ?float
+    public function getTotalPrice(): ?float
     {
-        return $this->order_total_price;
+        return $this->total_price;
     }
 
-    public function setOrderTotalPrice(float $order_total_price): self
+    public function setTotalPrice(float $total_price): self
     {
-        $this->order_total_price = $order_total_price;
+        $this->total_price = $total_price;
 
         return $this;
     }
 
-    public function getOrderBookList(): array
+    public function getBookList(): array
     {
-        return $this->order_book_list;
+        return $this->book_list;
     }
 
-    public function setOrderBookList(?array $order_book_list): self
+    public function setBookList(?array $book_list): self
     {
-        $this->order_book_list = $order_book_list;
+        $this->book_list = $book_list;
 
         return $this;
     }
 
-    public function getOrderInvoice(): ?Invoice
+    public function getInvoice(): ?Invoice
     {
-        return $this->order_invoice;
+        return $this->invoice;
     }
 
-    public function setOrderInvoice(?Invoice $order_invoice): self
+    public function setInvoice(?Invoice $invoice): self
     {
-        $this->order_invoice = $order_invoice;
+        $this->invoice = $invoice;
 
         return $this;
     }
 
-    public function getOrderUser(): ?User
+    public function getUser(): ?User
     {
-        return $this->order_user;
+        return $this->user;
     }
 
-    public function setOrderUser(?User $order_user): self
+    public function setUser(?User $user): self
     {
-        $this->order_user = $order_user;
+        $this->user = $user;
 
         return $this;
     }

@@ -23,7 +23,7 @@ class Type
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["book:read","book:write", "type:read"])]
-    private ?string $type_name = null;
+    private ?string $name = null;
 
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'type')]
     #[Groups(["type:read"])]
@@ -39,14 +39,14 @@ class Type
         return $this->id;
     }
 
-    public function getTypeName(): ?string
+    public function getName(): ?string
     {
-        return $this->type_name;
+        return $this->name;
     }
 
-    public function setTypeName(?string $type_name): self
+    public function setName(?string $name): self
     {
-        $this->type_name = $type_name;
+        $this->name = $name;
 
         return $this;
     }
@@ -63,7 +63,7 @@ class Type
     {
         if (!$this->books->contains($book)) {
             $this->books->add($book);
-            $book->addBookType($this);
+            $book->addType($this);
         }
 
         return $this;
@@ -72,7 +72,7 @@ class Type
     public function removeBook(Book $book): self
     {
         if ($this->books->removeElement($book)) {
-            $book->removeBookType($this);
+            $book->removeType($this);
         }
 
         return $this;

@@ -23,7 +23,7 @@ class Editor
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["book:read","book:write","editor:read"])]
-    private ?string $editor_name = null;
+    private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'editor', targetEntity: Book::class)]
     private Collection $books;
@@ -38,14 +38,14 @@ class Editor
         return $this->id;
     }
 
-    public function getEditorName(): ?string
+    public function getName(): ?string
     {
-        return $this->editor_name;
+        return $this->name;
     }
 
-    public function setEditorName(?string $editor_name): self
+    public function setName(?string $name): self
     {
-        $this->editor_name = $editor_name;
+        $this->name = $name;
 
         return $this;
     }
@@ -74,7 +74,7 @@ class Editor
     {
         if (!$this->books->contains($book)) {
             $this->books->add($book);
-            $book->setBookEditor($this);
+            $book->setEditor($this);
         }
 
         return $this;
@@ -84,8 +84,8 @@ class Editor
     {
         if ($this->books->removeElement($book)) {
             // set the owning side to null (unless already changed)
-            if ($book->getBookEditor() === $this) {
-                $book->setBookEditor(null);
+            if ($book->getEditor() === $this) {
+                $book->setEditor(null);
             }
         }
 
