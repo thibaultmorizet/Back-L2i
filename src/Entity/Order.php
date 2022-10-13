@@ -28,7 +28,7 @@ class Order
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     #[Groups(["user:read", "user:write"])]
-    private array $order_book_list = [];
+    private array $order_list = [];
 
     #[ORM\OneToOne(inversedBy: 'theorder', cascade: ['persist', 'remove'])]
     private ?Invoice $order_invoice = null;
@@ -72,12 +72,12 @@ class Order
 
     public function getOrderBookList(): array
     {
-        return $this->order_book_list;
+        return $this->order_list;
     }
 
-    public function setOrderBookList(?array $order_book_list): self
+    public function setOrderBookList(?array $order_list): self
     {
-        $this->order_book_list = $order_book_list;
+        $this->order_list = $order_list;
 
         return $this;
     }

@@ -25,7 +25,7 @@ class Editor
     #[Groups(["book:read","editor:read"])]
     private ?string $editor_name = null;
 
-    #[ORM\OneToMany(mappedBy: 'book_editor', targetEntity: Book::class)]
+    #[ORM\OneToMany(mappedBy: 'editor', targetEntity: Book::class)]
     private Collection $books;
 
     public function __construct()

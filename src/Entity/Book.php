@@ -19,19 +19,19 @@ use Symfony\Component\Serializer\Annotation\Groups;
     paginationClientItemsPerPage: true,
     normalizationContext: ['groups' => "book:read"],
     denormalizationContext: ['groups' => "book:write"],
-    order: ['book_visit_number' => 'DESC']
+    order: ['visit_number' => 'DESC']
 )]
 #[ApiFilter(
     RangeFilter::class,
-    properties: ['book_stock']
+    properties: ['stock']
 )]
 #[ApiFilter(
     SearchFilter::class,
-    properties : ['book_format.format_name' => "iexact",'book_type.type_name' => "iexact"]
+    properties : ['format.format_name' => "iexact",'type.type_name' => "iexact"]
 )]
 #[ApiFilter(
     CustomMultipleSearchFilter::class,
-    properties : ['book_title' => "ipartial", 'book_author.author_firstname' => "ipartial", 'book_author.author_lastname' => "ipartial"]
+    properties : ['title' => "ipartial", 'author.author_firstname' => "ipartial", 'author.author_lastname' => "ipartial"]
 )]
 
 class Book
@@ -44,59 +44,59 @@ class Book
 
     #[ORM\Column(length: 255)]
     #[Groups(["book:read"])]
-    private ?string $book_title = null;
+    private ?string $title = null;
 
     #[ORM\Column(length: 10000, nullable: true)]
     #[Groups(["book:read"])]
-    private ?string $book_summary = null;
+    private ?string $summary = null;
 
     #[ORM\Column]
     #[Groups(["book:read"])]
-    private ?float $book_unit_price = null;
+    private ?float $unit_price = null;
 
     #[ORM\Column]
     #[Groups(["book:read"])]
-    private ?int $book_stock = null;
+    private ?int $stock = null;
 
     #[ORM\Column(nullable: true)]
     #[Groups(["book:read"])]
-    private ?string $book_isbn = null;
+    private ?string $isbn = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["book:read"])]
-    private ?string $book_image = null;
+    private ?string $image = null;
 
     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books')]
     #[Groups(["book:read"])]
-    private Collection $book_author;
+    private Collection $author;
 
     #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'books')]
     #[Groups(["book:read"])]
-    private Collection $book_type;
+    private Collection $type;
 
     #[ORM\ManyToOne(inversedBy: 'books')]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["book:read"])]
-    private ?Format $book_format = null;
+    private ?Format $format = null;
 
     #[ORM\ManyToOne(inversedBy: 'books')]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["book:read"])]
-    private ?Editor $book_editor = null;
+    private ?Editor $editor = null;
 
     #[ORM\Column(nullable: true)]
     #[Groups(["book:read"])]
-    private ?string $book_year = null;
+    private ?string $year = null;
 
     #[ORM\Column]
     #[Groups(["book:read"])]
-    private ?int $book_visit_number = null;
+    private ?int $visit_number = null;
 
     public function __construct()
     {
         $this->orders = new ArrayCollection();
-        $this->book_author = new ArrayCollection();
-        $this->book_type = new ArrayCollection();
+        $this->author = new ArrayCollection();
+        $this->type = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -104,74 +104,74 @@ class Book
         return $this->id;
     }
 
-    public function getBookTitle(): ?string
+    public function getTitle(): ?string
     {
-        return $this->book_title;
+        return $this->title;
     }
 
-    public function setBookTitle(string $book_title): self
+    public function setTitle(string $title): self
     {
-        $this->book_title = $book_title;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getBookSummary(): ?string
+    public function getSummary(): ?string
     {
-        return $this->book_summary;
+        return $this->summary;
     }
 
-    public function setBookSummary(?string $book_summary): self
+    public function setSummary(?string $summary): self
     {
-        $this->book_summary = $book_summary;
+        $this->summary = $summary;
 
         return $this;
     }
 
-    public function getBookUnitPrice(): ?float
+    public function getUnitPrice(): ?float
     {
-        return $this->book_unit_price;
+        return $this->unit_price;
     }
 
-    public function setBookUnitPrice(float $book_unit_price): self
+    public function setUnitPrice(float $unit_price): self
     {
-        $this->book_unit_price = $book_unit_price;
+        $this->unit_price = $unit_price;
 
         return $this;
     }
 
-    public function getBookStock(): ?int
+    public function getStock(): ?int
     {
-        return $this->book_stock;
+        return $this->stock;
     }
 
-    public function setBookStock(int $book_stock): self
+    public function setStock(int $stock): self
     {
-        $this->book_stock = $book_stock;
+        $this->stock = $stock;
 
         return $this;
     }
 
-    public function getBookIsbn(): ?string
+    public function getIsbn(): ?string
     {
-        return $this->book_isbn;
+        return $this->isbn;
     }
 
-    public function setBookIsbn(string $book_isbn): self
+    public function setIsbn(string $isbn): self
     {
-        $this->book_isbn = $book_isbn;
+        $this->isbn = $isbn;
 
         return $this;
     }
 
-    public function getBookImage(): ?string
+    public function getImage(): ?string
     {
-        return $this->book_image;
+        return $this->image;
     }
 
-    public function setBookImage(?string $book_image): self
+    public function setImage(?string $image): self
     {
-        $this->book_image = $book_image;
+        $this->image = $image;
 
         return $this;
     }
@@ -179,15 +179,15 @@ class Book
     /**
      * @return Collection<int, Author>
      */
-    public function getBookAuthor(): Collection
+    public function getAuthor(): Collection
     {
-        return $this->book_author;
+        return $this->author;
     }
 
     public function addBookAuthor(Author $bookAuthor): self
     {
-        if (!$this->book_author->contains($bookAuthor)) {
-            $this->book_author->add($bookAuthor);
+        if (!$this->author->contains($bookAuthor)) {
+            $this->author->add($bookAuthor);
         }
 
         return $this;
@@ -195,7 +195,7 @@ class Book
 
     public function removeBookAuthor(Author $bookAuthor): self
     {
-        $this->book_author->removeElement($bookAuthor);
+        $this->author->removeElement($bookAuthor);
 
         return $this;
     }
@@ -203,15 +203,15 @@ class Book
     /**
      * @return Collection<int, Type>
      */
-    public function getBookType(): Collection
+    public function getType(): Collection
     {
-        return $this->book_type;
+        return $this->type;
     }
 
     public function addBookType(Type $bookType): self
     {
-        if (!$this->book_type->contains($bookType)) {
-            $this->book_type->add($bookType);
+        if (!$this->type->contains($bookType)) {
+            $this->type->add($bookType);
         }
 
         return $this;
@@ -219,55 +219,55 @@ class Book
 
     public function removeBookType(Type $bookType): self
     {
-        $this->book_type->removeElement($bookType);
+        $this->type->removeElement($bookType);
 
         return $this;
     }
 
-    public function getBookFormat(): ?Format
+    public function getFormat(): ?Format
     {
-        return $this->book_format;
+        return $this->format;
     }
 
-    public function setBookFormat(?Format $book_format): self
+    public function setFormat(?Format $format): self
     {
-        $this->book_format = $book_format;
+        $this->format = $format;
 
         return $this;
     }
 
-    public function getBookEditor(): ?Editor
+    public function getEditor(): ?Editor
     {
-        return $this->book_editor;
+        return $this->editor;
     }
 
-    public function setBookEditor(?Editor $book_editor): self
+    public function setEditor(?Editor $editor): self
     {
-        $this->book_editor = $book_editor;
+        $this->editor = $editor;
 
         return $this;
     }
 
-    public function getBookYear(): ?string
+    public function getYear(): ?string
     {
-        return $this->book_year;
+        return $this->year;
     }
 
-    public function setBookYear(?string $book_year): self
+    public function setYear(?string $year): self
     {
-        $this->book_year = $book_year;
+        $this->year = $year;
 
         return $this;
     }
 
-    public function getBookVisitNumber(): ?int
+    public function getVisitNumber(): ?int
     {
-        return $this->book_visit_number;
+        return $this->visit_number;
     }
 
-    public function setBookVisitNumber(int $book_visit_number): self
+    public function setVisitNumber(int $visit_number): self
     {
-        $this->book_visit_number = $book_visit_number;
+        $this->visit_number = $visit_number;
 
         return $this;
     }

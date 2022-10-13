@@ -35,7 +35,7 @@ class Author
     #[Groups(["book:read"])]
     private ?string $author_language = null;
 
-    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'book_author')]
+    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'author')]
     private Collection $books;
 
     public function __construct()

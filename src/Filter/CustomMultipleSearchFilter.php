@@ -219,7 +219,7 @@ class CustomMultipleSearchFilter extends AbstractContextAwareFilter implements S
                     throw new InvalidArgumentException(sprintf('strategy %s does not exist.', $strategy));
             }
         }
-        if (strpos($ors[0]->getLeftExpr(), "book_title")) {
+        if (strpos($ors[0]->getLeftExpr(), "title")) {
             $queryBuilder->andWhere($queryBuilder->expr()->orX($ors[0]));
           } else {
             $queryBuilder->orWhere($queryBuilder->expr()->orX($ors[0]));
