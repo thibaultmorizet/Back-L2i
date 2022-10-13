@@ -21,9 +21,8 @@ class BookDataPersister implements ContextAwareDataPersisterInterface
 
     public function persist($data, array $context = [])
     {        
-        $payload = unserialize($data);
 
-        $author = $this->em->find("author", $payload['id']);
+        $author = $this->em->find("author", 100);
 var_dump($author);
         $book = new Book();
         $book->addAuthor($author);
