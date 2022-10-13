@@ -24,11 +24,11 @@ class Order
 
     #[ORM\Column]
     #[Groups(["user:read", "user:write"])]
-    private ?float $total_price = null;
+    private ?float $totalprice = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     #[Groups(["user:read", "user:write"])]
-    private array $book_list = [];
+    private array $booklist = [];
 
     #[ORM\OneToOne(inversedBy: 'theorder', cascade: ['persist', 'remove'])]
     private ?Invoice $invoice = null;
@@ -58,26 +58,26 @@ class Order
         return $this;
     }
 
-    public function getTotalPrice(): ?float
+    public function getTotalprice(): ?float
     {
-        return $this->total_price;
+        return $this->totalprice;
     }
 
-    public function setTotalPrice(float $total_price): self
+    public function setTotalprice(float $totalprice): self
     {
-        $this->total_price = $total_price;
+        $this->totalprice = $totalprice;
 
         return $this;
     }
 
-    public function getBookList(): array
+    public function getBooklist(): array
     {
-        return $this->book_list;
+        return $this->booklist;
     }
 
-    public function setBookList(?array $book_list): self
+    public function setBooklist(?array $booklist): self
     {
-        $this->book_list = $book_list;
+        $this->booklist = $booklist;
 
         return $this;
     }

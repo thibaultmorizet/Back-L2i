@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     paginationClientItemsPerPage: true,
     normalizationContext: ['groups' => "book:read"],
     denormalizationContext: ['groups' => "book:write"],
-    order: ['visit_number' => 'DESC']
+    order: ['visitnumber' => 'DESC']
 )]
 #[ApiFilter(
     RangeFilter::class,
@@ -52,7 +52,7 @@ class Book
 
     #[ORM\Column]
     #[Groups(["book:read", "book:write"])]
-    private ?float $unit_price = null;
+    private ?float $unitprice = null;
 
     #[ORM\Column]
     #[Groups(["book:read", "book:write"])]
@@ -90,7 +90,7 @@ class Book
 
     #[ORM\Column]
     #[Groups(["book:read", "book:write"])]
-    private ?int $visit_number = null;
+    private ?int $visitnumber = null;
 
     public function __construct()
     {
@@ -128,14 +128,14 @@ class Book
         return $this;
     }
 
-    public function getUnitPrice(): ?float
+    public function getUnitprice(): ?float
     {
-        return $this->unit_price;
+        return $this->unitprice;
     }
 
-    public function setUnitPrice(float $unit_price): self
+    public function setUnitprice(float $unitprice): self
     {
-        $this->unit_price = $unit_price;
+        $this->unitprice = $unitprice;
 
         return $this;
     }
@@ -260,14 +260,14 @@ class Book
         return $this;
     }
 
-    public function getVisitNumber(): ?int
+    public function getVisitnumber(): ?int
     {
-        return $this->visit_number;
+        return $this->visitnumber;
     }
 
-    public function setVisitNumber(int $visit_number): self
+    public function setVisitnumber(int $visitnumber): self
     {
-        $this->visit_number = $visit_number;
+        $this->visitnumber = $visitnumber;
 
         return $this;
     }

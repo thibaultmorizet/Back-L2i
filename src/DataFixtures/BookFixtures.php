@@ -121,14 +121,14 @@ class BookFixtures extends Fixture
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
         $livres[0]->setYear(2017);
         $livres[0]->setImage("./../assets/73.jpeg");
-        $livres[0]->setUnitPrice(39.00);
+        $livres[0]->setUnitprice(39.00);
         $livres[0]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[0]->setIsbn("2212143656");
         $livres[0]->setFormat($formats[0]);
         $livres[0]->setEditor($editors[0]);
         $livres[0]->addAuthor($auteurs[0]);
         $livres[0]->addType($types[0]);
-        $livres[0]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[0]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[0]);
 
@@ -141,14 +141,14 @@ class BookFixtures extends Fixture
             ");
         $livres[1]->setYear(2018);
         $livres[1]->setImage("./../assets/74.jpeg");
-        $livres[1]->setUnitPrice(29.90);
+        $livres[1]->setUnitprice(29.90);
         $livres[1]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[1]->setIsbn("9782409015297");
         $livres[1]->setFormat($formats[0]);
         $livres[1]->setEditor($editors[1]);
         $livres[1]->addAuthor($auteurs[1]);
         $livres[1]->addType($types[0]);
-        $livres[1]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[1]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[1]);
 
@@ -161,14 +161,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[2]->setYear(2019);
         $livres[2]->setImage("./../assets/75.jpeg");
-        $livres[2]->setUnitPrice(38);
+        $livres[2]->setUnitprice(38);
         $livres[2]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[2]->setIsbn("9782326002272");
         $livres[2]->setFormat($formats[0]);
         $livres[2]->setEditor($editors[2]);
         $livres[2]->addAuthor($auteurs[2]);
         $livres[2]->addType($types[0]);
-        $livres[2]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[2]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[2]);
 
@@ -181,14 +181,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
                     ");
         $livres[3]->setYear(2019);
         $livres[3]->setImage("./../assets/76.jpeg");
-        $livres[3]->setUnitPrice(12.5);
+        $livres[3]->setUnitprice(12.5);
         $livres[3]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[3]->setIsbn("9782412043622");
         $livres[3]->setFormat($formats[1]);
         $livres[3]->setEditor($editors[3]);
         $livres[3]->addAuthor($auteurs[3]);
         $livres[3]->addType($types[2]);
-        $livres[3]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[3]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[3]);
 
@@ -199,14 +199,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[4]->setYear(2019);
         $livres[4]->setImage("./../assets/77.jpeg");
-        $livres[4]->setUnitPrice(19.9);
+        $livres[4]->setUnitprice(19.9);
         $livres[4]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[4]->setIsbn("9781706785606");
         $livres[4]->setFormat($formats[0]);
         $livres[4]->setEditor($editors[4]);
         $livres[4]->addAuthor($auteurs[4]);
         $livres[4]->addType($types[0]);
-        $livres[4]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[4]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[4]);
 
@@ -216,14 +216,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
         $livres[5]->setYear(2020);
         $livres[5]->setImage("./../assets/78.jpeg");
-        $livres[5]->setUnitPrice(19.99);
+        $livres[5]->setUnitprice(19.99);
         $livres[5]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[5]->setIsbn("9788698662860");
         $livres[5]->setFormat($formats[0]);
         $livres[5]->setEditor($editors[4]);
         $livres[5]->addAuthor($auteurs[4]);
         $livres[5]->addType($types[0]);
-        $livres[5]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[5]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[5]);
 
@@ -235,14 +235,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[6]->setYear(2022);
         $livres[6]->setImage("./../assets/79.jpeg");
-        $livres[6]->setUnitPrice(29.90);
+        $livres[6]->setUnitprice(29.90);
         $livres[6]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[6]->setIsbn("9782409035173");
         $livres[6]->setFormat($formats[0]);
         $livres[6]->setEditor($editors[1]);
         $livres[6]->addAuthor($auteurs[5]);
         $livres[6]->addType($types[1]);
-        $livres[6]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[6]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[6]);
 
@@ -262,14 +262,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
         $livres[7]->setYear(2017);
         $livres[7]->setImage("./../assets/80.jpeg");
-        $livres[7]->setUnitPrice(39.00);
+        $livres[7]->setUnitprice(39.00);
         $livres[7]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[7]->setIsbn("2212143656");
         $livres[7]->setFormat($formats[0]);
         $livres[7]->setEditor($editors[0]);
         $livres[7]->addAuthor($auteurs[0]);
         $livres[7]->addType($types[0]);
-        $livres[7]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[7]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[7]);
 
@@ -282,14 +282,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[8]->setYear(2018);
         $livres[8]->setImage("./../assets/81.jpeg");
-        $livres[8]->setUnitPrice(29.90);
+        $livres[8]->setUnitprice(29.90);
         $livres[8]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[8]->setIsbn("9782409015297");
         $livres[8]->setFormat($formats[0]);
         $livres[8]->setEditor($editors[1]);
         $livres[8]->addAuthor($auteurs[1]);
         $livres[8]->addType($types[0]);
-        $livres[8]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[8]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[8]);
 
@@ -302,14 +302,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[9]->setYear(2019);
         $livres[9]->setImage("./../assets/82.jpeg");
-        $livres[9]->setUnitPrice(38);
+        $livres[9]->setUnitprice(38);
         $livres[9]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[9]->setIsbn("9782326002272");
         $livres[9]->setFormat($formats[0]);
         $livres[9]->setEditor($editors[2]);
         $livres[9]->addAuthor($auteurs[2]);
         $livres[9]->addType($types[0]);
-        $livres[9]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[9]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[9]);
 
@@ -322,14 +322,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
                     ");
         $livres[10]->setYear(2019);
         $livres[10]->setImage("./../assets/83.jpeg");
-        $livres[10]->setUnitPrice(12.5);
+        $livres[10]->setUnitprice(12.5);
         $livres[10]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[10]->setIsbn("9782412043622");
         $livres[10]->setFormat($formats[1]);
         $livres[10]->setEditor($editors[3]);
         $livres[10]->addAuthor($auteurs[3]);
         $livres[10]->addType($types[2]);
-        $livres[10]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[10]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[10]);
 
@@ -340,14 +340,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[11]->setYear(2019);
         $livres[11]->setImage("./../assets/84.jpeg");
-        $livres[11]->setUnitPrice(19.9);
+        $livres[11]->setUnitprice(19.9);
         $livres[11]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[11]->setIsbn("9781706785606");
         $livres[11]->setFormat($formats[0]);
         $livres[11]->setEditor($editors[4]);
         $livres[11]->addAuthor($auteurs[4]);
         $livres[11]->addType($types[0]);
-        $livres[11]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[11]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[11]);
 
@@ -357,14 +357,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
         $livres[12]->setYear(2020);
         $livres[12]->setImage("./../assets/85.jpeg");
-        $livres[12]->setUnitPrice(19.99);
+        $livres[12]->setUnitprice(19.99);
         $livres[12]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[12]->setIsbn("9788698662860");
         $livres[12]->setFormat($formats[0]);
         $livres[12]->setEditor($editors[4]);
         $livres[12]->addAuthor($auteurs[4]);
         $livres[12]->addType($types[0]);
-        $livres[12]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[12]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[12]);
 
@@ -376,14 +376,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[13]->setYear(2022);
         $livres[13]->setImage("./../assets/86.jpeg");
-        $livres[13]->setUnitPrice(29.90);
+        $livres[13]->setUnitprice(29.90);
         $livres[13]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[13]->setIsbn("9782409035173");
         $livres[13]->setFormat($formats[0]);
         $livres[13]->setEditor($editors[1]);
         $livres[13]->addAuthor($auteurs[5]);
         $livres[13]->addType($types[1]);
-        $livres[13]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[13]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[13]);
 
@@ -405,14 +405,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
         $livres[14]->setYear(2017);
         $livres[14]->setImage("./../assets/87.jpeg");
-        $livres[14]->setUnitPrice(39.00);
+        $livres[14]->setUnitprice(39.00);
         $livres[14]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[14]->setIsbn("2212143656");
         $livres[14]->setFormat($formats[0]);
         $livres[14]->setEditor($editors[0]);
         $livres[14]->addAuthor($auteurs[0]);
         $livres[14]->addType($types[0]);
-        $livres[14]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[14]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[14]);
 
@@ -425,14 +425,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[15]->setYear(2018);
         $livres[15]->setImage("./../assets/88.jpeg");
-        $livres[15]->setUnitPrice(29.90);
+        $livres[15]->setUnitprice(29.90);
         $livres[15]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[15]->setIsbn("9782409015297");
         $livres[15]->setFormat($formats[0]);
         $livres[15]->setEditor($editors[1]);
         $livres[15]->addAuthor($auteurs[1]);
         $livres[15]->addType($types[0]);
-        $livres[15]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[15]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[15]);
 
@@ -445,14 +445,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[16]->setYear(2019);
         $livres[16]->setImage("./../assets/89.jpeg");
-        $livres[16]->setUnitPrice(38);
+        $livres[16]->setUnitprice(38);
         $livres[16]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[16]->setIsbn("9782326002272");
         $livres[16]->setFormat($formats[0]);
         $livres[16]->setEditor($editors[2]);
         $livres[16]->addAuthor($auteurs[2]);
         $livres[16]->addType($types[0]);
-        $livres[16]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[16]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[16]);
 
@@ -465,14 +465,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
                     ");
         $livres[17]->setYear(2019);
         $livres[17]->setImage("./../assets/90.jpeg");
-        $livres[17]->setUnitPrice(12.5);
+        $livres[17]->setUnitprice(12.5);
         $livres[17]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[17]->setIsbn("9782412043622");
         $livres[17]->setFormat($formats[1]);
         $livres[17]->setEditor($editors[3]);
         $livres[17]->addAuthor($auteurs[3]);
         $livres[17]->addType($types[2]);
-        $livres[17]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[17]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[17]);
 
@@ -483,14 +483,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[18]->setYear(2019);
         $livres[18]->setImage("./../assets/91.jpeg");
-        $livres[18]->setUnitPrice(19.9);
+        $livres[18]->setUnitprice(19.9);
         $livres[18]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[18]->setIsbn("9781706785606");
         $livres[18]->setFormat($formats[0]);
         $livres[18]->setEditor($editors[4]);
         $livres[18]->addAuthor($auteurs[4]);
         $livres[18]->addType($types[0]);
-        $livres[18]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[18]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[18]);
 
@@ -500,14 +500,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
         $livres[19]->setYear(2020);
         $livres[19]->setImage("./../assets/92.jpeg");
-        $livres[19]->setUnitPrice(19.99);
+        $livres[19]->setUnitprice(19.99);
         $livres[19]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[19]->setIsbn("9788698662860");
         $livres[19]->setFormat($formats[0]);
         $livres[19]->setEditor($editors[4]);
         $livres[19]->addAuthor($auteurs[4]);
         $livres[19]->addType($types[0]);
-        $livres[19]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[19]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[19]);
 
@@ -519,14 +519,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[20]->setYear(2022);
         $livres[20]->setImage("./../assets/93.jpeg");
-        $livres[20]->setUnitPrice(29.90);
+        $livres[20]->setUnitprice(29.90);
         $livres[20]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[20]->setIsbn("9782409035173");
         $livres[20]->setFormat($formats[0]);
         $livres[20]->setEditor($editors[1]);
         $livres[20]->addAuthor($auteurs[5]);
         $livres[20]->addType($types[1]);
-        $livres[20]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[20]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[20]);
 
@@ -551,14 +551,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
         $livres[21]->setYear(2017);
         $livres[21]->setImage("./../assets/94.jpeg");
-        $livres[21]->setUnitPrice(39.00);
+        $livres[21]->setUnitprice(39.00);
         $livres[21]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[21]->setIsbn("2212143656");
         $livres[21]->setFormat($formats[0]);
         $livres[21]->setEditor($editors[0]);
         $livres[21]->addAuthor($auteurs[0]);
         $livres[21]->addType($types[0]);
-        $livres[21]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[21]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[21]);
 
@@ -571,14 +571,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[22]->setYear(2018);
         $livres[22]->setImage("./../assets/95.jpeg");
-        $livres[22]->setUnitPrice(29.90);
+        $livres[22]->setUnitprice(29.90);
         $livres[22]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[22]->setIsbn("9782409015297");
         $livres[22]->setFormat($formats[0]);
         $livres[22]->setEditor($editors[1]);
         $livres[22]->addAuthor($auteurs[1]);
         $livres[22]->addType($types[0]);
-        $livres[22]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[22]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[22]);
 
@@ -591,14 +591,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[23]->setYear(2019);
         $livres[23]->setImage("./../assets/96.jpeg");
-        $livres[23]->setUnitPrice(38);
+        $livres[23]->setUnitprice(38);
         $livres[23]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[23]->setIsbn("9782326002272");
         $livres[23]->setFormat($formats[0]);
         $livres[23]->setEditor($editors[2]);
         $livres[23]->addAuthor($auteurs[2]);
         $livres[23]->addType($types[0]);
-        $livres[23]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[23]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[23]);
 
@@ -611,14 +611,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
                     ");
         $livres[24]->setYear(2019);
         $livres[24]->setImage("./../assets/97.jpeg");
-        $livres[24]->setUnitPrice(12.5);
+        $livres[24]->setUnitprice(12.5);
         $livres[24]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[24]->setIsbn("9782412043622");
         $livres[24]->setFormat($formats[1]);
         $livres[24]->setEditor($editors[3]);
         $livres[24]->addAuthor($auteurs[3]);
         $livres[24]->addType($types[2]);
-        $livres[24]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[24]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[24]);
 
@@ -629,14 +629,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[25]->setYear(2019);
         $livres[25]->setImage("./../assets/98.jpeg");
-        $livres[25]->setUnitPrice(19.9);
+        $livres[25]->setUnitprice(19.9);
         $livres[25]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[25]->setIsbn("9781706785606");
         $livres[25]->setFormat($formats[0]);
         $livres[25]->setEditor($editors[4]);
         $livres[25]->addAuthor($auteurs[4]);
         $livres[25]->addType($types[0]);
-        $livres[25]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[25]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[25]);
 
@@ -646,14 +646,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
         $livres[26]->setYear(2020);
         $livres[26]->setImage("./../assets/99.jpeg");
-        $livres[26]->setUnitPrice(19.99);
+        $livres[26]->setUnitprice(19.99);
         $livres[26]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[26]->setIsbn("9788698662860");
         $livres[26]->setFormat($formats[0]);
         $livres[26]->setEditor($editors[4]);
         $livres[26]->addAuthor($auteurs[4]);
         $livres[26]->addType($types[0]);
-        $livres[26]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[26]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[26]);
 
@@ -665,14 +665,14 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[27]->setYear(2022);
         $livres[27]->setImage("./../assets/100.jpeg");
-        $livres[27]->setUnitPrice(29.90);
+        $livres[27]->setUnitprice(29.90);
         $livres[27]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[27]->setIsbn("9782409035173");
         $livres[27]->setFormat($formats[0]);
         $livres[27]->setEditor($editors[1]);
         $livres[27]->addAuthor($auteurs[5]);
         $livres[27]->addType($types[1]);
-        $livres[27]->setVisitNumber($faker->numberBetween($min = 0, $max = 30));
+        $livres[27]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[27]);
 
