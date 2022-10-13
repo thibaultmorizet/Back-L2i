@@ -21,11 +21,12 @@ class BookDataPersister implements ContextAwareDataPersisterInterface
 
     public function persist($data, array $context = [])
     {        
-
         $author = $this->em->getMetadataFactory();
 var_dump($author);
+
+        $author = $this->em->find("author", 100);
         $book = new Book();
-        $book->addAuthor();
+        $book->addAuthor($author);
         
 //        $this->em->merge($author);
 
