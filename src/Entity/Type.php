@@ -25,7 +25,7 @@ class Type
     #[Groups(["book:read","book:write", "type:read", "type:write"])]
     private ?string $name = null;
 
-    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'type')]
+    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'type', cascade: ['persist', 'remove'])]
     #[Groups(["type:read"])]
     private Collection $books;
 

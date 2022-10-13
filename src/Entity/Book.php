@@ -70,16 +70,16 @@ class Book
     #[Groups(["book:read", "book:write"])]
     private Collection $author;
 
-    #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'books')]
+    #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'books', cascade: ['persist', 'remove'])]
     #[Groups(["book:read", "book:write"])]
     private Collection $type;
 
-    #[ORM\ManyToOne(inversedBy: 'books')]
+    #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["book:read", "book:write"])]
     private ?Format $format = null;
 
-    #[ORM\ManyToOne(inversedBy: 'books')]
+    #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["book:read", "book:write"])]
     private ?Editor $editor = null;

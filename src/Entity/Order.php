@@ -33,7 +33,7 @@ class Order
     #[ORM\OneToOne(inversedBy: 'theorder', cascade: ['persist', 'remove'])]
     private ?Invoice $invoice = null;
 
-    #[ORM\ManyToOne(inversedBy: 'orders')]
+    #[ORM\ManyToOne(inversedBy: 'orders', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 

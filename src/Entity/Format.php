@@ -25,7 +25,7 @@ class Format
     #[Groups(["book:read", "book:write", "format:read", "format:write"])]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'format', targetEntity: Book::class)]
+    #[ORM\OneToMany(mappedBy: 'format', targetEntity: Book::class, cascade: ['persist', 'remove'])]
     #[Groups(["format:read"])]
     private Collection $books;
 
