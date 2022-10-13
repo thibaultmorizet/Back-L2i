@@ -21,6 +21,7 @@ class Author
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["book:read", "book:write", "author:read", "author:write"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]

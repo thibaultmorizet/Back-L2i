@@ -19,6 +19,7 @@ class Format
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["book:read", "book:write", "format:read", "format:write"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]

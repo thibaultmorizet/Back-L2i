@@ -19,6 +19,7 @@ class Type
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["book:read","book:write", "type:read", "type:write"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
