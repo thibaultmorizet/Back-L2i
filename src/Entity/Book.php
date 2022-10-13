@@ -66,7 +66,7 @@ class Book
     #[Groups(["book:read", "book:write"])]
     private ?string $image = null;
 
-    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books')]
+    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist', 'remove'])]
     #[Groups(["book:read", "book:write"])]
     private Collection $author;
 
