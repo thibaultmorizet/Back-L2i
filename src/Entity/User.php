@@ -68,7 +68,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $orders;
 
     #[ORM\Column(type: 'json')]
-    #[Groups(["user:read"])]
+    #[Groups(["user:read","user:write"])]
     private $roles = [];
 
     public function __construct()
