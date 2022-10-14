@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\FormatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -13,6 +14,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     normalizationContext: ['groups' => "format:read"],
     denormalizationContext: ['groups' => "format:write"]
+)]
+
+#[ApiFilter(
+    SearchFilter::class,
+    properties: ["name" => "exact"]
 )]
 class Format
 {
