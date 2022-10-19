@@ -45,7 +45,6 @@ security:
     - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
     - { path: ^/ws/users, roles: PUBLIC_ACCESS }
     - { path: ^/ws/addresses, roles: PUBLIC_ACCESS }
-    - { path: ^/cover_images, roles: PUBLIC_ACCESS }
     - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
