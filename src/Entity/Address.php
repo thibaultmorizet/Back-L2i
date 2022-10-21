@@ -38,11 +38,11 @@ class Address
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
     private $country;
 
-    #[ORM\OneToMany(mappedBy: 'billing_address', targetEntity: User::class, cascade: ['persist', 'remove'])]
-    private Collection $users_billing;
+    #[ORM\OneToMany(mappedBy: 'billingAddress', targetEntity: User::class, cascade: ['persist', 'remove'])]
+    private Collection $usersBilling;
 
-    #[ORM\OneToMany(mappedBy: 'delivery_address', targetEntity: User::class, cascade: ['persist', 'remove'])]
-    private Collection $users_delivery;
+    #[ORM\OneToMany(mappedBy: 'deliveryAddress', targetEntity: User::class, cascade: ['persist', 'remove'])]
+    private Collection $usersDelivery;
 
     public function __construct()
     {
@@ -107,13 +107,13 @@ class Address
      */
     public function getUsersBilling(): Collection
     {
-        return $this->users_billing;
+        return $this->usersBilling;
     }
 
     public function addUserBilling(User $user): self
     {
-        if (!$this->users_billing->contains($user)) {
-            $this->users_billing->add($user);
+        if (!$this->usersBilling->contains($user)) {
+            $this->usersBilling->add($user);
             $user->setBillingAddress($this);
         }
 
@@ -122,7 +122,7 @@ class Address
 
     public function removeUserBilling(User $user): self
     {
-        if ($this->users_billing->removeElement($user)) {
+        if ($this->usersBilling->removeElement($user)) {
             // set the owning side to null (unless already changed)
             if ($user->setBillingAddress() === $this) {
                 $user->setBillingAddress(null);
@@ -137,13 +137,13 @@ class Address
      */
     public function getUsersDelivery(): Collection
     {
-        return $this->users_delivery;
+        return $this->usersDelivery;
     }
 
     public function addUserDelivery(User $user): self
     {
-        if (!$this->users_delivery->contains($user)) {
-            $this->users_delivery->add($user);
+        if (!$this->usersDelivery->contains($user)) {
+            $this->usersDelivery->add($user);
             $user->setDeliveryAddress($this);
         }
 
@@ -152,7 +152,7 @@ class Address
 
     public function removeUserDelivery(User $user): self
     {
-        if ($this->users_delivery->removeElement($user)) {
+        if ($this->usersDelivery->removeElement($user)) {
             // set the owning side to null (unless already changed)
             if ($user->setDeliveryAddress() === $this) {
                 $user->setDeliveryAddress(null);

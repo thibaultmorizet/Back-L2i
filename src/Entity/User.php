@@ -53,15 +53,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(["user:read", "user:write"])]
     private $password;
 
-    #[ORM\ManyToOne(inversedBy: 'users_billing', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'usersBilling', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: true)]
     #[Groups(["user:read","user:write"])]
-    private ?Address $billing_address = null;
+    private ?Address $billingAddress = null;
 
-    #[ORM\ManyToOne(inversedBy: 'users_delivery', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'usersDelivery', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: true)]
     #[Groups(["user:read","user:write"])]
-    private ?Address $delivery_address = null;
+    private ?Address $deliveryAddress = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class, cascade: ['persist', 'remove'])]
     #[Groups(["user:read"])]
@@ -131,24 +131,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
  */
     public function getBillingAddress(): ?Address
     {
-        return $this->billing_address;
+        return $this->billingAddress;
     }
 
-    public function setBillingAddress(?Address $billing_address): self
+    public function setBillingAddress(?Address $billingAddress): self
     {
-        $this->billing_address = $billing_address;
+        $this->billingAddress = $billingAddress;
 
         return $this;
     }
 
     public function getDeliveryAddress(): ?Address
     {
-        return $this->delivery_address;
+        return $this->deliveryAddress;
     }
 
-    public function setDeliveryAddress(?Address $delivery_address): self
+    public function setDeliveryAddress(?Address $deliveryAddress): self
     {
-        $this->delivery_address = $delivery_address;
+        $this->deliveryAddress = $deliveryAddress;
 
         return $this;
     }
