@@ -88,7 +88,7 @@ class Book
     #[Groups(["book:read", "book:write"])]
     private ?string $year = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     #[Groups(["book:read", "book:write"])]
     private ?int $visitnumber = null;
 
