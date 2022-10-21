@@ -31,7 +31,7 @@ class Address
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
     private $street;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string', length: 10)]
     #[Groups(["user:read", "user:write", "address:read", "address:write"])]
     private $postalcode;
 
@@ -71,12 +71,12 @@ class Address
         return $this;
     }
 
-    public function getPostalcode(): ?int
+    public function getPostalcode(): ?string
     {
         return $this->postalcode;
     }
 
-    public function setPostalcode(int $postalcode): self
+    public function setPostalcode(string $postalcode): self
     {
         $this->postalcode = $postalcode;
 
