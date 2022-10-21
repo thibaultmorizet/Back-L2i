@@ -120,7 +120,7 @@ class BookFixtures extends Fixture
         - Aux designers web qui souhaitent découvrir toutes les possibilités que leur offre HTML 5.
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
         $livres[0]->setYear(2017);
-        $livres[0]->setImage("./../assets/73.jpeg");
+        $livres[0]->setImage("https://www.thibaultmorizet.fr/assets/73.jpeg");
         $livres[0]->setUnitprice(39.00);
         $livres[0]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[0]->setIsbn("2212143656");
@@ -140,7 +140,7 @@ class BookFixtures extends Fixture
             Pour que le lecteur puisse se forger une première expérience significative, l'auteur a préparé de nombreux exercices à la fin de chaque chapitre (exemples : comme créer un blog, une newsletter, un module de paiement en ligne PayPal...) et propose aussi leurs corrigés.
             ");
         $livres[1]->setYear(2018);
-        $livres[1]->setImage("./../assets/74.jpeg");
+        $livres[1]->setImage("https://www.thibaultmorizet.fr/assets/74.jpeg");
         $livres[1]->setUnitprice(29.90);
         $livres[1]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[1]->setIsbn("9782409015297");
@@ -160,7 +160,7 @@ Grâce à cet ouvrage, vous apprendrez à rédiger du bon code, ainsi qu'à le n
 Coder proprement est décomposé en trois parties. La première décrit les principes, les motifs et les pratiques employés dans l'écriture d'un code propre. La deuxième est constituée de plusieurs études de cas à la complexité croissante. Chacune d'elles est un exercice de nettoyage: vous partirez d'un exemple de code présentant certains problèmes, et l'auteur vous expliquera comment en obtenir une version saine et performante. La troisième partie, enfin, sera votre récompense. Son unique chapitre contient une liste d'indicateurs éprouvés par l'auteur qui vous seront précieux pour repérer efficacement les défauts de votre code.
             ");
         $livres[2]->setYear(2019);
-        $livres[2]->setImage("./../assets/75.jpeg");
+        $livres[2]->setImage("https://www.thibaultmorizet.fr/assets/75.jpeg");
         $livres[2]->setUnitprice(38);
         $livres[2]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[2]->setIsbn("9782326002272");
@@ -180,7 +180,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Ce livre vous introduira aux toutes dernières évolutions des deux langages. Vous apprendrez à manipuler tous les outils de gestion de sessions, les cookies, gérer le code XML et JavaScript, mettre en place des systèmes de sécurité, et bien d'autres choses encore...
                     ");
         $livres[3]->setYear(2019);
-        $livres[3]->setImage("./../assets/76.jpeg");
+        $livres[3]->setImage("https://www.thibaultmorizet.fr/assets/76.jpeg");
         $livres[3]->setUnitprice(12.5);
         $livres[3]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[3]->setIsbn("9782412043622");
@@ -198,7 +198,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Le web est un domaine en constante évolution. Les technologies évoluent et le web également. Créer un site web ou une application est beaucoup plus facile aujourd'hui qu'hier ! Malgré toutes ces avancées, le web reste un domaine très technique, qui n'est pas facile à appréhender. Le but de ce livre est de vous inculquer les bases du web et de vous permettre de maîtriser les bases du HTML, du CSS et du JavaScript. Vous n'avez pas besoin d'être un \"geek\" pour comprendre ce livre. Vous devez simplement être intéressé par le sujet et avoir la volonté d'élargir votre savoir ! Si votre but est de devenir développeur web et que vous débutez dans ce domaine, ce livre est fait pour vous. Si vous êtes intéressé par le sujet, dans le but de créer un site ou une application web, cette lecture est également appropriée. Dans le chapitre \"Qu'est-ce que le web ?\", vous apprendrez comment le web est né en 1989, qui l'a inventé et pourquoi. Vous apprendrez à maîtriser des concepts tels que Http, Html, les navigateurs web, les cookies ou encore le Cloud Computing. 
         ");
         $livres[4]->setYear(2019);
-        $livres[4]->setImage("./../assets/77.jpeg");
+        $livres[4]->setImage("https://www.thibaultmorizet.fr/assets/77.jpeg");
         $livres[4]->setUnitprice(19.9);
         $livres[4]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[4]->setIsbn("9781706785606");
@@ -215,7 +215,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[5]->setSummary(" 
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
         $livres[5]->setYear(2020);
-        $livres[5]->setImage("./../assets/78.jpeg");
+        $livres[5]->setImage("https://www.thibaultmorizet.fr/assets/78.jpeg");
         $livres[5]->setUnitprice(19.99);
         $livres[5]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[5]->setIsbn("9788698662860");
@@ -234,7 +234,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Ingénieur en Informatique, passionné par la technologie et le partage de la connaissance, José DORDOIGNE est un expert technique dans de nombreux domaines (poste de travail et serveurs Windows, réseau et services réseau, Unix, Linux…) qui exerce aujourd'hui au sein d'une grande compagnie d'assurance française. Il est titulaire de très nombreuses certifications (plusieurs fois Microsoft Certified Systems Engineer, mais aussi Red Hat Certified Engineer Linux). Sa pédagogie et son expertise technique ont notamment été éprouvées au travers d'une expérience de près de 10 ans en tant qu'Ingénieur formateur, de démarches de conseils au sein d'une grande SSII pendant 12 années en tant qu'architecte Infrastructure, ainsi qu'avec l'écriture d'une dizaine de livres sur les systèmes d'exploitation Microsoft et les réseaux TCP/IP.
         ");
         $livres[6]->setYear(2022);
-        $livres[6]->setImage("./../assets/79.jpeg");
+        $livres[6]->setImage("https://www.thibaultmorizet.fr/assets/79.jpeg");
         $livres[6]->setUnitprice(29.90);
         $livres[6]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[6]->setIsbn("9782409035173");
@@ -261,7 +261,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         - Aux designers web qui souhaitent découvrir toutes les possibilités que leur offre HTML 5.
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
         $livres[7]->setYear(2017);
-        $livres[7]->setImage("./../assets/80.jpeg");
+        $livres[7]->setImage("https://www.thibaultmorizet.fr/assets/80.jpeg");
         $livres[7]->setUnitprice(39.00);
         $livres[7]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[7]->setIsbn("2212143656");
@@ -281,7 +281,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             Pour que le lecteur puisse se forger une première expérience significative, l'auteur a préparé de nombreux exercices à la fin de chaque chapitre (exemples : comme créer un blog, une newsletter, un module de paiement en ligne PayPal...) et propose aussi leurs corrigés.
             ");
         $livres[8]->setYear(2018);
-        $livres[8]->setImage("./../assets/81.jpeg");
+        $livres[8]->setImage("https://www.thibaultmorizet.fr/assets/81.jpeg");
         $livres[8]->setUnitprice(29.90);
         $livres[8]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[8]->setIsbn("9782409015297");
@@ -301,7 +301,7 @@ Grâce à cet ouvrage, vous apprendrez à rédiger du bon code, ainsi qu'à le n
 Coder proprement est décomposé en trois parties. La première décrit les principes, les motifs et les pratiques employés dans l'écriture d'un code propre. La deuxième est constituée de plusieurs études de cas à la complexité croissante. Chacune d'elles est un exercice de nettoyage: vous partirez d'un exemple de code présentant certains problèmes, et l'auteur vous expliquera comment en obtenir une version saine et performante. La troisième partie, enfin, sera votre récompense. Son unique chapitre contient une liste d'indicateurs éprouvés par l'auteur qui vous seront précieux pour repérer efficacement les défauts de votre code.
             ");
         $livres[9]->setYear(2019);
-        $livres[9]->setImage("./../assets/82.jpeg");
+        $livres[9]->setImage("https://www.thibaultmorizet.fr/assets/82.jpeg");
         $livres[9]->setUnitprice(38);
         $livres[9]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[9]->setIsbn("9782326002272");
@@ -321,7 +321,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Ce livre vous introduira aux toutes dernières évolutions des deux langages. Vous apprendrez à manipuler tous les outils de gestion de sessions, les cookies, gérer le code XML et JavaScript, mettre en place des systèmes de sécurité, et bien d'autres choses encore...
                     ");
         $livres[10]->setYear(2019);
-        $livres[10]->setImage("./../assets/83.jpeg");
+        $livres[10]->setImage("https://www.thibaultmorizet.fr/assets/83.jpeg");
         $livres[10]->setUnitprice(12.5);
         $livres[10]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[10]->setIsbn("9782412043622");
@@ -339,7 +339,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Le web est un domaine en constante évolution. Les technologies évoluent et le web également. Créer un site web ou une application est beaucoup plus facile aujourd'hui qu'hier ! Malgré toutes ces avancées, le web reste un domaine très technique, qui n'est pas facile à appréhender. Le but de ce livre est de vous inculquer les bases du web et de vous permettre de maîtriser les bases du HTML, du CSS et du JavaScript. Vous n'avez pas besoin d'être un \"geek\" pour comprendre ce livre. Vous devez simplement être intéressé par le sujet et avoir la volonté d'élargir votre savoir ! Si votre but est de devenir développeur web et que vous débutez dans ce domaine, ce livre est fait pour vous. Si vous êtes intéressé par le sujet, dans le but de créer un site ou une application web, cette lecture est également appropriée. Dans le chapitre \"Qu'est-ce que le web ?\", vous apprendrez comment le web est né en 1989, qui l'a inventé et pourquoi. Vous apprendrez à maîtriser des concepts tels que Http, Html, les navigateurs web, les cookies ou encore le Cloud Computing. 
         ");
         $livres[11]->setYear(2019);
-        $livres[11]->setImage("./../assets/84.jpeg");
+        $livres[11]->setImage("https://www.thibaultmorizet.fr/assets/84.jpeg");
         $livres[11]->setUnitprice(19.9);
         $livres[11]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[11]->setIsbn("9781706785606");
@@ -356,7 +356,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[12]->setSummary(" 
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
         $livres[12]->setYear(2020);
-        $livres[12]->setImage("./../assets/85.jpeg");
+        $livres[12]->setImage("https://www.thibaultmorizet.fr/assets/85.jpeg");
         $livres[12]->setUnitprice(19.99);
         $livres[12]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[12]->setIsbn("9788698662860");
@@ -375,7 +375,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Ingénieur en Informatique, passionné par la technologie et le partage de la connaissance, José DORDOIGNE est un expert technique dans de nombreux domaines (poste de travail et serveurs Windows, réseau et services réseau, Unix, Linux…) qui exerce aujourd'hui au sein d'une grande compagnie d'assurance française. Il est titulaire de très nombreuses certifications (plusieurs fois Microsoft Certified Systems Engineer, mais aussi Red Hat Certified Engineer Linux). Sa pédagogie et son expertise technique ont notamment été éprouvées au travers d'une expérience de près de 10 ans en tant qu'Ingénieur formateur, de démarches de conseils au sein d'une grande SSII pendant 12 années en tant qu'architecte Infrastructure, ainsi qu'avec l'écriture d'une dizaine de livres sur les systèmes d'exploitation Microsoft et les réseaux TCP/IP.
         ");
         $livres[13]->setYear(2022);
-        $livres[13]->setImage("./../assets/86.jpeg");
+        $livres[13]->setImage("https://www.thibaultmorizet.fr/assets/86.jpeg");
         $livres[13]->setUnitprice(29.90);
         $livres[13]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[13]->setIsbn("9782409035173");
@@ -404,7 +404,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         - Aux designers web qui souhaitent découvrir toutes les possibilités que leur offre HTML 5.
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
         $livres[14]->setYear(2017);
-        $livres[14]->setImage("./../assets/87.jpeg");
+        $livres[14]->setImage("https://www.thibaultmorizet.fr/assets/87.jpeg");
         $livres[14]->setUnitprice(39.00);
         $livres[14]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[14]->setIsbn("2212143656");
@@ -424,7 +424,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             Pour que le lecteur puisse se forger une première expérience significative, l'auteur a préparé de nombreux exercices à la fin de chaque chapitre (exemples : comme créer un blog, une newsletter, un module de paiement en ligne PayPal...) et propose aussi leurs corrigés.
             ");
         $livres[15]->setYear(2018);
-        $livres[15]->setImage("./../assets/88.jpeg");
+        $livres[15]->setImage("https://www.thibaultmorizet.fr/assets/88.jpeg");
         $livres[15]->setUnitprice(29.90);
         $livres[15]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[15]->setIsbn("9782409015297");
@@ -444,7 +444,7 @@ Grâce à cet ouvrage, vous apprendrez à rédiger du bon code, ainsi qu'à le n
 Coder proprement est décomposé en trois parties. La première décrit les principes, les motifs et les pratiques employés dans l'écriture d'un code propre. La deuxième est constituée de plusieurs études de cas à la complexité croissante. Chacune d'elles est un exercice de nettoyage: vous partirez d'un exemple de code présentant certains problèmes, et l'auteur vous expliquera comment en obtenir une version saine et performante. La troisième partie, enfin, sera votre récompense. Son unique chapitre contient une liste d'indicateurs éprouvés par l'auteur qui vous seront précieux pour repérer efficacement les défauts de votre code.
             ");
         $livres[16]->setYear(2019);
-        $livres[16]->setImage("./../assets/89.jpeg");
+        $livres[16]->setImage("https://www.thibaultmorizet.fr/assets/89.jpeg");
         $livres[16]->setUnitprice(38);
         $livres[16]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[16]->setIsbn("9782326002272");
@@ -464,7 +464,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Ce livre vous introduira aux toutes dernières évolutions des deux langages. Vous apprendrez à manipuler tous les outils de gestion de sessions, les cookies, gérer le code XML et JavaScript, mettre en place des systèmes de sécurité, et bien d'autres choses encore...
                     ");
         $livres[17]->setYear(2019);
-        $livres[17]->setImage("./../assets/90.jpeg");
+        $livres[17]->setImage("https://www.thibaultmorizet.fr/assets/90.jpeg");
         $livres[17]->setUnitprice(12.5);
         $livres[17]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[17]->setIsbn("9782412043622");
@@ -482,7 +482,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Le web est un domaine en constante évolution. Les technologies évoluent et le web également. Créer un site web ou une application est beaucoup plus facile aujourd'hui qu'hier ! Malgré toutes ces avancées, le web reste un domaine très technique, qui n'est pas facile à appréhender. Le but de ce livre est de vous inculquer les bases du web et de vous permettre de maîtriser les bases du HTML, du CSS et du JavaScript. Vous n'avez pas besoin d'être un \"geek\" pour comprendre ce livre. Vous devez simplement être intéressé par le sujet et avoir la volonté d'élargir votre savoir ! Si votre but est de devenir développeur web et que vous débutez dans ce domaine, ce livre est fait pour vous. Si vous êtes intéressé par le sujet, dans le but de créer un site ou une application web, cette lecture est également appropriée. Dans le chapitre \"Qu'est-ce que le web ?\", vous apprendrez comment le web est né en 1989, qui l'a inventé et pourquoi. Vous apprendrez à maîtriser des concepts tels que Http, Html, les navigateurs web, les cookies ou encore le Cloud Computing. 
         ");
         $livres[18]->setYear(2019);
-        $livres[18]->setImage("./../assets/91.jpeg");
+        $livres[18]->setImage("https://www.thibaultmorizet.fr/assets/91.jpeg");
         $livres[18]->setUnitprice(19.9);
         $livres[18]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[18]->setIsbn("9781706785606");
@@ -499,7 +499,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[19]->setSummary(" 
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
         $livres[19]->setYear(2020);
-        $livres[19]->setImage("./../assets/92.jpeg");
+        $livres[19]->setImage("https://www.thibaultmorizet.fr/assets/92.jpeg");
         $livres[19]->setUnitprice(19.99);
         $livres[19]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[19]->setIsbn("9788698662860");
@@ -518,7 +518,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Ingénieur en Informatique, passionné par la technologie et le partage de la connaissance, José DORDOIGNE est un expert technique dans de nombreux domaines (poste de travail et serveurs Windows, réseau et services réseau, Unix, Linux…) qui exerce aujourd'hui au sein d'une grande compagnie d'assurance française. Il est titulaire de très nombreuses certifications (plusieurs fois Microsoft Certified Systems Engineer, mais aussi Red Hat Certified Engineer Linux). Sa pédagogie et son expertise technique ont notamment été éprouvées au travers d'une expérience de près de 10 ans en tant qu'Ingénieur formateur, de démarches de conseils au sein d'une grande SSII pendant 12 années en tant qu'architecte Infrastructure, ainsi qu'avec l'écriture d'une dizaine de livres sur les systèmes d'exploitation Microsoft et les réseaux TCP/IP.
         ");
         $livres[20]->setYear(2022);
-        $livres[20]->setImage("./../assets/93.jpeg");
+        $livres[20]->setImage("https://www.thibaultmorizet.fr/assets/93.jpeg");
         $livres[20]->setUnitprice(29.90);
         $livres[20]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[20]->setIsbn("9782409035173");
@@ -550,7 +550,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         - Aux designers web qui souhaitent découvrir toutes les possibilités que leur offre HTML 5.
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
         $livres[21]->setYear(2017);
-        $livres[21]->setImage("./../assets/94.jpeg");
+        $livres[21]->setImage("https://www.thibaultmorizet.fr/assets/94.jpeg");
         $livres[21]->setUnitprice(39.00);
         $livres[21]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[21]->setIsbn("2212143656");
@@ -570,7 +570,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             Pour que le lecteur puisse se forger une première expérience significative, l'auteur a préparé de nombreux exercices à la fin de chaque chapitre (exemples : comme créer un blog, une newsletter, un module de paiement en ligne PayPal...) et propose aussi leurs corrigés.
             ");
         $livres[22]->setYear(2018);
-        $livres[22]->setImage("./../assets/95.jpeg");
+        $livres[22]->setImage("https://www.thibaultmorizet.fr/assets/95.jpeg");
         $livres[22]->setUnitprice(29.90);
         $livres[22]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[22]->setIsbn("9782409015297");
@@ -590,7 +590,7 @@ Grâce à cet ouvrage, vous apprendrez à rédiger du bon code, ainsi qu'à le n
 Coder proprement est décomposé en trois parties. La première décrit les principes, les motifs et les pratiques employés dans l'écriture d'un code propre. La deuxième est constituée de plusieurs études de cas à la complexité croissante. Chacune d'elles est un exercice de nettoyage: vous partirez d'un exemple de code présentant certains problèmes, et l'auteur vous expliquera comment en obtenir une version saine et performante. La troisième partie, enfin, sera votre récompense. Son unique chapitre contient une liste d'indicateurs éprouvés par l'auteur qui vous seront précieux pour repérer efficacement les défauts de votre code.
             ");
         $livres[23]->setYear(2019);
-        $livres[23]->setImage("./../assets/96.jpeg");
+        $livres[23]->setImage("https://www.thibaultmorizet.fr/assets/96.jpeg");
         $livres[23]->setUnitprice(38);
         $livres[23]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[23]->setIsbn("9782326002272");
@@ -610,7 +610,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Ce livre vous introduira aux toutes dernières évolutions des deux langages. Vous apprendrez à manipuler tous les outils de gestion de sessions, les cookies, gérer le code XML et JavaScript, mettre en place des systèmes de sécurité, et bien d'autres choses encore...
                     ");
         $livres[24]->setYear(2019);
-        $livres[24]->setImage("./../assets/97.jpeg");
+        $livres[24]->setImage("https://www.thibaultmorizet.fr/assets/97.jpeg");
         $livres[24]->setUnitprice(12.5);
         $livres[24]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[24]->setIsbn("9782412043622");
@@ -628,7 +628,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Le web est un domaine en constante évolution. Les technologies évoluent et le web également. Créer un site web ou une application est beaucoup plus facile aujourd'hui qu'hier ! Malgré toutes ces avancées, le web reste un domaine très technique, qui n'est pas facile à appréhender. Le but de ce livre est de vous inculquer les bases du web et de vous permettre de maîtriser les bases du HTML, du CSS et du JavaScript. Vous n'avez pas besoin d'être un \"geek\" pour comprendre ce livre. Vous devez simplement être intéressé par le sujet et avoir la volonté d'élargir votre savoir ! Si votre but est de devenir développeur web et que vous débutez dans ce domaine, ce livre est fait pour vous. Si vous êtes intéressé par le sujet, dans le but de créer un site ou une application web, cette lecture est également appropriée. Dans le chapitre \"Qu'est-ce que le web ?\", vous apprendrez comment le web est né en 1989, qui l'a inventé et pourquoi. Vous apprendrez à maîtriser des concepts tels que Http, Html, les navigateurs web, les cookies ou encore le Cloud Computing. 
         ");
         $livres[25]->setYear(2019);
-        $livres[25]->setImage("./../assets/98.jpeg");
+        $livres[25]->setImage("https://www.thibaultmorizet.fr/assets/98.jpeg");
         $livres[25]->setUnitprice(19.9);
         $livres[25]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[25]->setIsbn("9781706785606");
@@ -645,7 +645,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[26]->setSummary(" 
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
         $livres[26]->setYear(2020);
-        $livres[26]->setImage("./../assets/99.jpeg");
+        $livres[26]->setImage("https://www.thibaultmorizet.fr/assets/99.jpeg");
         $livres[26]->setUnitprice(19.99);
         $livres[26]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[26]->setIsbn("9788698662860");
@@ -664,7 +664,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Ingénieur en Informatique, passionné par la technologie et le partage de la connaissance, José DORDOIGNE est un expert technique dans de nombreux domaines (poste de travail et serveurs Windows, réseau et services réseau, Unix, Linux…) qui exerce aujourd'hui au sein d'une grande compagnie d'assurance française. Il est titulaire de très nombreuses certifications (plusieurs fois Microsoft Certified Systems Engineer, mais aussi Red Hat Certified Engineer Linux). Sa pédagogie et son expertise technique ont notamment été éprouvées au travers d'une expérience de près de 10 ans en tant qu'Ingénieur formateur, de démarches de conseils au sein d'une grande SSII pendant 12 années en tant qu'architecte Infrastructure, ainsi qu'avec l'écriture d'une dizaine de livres sur les systèmes d'exploitation Microsoft et les réseaux TCP/IP.
         ");
         $livres[27]->setYear(2022);
-        $livres[27]->setImage("./../assets/100.jpeg");
+        $livres[27]->setImage("https://www.thibaultmorizet.fr/assets/100.jpeg");
         $livres[27]->setUnitprice(29.90);
         $livres[27]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[27]->setIsbn("9782409035173");
