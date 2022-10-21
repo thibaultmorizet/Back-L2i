@@ -5,5 +5,5 @@ authentication_token:
   path: /authentication_token
   methods: ["POST"]
 assets:
-  path: /assets
+  path: /assets/
   methods: ["POST"]
