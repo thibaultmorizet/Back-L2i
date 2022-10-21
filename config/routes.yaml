@@ -1,6 +1,9 @@
 controllers:
-    resource: ../src/Controller/
-    type: attribute
+  resource: ../src/Controller/
+  type: attribute
 authentication_token:
-    path: /authentication_token
-    methods: ['POST']
+  path: /authentication_token
+  methods: ["POST"]
+assets:
+  path: /assets
+  methods: ["POST"]
