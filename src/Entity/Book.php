@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     paginationClientItemsPerPage: true,
     normalizationContext: ['groups' => "book:read"],
     denormalizationContext: ['groups' => "book:write"],
-    order: ['visitnumber' => 'DESC']
+    order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC']
 )]
 #[ApiFilter(
     RangeFilter::class,
@@ -91,6 +91,10 @@ class Book
     #[ORM\Column(nullable: true)]
     #[Groups(["book:read", "book:write"])]
     private ?int $visitnumber = null;
+
+    #[ORM\Column(nullable: true)]
+    #[Groups(["book:read", "book:write"])]
+    private ?int $soldnumber = null;
 
     public function __construct()
     {
@@ -268,6 +272,18 @@ class Book
     public function setVisitnumber(int $visitnumber): self
     {
         $this->visitnumber = $visitnumber;
+
+        return $this;
+    }
+
+    public function getSoldnumber(): ?int
+    {
+        return $this->soldnumber;
+    }
+
+    public function setSoldnumber(int $soldnumber): self
+    {
+        $this->soldnumber = $soldnumber;
 
         return $this;
     }
