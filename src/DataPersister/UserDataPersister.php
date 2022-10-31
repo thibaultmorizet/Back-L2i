@@ -24,15 +24,14 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
 
     public function persist($data, array $context = [])
     {
-        var_dump($data->getPassword(),strpos($data->getPassword(), "$2y$13$"));
-        if (strpos($data->getPassword(), "$2y$13$") == -1) {
-
-            if ($data->getPassword() /* && ($context['collection_operation_name'] ?? null) == "post" */) {
+        $password = $data->getPassword();
+        var_dump($password,strpos($password, "$2y$13$"));
+        if (strpos($password, "$2y$13$") == -1) {
                 $data->setPassword(
-                    $this->passwordEncoder->hashPassword($data, $data->getPassword())
+                    $this->passwordEncoder->hashPassword($data, $password)
                 );
                 $data->eraseCredentials();
-            }
+            
         }
         $this->em->persist($data);
         $this->em->flush();
