@@ -24,11 +24,10 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
 
     public function persist($data, array $context = [])
     {
-        $password = $data->getPassword();
-        var_dump($password,strpos($password, "$2y$13$"),$this->passwordEncoder->hashPassword($data, $password));
-        if (strpos($password, "$2y$13$") == -1) {
+        var_dump($data->getPassword(),strpos($data->getPassword(), "$2y$13$"));
+        if (strpos($data->getPassword(), "$2y$13$") == false) {
                 $data->setPassword(
-                    $this->passwordEncoder->hashPassword($data, $password)
+                    $this->passwordEncoder->hashPassword($data, $data->getPassword())
                 );
                 $data->eraseCredentials();
             
