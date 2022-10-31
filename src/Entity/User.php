@@ -188,7 +188,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getPassword(): string
     {
-        var_dump($this->password);
         return $this->password;
     }
 
