@@ -121,7 +121,8 @@ class BookFixtures extends Fixture
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
         $livres[0]->setYear(2017);
         $livres[0]->setImage("https://www.thibaultmorizet.fr/assets/73.jpeg");
-        $livres[0]->setUnitprice(39.00);
+        $livres[0]->setUnitpricettc(39.00);
+        $livres[0]->setUnitpriceht(52.99);
         $livres[0]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[0]->setIsbn("2212143656");
         $livres[0]->setFormat($formats[0]);
@@ -141,7 +142,8 @@ class BookFixtures extends Fixture
             ");
         $livres[1]->setYear(2018);
         $livres[1]->setImage("https://www.thibaultmorizet.fr/assets/74.jpeg");
-        $livres[1]->setUnitprice(29.90);
+        $livres[1]->setUnitpricettc(29.90);
+        $livres[1]->setUnitpriceht(52.99);
         $livres[1]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[1]->setIsbn("9782409015297");
         $livres[1]->setFormat($formats[0]);
@@ -161,7 +163,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[2]->setYear(2019);
         $livres[2]->setImage("https://www.thibaultmorizet.fr/assets/75.jpeg");
-        $livres[2]->setUnitprice(38);
+        $livres[2]->setUnitpricettc(38);
+        $livres[2]->setUnitpriceht(52.99);
         $livres[2]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[2]->setIsbn("9782326002272");
         $livres[2]->setFormat($formats[0]);
@@ -181,7 +184,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
                     ");
         $livres[3]->setYear(2019);
         $livres[3]->setImage("https://www.thibaultmorizet.fr/assets/76.jpeg");
-        $livres[3]->setUnitprice(12.5);
+        $livres[3]->setUnitpricettc(12.5);
+        $livres[3]->setUnitpriceht(52.99);
         $livres[3]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[3]->setIsbn("9782412043622");
         $livres[3]->setFormat($formats[1]);
@@ -199,7 +203,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[4]->setYear(2019);
         $livres[4]->setImage("https://www.thibaultmorizet.fr/assets/77.jpeg");
-        $livres[4]->setUnitprice(19.9);
+        $livres[4]->setUnitpricettc(19.9);
+        $livres[4]->setUnitpriceht(52.99);
         $livres[4]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[4]->setIsbn("9781706785606");
         $livres[4]->setFormat($formats[0]);
@@ -216,7 +221,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
         $livres[5]->setYear(2020);
         $livres[5]->setImage("https://www.thibaultmorizet.fr/assets/78.jpeg");
-        $livres[5]->setUnitprice(19.99);
+        $livres[5]->setUnitpricettc(19.99);
+        $livres[5]->setUnitpriceht(52.99);
         $livres[5]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[5]->setIsbn("9788698662860");
         $livres[5]->setFormat($formats[0]);
@@ -235,7 +241,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[6]->setYear(2022);
         $livres[6]->setImage("https://www.thibaultmorizet.fr/assets/79.jpeg");
-        $livres[6]->setUnitprice(29.90);
+        $livres[6]->setUnitpricettc(29.90);
+        $livres[6]->setUnitpriceht(52.99);
         $livres[6]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[6]->setIsbn("9782409035173");
         $livres[6]->setFormat($formats[0]);
@@ -262,7 +269,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
         $livres[7]->setYear(2017);
         $livres[7]->setImage("https://www.thibaultmorizet.fr/assets/80.jpeg");
-        $livres[7]->setUnitprice(39.00);
+        $livres[7]->setUnitpricettc(39.00);
+        $livres[7]->setUnitpriceht(52.99);
         $livres[7]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[7]->setIsbn("2212143656");
         $livres[7]->setFormat($formats[0]);
@@ -282,7 +290,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[8]->setYear(2018);
         $livres[8]->setImage("https://www.thibaultmorizet.fr/assets/81.jpeg");
-        $livres[8]->setUnitprice(29.90);
+        $livres[8]->setUnitpricettc(29.90);
+        $livres[8]->setUnitpriceht(52.99);
         $livres[8]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[8]->setIsbn("9782409015297");
         $livres[8]->setFormat($formats[0]);
@@ -302,7 +311,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[9]->setYear(2019);
         $livres[9]->setImage("https://www.thibaultmorizet.fr/assets/82.jpeg");
-        $livres[9]->setUnitprice(38);
+        $livres[9]->setUnitpricettc(38);
+        $livres[9]->setUnitpriceht(52.99);
         $livres[9]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[9]->setIsbn("9782326002272");
         $livres[9]->setFormat($formats[0]);
@@ -322,7 +332,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
                     ");
         $livres[10]->setYear(2019);
         $livres[10]->setImage("https://www.thibaultmorizet.fr/assets/83.jpeg");
-        $livres[10]->setUnitprice(12.5);
+        $livres[10]->setUnitpricettc(12.5);
+        $livres[10]->setUnitpriceht(52.99);
         $livres[10]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[10]->setIsbn("9782412043622");
         $livres[10]->setFormat($formats[1]);
@@ -340,7 +351,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[11]->setYear(2019);
         $livres[11]->setImage("https://www.thibaultmorizet.fr/assets/84.jpeg");
-        $livres[11]->setUnitprice(19.9);
+        $livres[11]->setUnitpricettc(19.9);
+        $livres[11]->setUnitpriceht(52.99);
         $livres[11]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[11]->setIsbn("9781706785606");
         $livres[11]->setFormat($formats[0]);
@@ -357,7 +369,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
         $livres[12]->setYear(2020);
         $livres[12]->setImage("https://www.thibaultmorizet.fr/assets/85.jpeg");
-        $livres[12]->setUnitprice(19.99);
+        $livres[12]->setUnitpricettc(19.99);
+        $livres[12]->setUnitpriceht(52.99);
         $livres[12]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[12]->setIsbn("9788698662860");
         $livres[12]->setFormat($formats[0]);
@@ -376,7 +389,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[13]->setYear(2022);
         $livres[13]->setImage("https://www.thibaultmorizet.fr/assets/86.jpeg");
-        $livres[13]->setUnitprice(29.90);
+        $livres[13]->setUnitpricettc(29.90);
+        $livres[13]->setUnitpriceht(52.99);
         $livres[13]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[13]->setIsbn("9782409035173");
         $livres[13]->setFormat($formats[0]);
@@ -405,7 +419,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
         $livres[14]->setYear(2017);
         $livres[14]->setImage("https://www.thibaultmorizet.fr/assets/87.jpeg");
-        $livres[14]->setUnitprice(39.00);
+        $livres[14]->setUnitpricettc(39.00);
+        $livres[14]->setUnitpriceht(52.99);
         $livres[14]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[14]->setIsbn("2212143656");
         $livres[14]->setFormat($formats[0]);
@@ -425,7 +440,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[15]->setYear(2018);
         $livres[15]->setImage("https://www.thibaultmorizet.fr/assets/88.jpeg");
-        $livres[15]->setUnitprice(29.90);
+        $livres[15]->setUnitpricettc(29.90);
+        $livres[15]->setUnitpriceht(52.99);
         $livres[15]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[15]->setIsbn("9782409015297");
         $livres[15]->setFormat($formats[0]);
@@ -445,7 +461,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[16]->setYear(2019);
         $livres[16]->setImage("https://www.thibaultmorizet.fr/assets/89.jpeg");
-        $livres[16]->setUnitprice(38);
+        $livres[16]->setUnitpricettc(38);
+        $livres[16]->setUnitpriceht(52.99);
         $livres[16]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[16]->setIsbn("9782326002272");
         $livres[16]->setFormat($formats[0]);
@@ -465,7 +482,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
                     ");
         $livres[17]->setYear(2019);
         $livres[17]->setImage("https://www.thibaultmorizet.fr/assets/90.jpeg");
-        $livres[17]->setUnitprice(12.5);
+        $livres[17]->setUnitpricettc(12.5);
+        $livres[17]->setUnitpriceht(52.99);
         $livres[17]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[17]->setIsbn("9782412043622");
         $livres[17]->setFormat($formats[1]);
@@ -483,7 +501,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[18]->setYear(2019);
         $livres[18]->setImage("https://www.thibaultmorizet.fr/assets/91.jpeg");
-        $livres[18]->setUnitprice(19.9);
+        $livres[18]->setUnitpricettc(19.9);
+        $livres[18]->setUnitpriceht(52.99);
         $livres[18]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[18]->setIsbn("9781706785606");
         $livres[18]->setFormat($formats[0]);
@@ -500,7 +519,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
         $livres[19]->setYear(2020);
         $livres[19]->setImage("https://www.thibaultmorizet.fr/assets/92.jpeg");
-        $livres[19]->setUnitprice(19.99);
+        $livres[19]->setUnitpricettc(19.99);
+        $livres[19]->setUnitpriceht(52.99);
         $livres[19]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[19]->setIsbn("9788698662860");
         $livres[19]->setFormat($formats[0]);
@@ -519,7 +539,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[20]->setYear(2022);
         $livres[20]->setImage("https://www.thibaultmorizet.fr/assets/93.jpeg");
-        $livres[20]->setUnitprice(29.90);
+        $livres[20]->setUnitpricettc(29.90);
+        $livres[20]->setUnitpriceht(52.99);
         $livres[20]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[20]->setIsbn("9782409035173");
         $livres[20]->setFormat($formats[0]);
@@ -551,7 +572,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
         $livres[21]->setYear(2017);
         $livres[21]->setImage("https://www.thibaultmorizet.fr/assets/94.jpeg");
-        $livres[21]->setUnitprice(39.00);
+        $livres[21]->setUnitpricettc(39.00);
+        $livres[21]->setUnitpriceht(52.99);
         $livres[21]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[21]->setIsbn("2212143656");
         $livres[21]->setFormat($formats[0]);
@@ -571,7 +593,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[22]->setYear(2018);
         $livres[22]->setImage("https://www.thibaultmorizet.fr/assets/95.jpeg");
-        $livres[22]->setUnitprice(29.90);
+        $livres[22]->setUnitpricettc(29.90);
+        $livres[22]->setUnitpriceht(52.99);
         $livres[22]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[22]->setIsbn("9782409015297");
         $livres[22]->setFormat($formats[0]);
@@ -591,7 +614,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
             ");
         $livres[23]->setYear(2019);
         $livres[23]->setImage("https://www.thibaultmorizet.fr/assets/96.jpeg");
-        $livres[23]->setUnitprice(38);
+        $livres[23]->setUnitpricettc(38);
+        $livres[23]->setUnitpriceht(52.99);
         $livres[23]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[23]->setIsbn("9782326002272");
         $livres[23]->setFormat($formats[0]);
@@ -611,7 +635,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
                     ");
         $livres[24]->setYear(2019);
         $livres[24]->setImage("https://www.thibaultmorizet.fr/assets/97.jpeg");
-        $livres[24]->setUnitprice(12.5);
+        $livres[24]->setUnitpricettc(12.5);
+        $livres[24]->setUnitpriceht(52.99);
         $livres[24]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[24]->setIsbn("9782412043622");
         $livres[24]->setFormat($formats[1]);
@@ -629,7 +654,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[25]->setYear(2019);
         $livres[25]->setImage("https://www.thibaultmorizet.fr/assets/98.jpeg");
-        $livres[25]->setUnitprice(19.9);
+        $livres[25]->setUnitpricettc(19.9);
+        $livres[25]->setUnitpriceht(52.99);
         $livres[25]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[25]->setIsbn("9781706785606");
         $livres[25]->setFormat($formats[0]);
@@ -646,7 +672,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
         $livres[26]->setYear(2020);
         $livres[26]->setImage("https://www.thibaultmorizet.fr/assets/99.jpeg");
-        $livres[26]->setUnitprice(19.99);
+        $livres[26]->setUnitpricettc(19.99);
+        $livres[26]->setUnitpriceht(52.99);
         $livres[26]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[26]->setIsbn("9788698662860");
         $livres[26]->setFormat($formats[0]);
@@ -665,7 +692,8 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         ");
         $livres[27]->setYear(2022);
         $livres[27]->setImage("https://www.thibaultmorizet.fr/assets/100.jpeg");
-        $livres[27]->setUnitprice(29.90);
+        $livres[27]->setUnitpricettc(29.90);
+        $livres[27]->setUnitpriceht(52.99);
         $livres[27]->setStock($faker->numberBetween($min = 10, $max = 50));
         $livres[27]->setIsbn("9782409035173");
         $livres[27]->setFormat($formats[0]);

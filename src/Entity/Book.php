@@ -52,7 +52,11 @@ class Book
 
     #[ORM\Column]
     #[Groups(["book:read", "book:write"])]
-    private ?float $unitprice = null;
+    private ?float $unitpricettc = null;
+
+    #[ORM\Column]
+    #[Groups(["book:read", "book:write"])]
+    private ?float $unitpriceht = null;
 
     #[ORM\Column]
     #[Groups(["book:read", "book:write"])]
@@ -132,14 +136,26 @@ class Book
         return $this;
     }
 
-    public function getUnitprice(): ?float
+    public function getunitpricettc(): ?float
     {
-        return $this->unitprice;
+        return $this->unitpricettc;
     }
 
-    public function setUnitprice(float $unitprice): self
+    public function setunitpricettc(float $unitpricettc): self
     {
-        $this->unitprice = $unitprice;
+        $this->unitpricettc = $unitpricettc;
+
+        return $this;
+    }
+
+    public function getunitpriceht(): ?float
+    {
+        return $this->unitpriceht;
+    }
+
+    public function setunitpriceht(float $unitpriceht): self
+    {
+        $this->unitpriceht = $unitpriceht;
 
         return $this;
     }
