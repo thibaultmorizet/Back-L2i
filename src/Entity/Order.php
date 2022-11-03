@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
 use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -14,6 +16,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     normalizationContext: ['groups' => "order:read"],
     denormalizationContext: ['groups' => "order:write"]
+)] 
+#[ApiFilter(
+    NumericFilter::class,
+    properties: ["user.id" => "exact"]
 )]
 #[ORM\Table(name: '`order`')]
 class Order
@@ -24,23 +30,23 @@ class Order
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Groups(["user:read", "user:write","order:read", "order:write"])]
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column]
-    #[Groups(["user:read", "user:write","order:read", "order:write"])]
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private ?float $totalprice = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["user:read", "user:write","order:read", "order:write"])]
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private ?string $deliveryaddress = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["user:read", "user:write","order:read", "order:write"])]
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private ?string $billingaddress = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    #[Groups(["user:read", "user:write","order:read", "order:write"])]
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private array $booklist = [];
 
     #[ORM\ManyToOne(inversedBy: 'orders', cascade: ['persist', 'remove'])]
@@ -128,5 +134,4 @@ class Order
 
         return $this;
     }
-
 }
