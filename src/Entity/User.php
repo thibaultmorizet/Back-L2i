@@ -34,33 +34,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
+
     private $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
     private $lastname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true, unique: true)]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
     private $email;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
     private $password;
 
     #[ORM\ManyToOne(inversedBy: 'usersBilling', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(["user:read","user:write"])]
+    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
     private ?Address $billingAddress = null;
 
     #[ORM\ManyToOne(inversedBy: 'usersDelivery', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(["user:read","user:write"])]
+    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
     private ?Address $deliveryAddress = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class, cascade: ['persist', 'remove'])]

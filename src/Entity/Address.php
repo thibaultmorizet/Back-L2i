@@ -19,23 +19,24 @@ class Address
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["user:read", "user:write", "address:read", "address:write"])]
+    #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
+
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["user:read", "user:write", "address:read", "address:write"])]
+    #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
     private $street;
 
     #[ORM\Column(type: 'string', length: 10)]
-    #[Groups(["user:read", "user:write", "address:read", "address:write"])]
+    #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
     private $postalcode;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["user:read", "user:write", "address:read", "address:write"])]
+    #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
     private $city;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["user:read", "user:write", "address:read", "address:write"])]
+    #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
     private $country;
 
     #[ORM\OneToMany(mappedBy: 'billingAddress', targetEntity: User::class, cascade: ['persist', 'remove'])]
