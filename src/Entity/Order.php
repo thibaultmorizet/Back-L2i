@@ -26,12 +26,17 @@ class Order
     #[Groups(["user:read", "user:write"])]
     private ?float $totalprice = null;
 
+    #[ORM\Column(length: 255)]
+    #[Groups(["user:read", "user:write"])]
+    private ?string $deliveryaddress = null;
+
+    #[ORM\Column(length: 255)]
+    #[Groups(["user:read", "user:write"])]
+    private ?string $billingaddress = null;
+
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     #[Groups(["user:read", "user:write"])]
     private array $booklist = [];
-
-    #[ORM\OneToOne(inversedBy: 'theorder', cascade: ['persist', 'remove'])]
-    private ?Invoice $invoice = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -70,6 +75,30 @@ class Order
         return $this;
     }
 
+    public function getDeliveryaddress(): ?string
+    {
+        return $this->deliveryaddress;
+    }
+
+    public function setDeliveryaddress(?string $deliveryaddress): self
+    {
+        $this->deliveryaddress = $deliveryaddress;
+
+        return $this;
+    }
+
+    public function getBillingaddress(): ?string
+    {
+        return $this->billingaddress;
+    }
+
+    public function setBillingaddress(?string $billingaddress): self
+    {
+        $this->billingaddress = $billingaddress;
+
+        return $this;
+    }
+
     public function getBooklist(): array
     {
         return $this->booklist;
@@ -78,18 +107,6 @@ class Order
     public function setBooklist(?array $booklist): self
     {
         $this->booklist = $booklist;
-
-        return $this;
-    }
-
-    public function getInvoice(): ?Invoice
-    {
-        return $this->invoice;
-    }
-
-    public function setInvoice(?Invoice $invoice): self
-    {
-        $this->invoice = $invoice;
 
         return $this;
     }
