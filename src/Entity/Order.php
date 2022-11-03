@@ -45,9 +45,9 @@ class Order
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private ?string $billingaddress = null;
 
-    #[ORM\Column(length: 10000)]
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
-    private ?string $booklist = null;
+    private array $booklist = [];
 
     #[ORM\ManyToOne(inversedBy: 'orders', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
