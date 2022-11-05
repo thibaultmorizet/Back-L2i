@@ -28,6 +28,8 @@ class Order
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["user:read", "order:read"])]
+
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
