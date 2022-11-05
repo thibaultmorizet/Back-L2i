@@ -15,8 +15,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ApiResource(
     normalizationContext: ['groups' => "order:read"],
-    denormalizationContext: ['groups' => "order:write"]
-)] 
+    denormalizationContext: ['groups' => "order:write"],
+    order: ['id' => 'DESC']
+)]
 #[ApiFilter(
     NumericFilter::class,
     properties: ["user.id" => "exact"]
