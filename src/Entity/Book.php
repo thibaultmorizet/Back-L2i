@@ -23,7 +23,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 #[ApiFilter(
     RangeFilter::class,
-    properties: ['stock']
+    properties: ['stock','unitpricettc']
 )]
 #[ApiFilter(
     SearchFilter::class,
