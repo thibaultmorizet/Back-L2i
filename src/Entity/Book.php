@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 #[ApiResource(
-    paginationItemsPerPage: 9,
+    paginationItemsPerPage: 12,
     paginationClientItemsPerPage: true,
     normalizationContext: ['groups' => "book:read"],
     denormalizationContext: ['groups' => "book:write"],
