@@ -72,7 +72,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(["user:read", "user:write"])]
     private $roles = [];
 
-    #[ORM\Column(type: 'string', length: 2, nullable: true)]
+    #[ORM\Column(type: 'string', length: 2, nullable: false)]
     #[Groups(["user:read", "user:write"])]
     private $language;
 
