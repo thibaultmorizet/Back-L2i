@@ -34,34 +34,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
 
     private $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private $lastname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true, unique: true)]
-    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private $email;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private $password;
 
     #[ORM\ManyToOne(inversedBy: 'usersBilling', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private ?Address $billingAddress = null;
 
     #[ORM\ManyToOne(inversedBy: 'usersDelivery', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(["user:read", "user:write","order:read", "order:write"])]    
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private ?Address $deliveryAddress = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class, cascade: ['persist', 'remove'])]
@@ -69,8 +69,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $orders;
 
     #[ORM\Column(type: 'json')]
-    #[Groups(["user:read","user:write"])]
+    #[Groups(["user:read", "user:write"])]
     private $roles = [];
+
+    #[ORM\Column(type: 'string', length: 2, nullable: true)]
+    #[Groups(["user:read", "user:write"])]
+    private $language;
 
     public function __construct()
     {
@@ -114,6 +118,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getLanguage(): ?string
+    {
+        return $this->language;
+    }
+
+    public function setLanguage(string $language): self
+    {
+        $this->language = $language;
 
         return $this;
     }
