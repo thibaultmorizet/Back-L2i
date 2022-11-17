@@ -76,6 +76,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(["user:read", "user:write"])]
     private $language;
 
+    #[ORM\Column(type: 'string', length: 1000, nullable: false)]
+    #[Groups(["user:read", "user:write"])]
+    private $token;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -130,6 +134,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLanguage(string $language): self
     {
         $this->language = $language;
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(string $token): self
+    {
+        $this->token = $token;
 
         return $this;
     }
