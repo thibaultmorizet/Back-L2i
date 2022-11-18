@@ -39,10 +39,10 @@ class Address
     #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
     private $country;
 
-    #[ORM\OneToMany(mappedBy: 'billingAddress', targetEntity: User::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToMany(mappedBy: 'billingAddress', targetEntity: User::class, cascade: ['persist'])]
     private Collection $usersBilling;
 
-    #[ORM\OneToMany(mappedBy: 'deliveryAddress', targetEntity: User::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToMany(mappedBy: 'deliveryAddress', targetEntity: User::class, cascade: ['persist'])]
     private Collection $usersDelivery;
 
     public function __construct()

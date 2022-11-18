@@ -52,7 +52,7 @@ class Order
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private array $booklist = [];
 
-    #[ORM\ManyToOne(inversedBy: 'orders', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'orders', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["order:read", "order:write"])]
     private ?User $user = null;

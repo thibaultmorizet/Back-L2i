@@ -54,17 +54,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private $password;
 
-    #[ORM\ManyToOne(inversedBy: 'usersBilling', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'usersBilling', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: true)]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private ?Address $billingAddress = null;
 
-    #[ORM\ManyToOne(inversedBy: 'usersDelivery', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'usersDelivery', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: true)]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
     private ?Address $deliveryAddress = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class, cascade: ['persist'])]
     #[Groups(["user:read"])]
     private Collection $orders;
 

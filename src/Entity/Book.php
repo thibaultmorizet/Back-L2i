@@ -75,20 +75,20 @@ class Book
     #[Groups(["book:read", "book:write"])]
     private ?string $image = null;
 
-    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
     #[Groups(["book:read", "book:write"])]
     private Collection $author;
 
-    #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'books', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'books', cascade: ['persist'])]
     #[Groups(["book:read", "book:write"])]
     private Collection $type;
 
-    #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["book:read", "book:write"])]
     private ?Format $format = null;
 
-    #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["book:read", "book:write"])]
     private ?Editor $editor = null;
