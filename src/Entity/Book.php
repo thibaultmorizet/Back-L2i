@@ -17,13 +17,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     paginationItemsPerPage: 12,
     paginationClientItemsPerPage: true,
+    collectionOperations: [
+        "get", "post"
+    ],
+    itemOperations: ["get", "put", "patch", "delete"],
+
     normalizationContext: ['groups' => "book:read"],
     denormalizationContext: ['groups' => "book:write"],
     order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC']
 )]
 #[ApiFilter(
     RangeFilter::class,
-    properties: ['stock','unitpricettc']
+    properties: ['stock', 'unitpricettc']
 )]
 #[ApiFilter(
     SearchFilter::class,
