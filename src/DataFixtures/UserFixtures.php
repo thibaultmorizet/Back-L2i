@@ -17,7 +17,7 @@ class UserFixtures extends Fixture
     }
     public function load(ObjectManager $manager)
     { 
-       /*  $address = new Address();
+        $address = new Address();
         $address->setStreet('Impasse des coquelicots');
         $address->setPostalcode(84000);
         $address->setCity("Avignon");
@@ -54,6 +54,6 @@ class UserFixtures extends Fixture
             'Wick'
         ));
         $manager->persist($user2);
-        $manager->flush(); */
+        $manager->flush();
     }
 }
