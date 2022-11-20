@@ -27,7 +27,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiFilter(
     SearchFilter::class,
-    properties: ["email" => "exact","roles" => "partial"]
+    properties: ["email" => "exact", "roles" => "partial", "roles" => "exact"]
 )]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
