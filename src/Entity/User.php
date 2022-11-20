@@ -12,6 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Filter\CustomNotContainsSearchFilter;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -27,7 +28,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiFilter(
     SearchFilter::class,
-    properties: ["email" => "exact","roles" => "partial"]
+    properties: ["email" => "exact"]
+)]
+#[ApiFilter(
+    CustomNotContainsSearchFilter::class,
+    properties: ["roles" => "ipartial"]
 )]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
