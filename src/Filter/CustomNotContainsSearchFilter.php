@@ -34,7 +34,7 @@ use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
  */
-class SearchFilter extends AbstractContextAwareFilter implements SearchFilterInterface
+class CustomNotContainsSearchFilter extends AbstractContextAwareFilter implements SearchFilterInterface
 {
     use SearchFilterTrait;
 
