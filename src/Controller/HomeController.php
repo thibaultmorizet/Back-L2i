@@ -14,10 +14,10 @@ use Symfony\Component\HttpFoundation\Request;
 class HomeController extends AbstractController
 {
     #[Route('/mail', name: 'email')]
-    public function sendMail(Request $request, MailerInterface $mailer, $userMail, $subject, $html, $password): Response
+    public function sendMail(Request $request, MailerInterface $mailer): Response
     {
         var_dump($request->getContent());
-        $mail = (new TemplatedEmail())
+        /* $mail = (new TemplatedEmail())
             ->from('thibaultmorizet@icloud.com')
             ->to($userMail)
             ->subject($subject)
@@ -27,7 +27,7 @@ class HomeController extends AbstractController
                 'password' => $password
             ]);
 
-        $mailer->send($mail);
+        $mailer->send($mail); */
 
         return $this->json(
             [
