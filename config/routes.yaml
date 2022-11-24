@@ -4,3 +4,6 @@ controllers:
 authentication_token:
   path: /authentication_token
   methods: ["POST"]
+mail:
+  path: /mail
+  methods: ["POST"]
