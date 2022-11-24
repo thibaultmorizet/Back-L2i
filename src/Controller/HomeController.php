@@ -16,7 +16,7 @@ class HomeController extends AbstractController
     #[Route('/mail', name: 'email')]
     public function sendMail(Request $request, MailerInterface $mailer): Response
     {
-        var_dump($request->getContent());
+        var_dump($request->get("userMail"));
         /* $mail = (new TemplatedEmail())
             ->from('thibaultmorizet@icloud.com')
             ->to($userMail)
