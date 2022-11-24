@@ -2,23 +2,30 @@
 
 namespace App\Controller;
 
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class HomeController extends AbstractController
 {
     #[Route('/mail', name: 'email')]
-    public function sendMail(MailerInterface $mailer): Response
+    public function sendMail(Request $request, MailerInterface $mailer, $userMail, $subject, $html, $password): Response
     {
-        $mail = (new Email())
+        var_dump($request->getContent());
+        $mail = (new TemplatedEmail())
             ->from('thibaultmorizet@icloud.com')
-            ->to('thibaultmorizet@icloud.com')
-            ->subject('Mon beau sujet')
-            ->html('<p>Ceci est mon message en HTML</p>');
+            ->to($userMail)
+            ->subject($subject)
+            ->htmlTemplate($html)
+            ->context([
+                'userMail' => $userMail,
+                'password' => $password
+            ]);
 
         $mailer->send($mail);
 
@@ -30,4 +37,6 @@ class HomeController extends AbstractController
             200,
         );
     }
+
+   
 }
