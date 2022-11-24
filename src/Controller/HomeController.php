@@ -76,6 +76,14 @@ class HomeController extends AbstractController
             $decodePicture = base64_decode($pictureFile);
 
             $fileSystem->dumpFile($current_dir_path . $pictureName, $decodePicture);
+
+            return $this->json(
+                [
+                    "success" => true,
+                    "message" => "the image is upload"
+                ],
+                200,
+            );
         }
     }
 }
