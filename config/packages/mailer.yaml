@@ -1,0 +1,8 @@
+ # config/packages/mailer.yaml
+framework:
+    mailer:
+         dsn: '%env(MAILER_DSN)%'
+         envelope:
+            sender: 'thibaultmorizet@icloud.com'
+        headers:
+            From: 'L2i <thibaultmorizet@icloud.com>'
