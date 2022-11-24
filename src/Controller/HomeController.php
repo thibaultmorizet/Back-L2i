@@ -20,18 +20,17 @@ class HomeController extends AbstractController
         if ($content = $request->getContent()) {
             $parametersAsArray = json_decode($content, true);
         }
-        var_dump($parametersAsArray);
-        /* $mail = (new TemplatedEmail())
+        $mail = (new TemplatedEmail())
             ->from('thibaultmorizet@icloud.com')
-            ->to($userMail)
-            ->subject($subject)
-            ->htmlTemplate($html)
+            ->to($parametersAsArray["userMail"])
+            ->subject($parametersAsArray["subject"])
+            ->htmlTemplate($parametersAsArray["html"])
             ->context([
-                'userMail' => $userMail,
-                'password' => $password
+                'userMail' => $parametersAsArray["userMail"],
+                'password' => $parametersAsArray["password"]
             ]);
 
-        $mailer->send($mail); */
+        $mailer->send($mail);
 
         return $this->json(
             [
@@ -41,6 +40,4 @@ class HomeController extends AbstractController
             200,
         );
     }
-
-   
 }
