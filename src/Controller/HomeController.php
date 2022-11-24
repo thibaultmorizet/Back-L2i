@@ -71,8 +71,7 @@ class HomeController extends AbstractController
 
             $fileSystem = new Filesystem();
 
-            $current_dir_path = getcwd() . "/uploads/image/";
-            var_dump($current_dir_path);
+            $current_dir_path = getcwd() . "/assets/";
             $decodePicture = base64_decode($pictureFile);
 
             $fileSystem->dumpFile($current_dir_path . $pictureName, $decodePicture);
