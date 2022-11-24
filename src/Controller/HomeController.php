@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use SplFileInfo;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Filesystem\Filesystem;
 
 
 class HomeController extends AbstractController
@@ -39,5 +41,41 @@ class HomeController extends AbstractController
             ],
             200,
         );
+    }
+    #[Route('/addImage', name: 'addImage')]
+    public function addImage(Request $request): Response
+    {
+        $parametersAsArray = [];
+        if ($content = $request->getContent()) {
+            $parametersAsArray = json_decode($content, true);
+        }
+
+        $pictureFile = $parametersAsArray['data'];
+        $pictureUrl = $parametersAsArray['url'];
+
+        $pictureName = $parametersAsArray['bookId'] . strrchr($pictureUrl, '.');
+        $spl = new SplFileInfo($pictureName);
+
+        $extension = strtolower($spl->getExtension());
+
+        if ($extension != "jpeg" and $extension != "png" and $extension != "jpg") {
+
+            return $this->json(
+                [
+                    "success" => false,
+                    "error" => "Bad extension"
+                ],
+                Response::HTTP_BAD_REQUEST
+            );
+        } else {
+
+            $fileSystem = new Filesystem();
+
+            $current_dir_path = getcwd() . "/uploads/image/";
+
+            $decodePicture = base64_decode($pictureFile);
+
+            $fileSystem->dumpFile($current_dir_path . $pictureName, $decodePicture);
+        }
     }
 }

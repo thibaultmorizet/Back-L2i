@@ -7,3 +7,6 @@ authentication_token:
 mail:
   path: /mail
   methods: ["POST"]
+add_image:
+  path: /add_image
+  methods: ["POST"]

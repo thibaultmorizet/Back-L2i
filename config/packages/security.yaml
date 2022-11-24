@@ -44,6 +44,7 @@ security:
     - { path: ^/ws/authors, roles: PUBLIC_ACCESS }
     - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
     - { path: ^/mail, roles: PUBLIC_ACCESS }
+    - { path: ^/add_image, roles: PUBLIC_ACCESS }
     - { path: ^/ws/users, roles: PUBLIC_ACCESS }
     - { path: ^/ws/addresses, roles: PUBLIC_ACCESS }
     - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
