@@ -42,7 +42,7 @@ class HomeController extends AbstractController
             200,
         );
     }
-    #[Route('/addImage', name: 'addImage')]
+    #[Route('/add_image', name: 'addImage')]
     public function addImage(Request $request): Response
     {
         $parametersAsArray = [];
