@@ -12,7 +12,7 @@ use Symfony\Component\Mailer\MailerInterface;
 class HomeController extends AbstractController
 {
     #[Route('/mail', name: 'email')]
-    public function sendMail(MailerInterface $mailer)
+    public function sendMail(MailerInterface $mailer): Response
     {
         $mail = (new Email())
             ->from('thibaultmorizet@icloud.com')
@@ -21,5 +21,13 @@ class HomeController extends AbstractController
             ->html('<p>Ceci est mon message en HTML</p>');
 
         $mailer->send($mail);
+
+        return $this->json(
+            [
+                "success" => true,
+                "message" => "the mail is sent"
+            ],
+            200,
+        );
     }
 }
