@@ -33,6 +33,7 @@ class Editor
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'editor', targetEntity: Book::class, cascade: ['persist'])]
+    #[Groups(["editor:read"])]
     private Collection $books;
 
     public function __construct()

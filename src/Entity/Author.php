@@ -37,6 +37,7 @@ class Author
     private ?string $language = null;
 
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'author', cascade: ['persist'])]
+    #[Groups(["author:read"])]
     private Collection $books;
 
     public function __construct()
