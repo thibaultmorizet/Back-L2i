@@ -38,7 +38,11 @@ class Order
 
     #[ORM\Column]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
-    private ?float $totalprice = null;
+    private ?float $totalpricettc = null;
+
+    #[ORM\Column]
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
+    private ?float $totalpriceht = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
@@ -78,14 +82,25 @@ class Order
         return $this;
     }
 
-    public function getTotalprice(): ?float
+    public function getTotalpricettc(): ?float
     {
-        return $this->totalprice;
+        return $this->totalpricettc;
     }
 
-    public function setTotalprice(float $totalprice): self
+    public function setTotalpricettc(float $totalpricettc): self
     {
-        $this->totalprice = $totalprice;
+        $this->totalpricettc = $totalpricettc;
+
+        return $this;
+    }
+    public function getTotalpriceht(): ?float
+    {
+        return $this->totalpriceht;
+    }
+
+    public function setTotalpriceht(float $totalpriceht): self
+    {
+        $this->totalpriceht = $totalpriceht;
 
         return $this;
     }
