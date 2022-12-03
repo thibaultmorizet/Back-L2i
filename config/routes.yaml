@@ -10,3 +10,6 @@ mail:
 add_image:
   path: /add_image
   methods: ["POST"]
+  delete_image:
+  path: /delete_image
+  methods: ["POST"]
