@@ -85,4 +85,23 @@ class HomeController extends AbstractController
             );
         }
     }
+
+    #[Route('/delete_image', name: 'deleteImage')]
+    public function deleteImage(Request $request): Response
+    {
+        $parametersAsArray = [];
+        if ($content = $request->getContent()) {
+            $parametersAsArray = json_decode($content, true);
+        }
+
+        unlink($parametersAsArray['imageUrl']);
+
+        return $this->json(
+            [
+                "success" => true,
+                "message" => "the image is deleted"
+            ],
+            200,
+        );
+    }
 }
