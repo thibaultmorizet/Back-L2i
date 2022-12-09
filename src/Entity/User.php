@@ -158,12 +158,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getForceToUpdatePassword(): ?Boolean
+    public function getForceToUpdatePassword(): ?bool
     {
         return $this->forceToUpdatePassword;
     }
 
-    public function setForceToUpdatePassword(Boolean $forceToUpdatePassword): self
+    public function setForceToUpdatePassword(bool $forceToUpdatePassword): self
     {
         $this->forceToUpdatePassword = $forceToUpdatePassword;
 
