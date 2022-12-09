@@ -26,7 +26,7 @@ class Taxe
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["user:read", "taxe:read"])]
+    #[Groups(["book:read", "book:write", "taxe:read", "taxe:write"])]
     private ?int $id = null;
 
     #[ORM\Column]
@@ -42,12 +42,12 @@ class Taxe
         return $this->id;
     }
 
-    public function getTaxe(): ?int
+    public function getTaxe(): ?float
     {
         return $this->taxe;
     }
 
-    public function setTaxe(int $taxe): self
+    public function setTaxe(float $taxe): self
     {
         $this->taxe = $taxe;
 
