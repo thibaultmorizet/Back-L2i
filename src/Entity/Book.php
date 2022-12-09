@@ -59,11 +59,12 @@ class Book
 
     #[ORM\Column]
     #[Groups(["book:read", "book:write"])]
-    private ?float $unitpricettc = null;
-
-    #[ORM\Column]
-    #[Groups(["book:read", "book:write"])]
     private ?float $unitpriceht = null;
+
+    #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["book:read", "book:write"])]
+    private ?Taxe $taxe = null;
 
     #[ORM\Column]
     #[Groups(["book:read", "book:write"])]
@@ -247,6 +248,18 @@ class Book
     public function removeType(Type $bookType): self
     {
         $this->type->removeElement($bookType);
+
+        return $this;
+    }
+
+    public function getTaxe(): ?Taxe
+    {
+        return $this->taxe;
+    }
+
+    public function setTaxe(?Taxe $taxe): self
+    {
+        $this->taxe = $taxe;
 
         return $this;
     }
