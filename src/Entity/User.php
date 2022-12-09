@@ -29,7 +29,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiFilter(
     SearchFilter::class,
-    properties: ["email" => "exact","roles" => "ipartial"]
+    properties: ["email" => "exact", "roles" => "ipartial"]
 )]
 
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -82,6 +82,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 1000, nullable: false)]
     #[Groups(["user:read", "user:write"])]
     private $token;
+
+    #[ORM\Column(type: 'tinyint', length: 1, nullable: true)]
+    #[Groups(["user:read", "user:write"])]
+    private $forceToUpdatePassword;
 
     public function __construct()
     {
@@ -149,6 +153,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setToken(string $token): self
     {
         $this->token = $token;
+
+        return $this;
+    }
+
+    public function getForceToUpdatePassword(): ?string
+    {
+        return $this->forceToUpdatePassword;
+    }
+
+    public function setForceToUpdatePassword(string $forceToUpdatePassword): self
+    {
+        $this->forceToUpdatePassword = $forceToUpdatePassword;
 
         return $this;
     }
