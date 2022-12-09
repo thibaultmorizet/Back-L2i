@@ -31,7 +31,7 @@ class Taxe
 
     #[ORM\Column]
     #[Groups(["user:read", "user:write", "taxe:read", "taxe:write"])]
-    private ?float $taxe = null;
+    private ?float $tva = null;
 
     #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Book::class, cascade: ['persist'])]
     #[Groups(["taxe:read"])]
@@ -42,14 +42,14 @@ class Taxe
         return $this->id;
     }
 
-    public function getTaxe(): ?float
+    public function getTva(): ?float
     {
-        return $this->taxe;
+        return $this->tva;
     }
 
-    public function setTaxe(float $taxe): self
+    public function setTva(float $tva): self
     {
-        $this->taxe = $taxe;
+        $this->tva = $tva;
 
         return $this;
     }
