@@ -61,11 +61,6 @@ class Book
     #[Groups(["book:read", "book:write"])]
     private ?float $unitpriceht = null;
 
-    #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
-    #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["book:read", "book:write"])]
-    private ?Taxe $taxe = null;
-
     #[ORM\Column]
     #[Groups(["book:read", "book:write"])]
     private ?int $stock = null;
@@ -95,6 +90,11 @@ class Book
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["book:read", "book:write"])]
     private ?Editor $editor = null;
+
+    #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["book:read", "book:write"])]
+    private ?Taxe $taxe = null;
 
     #[ORM\Column(nullable: true)]
     #[Groups(["book:read", "book:write"])]

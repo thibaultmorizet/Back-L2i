@@ -29,9 +29,10 @@ class Taxe
     #[Groups(["book:read", "book:write", "taxe:read", "taxe:write"])]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     #[Groups(["user:read", "user:write", "taxe:read", "taxe:write"])]
     private ?float $tva = null;
+
 
     #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Book::class, cascade: ['persist'])]
     #[Groups(["taxe:read"])]
