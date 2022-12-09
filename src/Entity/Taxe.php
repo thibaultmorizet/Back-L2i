@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
 use App\Repository\TaxeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -18,7 +18,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 
 #[ApiFilter(
-    SearchFilter::class,
+    NumericFilter::class,
     properties: ["tva" => "exact"]
 )]
 class Taxe
@@ -31,7 +31,7 @@ class Taxe
 
     #[ORM\Column(length:255, nullable: true)]
     #[Groups(["book:read", "book:write", "taxe:read", "taxe:write"])]
-    private ?string $tva = null;
+    private ?float $tva = null;
 
     #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Book::class, cascade: ['persist'])]
     #[Groups(["taxe:read"])]
@@ -47,12 +47,12 @@ class Taxe
         return $this->id;
     }
 
-    public function getTva(): ?string
+    public function getTva(): ?float
     {
         return $this->tva;
     }
 
-    public function setTva(?string $tva): self
+    public function setTva(?float $tva): self
     {
         $this->tva = $tva;
 
