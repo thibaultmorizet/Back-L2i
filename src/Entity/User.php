@@ -84,7 +84,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(["user:read", "user:write"])]
     private $token;
 
-    #[ORM\Column(type: 'tinyint', nullable: true)]
+    #[ORM\Column(type: 'boolean', nullable: true)]
     #[Groups(["user:read", "user:write"])]
     private $forceToUpdatePassword;
 
