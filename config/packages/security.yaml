@@ -40,6 +40,7 @@ security:
     - { path: ^/ws/books, roles: PUBLIC_ACCESS }
     - { path: ^/ws/formats, roles: PUBLIC_ACCESS }
     - { path: ^/ws/types, roles: PUBLIC_ACCESS }
+    - { path: ^/ws/taxes, roles: PUBLIC_ACCESS }
     - { path: ^/ws/editors, roles: PUBLIC_ACCESS }
     - { path: ^/ws/authors, roles: PUBLIC_ACCESS }
     - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
