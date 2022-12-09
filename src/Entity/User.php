@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -83,7 +84,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(["user:read", "user:write"])]
     private $token;
 
-    #[ORM\Column(type: 'tinyint', length: 1, nullable: true)]
+    #[ORM\Column(type: 'tinyint', nullable: true)]
     #[Groups(["user:read", "user:write"])]
     private $forceToUpdatePassword;
 
@@ -157,12 +158,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getForceToUpdatePassword(): ?string
+    public function getForceToUpdatePassword(): ?Boolean
     {
         return $this->forceToUpdatePassword;
     }
 
-    public function setForceToUpdatePassword(string $forceToUpdatePassword): self
+    public function setForceToUpdatePassword(Boolean $forceToUpdatePassword): self
     {
         $this->forceToUpdatePassword = $forceToUpdatePassword;
 
