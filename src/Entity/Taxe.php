@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\TaxeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -18,7 +18,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 
 #[ApiFilter(
-    NumericFilter::class,
+    SearchFilter::class,
     properties: ["tva" => "exact"]
 )]
 class Taxe
@@ -29,9 +29,9 @@ class Taxe
     #[Groups(["book:read", "book:write", "taxe:read", "taxe:write"])]
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(length:255, nullable: true)]
     #[Groups(["book:read", "book:write", "taxe:read", "taxe:write"])]
-    private ?float $tva = null;
+    private ?string $tva = null;
 
     #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Book::class, cascade: ['persist'])]
     #[Groups(["taxe:read"])]
