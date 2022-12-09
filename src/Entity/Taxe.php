@@ -14,13 +14,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: TaxeRepository::class)]
 #[ApiResource(
     normalizationContext: ['groups' => "taxe:read"],
-    denormalizationContext: ['groups' => "taxe:write"],
+    denormalizationContext: ['groups' => "taxe:write"]
 )]
+
 #[ApiFilter(
     NumericFilter::class,
-    properties: ["user.id" => "exact"]
+    properties: ["tva" => "exact"]
 )]
-#[ORM\Table(name: '`taxe`')]
 class Taxe
 {
     #[ORM\Id]
@@ -30,13 +30,13 @@ class Taxe
     private ?int $id = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["user:read", "user:write", "taxe:read", "taxe:write"])]
+    #[Groups(["book:read", "book:write", "taxe:read", "taxe:write"])]
     private ?float $tva = null;
 
     #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Book::class, cascade: ['persist'])]
     #[Groups(["taxe:read"])]
     private Collection $books;
-    
+
     public function __construct()
     {
         $this->books = new ArrayCollection();
@@ -47,12 +47,12 @@ class Taxe
         return $this->id;
     }
 
-    public function getTva(): ?float
+    public function getTva(): ?string
     {
         return $this->tva;
     }
 
-    public function setTva(float $tva): self
+    public function setTva(?string $tva): self
     {
         $this->tva = $tva;
 

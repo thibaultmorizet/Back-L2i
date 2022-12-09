@@ -29,7 +29,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 #[ApiFilter(
     RangeFilter::class,
-    properties: ['stock', 'unitpricettc']
+    properties: ['stock', 'unitpriceht']
 )]
 #[ApiFilter(
     SearchFilter::class,
@@ -140,18 +140,6 @@ class Book
     public function setSummary(?string $summary): self
     {
         $this->summary = $summary;
-
-        return $this;
-    }
-
-    public function getunitpricettc(): ?float
-    {
-        return $this->unitpricettc;
-    }
-
-    public function setunitpricettc(float $unitpricettc): self
-    {
-        $this->unitpricettc = $unitpricettc;
 
         return $this;
     }
