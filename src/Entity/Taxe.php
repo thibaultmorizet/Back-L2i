@@ -31,7 +31,7 @@ class Taxe
 
     #[ORM\Column]
     #[Groups(["user:read", "user:write", "taxe:read", "taxe:write"])]
-    private ?int $taxe = null;
+    private ?float $taxe = null;
 
     #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Book::class, cascade: ['persist'])]
     #[Groups(["taxe:read"])]
