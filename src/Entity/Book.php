@@ -252,17 +252,7 @@ class Book
         return $this;
     }
 
-    public function getTaxe(): ?Taxe
-    {
-        return $this->taxe;
-    }
 
-    public function setTaxe(?Taxe $taxe): self
-    {
-        $this->taxe = $taxe;
-
-        return $this;
-    }
 
     public function getFormat(): ?Format
     {
@@ -288,6 +278,18 @@ class Book
         return $this;
     }
 
+    public function getTaxe(): ?Taxe
+    {
+        return $this->taxe;
+    }
+
+    public function setTaxe(?Taxe $taxe): self
+    {
+        $this->taxe = $taxe;
+
+        return $this;
+    }
+    
     public function getYear(): ?string
     {
         return $this->year;

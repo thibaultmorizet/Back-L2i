@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
 use App\Repository\TaxeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -14,7 +15,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     normalizationContext: ['groups' => "taxe:read"],
     denormalizationContext: ['groups' => "taxe:write"],
-    order: ['id' => 'DESC']
 )]
 #[ApiFilter(
     NumericFilter::class,
@@ -33,10 +33,14 @@ class Taxe
     #[Groups(["user:read", "user:write", "taxe:read", "taxe:write"])]
     private ?float $tva = null;
 
-
     #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Book::class, cascade: ['persist'])]
     #[Groups(["taxe:read"])]
     private Collection $books;
+    
+    public function __construct()
+    {
+        $this->books = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -51,6 +55,18 @@ class Taxe
     public function setTva(float $tva): self
     {
         $this->tva = $tva;
+
+        return $this;
+    }
+
+    public function getBook(): ?Book
+    {
+        return $this->book;
+    }
+
+    public function setBook(?Book $book): self
+    {
+        $this->book = $book;
 
         return $this;
     }
