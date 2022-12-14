@@ -22,12 +22,15 @@ class Image
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["image:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["image:read", "image:write"])]
     private ?string $url = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(["image:read", "image:write"])]
     private ?int $position = null;
 
     #[ORM\ManyToOne(inversedBy: 'images', cascade: ['persist'])]

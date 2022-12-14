@@ -46,27 +46,27 @@ class Book
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read"])]
     private ?string $title = null;
 
     #[ORM\Column(length: 10000, nullable: true)]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read"])]
     private ?string $summary = null;
 
     #[ORM\Column]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read"])]
     private ?float $unitpriceht = null;
 
     #[ORM\Column]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read"])]
     private ?int $stock = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read"])]
     private ?string $isbn = null;
 
     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
@@ -266,7 +266,7 @@ class Book
 
         return $this;
     }
-    
+
     public function getYear(): ?string
     {
         return $this->year;
@@ -344,5 +344,4 @@ class Book
 
         return $this;
     }
-
 }
