@@ -18,7 +18,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
     normalizationContext: ['groups' => "image:read"],
     denormalizationContext: ['groups' => "image:write"],
-)] 
+)]
 #[ApiFilter(
     NumericFilter::class,
     properties: ["book.id" => "exact"]
@@ -28,15 +28,15 @@ class Image
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["image:read"])]
+    #[Groups(["image:read", "book:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["image:read", "image:write"])]
+    #[Groups(["image:read", "image:write", "book:read"])]
     private ?string $url = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["image:read", "image:write"])]
+    #[Groups(["image:read", "image:write", "book:read"])]
     private ?int $position = null;
 
     #[ORM\ManyToOne(inversedBy: 'images', cascade: ['persist'])]
