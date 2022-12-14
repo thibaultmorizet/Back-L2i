@@ -69,10 +69,6 @@ class Book
     #[Groups(["book:read", "book:write"])]
     private ?string $isbn = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read", "book:write"])]
-    private ?string $image = null;
-
     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
     #[Groups(["book:read", "book:write"])]
     private Collection $author;
@@ -108,11 +104,16 @@ class Book
     #[Groups(["book:read", "book:write"])]
     private ?int $soldnumber = null;
 
+    #[ORM\OneToMany(mappedBy: 'book', targetEntity: Book::class, cascade: ['persist'])]
+    #[Groups(["book:read"])]
+    private Collection $images;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
         $this->author = new ArrayCollection();
         $this->type = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -176,18 +177,6 @@ class Book
     public function setIsbn(string $isbn): self
     {
         $this->isbn = $isbn;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
 
         return $this;
     }
@@ -313,4 +302,47 @@ class Book
 
         return $this;
     }
+
+    public function getImage(): ?Image
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Image $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Image>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getImage() === $this) {
+                $image->setImage(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
