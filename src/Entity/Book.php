@@ -104,7 +104,7 @@ class Book
     #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?int $soldnumber = null;
 
-    #[ORM\OneToMany(mappedBy: 'book', targetEntity: Book::class, cascade: ['persist'])]
+    #[ORM\OneToMany(mappedBy: 'book', targetEntity: Image::class, cascade: ['persist'])]
     #[Groups(["book:read"])]
     private Collection $images;
 
