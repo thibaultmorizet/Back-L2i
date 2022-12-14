@@ -46,62 +46,62 @@ class Book
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["book:read", "book:write", "image:read"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["book:read", "book:write", "image:read"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?string $title = null;
 
     #[ORM\Column(length: 10000, nullable: true)]
-    #[Groups(["book:read", "book:write", "image:read"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?string $summary = null;
 
     #[ORM\Column]
-    #[Groups(["book:read", "book:write", "image:read"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?float $unitpriceht = null;
 
     #[ORM\Column]
-    #[Groups(["book:read", "book:write", "image:read"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?int $stock = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["book:read", "book:write", "image:read"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?string $isbn = null;
 
     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private Collection $author;
 
     #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'books', cascade: ['persist'])]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private Collection $type;
 
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?Format $format = null;
 
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?Editor $editor = null;
 
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?Taxe $taxe = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?string $year = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?int $visitnumber = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["book:read", "book:write"])]
+    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
     private ?int $soldnumber = null;
 
     #[ORM\OneToMany(mappedBy: 'book', targetEntity: Book::class, cascade: ['persist'])]
