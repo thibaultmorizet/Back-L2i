@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\MongoDbOdm\Filter\NumericFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -21,7 +21,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )] 
 #[ApiFilter(
     NumericFilter::class,
-    properties: ["book_id" => "exact"]
+    properties: ["book.id" => "exact"]
 )]
 class Image
 {
