@@ -327,7 +327,7 @@ class Book
     {
         if (!$this->images->contains($image)) {
             $this->images->add($image);
-            $image->setImage($this);
+            $image->setBook($this);
         }
 
         return $this;
@@ -337,8 +337,8 @@ class Book
     {
         if ($this->images->removeElement($image)) {
             // set the owning side to null (unless already changed)
-            if ($image->getImage() === $this) {
-                $image->setImage(null);
+            if ($image->getBook() === $this) {
+                $image->setBook(null);
             }
         }
 
