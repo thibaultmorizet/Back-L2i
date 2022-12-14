@@ -42,6 +42,8 @@ class HomeController extends AbstractController
             200,
         );
     }
+
+
     #[Route('/add_image', name: 'addImage')]
     public function addImage(Request $request): Response
     {
@@ -50,40 +52,38 @@ class HomeController extends AbstractController
             $parametersAsArray = json_decode($content, true);
         }
 
-        $pictureFile = $parametersAsArray['data'];
-        $pictureUrl = $parametersAsArray['url'];
+        for ($pictureJson = 0; $pictureJson < count($parametersAsArray['images']); $pictureJson++) {
+            $pictureFile = $parametersAsArray['images'][$pictureJson]['data'];
+            $pictureUrl = $parametersAsArray['images'][$pictureJson]['url'];
 
-        $pictureName = $parametersAsArray['bookId'] . strrchr($pictureUrl, '.');
-        $spl = new SplFileInfo($pictureName);
+            $pictureName = $parametersAsArray['images'][$pictureJson]['bookId'] . '-' . $pictureJson . strrchr($pictureUrl, '.');
 
-        $extension = strtolower($spl->getExtension());
+            $spl = new SplFileInfo($pictureName);
+            $extension = strtolower($spl->getExtension());
 
-        if ($extension != "jpeg" and $extension != "png" and $extension != "jpg") {
+            if ($extension != "jpeg" and $extension != "png" and $extension != "jpg") {
+                return $this->json(
+                    [
+                        "success" => false,
+                        "error" => "Bad extension"
+                    ],
+                    Response::HTTP_BAD_REQUEST
+                );
+            } else {
+                $fileSystem = new Filesystem();
 
-            return $this->json(
-                [
-                    "success" => false,
-                    "error" => "Bad extension"
-                ],
-                Response::HTTP_BAD_REQUEST
-            );
-        } else {
-
-            $fileSystem = new Filesystem();
-
-            $current_dir_path = getcwd() . "/assets/";
-            $decodePicture = base64_decode($pictureFile);
-
-            $fileSystem->dumpFile($current_dir_path . $pictureName, $decodePicture);
-
-            return $this->json(
-                [
-                    "success" => true,
-                    "message" => "the image is upload"
-                ],
-                200,
-            );
+                $current_dir_path = getcwd() . "/assets/" . $parametersAsArray['images'][$pictureJson]['bookId'] . "/";
+                $decodePicture = base64_decode($pictureFile);
+                $fileSystem->dumpFile($current_dir_path . $pictureName, $decodePicture);
+            }
         }
+        return $this->json(
+            [
+                "success" => true,
+                "message" => "the image is upload"
+            ],
+            200,
+        );
     }
 
     #[Route('/delete_image', name: 'deleteImage')]
