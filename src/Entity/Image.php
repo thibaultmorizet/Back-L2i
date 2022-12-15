@@ -28,7 +28,7 @@ class Image
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["image:read", "book:read"])]
+    #[Groups(["image:read", "image:write", "book:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
