@@ -84,7 +84,7 @@ class HomeController extends AbstractController
                     unlink(getcwd() . "/assets/book-images/" . $parametersAsArray['images'][0]['bookId'] . "/" . $parametersAsArray['images'][0]['bookId'] . '-' . $imageNumberTemp . strrchr($pictureUrl, '.'));
                     $imageNumberTemp++;
                 } catch (\Throwable $th) {
-                    //throw $th;
+                   break;
                 }
             }
         }
