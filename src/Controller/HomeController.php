@@ -79,9 +79,9 @@ class HomeController extends AbstractController
             }
         }
         if ($imageNumber < 5) {
-            while ($imageNumberTemp < 5) {
+            while ($imageNumberTemp < 4) {
                 try {
-                    unlink(getcwd() . "/assets/book-images/" . $parametersAsArray['images'][0]['bookId'] . "/" . $parametersAsArray['images'][0]['bookId'] . '-' . $imageNumberTemp + 1 . strrchr($pictureUrl, '.'));
+                    unlink(getcwd() . "/assets/book-images/" . $parametersAsArray['images'][0]['bookId'] . "/" . $parametersAsArray['images'][0]['bookId'] . '-' . $imageNumberTemp . strrchr($pictureUrl, '.'));
                     $imageNumberTemp++;
                 } catch (\Throwable $th) {
                     //throw $th;
