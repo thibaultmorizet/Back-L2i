@@ -80,8 +80,12 @@ class HomeController extends AbstractController
         }
         if ($imageNumber < 5) {
             while ($imageNumberTemp < 5) {
-                unlink(getcwd() . "/assets/book-images/" . $parametersAsArray['images'][0]['bookId'] . "/" . $parametersAsArray['images'][0]['bookId'] . '-' . $imageNumberTemp + 1 . strrchr($pictureUrl, '.'));
-                $imageNumberTemp++;
+                try {
+                    unlink(getcwd() . "/assets/book-images/" . $parametersAsArray['images'][0]['bookId'] . "/" . $parametersAsArray['images'][0]['bookId'] . '-' . $imageNumberTemp + 1 . strrchr($pictureUrl, '.'));
+                    $imageNumberTemp++;
+                } catch (\Throwable $th) {
+                    //throw $th;
+                }
             }
         }
         return $this->json(
