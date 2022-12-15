@@ -56,7 +56,7 @@ class HomeController extends AbstractController
             $pictureFile = $parametersAsArray['images'][$pictureJson]['data'];
             $pictureUrl = $parametersAsArray['images'][$pictureJson]['url'];
 
-            $pictureName = $parametersAsArray['images'][$pictureJson]['bookId'] . '-' . $pictureJson + 1 . strrchr($pictureUrl, '.');
+            $pictureName = $parametersAsArray['images'][$pictureJson]['bookId'] . '-' . $pictureJson . strrchr($pictureUrl, '.');
 
             $spl = new SplFileInfo($pictureName);
             $extension = strtolower($spl->getExtension());
