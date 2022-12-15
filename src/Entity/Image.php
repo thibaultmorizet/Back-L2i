@@ -18,7 +18,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
     normalizationContext: ['groups' => "image:read"],
     denormalizationContext: ['groups' => "image:write"],
-    order: ['position' => 'ASC']
+    order: ['position' => 'DESC']
 )]
 #[ApiFilter(
     NumericFilter::class,
