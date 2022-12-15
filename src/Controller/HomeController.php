@@ -51,8 +51,9 @@ class HomeController extends AbstractController
         if ($content = $request->getContent()) {
             $parametersAsArray = json_decode($content, true);
         }
-
-        for ($pictureJson = 0; $pictureJson < count($parametersAsArray['images']); $pictureJson++) {
+        $imageNumber = count($parametersAsArray['images']);
+        $imageNumberTemp = count($parametersAsArray['images']);
+        for ($pictureJson = 0; $pictureJson < $imageNumber; $pictureJson++) {
             $pictureFile = $parametersAsArray['images'][$pictureJson]['data'];
             $pictureUrl = $parametersAsArray['images'][$pictureJson]['url'];
 
@@ -75,6 +76,12 @@ class HomeController extends AbstractController
                 $current_dir_path = getcwd() . "/assets/book-images/" . $parametersAsArray['images'][$pictureJson]['bookId'] . "/";
                 $decodePicture = base64_decode($pictureFile);
                 $fileSystem->dumpFile($current_dir_path . $pictureName, $decodePicture);
+            }
+        }
+        if ($imageNumber < 5) {
+            while ($imageNumberTemp < 5) {
+                unlink(getcwd() . "/assets/book-images/" . $parametersAsArray['images'][0]['bookId'] . "/" . $parametersAsArray['images'][0]['bookId'] . '-' . $imageNumberTemp + 1 . strrchr($pictureUrl, '.'));
+                $imageNumberTemp++;
             }
         }
         return $this->json(
