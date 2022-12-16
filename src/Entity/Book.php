@@ -46,74 +46,73 @@ class Book
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private ?string $title = null;
 
     #[ORM\Column(length: 10000, nullable: true)]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private ?string $summary = null;
 
     #[ORM\Column]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private ?float $unitpriceht = null;
 
     #[ORM\Column]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private ?int $stock = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private ?string $isbn = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["book:read", "book:write"])]
+    private ?string $image = null;
+
     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private Collection $author;
 
     #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'books', cascade: ['persist'])]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private Collection $type;
 
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private ?Format $format = null;
 
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private ?Editor $editor = null;
 
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private ?Taxe $taxe = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private ?string $year = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private ?int $visitnumber = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["book:read", "book:write", "image:read", "image:write"])]
+    #[Groups(["book:read", "book:write"])]
     private ?int $soldnumber = null;
-
-    #[ORM\OneToMany(mappedBy: 'book', targetEntity: Image::class, cascade: ['persist'])]
-    #[Groups(["book:read"])]
-    private Collection $images;
 
     public function __construct()
     {
         $this->orders = new ArrayCollection();
         $this->author = new ArrayCollection();
         $this->type = new ArrayCollection();
-        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -177,6 +176,18 @@ class Book
     public function setIsbn(string $isbn): self
     {
         $this->isbn = $isbn;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
@@ -266,7 +277,7 @@ class Book
 
         return $this;
     }
-
+    
     public function getYear(): ?string
     {
         return $this->year;
@@ -299,48 +310,6 @@ class Book
     public function setSoldnumber(int $soldnumber): self
     {
         $this->soldnumber = $soldnumber;
-
-        return $this;
-    }
-
-    public function getImage(): ?Image
-    {
-        return $this->image;
-    }
-
-    public function setImage(?Image $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Image>
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
-
-    public function addImage(Image $image): self
-    {
-        if (!$this->images->contains($image)) {
-            $this->images->add($image);
-            $image->setBook($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Image $image): self
-    {
-        if ($this->images->removeElement($image)) {
-            // set the owning side to null (unless already changed)
-            if ($image->getBook() === $this) {
-                $image->setBook(null);
-            }
-        }
 
         return $this;
     }

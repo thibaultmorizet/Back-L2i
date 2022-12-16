@@ -42,8 +42,6 @@ class HomeController extends AbstractController
             200,
         );
     }
-
-
     #[Route('/add_image', name: 'addImage')]
     public function addImage(Request $request): Response
     {
@@ -51,50 +49,41 @@ class HomeController extends AbstractController
         if ($content = $request->getContent()) {
             $parametersAsArray = json_decode($content, true);
         }
-        $imageNumber = count($parametersAsArray['images']);
-        $imageNumberTemp = count($parametersAsArray['images']);
-        for ($pictureJson = 0; $pictureJson < $imageNumber; $pictureJson++) {
-            $pictureFile = $parametersAsArray['images'][$pictureJson]['data'];
-            $pictureUrl = $parametersAsArray['images'][$pictureJson]['url'];
 
-            $pictureName = $parametersAsArray['images'][$pictureJson]['bookId'] . '-' . $pictureJson . strrchr($pictureUrl, '.');
+        $pictureFile = $parametersAsArray['data'];
+        $pictureUrl = $parametersAsArray['url'];
 
-            $spl = new SplFileInfo($pictureName);
-            $extension = strtolower($spl->getExtension());
+        $pictureName = $parametersAsArray['bookId'] . strrchr($pictureUrl, '.');
+        $spl = new SplFileInfo($pictureName);
 
-            if ($extension != "jpeg" and $extension != "png" and $extension != "jpg") {
-                return $this->json(
-                    [
-                        "success" => false,
-                        "error" => "Bad extension"
-                    ],
-                    Response::HTTP_BAD_REQUEST
-                );
-            } else {
-                $fileSystem = new Filesystem();
+        $extension = strtolower($spl->getExtension());
 
-                $current_dir_path = getcwd() . "/assets/book-images/" . $parametersAsArray['images'][$pictureJson]['bookId'] . "/";
-                $decodePicture = base64_decode($pictureFile);
-                $fileSystem->dumpFile($current_dir_path . $pictureName, $decodePicture);
-            }
+        if ($extension != "jpeg" and $extension != "png" and $extension != "jpg") {
+
+            return $this->json(
+                [
+                    "success" => false,
+                    "error" => "Bad extension"
+                ],
+                Response::HTTP_BAD_REQUEST
+            );
+        } else {
+
+            $fileSystem = new Filesystem();
+
+            $current_dir_path = getcwd() . "/assets/book-images/";
+            $decodePicture = base64_decode($pictureFile);
+
+            $fileSystem->dumpFile($current_dir_path . $pictureName, $decodePicture);
+
+            return $this->json(
+                [
+                    "success" => true,
+                    "message" => "the image is upload"
+                ],
+                200,
+            );
         }
-        if ($imageNumber < 5) {
-            while ($imageNumberTemp < 4) {
-                try {
-                    unlink(getcwd() . "/assets/book-images/" . $parametersAsArray['images'][0]['bookId'] . "/" . $parametersAsArray['images'][0]['bookId'] . '-' . $imageNumberTemp . strrchr($pictureUrl, '.'));
-                    $imageNumberTemp++;
-                } catch (\Throwable $th) {
-                   break;
-                }
-            }
-        }
-        return $this->json(
-            [
-                "success" => true,
-                "message" => "the image is upload"
-            ],
-            200,
-        );
     }
 
     #[Route('/delete_image', name: 'deleteImage')]
