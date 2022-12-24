@@ -89,7 +89,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $forceToUpdatePassword;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
-    #[Groups(["user:read", "user:write","product:read", "product:write"])]
+    #[Groups(["user:read", "user:write"])]
     private Collection $comments;
 
     public function __construct()
