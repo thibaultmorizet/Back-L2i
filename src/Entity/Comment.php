@@ -30,12 +30,12 @@ class Comment
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["product:read", "product:write", "comment:read", "comment:write"])]
+    #[Groups(["product:read", "comment:read", "comment:write"])]
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["comment:read", "comment:write", "user:read", "user:write"])]
+    #[Groups(["comment:read", "comment:write", "user:read"])]
     private ?Product $product = null;
 
     public function getId(): ?int
