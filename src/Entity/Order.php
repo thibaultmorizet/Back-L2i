@@ -54,7 +54,7 @@ class Order
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
-    private array $booklist = [];
+    private array $productlist = [];
 
     #[ORM\ManyToOne(inversedBy: 'orders', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -129,14 +129,14 @@ class Order
         return $this;
     }
 
-    public function getBooklist(): array
+    public function getProductlist(): array
     {
-        return $this->booklist;
+        return $this->productlist;
     }
 
-    public function setBooklist(?array $booklist): self
+    public function setProductlist(?array $productlist): self
     {
-        $this->booklist = $booklist;
+        $this->productlist = $productlist;
 
         return $this;
     }

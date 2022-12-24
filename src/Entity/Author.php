@@ -21,28 +21,28 @@ class Author
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["book:read", "book:write", "author:read", "author:write"])]
+    #[Groups(["product:read", "product:write", "author:read", "author:write"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read", "book:write", "author:read", "author:write"])]
+    #[Groups(["product:read", "product:write", "author:read", "author:write"])]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read", "book:write", "author:read", "author:write"])]
+    #[Groups(["product:read", "product:write", "author:read", "author:write"])]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read", "book:write", "author:read", "author:write"])]
+    #[Groups(["product:read", "product:write", "author:read", "author:write"])]
     private ?string $language = null;
 
-    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'author', cascade: ['persist'])]
+    #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'author', cascade: ['persist'])]
     #[Groups(["author:read"])]
-    private Collection $books;
+    private Collection $products;
 
     public function __construct()
     {
-        $this->books = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -86,40 +86,40 @@ class Author
         return $this;
     }
 
-    public function getBook(): ?Book
+    public function getProduct(): ?Product
     {
-        return $this->book;
+        return $this->product;
     }
 
-    public function setBook(?Book $book): self
+    public function setProduct(?Product $product): self
     {
-        $this->book = $book;
+        $this->product = $product;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Book>
+     * @return Collection<int, Product>
      */
-    public function getBooks(): Collection
+    public function getProducts(): Collection
     {
-        return $this->books;
+        return $this->products;
     }
 
-    public function addBook(Book $book): self
+    public function addProduct(Product $product): self
     {
-        if (!$this->books->contains($book)) {
-            $this->books->add($book);
-            $book->addAuthor($this);
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+            $product->addAuthor($this);
         }
 
         return $this;
     }
 
-    public function removeBook(Book $book): self
+    public function removeProduct(Product $product): self
     {
-        if ($this->books->removeElement($book)) {
-            $book->removeAuthor($this);
+        if ($this->products->removeElement($product)) {
+            $product->removeAuthor($this);
         }
 
         return $this;

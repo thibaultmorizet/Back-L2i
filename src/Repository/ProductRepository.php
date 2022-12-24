@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Book;
+use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Book>
+ * @extends ServiceEntityRepository<Product>
  *
- * @method Book|null find($id, $lockMode = null, $lockVersion = null)
- * @method Book|null findOneBy(array $criteria, array $orderBy = null)
- * @method Book[]    findAll()
- * @method Book[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Product|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Product|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Product[]    findAll()
+ * @method Product[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class BookRepository extends ServiceEntityRepository
+class ProductRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Book::class);
+        parent::__construct($registry, Product::class);
     }
 
-    public function add(Book $entity, bool $flush = false): void
+    public function add(Product $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class BookRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Book $entity, bool $flush = false): void
+    public function remove(Product $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class BookRepository extends ServiceEntityRepository
     }
 
     //    /**
-    //     * @return Book[] Returns an array of Book objects
+    //     * @return Product[] Returns an array of Product objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -54,7 +54,7 @@ class BookRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Book
+    //    public function findOneBySomeField($value): ?Product
     //    {
     //        return $this->createQueryBuilder('b')
     //            ->andWhere('b.exampleField = :val')

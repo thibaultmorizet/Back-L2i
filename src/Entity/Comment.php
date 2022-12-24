@@ -31,7 +31,7 @@ class Comment
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Book $book = null;
+    private ?Product $product = null;
 
     public function getId(): ?int
     {
@@ -74,14 +74,14 @@ class Comment
         return $this;
     }
 
-    public function getBook(): ?Book
+    public function getProduct(): ?Product
     {
-        return $this->book;
+        return $this->product;
     }
 
-    public function setBook(?Book $book): self
+    public function setProduct(?Product $product): self
     {
-        $this->book = $book;
+        $this->product = $product;
 
         return $this;
     }

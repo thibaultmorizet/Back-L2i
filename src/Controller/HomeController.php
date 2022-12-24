@@ -53,7 +53,7 @@ class HomeController extends AbstractController
         $pictureFile = $parametersAsArray['data'];
         $pictureUrl = $parametersAsArray['url'];
 
-        $pictureName = $parametersAsArray['bookId'] . strrchr($pictureUrl, '.');
+        $pictureName = $parametersAsArray['productId'] . strrchr($pictureUrl, '.');
         $spl = new SplFileInfo($pictureName);
 
         $extension = strtolower($spl->getExtension());
@@ -71,7 +71,7 @@ class HomeController extends AbstractController
 
             $fileSystem = new Filesystem();
 
-            $current_dir_path = getcwd() . "/assets/book-images/";
+            $current_dir_path = getcwd() . "/assets/product-images/";
             $decodePicture = base64_decode($pictureFile);
 
             $fileSystem->dumpFile($current_dir_path . $pictureName, $decodePicture);

@@ -2,11 +2,11 @@
 
 namespace App\DataPersister;
 
-use App\Entity\Book;
+use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 
-class BookDataPersister implements ContextAwareDataPersisterInterface
+class ProductDataPersister implements ContextAwareDataPersisterInterface
 {
     private $em;
     public function __construct(EntityManagerInterface $em)
@@ -16,7 +16,7 @@ class BookDataPersister implements ContextAwareDataPersisterInterface
 
     public function supports($data, array $context = []): bool
     {
-        return $data instanceof Book;
+        return $data instanceof Product;
     }
 
     public function persist($data, array $context = [])

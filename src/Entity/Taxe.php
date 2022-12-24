@@ -26,20 +26,20 @@ class Taxe
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["book:read", "book:write", "taxe:read", "taxe:write"])]
+    #[Groups(["product:read", "product:write", "taxe:read", "taxe:write"])]
     private ?int $id = null;
 
     #[ORM\Column(length:255, nullable: true)]
-    #[Groups(["book:read", "book:write", "taxe:read", "taxe:write"])]
+    #[Groups(["product:read", "product:write", "taxe:read", "taxe:write"])]
     private ?float $tva = null;
 
-    #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Book::class, cascade: ['persist'])]
+    #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Product::class, cascade: ['persist'])]
     #[Groups(["taxe:read"])]
-    private Collection $books;
+    private Collection $products;
 
     public function __construct()
     {
-        $this->books = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -59,42 +59,42 @@ class Taxe
         return $this;
     }
 
-    public function getBook(): ?Book
+    public function getProduct(): ?Product
     {
-        return $this->book;
+        return $this->product;
     }
 
-    public function setBook(?Book $book): self
+    public function setProduct(?Product $product): self
     {
-        $this->book = $book;
+        $this->product = $product;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Book>
+     * @return Collection<int, Product>
      */
-    public function getBooks(): Collection
+    public function getProducts(): Collection
     {
-        return $this->books;
+        return $this->products;
     }
 
-    public function addBook(Book $book): self
+    public function addProduct(Product $product): self
     {
-        if (!$this->books->contains($book)) {
-            $this->books->add($book);
-            $book->setTaxe($this);
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+            $product->setTaxe($this);
         }
 
         return $this;
     }
 
-    public function removeBook(Book $book): self
+    public function removeProduct(Product $product): self
     {
-        if ($this->books->removeElement($book)) {
+        if ($this->products->removeElement($product)) {
             // set the owning side to null (unless already changed)
-            if ($book->getTaxe() === $this) {
-                $book->setTaxe(null);
+            if ($product->getTaxe() === $this) {
+                $product->setTaxe(null);
             }
         }
 
