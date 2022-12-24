@@ -109,6 +109,7 @@ class Product
     private ?int $soldnumber = null;
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Comment::class, orphanRemoval: true)]
+    #[Groups(["product:read", "product:write"])]
     private Collection $comments;
 
     public function __construct()
