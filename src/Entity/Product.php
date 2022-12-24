@@ -50,54 +50,54 @@ class Product
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["product:read", "product:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?string $title = null;
 
     #[ORM\Column(length: 10000, nullable: true)]
-    #[Groups(["product:read", "product:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?string $summary = null;
 
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?float $unitpriceht = null;
 
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?int $stock = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["product:read", "product:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?string $isbn = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?string $image = null;
 
     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'products', cascade: ['persist'])]
-    #[Groups(["product:read", "product:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private Collection $author;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'products', cascade: ['persist'])]
-    #[Groups(["product:read", "product:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private Collection $category;
 
     #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["product:read", "product:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?Format $format = null;
 
     #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["product:read", "product:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?Editor $editor = null;
 
     #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["product:read", "product:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?Taxe $taxe = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["product:read", "product:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?string $year = null;
 
     #[ORM\Column(nullable: true)]
