@@ -2,32 +2,32 @@
 
 namespace App\Entity;
 
-use App\Repository\TypeRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiResource;
 
-#[ORM\Entity(repositoryClass: TypeRepository::class)]
+#[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => "type:read"],
-    denormalizationContext: ['groups' => "type:write"]
+    normalizationContext: ['groups' => "category:read"],
+    denormalizationContext: ['groups' => "category:write"]
 )]
-class Type
+class Category
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["book:read","book:write", "type:read", "type:write"])]
+    #[Groups(["book:read","book:write", "category:read", "category:write"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read","book:write", "type:read", "type:write"])]
+    #[Groups(["book:read","book:write", "category:read", "category:write"])]
     private ?string $name = null;
 
-    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'type', cascade: ['persist'])]
-    #[Groups(["type:read"])]
+    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'category', cascade: ['persist'])]
+    #[Groups(["category:read"])]
     private Collection $books;
 
     public function __construct()
@@ -64,7 +64,7 @@ class Type
     {
         if (!$this->books->contains($book)) {
             $this->books->add($book);
-            $book->addType($this);
+            $book->addCategory($this);
         }
 
         return $this;
@@ -73,7 +73,7 @@ class Type
     public function removeBook(Book $book): self
     {
         if ($this->books->removeElement($book)) {
-            $book->removeType($this);
+            $book->removeCategory($this);
         }
 
         return $this;

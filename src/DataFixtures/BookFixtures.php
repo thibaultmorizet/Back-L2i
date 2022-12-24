@@ -7,7 +7,7 @@ use App\Entity\Author;
 use App\Entity\Book;
 use App\Entity\Editor;
 use App\Entity\Format;
-use App\Entity\Type;
+use App\Entity\Category;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -90,19 +90,19 @@ class BookFixtures extends Fixture
         $editors[4]->setName("Anquetil Roxane");
         $manager->persist($editors[4]);
 
-        $types = array();
+        $categorys = array();
 
-        $types[0] = new Type();
-        $types[0]->setName("Programmation et langages");
-        $manager->persist($types[0]);
+        $categorys[0] = new Category();
+        $categorys[0]->setName("Programmation et langages");
+        $manager->persist($categorys[0]);
 
-        $types[1] = new Type();
-        $types[1]->setName("Réseaux et télécommunication");
-        $manager->persist($types[1]);
+        $categorys[1] = new Category();
+        $categorys[1]->setName("Réseaux et télécommunication");
+        $manager->persist($categorys[1]);
 
-        $types[2] = new Type();
-        $types[2]->setName("Base de données");
-        $manager->persist($types[2]);
+        $categorys[2] = new Category();
+        $categorys[2]->setName("Base de données");
+        $manager->persist($categorys[2]);
 
         // nouvelle boucle pour créer des livres
 
@@ -128,7 +128,7 @@ class BookFixtures extends Fixture
         $livres[0]->setFormat($formats[0]);
         $livres[0]->setEditor($editors[0]);
         $livres[0]->addAuthor($auteurs[0]);
-        $livres[0]->addType($types[0]);
+        $livres[0]->addCategory($categorys[0]);
         $livres[0]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[0]);
@@ -149,7 +149,7 @@ class BookFixtures extends Fixture
         $livres[1]->setFormat($formats[0]);
         $livres[1]->setEditor($editors[1]);
         $livres[1]->addAuthor($auteurs[1]);
-        $livres[1]->addType($types[0]);
+        $livres[1]->addCategory($categorys[0]);
         $livres[1]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[1]);
@@ -170,7 +170,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[2]->setFormat($formats[0]);
         $livres[2]->setEditor($editors[2]);
         $livres[2]->addAuthor($auteurs[2]);
-        $livres[2]->addType($types[0]);
+        $livres[2]->addCategory($categorys[0]);
         $livres[2]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[2]);
@@ -191,7 +191,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[3]->setFormat($formats[1]);
         $livres[3]->setEditor($editors[3]);
         $livres[3]->addAuthor($auteurs[3]);
-        $livres[3]->addType($types[2]);
+        $livres[3]->addCategory($categorys[2]);
         $livres[3]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[3]);
@@ -210,7 +210,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[4]->setFormat($formats[0]);
         $livres[4]->setEditor($editors[4]);
         $livres[4]->addAuthor($auteurs[4]);
-        $livres[4]->addType($types[0]);
+        $livres[4]->addCategory($categorys[0]);
         $livres[4]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[4]);
@@ -228,7 +228,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[5]->setFormat($formats[0]);
         $livres[5]->setEditor($editors[4]);
         $livres[5]->addAuthor($auteurs[4]);
-        $livres[5]->addType($types[0]);
+        $livres[5]->addCategory($categorys[0]);
         $livres[5]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[5]);
@@ -248,7 +248,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[6]->setFormat($formats[0]);
         $livres[6]->setEditor($editors[1]);
         $livres[6]->addAuthor($auteurs[5]);
-        $livres[6]->addType($types[1]);
+        $livres[6]->addCategory($categorys[1]);
         $livres[6]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[6]);
@@ -276,7 +276,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[7]->setFormat($formats[0]);
         $livres[7]->setEditor($editors[0]);
         $livres[7]->addAuthor($auteurs[0]);
-        $livres[7]->addType($types[0]);
+        $livres[7]->addCategory($categorys[0]);
         $livres[7]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[7]);
@@ -297,7 +297,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[8]->setFormat($formats[0]);
         $livres[8]->setEditor($editors[1]);
         $livres[8]->addAuthor($auteurs[1]);
-        $livres[8]->addType($types[0]);
+        $livres[8]->addCategory($categorys[0]);
         $livres[8]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[8]);
@@ -318,7 +318,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[9]->setFormat($formats[0]);
         $livres[9]->setEditor($editors[2]);
         $livres[9]->addAuthor($auteurs[2]);
-        $livres[9]->addType($types[0]);
+        $livres[9]->addCategory($categorys[0]);
         $livres[9]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[9]);
@@ -339,7 +339,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[10]->setFormat($formats[1]);
         $livres[10]->setEditor($editors[3]);
         $livres[10]->addAuthor($auteurs[3]);
-        $livres[10]->addType($types[2]);
+        $livres[10]->addCategory($categorys[2]);
         $livres[10]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[10]);
@@ -358,7 +358,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[11]->setFormat($formats[0]);
         $livres[11]->setEditor($editors[4]);
         $livres[11]->addAuthor($auteurs[4]);
-        $livres[11]->addType($types[0]);
+        $livres[11]->addCategory($categorys[0]);
         $livres[11]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[11]);
@@ -376,7 +376,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[12]->setFormat($formats[0]);
         $livres[12]->setEditor($editors[4]);
         $livres[12]->addAuthor($auteurs[4]);
-        $livres[12]->addType($types[0]);
+        $livres[12]->addCategory($categorys[0]);
         $livres[12]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[12]);
@@ -396,7 +396,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[13]->setFormat($formats[0]);
         $livres[13]->setEditor($editors[1]);
         $livres[13]->addAuthor($auteurs[5]);
-        $livres[13]->addType($types[1]);
+        $livres[13]->addCategory($categorys[1]);
         $livres[13]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[13]);
@@ -426,7 +426,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[14]->setFormat($formats[0]);
         $livres[14]->setEditor($editors[0]);
         $livres[14]->addAuthor($auteurs[0]);
-        $livres[14]->addType($types[0]);
+        $livres[14]->addCategory($categorys[0]);
         $livres[14]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[14]);
@@ -447,7 +447,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[15]->setFormat($formats[0]);
         $livres[15]->setEditor($editors[1]);
         $livres[15]->addAuthor($auteurs[1]);
-        $livres[15]->addType($types[0]);
+        $livres[15]->addCategory($categorys[0]);
         $livres[15]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[15]);
@@ -468,7 +468,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[16]->setFormat($formats[0]);
         $livres[16]->setEditor($editors[2]);
         $livres[16]->addAuthor($auteurs[2]);
-        $livres[16]->addType($types[0]);
+        $livres[16]->addCategory($categorys[0]);
         $livres[16]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[16]);
@@ -489,7 +489,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[17]->setFormat($formats[1]);
         $livres[17]->setEditor($editors[3]);
         $livres[17]->addAuthor($auteurs[3]);
-        $livres[17]->addType($types[2]);
+        $livres[17]->addCategory($categorys[2]);
         $livres[17]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[17]);
@@ -508,7 +508,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[18]->setFormat($formats[0]);
         $livres[18]->setEditor($editors[4]);
         $livres[18]->addAuthor($auteurs[4]);
-        $livres[18]->addType($types[0]);
+        $livres[18]->addCategory($categorys[0]);
         $livres[18]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[18]);
@@ -526,7 +526,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[19]->setFormat($formats[0]);
         $livres[19]->setEditor($editors[4]);
         $livres[19]->addAuthor($auteurs[4]);
-        $livres[19]->addType($types[0]);
+        $livres[19]->addCategory($categorys[0]);
         $livres[19]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[19]);
@@ -546,7 +546,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[20]->setFormat($formats[0]);
         $livres[20]->setEditor($editors[1]);
         $livres[20]->addAuthor($auteurs[5]);
-        $livres[20]->addType($types[1]);
+        $livres[20]->addCategory($categorys[1]);
         $livres[20]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[20]);
@@ -579,7 +579,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[21]->setFormat($formats[0]);
         $livres[21]->setEditor($editors[0]);
         $livres[21]->addAuthor($auteurs[0]);
-        $livres[21]->addType($types[0]);
+        $livres[21]->addCategory($categorys[0]);
         $livres[21]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[21]);
@@ -600,7 +600,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[22]->setFormat($formats[0]);
         $livres[22]->setEditor($editors[1]);
         $livres[22]->addAuthor($auteurs[1]);
-        $livres[22]->addType($types[0]);
+        $livres[22]->addCategory($categorys[0]);
         $livres[22]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[22]);
@@ -621,7 +621,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[23]->setFormat($formats[0]);
         $livres[23]->setEditor($editors[2]);
         $livres[23]->addAuthor($auteurs[2]);
-        $livres[23]->addType($types[0]);
+        $livres[23]->addCategory($categorys[0]);
         $livres[23]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[23]);
@@ -642,7 +642,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[24]->setFormat($formats[1]);
         $livres[24]->setEditor($editors[3]);
         $livres[24]->addAuthor($auteurs[3]);
-        $livres[24]->addType($types[2]);
+        $livres[24]->addCategory($categorys[2]);
         $livres[24]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[24]);
@@ -661,7 +661,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[25]->setFormat($formats[0]);
         $livres[25]->setEditor($editors[4]);
         $livres[25]->addAuthor($auteurs[4]);
-        $livres[25]->addType($types[0]);
+        $livres[25]->addCategory($categorys[0]);
         $livres[25]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[25]);
@@ -679,7 +679,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[26]->setFormat($formats[0]);
         $livres[26]->setEditor($editors[4]);
         $livres[26]->addAuthor($auteurs[4]);
-        $livres[26]->addType($types[0]);
+        $livres[26]->addCategory($categorys[0]);
         $livres[26]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[26]);
@@ -699,7 +699,7 @@ Coder proprement est décomposé en trois parties. La première décrit les prin
         $livres[27]->setFormat($formats[0]);
         $livres[27]->setEditor($editors[1]);
         $livres[27]->addAuthor($auteurs[5]);
-        $livres[27]->addType($types[1]);
+        $livres[27]->addCategory($categorys[1]);
         $livres[27]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
 
         $manager->persist($livres[27]);

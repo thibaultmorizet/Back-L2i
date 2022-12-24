@@ -2,11 +2,11 @@
 
 namespace App\DataPersister;
 
-use App\Entity\Type;
+use App\Entity\Category;
 use Doctrine\ORM\EntityManagerInterface;
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 
-class TypeDataPersister implements ContextAwareDataPersisterInterface
+class CategoryDataPersister implements ContextAwareDataPersisterInterface
 {
     private $em;
     public function __construct(EntityManagerInterface $em)
@@ -16,7 +16,7 @@ class TypeDataPersister implements ContextAwareDataPersisterInterface
 
     public function supports($data, array $context = []): bool
     {
-        return $data instanceof Type;
+        return $data instanceof Category;
     }
 
     public function persist($data, array $context = [])

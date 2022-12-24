@@ -33,7 +33,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 #[ApiFilter(
     SearchFilter::class,
-    properties: ['format.name' => "iexact", 'type.name' => "iexact"]
+    properties: ['format.name' => "iexact", 'category.name' => "iexact"]
 )]
 #[ApiFilter(
     CustomMultipleSearchFilter::class,
@@ -77,9 +77,9 @@ class Book
     #[Groups(["book:read", "book:write"])]
     private Collection $author;
 
-    #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'books', cascade: ['persist'])]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'books', cascade: ['persist'])]
     #[Groups(["book:read", "book:write"])]
-    private Collection $type;
+    private Collection $category;
 
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -112,7 +112,7 @@ class Book
     {
         $this->orders = new ArrayCollection();
         $this->author = new ArrayCollection();
-        $this->type = new ArrayCollection();
+        $this->category = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -217,25 +217,25 @@ class Book
     }
 
     /**
-     * @return Collection<int, Type>
+     * @return Collection<int, Category>
      */
-    public function getType(): Collection
+    public function getCategory(): Collection
     {
-        return $this->type;
+        return $this->category;
     }
 
-    public function addType(Type $bookType): self
+    public function addCategory(Category $bookCategory): self
     {
-        if (!$this->type->contains($bookType)) {
-            $this->type->add($bookType);
+        if (!$this->category->contains($bookCategory)) {
+            $this->category->add($bookCategory);
         }
 
         return $this;
     }
 
-    public function removeType(Type $bookType): self
+    public function removeCategory(Category $bookCategory): self
     {
-        $this->type->removeElement($bookType);
+        $this->category->removeElement($bookCategory);
 
         return $this;
     }
