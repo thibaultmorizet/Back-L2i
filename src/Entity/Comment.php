@@ -22,7 +22,7 @@ class Comment
     #[ORM\Column(length: 500)]
     private ?string $text = null;
 
-    #[ORM\Column(options:"CURRENT_TIMESTAMP")]
+    #[ORM\Column(options:["CURRENT_TIMESTAMP"])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
