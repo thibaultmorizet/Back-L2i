@@ -43,6 +43,7 @@ security:
     - { path: ^/ws/taxes, roles: PUBLIC_ACCESS }
     - { path: ^/ws/editors, roles: PUBLIC_ACCESS }
     - { path: ^/ws/images, roles: PUBLIC_ACCESS }
+    - { path: ^/ws/comments, roles: PUBLIC_ACCESS }
     - { path: ^/ws/authors, roles: PUBLIC_ACCESS }
     - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
     - { path: ^/mail, roles: PUBLIC_ACCESS }
