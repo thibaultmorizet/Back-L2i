@@ -19,11 +19,11 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read","product:write", "category:read", "category:write"])]
+    #[Groups(["product:read","product:write", "category:read", "category:write","user:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read","product:write", "category:read", "category:write"])]
+    #[Groups(["product:read","product:write", "category:read", "category:write","user:read"])]
     private ?string $name = null;
 
     #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'category', cascade: ['persist'])]

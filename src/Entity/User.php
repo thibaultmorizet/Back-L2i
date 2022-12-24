@@ -43,15 +43,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
+    #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read"])]
     private $lastname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
+    #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read"])]
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true, unique: true)]
-    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
+    #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read"])]
     private $email;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -73,11 +73,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $orders;
 
     #[ORM\Column(type: 'json')]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write", "product:read"])]
     private $roles = [];
 
     #[ORM\Column(type: 'string', length: 2, nullable: false)]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write", "product:read"])]
     private $language;
 
     #[ORM\Column(type: 'string', length: 1000, nullable: false)]

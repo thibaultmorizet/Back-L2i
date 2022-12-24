@@ -21,19 +21,19 @@ class Author
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "author:read", "author:write"])]
+    #[Groups(["product:read", "product:write", "author:read", "author:write", "user:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "author:read", "author:write"])]
+    #[Groups(["product:read", "product:write", "author:read", "author:write", "user:read"])]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "author:read", "author:write"])]
+    #[Groups(["product:read", "product:write", "author:read", "author:write", "user:read"])]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "author:read", "author:write"])]
+    #[Groups(["product:read", "product:write", "author:read", "author:write", "user:read"])]
     private ?string $language = null;
 
     #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'author', cascade: ['persist'])]
