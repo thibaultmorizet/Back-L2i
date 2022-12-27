@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     normalizationContext: ['groups' => "comment:read"],
     denormalizationContext: ['groups' => "comment:write"],
-    order: ['createdAt' => 'ASC']
+    order: ['createdAt' => 'DESC']
 )]
 class Comment
 {
