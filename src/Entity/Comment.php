@@ -11,7 +11,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Table(name: '`comment`')]
 #[ApiResource(
     normalizationContext: ['groups' => "comment:read"],
-    denormalizationContext: ['groups' => "comment:write"]
+    denormalizationContext: ['groups' => "comment:write"],
+    order: ['createdAt' => 'DESC']
 )]
 class Comment
 {
