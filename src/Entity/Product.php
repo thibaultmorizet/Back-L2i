@@ -25,7 +25,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
     normalizationContext: ['groups' => "product:read"],
     denormalizationContext: ['groups' => "product:write"],
-    order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC']
+    order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC', 'comments.createdAt' => 'DESC']
 )]
 #[ApiFilter(
     RangeFilter::class,
