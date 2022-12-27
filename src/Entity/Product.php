@@ -25,7 +25,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
     normalizationContext: ['groups' => "product:read"],
     denormalizationContext: ['groups' => "product:write"],
-    order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC', 'comments.createdAt' => 'DESC']
+    order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC']
 )]
 #[ApiFilter(
     RangeFilter::class,
@@ -39,7 +39,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     CustomMultipleSearchFilter::class,
     properties: ['title' => "ipartial", 'author.firstname' => "ipartial", 'author.lastname' => "ipartial"]
 )]
-#[ApiFilter(OrderFilter::class, properties: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC', 'comments.createdAt' => 'DESC'])]
+#[ApiFilter(OrderFilter::class, properties: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'])]
 
 class Product
 {
