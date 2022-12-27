@@ -26,6 +26,7 @@ class Comment
     private ?string $text = null;
 
     #[ORM\Column(options: ["default" => 'CURRENT_TIMESTAMP'])]
+    #[Groups(["product:read", "comment:read", "user:read"])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
