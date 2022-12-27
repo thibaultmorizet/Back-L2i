@@ -39,7 +39,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     CustomMultipleSearchFilter::class,
     properties: ['title' => "ipartial", 'author.firstname' => "ipartial", 'author.lastname' => "ipartial"]
 )]
-#[ApiFilter(OrderFilter::class, properties: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'])]
+#[ApiFilter(OrderFilter::class, properties: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC', 'comments.createdAt' => 'DESC'])]
 
 class Product
 {
