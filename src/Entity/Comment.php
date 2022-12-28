@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,6 +14,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
     normalizationContext: ['groups' => "comment:read"],
     denormalizationContext: ['groups' => "comment:write"],
     order: ['createdAt' => 'DESC']
+)]
+#[ApiFilter(
+    NumericFilter::class,
+    properties: ["id" => "exact"]
 )]
 class Comment
 {
