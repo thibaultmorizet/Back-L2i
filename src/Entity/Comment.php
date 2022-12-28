@@ -32,7 +32,7 @@ class Comment
     #[Groups(["product:read", "product:write", "comment:read", "comment:write", "user:read", "user:write"])]
     private ?string $text = null;
 
-    #[ORM\Column(options: ["default" => 'CURRENT_TIMESTAMP'])]
+    #[ORM\Column(nullable: true, options: ["default" => 'CURRENT_TIMESTAMP'])]
     #[Groups(["product:read", "comment:read", "user:read"])]
     private ?\DateTimeImmutable $createdAt = null;
 
