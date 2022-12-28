@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     normalizationContext: ['groups' => "comment:read"],
     denormalizationContext: ['groups' => "comment:write"],
-    order: ['createdAt' => 'DESC']
+    order: ['createdat' => 'DESC']
 )]
 #[ApiFilter(
     NumericFilter::class,
@@ -35,7 +35,7 @@ class Comment
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Groups(["product:read", "comment:read", "user:read"])]
-    private ?\DateTimeInterface $createdAt = null;
+    private ?\DateTimeInterface $createdat = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
@@ -64,14 +64,14 @@ class Comment
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getcreatedat(): ?\DateTimeInterface
     {
-        return $this->createdAt;
+        return $this->createdat;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setcreatedat(\DateTimeInterface $createdat): self
     {
-        $this->createdAt = $createdAt;
+        $this->createdat = $createdat;
 
         return $this;
     }
