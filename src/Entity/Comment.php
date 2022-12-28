@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CommentRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -32,9 +33,9 @@ class Comment
     #[Groups(["product:read", "product:write", "comment:read", "comment:write", "user:read", "user:write"])]
     private ?string $text = null;
 
-    #[ORM\Column(options: ["default" => 'CURRENT_TIMESTAMP'])]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Groups(["product:read", "comment:read", "user:read"])]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?\DateTimeInterface $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
