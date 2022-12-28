@@ -35,7 +35,7 @@ class Comment
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, options: ["default" => 'CURRENT_TIMESTAMP'], nullable: true)]
     #[Groups(["product:read", "comment:read", "user:read"])]
-    private ?\DateTimeInterface $createdAt = null;
+    private ?\DateTimeInterface $createdAt;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
