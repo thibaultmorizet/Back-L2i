@@ -44,7 +44,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 #[ApiFilter(OrderFilter::class, properties: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'])]
 #[InheritanceType('JOINED')]
-#[DiscriminatorColumn(name: 'discr', type: 'string')]
+#[DiscriminatorColumn(name: 'type', type: 'string')]
 #[DiscriminatorMap(['product' => Product::class, 'book' => Book::class])]
 
 class Product
@@ -70,6 +70,10 @@ class Product
     #[ORM\Column]
     #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?int $stock = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
+    private ?string $type = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["product:read", "product:write", "user:read", "user:write"])]
@@ -163,6 +167,18 @@ class Product
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
