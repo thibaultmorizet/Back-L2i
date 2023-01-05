@@ -16,15 +16,13 @@ use App\Entity\Product;
     paginationClientItemsPerPage: true,
     normalizationContext: ['groups' => "book:read"],
     denormalizationContext: ['groups' => "book:write"],
-   /*  order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'] */
+    order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC']
 )]
-class Book 
+class Book extends Product
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
     #[ORM\Column]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "comment:read", "comment:write"])]
-    private ?int $id = null;
+    private ?int $productId = null;
 
     #[ORM\Column(nullable: true)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
@@ -54,9 +52,9 @@ class Book
         $this->category = new ArrayCollection(); */
     }
 
-    public function getId(): ?int
+    public function getProductId(): ?int
     {
-        return $this->id;
+        return $this->productId;
     }
 
     public function getIsbn(): ?string
