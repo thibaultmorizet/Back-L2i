@@ -26,20 +26,20 @@ class Format
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "format:read", "format:write","user:read"])]
+    #[Groups(["book:read", "book:write", "format:read", "format:write","user:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "format:read", "format:write","user:read"])]
+    #[Groups(["book:read", "book:write", "format:read", "format:write","user:read"])]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'format', targetEntity: Product::class, cascade: ['persist'])]
+    #[ORM\OneToMany(mappedBy: 'format', targetEntity: Book::class, cascade: ['persist'])]
     #[Groups(["format:read"])]
-    private Collection $products;
+    private Collection $books;
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->books = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -59,42 +59,42 @@ class Format
         return $this;
     }
 
-    public function getProduct(): ?Product
+    public function getBook(): ?Book
     {
-        return $this->product;
+        return $this->book;
     }
 
-    public function setProduct(?Product $product): self
+    public function setBook(?Book $book): self
     {
-        $this->product = $product;
+        $this->book = $book;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Product>
+     * @return Collection<int, Book>
      */
-    public function getProducts(): Collection
+    public function getBooks(): Collection
     {
-        return $this->products;
+        return $this->books;
     }
 
-    public function addProduct(Product $product): self
+    public function addBook(Book $book): self
     {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
-            $product->setFormat($this);
+        if (!$this->books->contains($book)) {
+            $this->books->add($book);
+            $book->setFormat($this);
         }
 
         return $this;
     }
 
-    public function removeProduct(Product $product): self
+    public function removeBook(Book $book): self
     {
-        if ($this->products->removeElement($product)) {
+        if ($this->books->removeElement($book)) {
             // set the owning side to null (unless already changed)
-            if ($product->getFormat() === $this) {
-                $product->setFormat(null);
+            if ($book->getFormat() === $this) {
+                $book->setFormat(null);
             }
         }
 

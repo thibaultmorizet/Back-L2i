@@ -21,28 +21,28 @@ class Author
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "author:read", "author:write", "user:read"])]
+    #[Groups(["book:read", "book:write", "author:read", "author:write", "user:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "author:read", "author:write", "user:read"])]
+    #[Groups(["book:read", "book:write", "author:read", "author:write", "user:read"])]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "author:read", "author:write", "user:read"])]
+    #[Groups(["book:read", "book:write", "author:read", "author:write", "user:read"])]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "author:read", "author:write", "user:read"])]
+    #[Groups(["book:read", "book:write", "author:read", "author:write", "user:read"])]
     private ?string $language = null;
 
-    #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'author', cascade: ['persist'])]
+    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'author', cascade: ['persist'])]
     #[Groups(["author:read"])]
-    private Collection $products;
+    private Collection $books;
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->books = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -86,40 +86,40 @@ class Author
         return $this;
     }
 
-    public function getProduct(): ?Product
+    public function getBook(): ?Book
     {
-        return $this->product;
+        return $this->book;
     }
 
-    public function setProduct(?Product $product): self
+    public function setBook(?Book $book): self
     {
-        $this->product = $product;
+        $this->book = $book;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Product>
+     * @return Collection<int, Book>
      */
-    public function getProducts(): Collection
+    public function getBooks(): Collection
     {
-        return $this->products;
+        return $this->books;
     }
 
-    public function addProduct(Product $product): self
+    public function addBook(Book $book): self
     {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
-            $product->addAuthor($this);
+        if (!$this->books->contains($book)) {
+            $this->books->add($book);
+            $book->addAuthor($this);
         }
 
         return $this;
     }
 
-    public function removeProduct(Product $product): self
+    public function removeBook(Book $book): self
     {
-        if ($this->products->removeElement($product)) {
-            $product->removeAuthor($this);
+        if ($this->books->removeElement($book)) {
+            $book->removeAuthor($this);
         }
 
         return $this;

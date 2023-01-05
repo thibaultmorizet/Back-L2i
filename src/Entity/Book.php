@@ -26,20 +26,20 @@ class Book extends Product
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private ?string $isbn = null;
 
-    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'products', cascade: ['persist'])]
+    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private Collection $author;
 
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'products', cascade: ['persist'])]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'books', cascade: ['persist'])]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private Collection $category;
 
-    #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
+    #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private ?Format $format = null;
 
-    #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
+    #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private ?Editor $editor = null;
@@ -75,18 +75,18 @@ class Book extends Product
         return $this->category;
     }
 
-    public function addCategory(Category $productCategory): self
+    public function addCategory(Category $bookCategory): self
     {
-        if (!$this->category->contains($productCategory)) {
-            $this->category->add($productCategory);
+        if (!$this->category->contains($bookCategory)) {
+            $this->category->add($bookCategory);
         }
 
         return $this;
     }
 
-    public function removeCategory(Category $productCategory): self
+    public function removeCategory(Category $bookCategory): self
     {
-        $this->category->removeElement($productCategory);
+        $this->category->removeElement($bookCategory);
 
         return $this;
     }
@@ -123,18 +123,18 @@ class Book extends Product
         return $this->author;
     }
 
-    public function addAuthor(Author $productAuthor): self
+    public function addAuthor(Author $bookAuthor): self
     {
-        if (!$this->author->contains($productAuthor)) {
-            $this->author->add($productAuthor);
+        if (!$this->author->contains($bookAuthor)) {
+            $this->author->add($bookAuthor);
         }
 
         return $this;
     }
 
-    public function removeAuthor(Author $productAuthor): self
+    public function removeAuthor(Author $bookAuthor): self
     {
-        $this->author->removeElement($productAuthor);
+        $this->author->removeElement($bookAuthor);
 
         return $this;
     }

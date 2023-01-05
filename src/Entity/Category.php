@@ -19,20 +19,20 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read","product:write", "category:read", "category:write","user:read"])]
+    #[Groups(["book:read","book:write", "category:read", "category:write","user:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read","product:write", "category:read", "category:write","user:read"])]
+    #[Groups(["book:read","book:write", "category:read", "category:write","user:read"])]
     private ?string $name = null;
 
-    #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'category', cascade: ['persist'])]
+    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'category', cascade: ['persist'])]
     #[Groups(["category:read"])]
-    private Collection $products;
+    private Collection $books;
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->books = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -53,27 +53,27 @@ class Category
     }
 
     /**
-     * @return Collection<int, Product>
+     * @return Collection<int, Book>
      */
-    public function getProducts(): Collection
+    public function getBooks(): Collection
     {
-        return $this->products;
+        return $this->books;
     }
 
-    public function addProduct(Product $product): self
+    public function addBook(Book $book): self
     {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
-            $product->addCategory($this);
+        if (!$this->books->contains($book)) {
+            $this->books->add($book);
+            $book->addCategory($this);
         }
 
         return $this;
     }
 
-    public function removeProduct(Product $product): self
+    public function removeBook(Book $book): self
     {
-        if ($this->products->removeElement($product)) {
-            $product->removeCategory($this);
+        if ($this->books->removeElement($book)) {
+            $book->removeCategory($this);
         }
 
         return $this;
