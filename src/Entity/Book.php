@@ -16,7 +16,7 @@ use App\Entity\Product;
     paginationClientItemsPerPage: true,
     normalizationContext: ['groups' => "book:read"],
     denormalizationContext: ['groups' => "book:write"],
-    order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC']
+   /*  order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'] */
 )]
 class Book 
 {
