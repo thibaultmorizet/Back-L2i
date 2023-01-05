@@ -71,10 +71,10 @@ class Product
     #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?int $stock = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+/*     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?string $discr = null;
-
+ */
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?string $image = null;
@@ -171,7 +171,7 @@ class Product
         return $this;
     }
 
-    public function getDiscr(): ?string
+/*     public function getDiscr(): ?string
     {
         return $this->discr;
     }
@@ -182,7 +182,7 @@ class Product
 
         return $this;
     }
-
+ */
     public function getTaxe(): ?Taxe
     {
         return $this->taxe;
