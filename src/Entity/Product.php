@@ -42,6 +42,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
     CustomMultipleSearchFilter::class,
     properties: ['title' => "ipartial", 'author.firstname' => "ipartial", 'author.lastname' => "ipartial"]
 )]
+#[ApiFilter(
+    DiscriminatorFilter::class
+)]
 #[ApiFilter(OrderFilter::class, properties: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'])]
 #[InheritanceType('JOINED')]
 #[DiscriminatorColumn(name: 'type', type: 'string')]
