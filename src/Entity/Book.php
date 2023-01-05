@@ -17,14 +17,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class Book extends Product
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
     #[ORM\Column]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "comment:read", "comment:write"])]
     private ?int $id = null;
-
-    #[ORM\Column]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "comment:read", "comment:write"])]
-    private ?int $productId = null;
 
     #[ORM\Column(nullable: true)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
@@ -58,18 +53,7 @@ class Book extends Product
     {
         return $this->id;
     }
-    
-    public function getProductId(): ?int
-    {
-        return $this->productId;
-    }
 
-    public function setProductId(int $productId): self
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
     public function getIsbn(): ?string
     {
         return $this->isbn;
