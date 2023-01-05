@@ -45,7 +45,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiFilter(OrderFilter::class, properties: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'])]
 #[InheritanceType('JOINED')]
 #[DiscriminatorColumn(name: 'discr', type: 'string')]
-#[DiscriminatorMap(['product' => Product::class, 'book' => Book::class])]
+#[DiscriminatorMap(['book' => Book::class])]
 
 class Product
 {
@@ -71,10 +71,6 @@ class Product
     #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?int $stock = null;
 
-/*     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
-    private ?string $discr = null;
- */
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?string $image = null;
@@ -171,18 +167,6 @@ class Product
         return $this;
     }
 
-/*     public function getDiscr(): ?string
-    {
-        return $this->discr;
-    }
-
-    public function setDiscr(?string $discr): self
-    {
-        $this->discr = $discr;
-
-        return $this;
-    }
- */
     public function getTaxe(): ?Taxe
     {
         return $this->taxe;
