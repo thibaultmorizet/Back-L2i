@@ -20,6 +20,8 @@ use App\Entity\Product;
 )]
 class Book extends Product
 {
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
     #[ORM\Column]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "comment:read", "comment:write"])]
     private ?int $id = null;
@@ -28,7 +30,7 @@ class Book extends Product
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private ?string $isbn = null;
 
-/*     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
+    /*     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private Collection $author;
 
@@ -48,7 +50,7 @@ class Book extends Product
 
     public function __construct()
     {
-     /*    $this->author = new ArrayCollection();
+        /*    $this->author = new ArrayCollection();
         $this->category = new ArrayCollection(); */
     }
 
@@ -72,7 +74,7 @@ class Book extends Product
     /**
      * @return Collection<int, Category>
      */
-   /*  public function getCategory(): Collection
+    /*  public function getCategory(): Collection
     {
         return $this->category;
     }
@@ -93,7 +95,7 @@ class Book extends Product
         return $this;
     } */
 
-  /*   public function getFormat(): ?Format
+    /*   public function getFormat(): ?Format
     {
         return $this->format;
     }
@@ -120,7 +122,7 @@ class Book extends Product
     /**
      * @return Collection<int, Author>
      */
-/*     public function getAuthor(): Collection
+    /*     public function getAuthor(): Collection
     {
         return $this->author;
     }
