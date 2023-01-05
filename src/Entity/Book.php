@@ -20,7 +20,7 @@ class Book extends Product
     #[ORM\GeneratedValue]
     #[ORM\Column]
     #[Groups(["product:read", "product:write", "book:read", "book:write"])]
-    private ?int $id = null;
+    private ?int $productId = null;
 
     #[ORM\Column(nullable: true)]
     #[Groups(["product:read", "product:write", "user:read", "user:write"])]
@@ -43,15 +43,16 @@ class Book extends Product
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?Editor $editor = null;
+
     public function __construct()
     {
         $this->author = new ArrayCollection();
         $this->category = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getProductId(): ?int
     {
-        return $this->id;
+        return $this->productId;
     }
 
     public function getIsbn(): ?string
@@ -113,7 +114,7 @@ class Book extends Product
 
         return $this;
     }
-    
+
     /**
      * @return Collection<int, Author>
      */
