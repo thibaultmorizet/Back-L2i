@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
 
 class DiscriminatorFilter extends AbstractContextAwareFilter implements SearchFilterInterface
-{
+
 {
     const FILTER_RESOURCE_TYPE_PROPERTY = 'type';
 
