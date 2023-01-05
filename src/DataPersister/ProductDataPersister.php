@@ -15,7 +15,7 @@ class ProductDataPersister implements ContextAwareDataPersisterInterface
     }
 
     public function supports($data, array $context = []): bool
-    {        var_dump(get_called_class());
+    {        var_dump($data);
 
         return $data instanceof Product;
     }
