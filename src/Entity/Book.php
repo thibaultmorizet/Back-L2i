@@ -20,6 +20,8 @@ use App\Entity\Product;
 )]
 class Book extends Product
 {
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
     #[ORM\Column]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "comment:read", "comment:write"])]
     private ?int $productId = null;
