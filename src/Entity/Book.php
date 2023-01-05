@@ -28,13 +28,13 @@ class Book extends Product
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private ?string $isbn = null;
 
-    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
+/*     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private Collection $author;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'books', cascade: ['persist'])]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
-    private Collection $category;
+    private Collection $category; */
 
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -72,7 +72,7 @@ class Book extends Product
     /**
      * @return Collection<int, Category>
      */
-    public function getCategory(): Collection
+   /*  public function getCategory(): Collection
     {
         return $this->category;
     }
@@ -91,7 +91,7 @@ class Book extends Product
         $this->category->removeElement($bookCategory);
 
         return $this;
-    }
+    } */
 
     public function getFormat(): ?Format
     {
@@ -120,7 +120,7 @@ class Book extends Product
     /**
      * @return Collection<int, Author>
      */
-    public function getAuthor(): Collection
+/*     public function getAuthor(): Collection
     {
         return $this->author;
     }
@@ -139,5 +139,5 @@ class Book extends Product
         $this->author->removeElement($bookAuthor);
 
         return $this;
-    }
+    } */
 }
