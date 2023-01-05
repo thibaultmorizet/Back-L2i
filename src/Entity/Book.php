@@ -19,31 +19,31 @@ class Book extends Product
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "book:read", "book:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "book:read", "book:write"])]
     private ?int $id = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private ?string $isbn = null;
 
     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'products', cascade: ['persist'])]
-    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private Collection $author;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'products', cascade: ['persist'])]
-    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private Collection $category;
 
     #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private ?Format $format = null;
 
     #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private ?Editor $editor = null;
-    
+
     public function __construct()
     {
         $this->author = new ArrayCollection();
