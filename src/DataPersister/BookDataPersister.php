@@ -21,7 +21,6 @@ class BookDataPersister implements ContextAwareDataPersisterInterface
 
     public function persist($data, array $context = [])
     {
-        $data->id = 'foo';
         $this->em->persist($data);
         $this->em->flush();
     }
