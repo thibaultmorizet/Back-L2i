@@ -38,6 +38,7 @@ security:
   access_control:
     - { path: ^/ws/docs, roles: PUBLIC_ACCESS } # Pour autoriser l'acc`es `a Swagger UI
     - { path: ^/ws/products, roles: PUBLIC_ACCESS }
+    - { path: ^/ws/books, roles: PUBLIC_ACCESS }
     - { path: ^/ws/formats, roles: PUBLIC_ACCESS }
     - { path: ^/ws/categories, roles: PUBLIC_ACCESS }
     - { path: ^/ws/taxes, roles: PUBLIC_ACCESS }
