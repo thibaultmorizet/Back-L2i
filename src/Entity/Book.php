@@ -18,7 +18,7 @@ use App\Entity\Product;
     denormalizationContext: ['groups' => "book:write"],
     order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC']
 )]
-class Book extends Product
+class Book 
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
