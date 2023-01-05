@@ -14,9 +14,6 @@ use App\Entity\Product;
 #[ApiResource(
     paginationItemsPerPage: 12,
     paginationClientItemsPerPage: true,
-
-    normalizationContext: ['groups' => "book:read"],
-    denormalizationContext: ['groups' => "book:write"],
     order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC']
 )]
 class Book extends Product
