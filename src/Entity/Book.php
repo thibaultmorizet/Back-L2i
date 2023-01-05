@@ -12,8 +12,16 @@ use App\Entity\Product;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 #[ApiResource(
+    paginationItemsPerPage: 12,
+    paginationClientItemsPerPage: true,
+    collectionOperations: [
+        "get", "post"
+    ],
+    itemOperations: ["get", "put", "patch", "delete"],
+
     normalizationContext: ['groups' => "book:read"],
-    denormalizationContext: ['groups' => "book:write"]
+    denormalizationContext: ['groups' => "book:write"],
+    order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC']
 )]
 class Book extends Product
 {
