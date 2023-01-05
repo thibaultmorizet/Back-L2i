@@ -12,6 +12,9 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use App\Filter\CustomMultipleSearchFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\Mapping\DiscriminatorColumn;
+use Doctrine\ORM\Mapping\DiscriminatorMap;
+use Doctrine\ORM\Mapping\InheritanceType;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
@@ -40,6 +43,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
     properties: ['title' => "ipartial", 'author.firstname' => "ipartial", 'author.lastname' => "ipartial"]
 )]
 #[ApiFilter(OrderFilter::class, properties: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'])]
+#[InheritanceType('JOINED')]
+#[DiscriminatorColumn(name: 'discr', type: 'string')]
+#[DiscriminatorMap(['product' => Product::class, 'book' => Book::class])]
 
 class Product
 {
@@ -65,31 +71,9 @@ class Product
     #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?int $stock = null;
 
-    #[ORM\Column(nullable: true)]
-    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
-    private ?string $isbn = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["product:read", "product:write", "user:read", "user:write"])]
     private ?string $image = null;
-
-    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'products', cascade: ['persist'])]
-    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
-    private Collection $author;
-
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'products', cascade: ['persist'])]
-    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
-    private Collection $category;
-
-    #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
-    #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
-    private ?Format $format = null;
-
-    #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
-    #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["product:read", "product:write", "user:read", "user:write"])]
-    private ?Editor $editor = null;
 
     #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -115,8 +99,6 @@ class Product
     public function __construct()
     {
         $this->orders = new ArrayCollection();
-        $this->author = new ArrayCollection();
-        $this->category = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
 
@@ -173,18 +155,6 @@ class Product
         return $this;
     }
 
-    public function getIsbn(): ?string
-    {
-        return $this->isbn;
-    }
-
-    public function setIsbn(string $isbn): self
-    {
-        $this->isbn = $isbn;
-
-        return $this;
-    }
-
     public function getImage(): ?string
     {
         return $this->image;
@@ -193,80 +163,6 @@ class Product
     public function setImage(?string $image): self
     {
         $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Author>
-     */
-    public function getAuthor(): Collection
-    {
-        return $this->author;
-    }
-
-    public function addAuthor(Author $productAuthor): self
-    {
-        if (!$this->author->contains($productAuthor)) {
-            $this->author->add($productAuthor);
-        }
-
-        return $this;
-    }
-
-    public function removeAuthor(Author $productAuthor): self
-    {
-        $this->author->removeElement($productAuthor);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategory(): Collection
-    {
-        return $this->category;
-    }
-
-    public function addCategory(Category $productCategory): self
-    {
-        if (!$this->category->contains($productCategory)) {
-            $this->category->add($productCategory);
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Category $productCategory): self
-    {
-        $this->category->removeElement($productCategory);
-
-        return $this;
-    }
-
-
-
-    public function getFormat(): ?Format
-    {
-        return $this->format;
-    }
-
-    public function setFormat(?Format $format): self
-    {
-        $this->format = $format;
-
-        return $this;
-    }
-
-    public function getEditor(): ?Editor
-    {
-        return $this->editor;
-    }
-
-    public function setEditor(?Editor $editor): self
-    {
-        $this->editor = $editor;
 
         return $this;
     }
