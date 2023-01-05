@@ -96,10 +96,6 @@ class Product
     #[Groups(["product:read", "product:write", "book:read", "book:write",])]
     private Collection $comments;
 
-    #[ORM\Column(nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
-    private ?string $type = null;
-
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -119,18 +115,6 @@ class Product
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-    
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
 
         return $this;
     }
