@@ -20,6 +20,12 @@ use App\Entity\Product;
 )]
 class Book extends Product
 {
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "comment:read", "comment:write"])]
+    private ?int $bookId = null;
+
     #[ORM\Column(nullable: true)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private ?string $isbn = null;
@@ -46,6 +52,11 @@ class Book extends Product
     {
         $this->author = new ArrayCollection();
         $this->category = new ArrayCollection();
+    }
+
+    public function getBookId(): ?int
+    {
+        return $this->bookId;
     }
 
     public function getIsbn(): ?string
