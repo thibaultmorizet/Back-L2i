@@ -21,6 +21,7 @@ class ProductDataPersister implements ContextAwareDataPersisterInterface
 
     public function persist($data, array $context = [])
     {        
+        var_dump(get_called_class());
         $this->em->persist($data);
         $this->em->flush();
     }
