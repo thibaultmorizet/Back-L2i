@@ -26,11 +26,11 @@ class Format
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["book:read", "book:write", "format:read", "format:write","user:read"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "format:read", "format:write", "user:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read", "book:write", "format:read", "format:write","user:read"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "format:read", "format:write", "user:read"])]
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'format', targetEntity: Book::class, cascade: ['persist'])]

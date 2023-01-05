@@ -21,19 +21,19 @@ class Author
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["book:read", "book:write", "author:read", "author:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "author:read", "author:write", "user:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read", "book:write", "author:read", "author:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "author:read", "author:write", "user:read"])]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read", "book:write", "author:read", "author:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "author:read", "author:write", "user:read"])]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["book:read", "book:write", "author:read", "author:write", "user:read"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "author:read", "author:write", "user:read"])]
     private ?string $language = null;
 
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'author', cascade: ['persist'])]
