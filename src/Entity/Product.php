@@ -107,12 +107,6 @@ class Product
         return $this->id;
     }
 
-    public static function get_type()
-    {
-        $c = get_called_class();
-        return $c::TYPE;
-    }
-    
     public function getTitle(): ?string
     {
         return $this->title;

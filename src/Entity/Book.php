@@ -20,7 +20,6 @@ use App\Entity\Product;
 )]
 class Book extends Product
 {
-    const TYPE = "book";
     #[ORM\Column(nullable: true)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private ?string $isbn = null;
