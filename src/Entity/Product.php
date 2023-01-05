@@ -44,8 +44,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 #[ApiFilter(OrderFilter::class, properties: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'])]
 #[InheritanceType('JOINED')]
-#[DiscriminatorColumn(name: 'discr', type: 'string')]
-#[DiscriminatorMap(['book' => Book::class])]
+#[DiscriminatorColumn(name: 'type', type: 'string')]
+#[DiscriminatorMap(['book' => Book::class, 'product' => Product::class])]
 
 class Product
 {

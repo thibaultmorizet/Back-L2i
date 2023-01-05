@@ -13,6 +13,3 @@ add_image:
 delete_image:
   path: /delete_image
   methods: ["POST"]
-book:
-  path: /book
-  methods: ["GET","POST"]
