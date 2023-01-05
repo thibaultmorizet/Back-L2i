@@ -19,8 +19,6 @@ services:
       - "../src/DependencyInjection/"
       - "../src/Entity/"
       - "../src/Kernel.php"
-  App\Entity\Book:
-    itemOperations: {}
-    collectionOperations: { get: { normalization_context: { iri: "" } } }
+
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones
