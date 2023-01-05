@@ -14,10 +14,6 @@ use App\Entity\Product;
 #[ApiResource(
     paginationItemsPerPage: 12,
     paginationClientItemsPerPage: true,
-    collectionOperations: [
-        "get", "post"
-    ],
-    itemOperations: ["get", "put", "patch", "delete"],
 
     normalizationContext: ['groups' => "book:read"],
     denormalizationContext: ['groups' => "book:write"],
