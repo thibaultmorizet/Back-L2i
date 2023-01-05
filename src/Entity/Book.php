@@ -34,7 +34,7 @@ class Book extends Product
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'books', cascade: ['persist'])]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
-    private Collection $category; */
+    private Collection $category; 
 
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -44,12 +44,12 @@ class Book extends Product
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
-    private ?Editor $editor = null;
+    private ?Editor $editor = null;*/
 
     public function __construct()
     {
-        $this->author = new ArrayCollection();
-        $this->category = new ArrayCollection();
+     /*    $this->author = new ArrayCollection();
+        $this->category = new ArrayCollection(); */
     }
 
     public function getId(): ?int
@@ -93,7 +93,7 @@ class Book extends Product
         return $this;
     } */
 
-    public function getFormat(): ?Format
+  /*   public function getFormat(): ?Format
     {
         return $this->format;
     }
@@ -116,7 +116,7 @@ class Book extends Product
 
         return $this;
     }
-
+ */
     /**
      * @return Collection<int, Author>
      */
