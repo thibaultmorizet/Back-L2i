@@ -20,23 +20,17 @@ use App\Entity\Product;
 )]
 class Book extends Product
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "comment:read", "comment:write"])]
-    private ?int $productId = null;
-
     #[ORM\Column(nullable: true)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private ?string $isbn = null;
 
-    /*     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
+    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     private Collection $author;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'books', cascade: ['persist'])]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
-    private Collection $category; 
+    private Collection $category;
 
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -46,17 +40,12 @@ class Book extends Product
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
-    private ?Editor $editor = null;*/
+    private ?Editor $editor = null;
 
     public function __construct()
     {
-        /*    $this->author = new ArrayCollection();
-        $this->category = new ArrayCollection(); */
-    }
-
-    public function getProductId(): ?int
-    {
-        return $this->productId;
+        $this->author = new ArrayCollection();
+        $this->category = new ArrayCollection();
     }
 
     public function getIsbn(): ?string
@@ -74,7 +63,7 @@ class Book extends Product
     /**
      * @return Collection<int, Category>
      */
-    /*  public function getCategory(): Collection
+    public function getCategory(): Collection
     {
         return $this->category;
     }
@@ -93,9 +82,9 @@ class Book extends Product
         $this->category->removeElement($bookCategory);
 
         return $this;
-    } */
+    }
 
-    /*   public function getFormat(): ?Format
+    public function getFormat(): ?Format
     {
         return $this->format;
     }
@@ -118,11 +107,11 @@ class Book extends Product
 
         return $this;
     }
- */
+
     /**
      * @return Collection<int, Author>
      */
-    /*     public function getAuthor(): Collection
+    public function getAuthor(): Collection
     {
         return $this->author;
     }
@@ -141,5 +130,5 @@ class Book extends Product
         $this->author->removeElement($bookAuthor);
 
         return $this;
-    } */
+    }
 }
