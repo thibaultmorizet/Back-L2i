@@ -49,11 +49,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 class Product
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
     #[ORM\Column]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "comment:read", "comment:write"])]
-    private ?int $id = null;
+    private ?int $productId = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
@@ -102,9 +100,16 @@ class Product
         $this->comments = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getProductId(): ?int
     {
-        return $this->id;
+        return $this->productId;
+    }
+
+    public function setProductId(int $productId): self
+    {
+        $this->productId = $productId;
+
+        return $this;
     }
 
     public function getTitle(): ?string
