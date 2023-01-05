@@ -15,13 +15,13 @@ class ProductDataPersister implements ContextAwareDataPersisterInterface
     }
 
     public function supports($data, array $context = []): bool
-    {        var_dump($data);
+    {        
 
         return $data instanceof Product;
     }
 
     public function persist($data, array $context = [])
-    {        
+    {        var_dump($data);
         $this->em->persist($data);
         $this->em->flush();
     }
