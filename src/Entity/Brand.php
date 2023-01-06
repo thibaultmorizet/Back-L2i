@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: BrandRepository::class)]
-#[ApiResource]
 #[ApiResource(
     normalizationContext: ['groups' => "brand:read"],
     denormalizationContext: ['groups' => "brand:write"]
