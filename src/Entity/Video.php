@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Entity\Product;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Filter\CustomMultipleSearchFilter;
 
 #[ORM\Entity(repositoryClass: VideoRepository::class)]
@@ -24,12 +25,16 @@ use App\Filter\CustomMultipleSearchFilter;
     properties: ['stock', 'unitpriceht']
 )]
 #[ApiFilter(
+    SearchFilter::class,
+    properties: ['brand.name' => "iexact"]
+)]
+#[ApiFilter(
     CustomMultipleSearchFilter::class,
     properties: ['title' => "ipartial"]
 )]
 class Video extends Product
 {
-     
+
     #[ORM\ManyToOne(inversedBy: 'videos', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["product:read", "product:write", "video:read", "video:write", "user:read", "user:write"])]
@@ -45,5 +50,5 @@ class Video extends Product
         $this->brand = $brand;
 
         return $this;
-    } 
+    }
 }
