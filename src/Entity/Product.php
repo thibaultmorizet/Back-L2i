@@ -52,48 +52,48 @@ class Product
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "comment:read", "comment:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "comment:read", "comment:write"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write"])]
     private ?string $title = null;
 
     #[ORM\Column(length: 10000, nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write"])]
     private ?string $summary = null;
 
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write"])]
     private ?float $unitpriceht = null;
 
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write"])]
     private ?int $stock = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write"])]
     private ?string $image = null;
 
     #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write"])]
     private ?Taxe $taxe = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write"])]
     private ?string $year = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write",])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write",])]
     private ?int $visitnumber = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write",])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write",])]
     private ?int $soldnumber = null;
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Comment::class, orphanRemoval: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write",])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write",])]
     private Collection $comments;
 
     public function __construct()
