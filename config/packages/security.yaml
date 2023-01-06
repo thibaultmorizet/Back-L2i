@@ -40,6 +40,7 @@ security:
     - { path: ^/ws/products, roles: PUBLIC_ACCESS }
     - { path: ^/ws/books, roles: PUBLIC_ACCESS }
     - { path: ^/ws/videos, roles: PUBLIC_ACCESS }
+    - { path: ^/ws/brands, roles: PUBLIC_ACCESS }
     - { path: ^/ws/formats, roles: PUBLIC_ACCESS }
     - { path: ^/ws/categories, roles: PUBLIC_ACCESS }
     - { path: ^/ws/taxes, roles: PUBLIC_ACCESS }
