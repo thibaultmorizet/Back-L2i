@@ -26,11 +26,11 @@ class Taxe
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "taxe:read", "taxe:write","user:read"])]
+    #[Groups(["product:read", "product:write","video:read", "video:write","book:read", "book:write", "taxe:read", "taxe:write","user:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length:255, nullable: true)]
-    #[Groups(["product:read", "product:write", "taxe:read", "taxe:write","user:read"])]
+    #[Groups(["product:read", "product:write","video:read", "video:write","book:read", "book:write", "taxe:read", "taxe:write","user:read"])]
     private ?float $tva = null;
 
     #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Product::class, cascade: ['persist'])]
