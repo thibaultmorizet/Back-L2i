@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\BookRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,6 +10,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Entity\Product;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Filter\CustomMultipleSearchFilter;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 #[ApiResource(
@@ -17,6 +21,18 @@ use App\Entity\Product;
     normalizationContext: ['groups' => "book:read"],
     denormalizationContext: ['groups' => "book:write"],
     order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC']
+)]
+#[ApiFilter(
+    RangeFilter::class,
+    properties: ['stock', 'unitpriceht']
+)]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: ['format.name' => "iexact", 'category.name' => "iexact"]
+)]
+#[ApiFilter(
+    CustomMultipleSearchFilter::class,
+    properties: ['title' => "ipartial", 'author.firstname' => "ipartial", 'author.lastname' => "ipartial"]
 )]
 class Book extends Product
 {

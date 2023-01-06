@@ -20,7 +20,6 @@ class Address
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
-
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
