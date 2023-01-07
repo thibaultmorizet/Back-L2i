@@ -80,7 +80,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(["user:read", "user:write", "product:read", "product:write"])]
     private $language;
 
-    #[ORM\Column(type: 'string', length: 1000, nullable: false)]
+    #[ORM\Column(type: 'string', length: 1000, nullable: true)]
     #[Groups(["user:read", "user:write"])]
     private $token;
 
