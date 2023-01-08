@@ -26,11 +26,11 @@ class Commentstatut
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "comment:read", "comment:write", "commentstatut:read", "commentstatut:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write","book:read", "book:write","video:read", "video:write", "comment:read", "comment:write", "commentstatut:read", "commentstatut:write", "user:read", "user:write"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(["product:read", "product:write", "comment:read", "comment:write", "commentstatut:read", "commentstatut:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write","book:read", "book:write","video:read", "video:write", "comment:read", "comment:write", "commentstatut:read", "commentstatut:write", "user:read", "user:write"])]
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'comment', targetEntity: Comment::class, cascade: ['persist'])]
