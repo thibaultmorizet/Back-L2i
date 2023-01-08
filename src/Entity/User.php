@@ -38,20 +38,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read", "comment:read", "comment:write"])]
+    #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read", "book:read", "video:read", "comment:read", "comment:write"])]
 
     private $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read", "product:write", "comment:read"])]
+    #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "comment:read"])]
     private $lastname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read", "product:write", "comment:read"])]
+    #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "comment:read"])]
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true, unique: true)]
-    #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read", "product:write"])]
+    #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read", "product:write", "book:read", "book:write", "video:read", "video:write"])]
     private $email;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -73,11 +73,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $orders;
 
     #[ORM\Column(type: 'json')]
-    #[Groups(["user:read", "user:write", "product:read", "product:write"])]
+    #[Groups(["user:read", "user:write", "product:read"])]
     private $roles = [];
 
     #[ORM\Column(type: 'string', length: 2, nullable: false)]
-    #[Groups(["user:read", "user:write", "product:read", "product:write"])]
+    #[Groups(["user:read", "user:write", "product:read"])]
     private $language;
 
     #[ORM\Column(type: 'string', length: 1000, nullable: true)]
