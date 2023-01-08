@@ -29,6 +29,10 @@ class Commentstatut
     #[Groups(["product:read", "product:write", "comment:read", "comment:write", "commentstatut:read", "commentstatut:write", "user:read", "user:write"])]
     private ?int $id = null;
 
+    #[ORM\Column(length: 50)]
+    #[Groups(["product:read", "product:write", "comment:read", "comment:write", "commentstatut:read", "commentstatut:write", "user:read", "user:write"])]
+    private ?string $name = null;
+
     #[ORM\OneToMany(mappedBy: 'comment', targetEntity: Comment::class, cascade: ['persist'])]
     #[Groups(["comment:read"])]
     private Collection $comments;
@@ -41,6 +45,18 @@ class Commentstatut
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     public function getComment(): ?Comment
