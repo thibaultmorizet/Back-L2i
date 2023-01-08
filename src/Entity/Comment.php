@@ -47,6 +47,11 @@ class Comment
     #[Groups(["comment:read", "comment:write", "user:read"])]
     private ?Product $product = null;
 
+    #[ORM\ManyToOne(inversedBy: 'comments', cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["product:read", "product:write", "comment:read", "comment:write", "user:read", "user:write"])]
+    private ?Commentstatut $commentstatut = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -96,6 +101,18 @@ class Comment
     public function setProduct(?Product $product): self
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getCommentstatut(): ?Commentstatut
+    {
+        return $this->commentstatut;
+    }
+
+    public function setCommentstatut(?Commentstatut $commentstatut): self
+    {
+        $this->commentstatut = $commentstatut;
 
         return $this;
     }
