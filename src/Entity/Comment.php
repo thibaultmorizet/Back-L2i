@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 #[ApiFilter(
     NumericFilter::class,
-    properties: ["id" => "exact"]
+    properties: ["id" => "exact","commentstatut.id" => "exact"]
 )]
 class Comment
 {
