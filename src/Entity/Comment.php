@@ -48,7 +48,7 @@ class Comment
     private ?Product $product = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments', cascade: ['persist'])]
-    #[ORM\JoinColumn(nullable: true)]
+    #[ORM\JoinColumn(nullable: false)]
     #[Groups(["product:read", "product:write", "comment:read", "comment:write", "user:read", "user:write"])]
     private ?Commentstatut $commentstatut = null;
 
