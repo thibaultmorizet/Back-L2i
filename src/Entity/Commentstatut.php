@@ -34,7 +34,7 @@ class Commentstatut
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'comment', targetEntity: Comment::class, cascade: ['persist'])]
-    #[Groups(["comment:read"])]
+    #[Groups(["commentstatut:read"])]
     private Collection $comments;
 
     public function __construct()
