@@ -56,7 +56,7 @@ class Product
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write", "comment:read", "comment:write"])]
     private ?string $title = null;
 
     #[ORM\Column(length: 10000, nullable: true)]
@@ -72,7 +72,7 @@ class Product
     private ?int $stock = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write"])]
+    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write", "comment:read", "comment:write"])]
     private ?string $image = null;
 
     #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
