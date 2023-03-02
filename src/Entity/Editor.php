@@ -58,18 +58,6 @@ class Editor
         return $this;
     }
 
-    public function getBook(): ?Book
-    {
-        return $this->book;
-    }
-
-    public function setBook(?Book $book): self
-    {
-        $this->book = $book;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Book>
      */

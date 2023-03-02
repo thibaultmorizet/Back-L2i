@@ -98,7 +98,6 @@ class Product
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
 

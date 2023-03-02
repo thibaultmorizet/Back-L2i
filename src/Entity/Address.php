@@ -46,7 +46,6 @@ class Address
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -154,7 +153,7 @@ class Address
     {
         if ($this->usersDelivery->removeElement($user)) {
             // set the owning side to null (unless already changed)
-            if ($user->setDeliveryAddress() === $this) {
+            if ($user->setDeliveryAddress($this) === $this) {
                 $user->setDeliveryAddress(null);
             }
         }

@@ -59,18 +59,6 @@ class Taxe
         return $this;
     }
 
-    public function getProduct(): ?Product
-    {
-        return $this->product;
-    }
-
-    public function setProduct(?Product $product): self
-    {
-        $this->product = $product;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Product>
      */
