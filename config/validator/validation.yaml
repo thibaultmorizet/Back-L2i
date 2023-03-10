@@ -1,0 +1,119 @@
+App\Entity\Address:
+  properties:
+    street:
+      - NotBlank: ~
+      - NotNull: ~
+    postalcode:
+      - NotBlank: ~
+      - NotNull: ~
+    city:
+      - NotBlank: ~
+      - NotNull: ~
+    country:
+      - NotBlank: ~
+      - NotNull: ~
+
+App\Entity\Author:
+  properties:
+    firstname:
+      - NotBlank: ~
+      - NotNull: ~
+    lastname:
+      - NotBlank: ~
+      - NotNull: ~
+
+App\Entity\Book:
+  properties:
+    - Isbn:
+        type: isbn10
+        message: This value is not valid.
+
+App\Entity\Brand:
+  properties:
+    name:
+      - NotBlank: ~
+      - NotNull: ~
+
+App\Entity\Category:
+  properties:
+    name:
+      - NotBlank: ~
+      - NotNull: ~
+
+App\Entity\Comment:
+  properties:
+    text:
+      - NotBlank: ~
+      - NotNull: ~
+
+App\Entity\Commentstatut:
+  properties:
+    name:
+      - NotBlank: ~
+      - NotNull: ~
+
+App\Entity\Editor:
+  properties:
+    name:
+      - NotBlank: ~
+      - NotNull: ~
+
+App\Entity\Format:
+  properties:
+    name:
+      - NotBlank: ~
+      - NotNull: ~
+
+App\Entity\Order:
+  properties:
+    totalpricettc:
+      - NotBlank: ~
+      - NotNull: ~
+    totalpriceht:
+      - NotBlank: ~
+      - NotNull: ~
+    deliveryaddress:
+      - NotBlank: ~
+      - NotNull: ~
+    billingaddress:
+      - NotBlank: ~
+      - NotNull: ~
+
+App\Entity\Product:
+  properties:
+    title:
+      - NotBlank: ~
+      - NotNull: ~
+    summary:
+      - NotBlank: ~
+      - NotNull: ~
+    unitpriceht:
+      - NotBlank: ~
+      - NotNull: ~
+    stock:
+      - NotBlank: ~
+      - NotNull: ~
+    image:
+      - NotBlank: ~
+      - NotNull: ~
+
+App\Entity\Taxe:
+  properties:
+    tva:
+      - NotBlank: ~
+      - NotNull: ~
+
+App\Entity\User:
+  properties:
+    lastname:
+      - NotBlank: ~
+      - NotNull: ~
+    firstname:
+      - NotBlank: ~
+      - NotNull: ~
+    email:
+      - NotBlank: ~
+      - NotNull: ~
+    password:
+      - NotBlank: ~
+      - NotNull: ~
