@@ -13,6 +13,7 @@ use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -44,18 +45,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "comment:read"])]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private $lastname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "comment:read"])]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true, unique: true)]
     #[Groups(["user:read", "user:write", "order:read", "order:write", "product:read", "product:write", "book:read", "book:write", "video:read", "video:write"])]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private $email;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private $password;
 
     #[ORM\ManyToOne(inversedBy: 'usersBilling', cascade: ['persist'])]

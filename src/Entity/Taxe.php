@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TaxeRepository::class)]
 #[ApiResource(
@@ -31,6 +32,7 @@ class Taxe
 
     #[ORM\Column(length:255, nullable: true)]
     #[Groups(["product:read", "product:write","video:read", "video:write","book:read", "book:write", "taxe:read", "taxe:write","user:read"])]
+    #[Assert\NotBlank]
     private ?float $tva = null;
 
     #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Product::class, cascade: ['persist'])]

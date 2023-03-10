@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AddressRepository::class)]
 #[ApiResource(
@@ -24,18 +25,26 @@ class Address
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private $street;
 
     #[ORM\Column(type: 'string', length: 10)]
     #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private $postalcode;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private $city;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private $country;
 
     #[ORM\OneToMany(mappedBy: 'billingAddress', targetEntity: User::class, cascade: ['persist'])]
@@ -123,7 +132,7 @@ class Address
     {
         if ($this->usersBilling->removeElement($user)) {
             // set the owning side to null (unless already changed)
-            if ($user->setBillingAddress() === $this) {
+            if ($user->setBillingAddress($this) === $this) {
                 $user->setBillingAddress(null);
             }
         }

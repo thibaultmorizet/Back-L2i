@@ -16,6 +16,7 @@ use Doctrine\ORM\Mapping\DiscriminatorColumn;
 use Doctrine\ORM\Mapping\DiscriminatorMap;
 use Doctrine\ORM\Mapping\InheritanceType;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[ApiResource(
@@ -57,22 +58,27 @@ class Product
 
     #[ORM\Column(length: 255)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write", "comment:read", "comment:write"])]
+    #[Assert\NotBlank]
     private ?string $title = null;
 
     #[ORM\Column(length: 10000, nullable: true)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write"])]
+    #[Assert\NotBlank]
     private ?string $summary = null;
 
     #[ORM\Column]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write"])]
+    #[Assert\NotBlank]
     private ?float $unitpriceht = null;
 
     #[ORM\Column]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write"])]
+    #[Assert\NotBlank]
     private ?int $stock = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "user:read", "user:write", "comment:read", "comment:write"])]
+    #[Assert\NotBlank]
     private ?string $image = null;
 
     #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]

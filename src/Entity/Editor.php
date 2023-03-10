@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EditorRepository::class)]
 #[ApiResource(
@@ -30,6 +31,7 @@ class Editor
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "editor:read", "editor:write", "user:read"])]
+    #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'editor', targetEntity: Book::class, cascade: ['persist'])]

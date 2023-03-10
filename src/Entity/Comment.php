@@ -9,6 +9,7 @@ use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 #[ORM\Table(name: '`comment`')]
@@ -31,6 +32,7 @@ class Comment
 
     #[ORM\Column(length: 500)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "comment:read", "comment:write", "user:read", "user:write"])]
+    #[Assert\NotBlank]
     private ?string $text = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, options: ["default" => 'CURRENT_TIMESTAMP'])]

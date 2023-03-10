@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ApiResource(
@@ -38,22 +39,28 @@ class Order
 
     #[ORM\Column]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
+    #[Assert\NotBlank]
     private ?float $totalpricettc = null;
 
     #[ORM\Column]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
+    #[Assert\NotBlank]
     private ?float $totalpriceht = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
+    #[Assert\NotBlank]
     private ?string $deliveryaddress = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
+    #[Assert\NotBlank]
     private ?string $billingaddress = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private array $productlist = [];
 
     #[ORM\ManyToOne(inversedBy: 'orders', cascade: ['persist'])]

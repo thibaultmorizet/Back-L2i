@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CommentstatutRepository::class)]
 #[ORM\Table(name: '`commentstatut`')]
@@ -31,6 +32,7 @@ class Commentstatut
 
     #[ORM\Column(length: 50)]
     #[Groups(["product:read", "product:write","book:read", "book:write","video:read", "video:write", "comment:read", "comment:write", "commentstatut:read", "commentstatut:write", "user:read", "user:write"])]
+    #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'comment', targetEntity: Comment::class, cascade: ['persist'])]

@@ -13,6 +13,7 @@ use App\Entity\Product;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Filter\CustomMultipleSearchFilter;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 #[ApiResource(
@@ -38,6 +39,11 @@ class Book extends Product
 {
     #[ORM\Column(nullable: true)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
+    #[Assert\Isbn(
+        type: Assert\Isbn::ISBN_10,
+        message: 'This value is not valid.',
+    )]
+    #[Assert\NotBlank]
     private ?string $isbn = null;
 
     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['persist'])]
