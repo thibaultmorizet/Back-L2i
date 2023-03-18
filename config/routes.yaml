@@ -14,5 +14,5 @@ delete_image:
   path: /delete_image
   methods: ["POST"]
 pdf:
-  path: /pdf
+  path: /generate_pdf
   methods: ["GET"]

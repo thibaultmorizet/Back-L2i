@@ -49,7 +49,7 @@ security:
     - { path: ^/ws/comments, roles: PUBLIC_ACCESS }
     - { path: ^/ws/authors, roles: PUBLIC_ACCESS }
     - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
-    - { path: ^/pdf, roles: PUBLIC_ACCESS }
+    - { path: ^/generate_pdf, roles: PUBLIC_ACCESS }
     - { path: ^/mail, roles: PUBLIC_ACCESS }
     - { path: ^/add_image, roles: PUBLIC_ACCESS }
     - { path: ^/delete_image, roles: PUBLIC_ACCESS }

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class PdfController extends AbstractController
 {
 
-    #[Route('/pdf', name: 'pdf')]
+    #[Route('/generate_pdf', name: 'generatePdf')]
     public function showPdf(Request $request): Response
     {
         return $template = $this->render('pdf/pdf.html.twig', [
