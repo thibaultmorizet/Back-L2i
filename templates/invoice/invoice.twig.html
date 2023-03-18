@@ -6,6 +6,10 @@
 			font-size: 16px;
 		}
 
+		.bold {
+			font-weight: bold;
+		}
+
 		.header td {
 			width: 50%;
 			vertical-align: top;
@@ -48,20 +52,16 @@
 	<table class="header">
 		<tr>
 			<td class="text-lef">
-				<h1>Facture</h1>
+				<h2>Facture N° {{ order.id }}</h2>
 				<br />
 			</td>
-		</tr>
-		<tr>
-			<td class="text-left">
-				<span>DE L2i</span>
-				<br />
+			<td class="text-center">
+				<img
+					src="https://www.thibaultmorizet.fr/assets/logo-l2i.png"
+					alt="Logo L2i"
+				/>
 			</td>
 			<td class="text-right">
-				<span>FACTURE N°:</span>
-				{{ order.id }}
-				<br />
-				<br />
 				<span>DATE: </span>
 				{{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}
 			</td>
@@ -69,11 +69,8 @@
 		<tr>
 			<td class="text-left">
 				<br />
-				<br />
-				<br />
-				<br />
-				<span
-					>FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
+				<span>
+					FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
 				</span>
 				<br />
 				<br />
@@ -83,32 +80,22 @@
 	</table>
 	<table class="content">
 		<thead>
-			<tr>
-				<td class="text-left">
-					<b>DÉSIGNATION</b>
-				</td>
-				<td class="text-center">
-					<b>QUANTITE</b>
-				</td>
-				<td class="text-center">
-					<b>PRIX HT</b>
-				</td>
-				<td class="text-center">
-					<b>TAXE</b>
-				</td>
-				<td class="text-center">
-					<b>TOTAL</b>
-				</td>
+			<tr class="text-center bold">
+				<td>DÉSIGNATION</td>
+				<td>QUANTITE</td>
+				<td>PRIX</td>
+				<td>TAXE</td>
+				<td>TOTAL</td>
 			</tr>
 		</thead>
 		<tbody>
 			{% for product in order.productlist %}
-			<tr>
-				<td class="text-left">{{ product.title }}</td>
-				<td class="text-center">{{ product.number_ordered }}</td>
-				<td class="text-center">{{ product.unitpriceht }} €</td>
-				<td class="text-center">{{ product.taxe.tva }} %</td>
-				<td class="text-center">{{ product.totalpriceht }} €</td>
+			<tr class="text-center">
+				<td>{{ product.title }}</td>
+				<td>{{ product.number_ordered }}</td>
+				<td>{{ product.unitpriceht }} €</td>
+				<td>{{ product.taxe.tva }} %</td>
+				<td>{{ product.totalpriceht }} €</td>
 			</tr>
 			{% endfor %}
 		</tbody>
