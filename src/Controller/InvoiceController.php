@@ -25,7 +25,7 @@ class InvoiceController extends AbstractController
         ]);
         $dompdf = new Dompdf();
         $dompdf->loadHtml($template);
-        $dompdf->render();
+        // $dompdf->render();
          
         return new Response (
             $dompdf->stream('resume', ["Attachment" => false]),
