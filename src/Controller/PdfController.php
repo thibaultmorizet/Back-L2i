@@ -10,7 +10,6 @@ use Spipu\Html2Pdf\Html2Pdf;
 
 class PdfController extends AbstractController
 {
-    private $pdf;
 
     #[Route('/pdf', name: 'pdf')]
     public function showPdf(Order $order): Response

@@ -13,3 +13,6 @@ add_image:
 delete_image:
   path: /delete_image
   methods: ["POST"]
+pdf:
+  path: /pdf
+  methods: ["GET"]
