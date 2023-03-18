@@ -6,6 +6,14 @@
 			font-size: 16px;
 		}
 
+		.d-flex {
+			display: flex;
+		}
+		
+		.justify-content-around {
+			justify-content: space-around;
+		}
+
 		.bold {
 			font-weight: bold;
 		}
@@ -50,12 +58,12 @@
 		}
 	</style>
 	<table class="header">
-		<tr>
-			<td class="text-lef">
+		<tr class="d-flex justify-content-between">
+			<td>
 				<h2>Facture N° {{ order.id }}</h2>
 				<br />
 			</td>
-			<td class="text-center">
+			<td>
 				<img
 					src="https://www.thibaultmorizet.fr/assets/logo-l2i.png"
 					alt="Logo L2i"
@@ -63,7 +71,7 @@
 					height="auto"
 				/>
 			</td>
-			<td class="text-right">
+			<td>
 				<span>DATE: </span>
 				{{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}
 			</td>
