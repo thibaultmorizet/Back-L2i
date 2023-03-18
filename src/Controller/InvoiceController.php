@@ -12,7 +12,7 @@ class InvoiceController extends AbstractController
 {
 
     #[Route('/generate_invoice', name: 'generateInvoice')]
-    public function showInvoice(Request $request): Html2Pdf
+    public function showInvoice(Request $request): Response
     {
         $parametersAsArray = [];
         if ($content = $request->getContent()) {
@@ -25,8 +25,8 @@ class InvoiceController extends AbstractController
 
         $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
 
-       return $html2pdf->writeHTML($template);
-        $html2pdf->output("https://www.thibaultmorizet.fr/assets/invoice/".$parametersAsArray["id"] . ".pdf","F");
+        $html2pdf->writeHTML($template);
+        $html2pdf->output();
         return $this->json(
             [
                 "success" => true,
