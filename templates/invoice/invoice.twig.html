@@ -40,88 +40,9 @@
 			color: #ffffff;
 		}
 
-		.ligne1Content {
-			background-color: #57b223;
-		}
-
-		.couleurgris {
-			background-color: #dddddd;
-			height: auto;
-		}
-
-		.tht,
-		.taxe,
-		.ttc {
-			font-size: 1.2em;
-		}
-
-		.ttc {
-			color: #57b223;
-			font-weight: bold;
-		}
-
-		.couleurverte {
-			background-color: #57b223;
-		}
-
-		.couleurmoinsgris {
-			background: #eeeeee;
-		}
-
-		.taille1 {
-			width: 40%;
-		}
-
-		.taille2 {
-			width: 15%;
-		}
-
-		.taille3 {
-			width: 15%;
-		}
-
-		.taille4 {
-			width: 20%;
-		}
-
-		.taille5 {
-			width: 10%;
-		}
-
-		.header1 {
-			width: 50%;
-		}
-
-		.header2 {
-			width: 50%;
-		}
-
-		.tailleligne {
-			height: auto;
-		}
-
-		.taille1,
-		.taille2,
-		.taille3,
-		.taille4,
-		.taille5 {
-			height: auto;
-		}
-
 		span {
 			font-size: 14px;
 			font-weight: bold;
-			color: #57b223;
-		}
-
-		h1,
-		h2,
-		h3 {
-			color: #57b223;
-		}
-
-		.colorwhite {
-			color: white;
 		}
 	</style>
 	<table class="header">
@@ -162,43 +83,39 @@
 	</table>
 	<table class="content">
 		<thead>
-			<tr class="ligne1Content">
-				<td class="text-left couleurgris taille1">
+			<tr>
+				<td class="text-left">
 					<b>DÉSIGNATION</b>
 				</td>
-				<td class="text-center couleurmoinsgris taille2">
+				<td class="text-center">
 					<b>QUANTITE</b>
 				</td>
-				<td class="text-center couleurgris taille3">
+				<td class="text-center">
 					<b>PRIX HT</b>
 				</td>
-				<td class="text-center couleurgris taille5">
+				<td class="text-center">
 					<b>TAXE</b>
 				</td>
-				<td class="text-center couleurverte taille4 colorwhite">
+				<td class="text-center">
 					<b>TOTAL</b>
 				</td>
 			</tr>
 		</thead>
 		<tbody>
 			{% for product in order.productlist %}
-			<tr class="couleurgris">
-				<td class="text-left couleurgris taille1">{{ product.title }}</td>
-				<td class="text-center couleurmoinsgris taille2">
-					{{ product.number_ordered }}
-				</td>
-				<td class="text-center taille3">{{ product.unitpriceht }} €</td>
-				<td class="text-center taille5">{{ product.taxe.tva }} %</td>
-				<td class="text-center couleurverte taille4 colorwhite">
-					{{ product.totalpriceht }} €
-				</td>
+			<tr>
+				<td class="text-left">{{ product.title }}</td>
+				<td class="text-center">{{ product.number_ordered }}</td>
+				<td class="text-center">{{ product.unitpriceht }} €</td>
+				<td class="text-center">{{ product.taxe.tva }} %</td>
+				<td class="text-center">{{ product.totalpriceht }} €</td>
 			</tr>
 			{% endfor %}
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="4" class="text-right tht">TOTAL HT</td>
-				<td class="tht text-center">{{ order.totalpriceht }} €</td>
+				<td colspan="4" class="text-right">TOTAL HT</td>
+				<td class="text-center">{{ order.totalpriceht }} €</td>
 			</tr>
 			<tr>
 				<td colspan="4" class="text-right">
