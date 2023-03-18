@@ -14,10 +14,14 @@ class InvoiceController extends AbstractController
     #[Route('/generate_invoice', name: 'generateInvoice')]
     public function showInvoice(Request $request): Response
     {
+        $parametersAsArray = [];
+        if ($content = $request->getContent()) {
+            $parametersAsArray = json_decode($content, true);
+        }
         return $this->json(
             [
                 "success" => true,
-                "message" => $request
+                "message" => $parametersAsArray
             ],
             200,
         );
