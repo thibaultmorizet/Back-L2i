@@ -12,7 +12,7 @@ class InvoiceController extends AbstractController
 {
 
     #[Route('/generate_invoice', name: 'generateInvoice')]
-    public function showInvoice(Request $request): Response
+    public function showInvoice(Request $request): Html2Pdf
     {
         $parametersAsArray = [];
         if ($content = $request->getContent()) {
