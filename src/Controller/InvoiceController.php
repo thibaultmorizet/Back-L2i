@@ -26,6 +26,9 @@ class InvoiceController extends AbstractController
         $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
 
         $html2pdf->writeHTML($template);
+
+
+
         $html2pdf->output();
         return $this->json(
             [
