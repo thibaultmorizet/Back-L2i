@@ -14,7 +14,7 @@ class PdfController extends AbstractController
     #[Route('/generate_pdf', name: 'generatePdf')]
     public function showPdf(Request $request): Response
     {
-        return $template = $this->render('pdf/pdf.html.twig', [
+        return $template = $this->render('pdf/pdf.twig.html', [
             'order' => $request,
         ]);
 
