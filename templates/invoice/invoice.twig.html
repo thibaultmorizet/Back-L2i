@@ -136,20 +136,20 @@
 				<span>DE</span>
 				<br />
 				<br />
-				<!-- {{ order.vosinfos }} -->
+				L2i
 				<br />
 			</td>
 			<td class="text-right">
 				<span>FACTURE N°:</span>
-				<!-- {{ order.numfacture }} -->
+				{{ order.id }}
 				<br />
 				<br />
 				<span>DATE: </span>
-				<!-- {{ order.datefacture ? order.datefacture|date('Y-m-d H:i:s') : '' }} -->
+				{{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}
 				<br />
 				<br />
 				<span>N° TVA:</span>
-				<!-- {{ order.numtva }} -->
+				<!-- {{  }} -->
 			</td>
 		</tr>
 		<tr>
@@ -164,7 +164,7 @@
 				<span>FACTURÉ À</span>
 				<br />
 				<br />
-				<!-- {{ order.infosclient }} -->
+				{{ order.user.lastname }} {{ order.user.firstname }}
 				<br />
 			</td>
 			<td class="text-right"></td>
@@ -193,76 +193,39 @@
 		<tbody>
 			<tr class="couleurgris">
 				<td class="text-left couleurgris taille1">
-					<!-- {{ order.designation1 }} -->
+					<!-- {{  }} -->
 				</td>
 				<td class="text-center couleurmoinsgris taille2">
-					<!-- {{ order.quantite1 }} -->
+					<!-- {{  }} -->
 				</td>
 				<td class="text-center taille3">
-					<!-- {{ order.prixht1 }} -->
+					<!-- {{  }} -->
 				</td>
 				<td class="text-center taille5">
-					<!-- {{ order.taxe1 }} -->
+					<!-- {{  }} -->
 				</td>
 				<td class="text-center couleurverte taille4 colorwhite">
-					<!-- {{ order.quantite1 }} * {{ order.prixht1 }} -->
+					<!-- {{  }} * {{  }} -->
 				</td>
 			</tr>
 
-			<tr class="couleurgris">
-				<td class="text-left couleurgris taille1">
-					<!-- {{ order.designation2 }} -->
-				</td>
-				<td class="text-center couleurmoinsgris taille2">
-					<!-- {{ order.quantite2 }} -->
-				</td>
-				<td class="text-center taille3">
-					<!-- {{ order.prixht2 }} -->
-
-				</td>
-				<td class="text-center taille5">
-					<!-- {{ order.taxe2 }} -->
-
-				</td>
-				<td class="text-center couleurverte taille4 colorwhite">
-					<!-- {{ order.quantite2 }} * {{ order.prixht2 }} -->
-				</td>
-			</tr>
-			<tr class="couleurgris">
-				<td class="text-left couleurgris taille1">
-					<!-- {{ order.designation3 }} -->
-				</td>
-				<td class="text-center couleurmoinsgris taille2">
-					<!-- {{ order.quantite3 }} -->
-				</td>
-				<td class="text-center taille3">
-					<!-- {{ order.prixht3 }} -->
-
-				</td>
-				<td class="text-center taille5">
-					<!-- {{ order.taxe3 }} -->
-
-				</td>
-				<td class="text-center couleurverte taille4 colorwhite">
-					<!-- {{ order.quantite3 }} * {{ order.prixht3 }} -->
-				</td>
-			</tr>
+			
+			
 		</tbody>
 		<tfoot>
 			<tr>
 				<td colspan="4" class="text-right tht">TOTAL HT</td>
 				<td class="tht text-center">
-					<!-- {{ order.quantite1 }} * {{ order.prixht1 }} + {{ order.quantite2
-					}} * {{ order.prixht2 }} + {{ order.quantite3 }} * {{
-					order.prixht3 }} -->
+					{{ order.totalpriceht }} 
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4" class="text-right tht">TAXE à 
-					<!-- {{ order.taxe1 }} -->
+				<td colspan="4" class="text-right tht">
+					TAXE à
+					<!-- {{  }} -->
 				</td>
 				<td class="text-center">
-					<!-- {{ order.taxe2 }} -->
+					<!-- {{  }} -->
 				</td>
 			</tr>
 			<tr>
@@ -277,7 +240,7 @@
 				<td colspan="5">
 					<span>CONDITIONS ET MOYENS DE PAIEMENT:</span>
 					<br />
-					<!-- {{ order.conditions }} -->
+					<!-- {{  }} -->
 				</td>
 			</tr>
 		</tfoot>

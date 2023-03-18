@@ -18,17 +18,10 @@ class InvoiceController extends AbstractController
         if ($content = $request->getContent()) {
             $parametersAsArray = json_decode($content, true);
         }
-        return $this->json(
-            [
-                "success" => true,
-                "message" => $parametersAsArray
-            ],
-            200,
-        );
 
-    //     return $template = $this->render('invoice/invoice.twig.html', [
-    //         'order' => $request,
-    //     ]);
+        return $template = $this->render('invoice/invoice.twig.html', [
+            'order' => $parametersAsArray,
+        ]);
 
     //   $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
 
