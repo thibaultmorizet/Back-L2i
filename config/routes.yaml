@@ -13,6 +13,6 @@ add_image:
 delete_image:
   path: /delete_image
   methods: ["POST"]
-pdf:
-  path: /generate_pdf
+generate_invoice:
+  path: /generate_invoice
   methods: ["GET"]

@@ -8,11 +8,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Spipu\Html2Pdf\Html2Pdf;
 use Symfony\Component\HttpFoundation\Request;
 
-class PdfController extends AbstractController
+class InvoiceController extends AbstractController
 {
 
-    #[Route('/generate_pdf', name: 'generatePdf')]
-    public function showPdf(Request $request): Response
+    #[Route('/generate_invoice', name: 'generateInvoice')]
+    public function showInvoice(Request $request): Response
     {
         return $this->json(
             [
@@ -22,7 +22,7 @@ class PdfController extends AbstractController
             200,
         );
 
-    //     return $template = $this->render('pdf/pdf.twig.html', [
+    //     return $template = $this->render('invoice/invoice.twig.html', [
     //         'order' => $request,
     //     ]);
 
