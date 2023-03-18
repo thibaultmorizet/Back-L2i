@@ -25,7 +25,7 @@ class InvoiceController extends AbstractController
 
         $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
 
-        $html2pdf->writeHTML($template);
+       return $html2pdf->writeHTML($template);
         $html2pdf->output("https://www.thibaultmorizet.fr/assets/invoice/".$parametersAsArray["id"] . ".pdf","F");
         return $this->json(
             [
