@@ -14,11 +14,19 @@ class PdfController extends AbstractController
     #[Route('/generate_pdf', name: 'generatePdf')]
     public function showPdf(Request $request): Response
     {
-        return $template = $this->render('pdf/pdf.twig.html', [
-            'order' => $request,
-        ]);
+        return $this->json(
+            [
+                "success" => true,
+                "message" => $request
+            ],
+            200,
+        );
 
-      $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
+    //     return $template = $this->render('pdf/pdf.twig.html', [
+    //         'order' => $request,
+    //     ]);
+
+    //   $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
 
      // return $this->generatePdf($template, "facture");
     }
