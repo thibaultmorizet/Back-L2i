@@ -101,10 +101,10 @@
 		}
 
 		.taille1,
-		taille2,
-		taille3,
-		taille4,
-		taille5 {
+		.taille2,
+		.taille3,
+		.taille4,
+		.taille5 {
 			height: auto;
 		}
 
@@ -136,20 +136,20 @@
 				<span>DE</span>
 				<br />
 				<br />
-				{{ facture.vosinfos }}
+				<!-- {{ facture.vosinfos }} -->
 				<br />
 			</td>
 			<td class="text-right">
 				<span>FACTURE N°:</span>
-				{{ facture.numfacture }}
+				<!-- {{ facture.numfacture }} -->
 				<br />
 				<br />
 				<span>DATE: </span>
-				{{ facture.datefacture ? facture.datefacture|date('Y-m-d H:i:s') : '' }}
+				<!-- {{ facture.datefacture ? facture.datefacture|date('Y-m-d H:i:s') : '' }} -->
 				<br />
 				<br />
 				<span>N° TVA:</span>
-				{{ facture.numtva }}
+				<!-- {{ facture.numtva }} -->
 			</td>
 		</tr>
 		<tr>
@@ -164,7 +164,7 @@
 				<span>FACTURÉ À</span>
 				<br />
 				<br />
-				{{ facture.infosclient }}
+				<!-- {{ facture.infosclient }} -->
 				<br />
 			</td>
 			<td class="text-right"></td>
@@ -193,42 +193,58 @@
 		<tbody>
 			<tr class="couleurgris">
 				<td class="text-left couleurgris taille1">
-					{{ facture.designation1 }}
+					<!-- {{ facture.designation1 }} -->
 				</td>
 				<td class="text-center couleurmoinsgris taille2">
-					{{ facture.quantite1 }}
+					<!-- {{ facture.quantite1 }} -->
 				</td>
-				<td class="text-center taille3">{{ facture.prixht1 }}</td>
-				<td class="text-center taille5">{{ facture.taxe1 }}</td>
+				<td class="text-center taille3">
+					<!-- {{ facture.prixht1 }} -->
+				</td>
+				<td class="text-center taille5">
+					<!-- {{ facture.taxe1 }} -->
+				</td>
 				<td class="text-center couleurverte taille4 colorwhite">
-					{{ facture.quantite1 }} * {{ facture.prixht1 }}
+					<!-- {{ facture.quantite1 }} * {{ facture.prixht1 }} -->
 				</td>
 			</tr>
 
 			<tr class="couleurgris">
 				<td class="text-left couleurgris taille1">
-					{{ facture.designation2 }}
+					<!-- {{ facture.designation2 }} -->
 				</td>
 				<td class="text-center couleurmoinsgris taille2">
-					{{ facture.quantite2 }}
+					<!-- {{ facture.quantite2 }} -->
 				</td>
-				<td class="text-center taille3">{{ facture.prixht2 }}</td>
-				<td class="text-center taille5">{{ facture.taxe2 }}</td>
+				<td class="text-center taille3">
+					<!-- {{ facture.prixht2 }} -->
+
+				</td>
+				<td class="text-center taille5">
+					<!-- {{ facture.taxe2 }} -->
+
+				</td>
 				<td class="text-center couleurverte taille4 colorwhite">
-					{{ facture.quantite2 }} * {{ facture.prixht2 }}
+					<!-- {{ facture.quantite2 }} * {{ facture.prixht2 }} -->
 				</td>
 			</tr>
 			<tr class="couleurgris">
 				<td class="text-left couleurgris taille1">
-					{{ facture.designation3 }}
+					<!-- {{ facture.designation3 }} -->
 				</td>
 				<td class="text-center couleurmoinsgris taille2">
-					{{ facture.quantite3 }}
+					<!-- {{ facture.quantite3 }} -->
 				</td>
-				<td class="text-center taille3">{{ facture.prixht3 }}</td>
-				<td class="text-center taille5">{{ facture.taxe3 }}</td>
+				<td class="text-center taille3">
+					<!-- {{ facture.prixht3 }} -->
+
+				</td>
+				<td class="text-center taille5">
+					<!-- {{ facture.taxe3 }} -->
+
+				</td>
 				<td class="text-center couleurverte taille4 colorwhite">
-					{{ facture.quantite3 }} * {{ facture.prixht3 }}
+					<!-- {{ facture.quantite3 }} * {{ facture.prixht3 }} -->
 				</td>
 			</tr>
 		</tbody>
@@ -236,14 +252,18 @@
 			<tr>
 				<td colspan="4" class="text-right tht">TOTAL HT</td>
 				<td class="tht text-center">
-					{{ facture.quantite1 }} * {{ facture.prixht1 }} + {{ facture.quantite2
+					<!-- {{ facture.quantite1 }} * {{ facture.prixht1 }} + {{ facture.quantite2
 					}} * {{ facture.prixht2 }} + {{ facture.quantite3 }} * {{
-					facture.prixht3 }}
+					facture.prixht3 }} -->
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4" class="text-right tht">TAXE à {{ facture.taxe1 }}</td>
-				<td class="text-center">{{ facture.taxe2 }}</td>
+				<td colspan="4" class="text-right tht">TAXE à 
+					<!-- {{ facture.taxe1 }} -->
+				</td>
+				<td class="text-center">
+					<!-- {{ facture.taxe2 }} -->
+				</td>
 			</tr>
 			<tr>
 				<td colspan="4" class="text-right">
@@ -257,7 +277,7 @@
 				<td colspan="5">
 					<span>CONDITIONS ET MOYENS DE PAIEMENT:</span>
 					<br />
-					{{ facture.conditions }}
+					<!-- {{ facture.conditions }} -->
 				</td>
 			</tr>
 		</tfoot>
