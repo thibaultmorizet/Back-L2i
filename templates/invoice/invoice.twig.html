@@ -133,10 +133,7 @@
 		</tr>
 		<tr>
 			<td class="text-left">
-				<span>DE</span>
-				<br />
-				<br />
-				L2i
+				<span>DE L2i</span>
 				<br />
 			</td>
 			<td class="text-right">
@@ -146,10 +143,6 @@
 				<br />
 				<span>DATE: </span>
 				{{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}
-				<br />
-				<br />
-				<span>N° TVA:</span>
-				<!--  -->
 			</td>
 		</tr>
 		<tr>
@@ -158,13 +151,9 @@
 				<br />
 				<br />
 				<br />
-				<br />
-				<br />
-				<br />
-				<span>FACTURÉ À</span>
-				<br />
-				<br />
-				{{ order.user.lastname }} {{ order.user.firstname }}
+				<span
+					>FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
+				</span>
 				<br />
 			</td>
 			<td class="text-right"></td>
@@ -174,7 +163,7 @@
 		<thead>
 			<tr class="ligne1Content">
 				<td class="text-left couleurgris taille1">
-					<b>DESIGNATION</b>
+					<b>DÉSIGNATION</b>
 				</td>
 				<td class="text-center couleurmoinsgris taille2">
 					<b>QUANTITE</b>
@@ -186,61 +175,43 @@
 					<b>TAXE</b>
 				</td>
 				<td class="text-center couleurverte taille4 colorwhite">
-					<b>TOTAL HT</b>
+					<b>TOTAL</b>
 				</td>
 			</tr>
 		</thead>
 		<tbody>
+			{% for product in order.productList %}
 			<tr class="couleurgris">
-				<td class="text-left couleurgris taille1">
-					<!--  -->
-				</td>
+				<td class="text-left couleurgris taille1">{{ product.title }}</td>
 				<td class="text-center couleurmoinsgris taille2">
-					<!--  -->
+					{{ product.number_ordered }}
 				</td>
-				<td class="text-center taille3">
-					<!--  -->
-				</td>
-				<td class="text-center taille5">
-					<!--  -->
-				</td>
+				<td class="text-center taille3">{{ product.totalpriceht }}</td>
+				<td class="text-center taille5">{{ product.taxe.tva }}</td>
 				<td class="text-center couleurverte taille4 colorwhite">
-					<!--  *  -->
+					{{ product.totalpriceht }}
 				</td>
 			</tr>
-
-			
-			
+			{% endfor %}
 		</tbody>
 		<tfoot>
 			<tr>
 				<td colspan="4" class="text-right tht">TOTAL HT</td>
-				<td class="tht text-center">
-					{{ order.totalpriceht }} 
-				</td>
-			</tr>
-			<tr>
-				<td colspan="4" class="text-right tht">
-					TAXE à
-					<!--  -->
-				</td>
-				<td class="text-center">
-					<!--  -->
-				</td>
+				<td class="tht text-center">{{ order.totalpriceht }} €</td>
 			</tr>
 			<tr>
 				<td colspan="4" class="text-right">
 					<h3>TOTAL TTC À PAYER</h3>
 				</td>
 				<td class="text-center">
-					<h3>€</h3>
+					<h3>{{ order.totalpricettc }} €</h3>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="5">
 					<span>CONDITIONS ET MOYENS DE PAIEMENT:</span>
 					<br />
-					<!--  -->
+					Non Renseigné
 				</td>
 			</tr>
 		</tfoot>
