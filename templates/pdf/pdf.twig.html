@@ -1,0 +1,265 @@
+<page backtop="0mm" backright="10mm" backbottom="20mm" backleft="10mm">
+	<style type="text/css">
+		<!-- table {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: 16px;
+		}
+
+		.header td {
+			width: 50%;
+			vertical-align: top;
+		}
+
+		.text-left {
+			text-align: left;
+		}
+
+		.text-right {
+			text-align: right;
+		}
+
+		.text-center {
+			text-align: center;
+		}
+
+		.separator {
+			height: 20px;
+			width: 100%;
+		}
+
+		.content td {
+			border: solid 1px #cfd1d2;
+			padding: 5px;
+		}
+
+		.content th {
+			border: solid 1px #000000;
+			padding: 5px;
+			background-color: #000000;
+			color: #ffffff;
+		}
+
+		.ligne1Content {
+			background-color: #57b223;
+		}
+
+		.couleurgris {
+			background-color: #dddddd;
+			height: auto;
+		}
+
+		.tht,
+		.taxe,
+		.ttc {
+			font-size: 1.2em;
+		}
+
+		.ttc {
+			color: #57b223;
+			font-weight: bold;
+		}
+
+		.couleurverte {
+			background-color: #57b223;
+		}
+
+		.couleurmoinsgris {
+			background: #eeeeee;
+		}
+
+		.taille1 {
+			width: 40%;
+		}
+
+		.taille2 {
+			width: 15%;
+		}
+
+		.taille3 {
+			width: 15%;
+		}
+
+		.taille4 {
+			width: 20%;
+		}
+
+		.taille5 {
+			width: 10%;
+		}
+
+		.header1 {
+			width: 50%;
+		}
+
+		.header2 {
+			width: 50%;
+		}
+
+		.tailleligne {
+			height: auto;
+		}
+
+		.taille1,
+		taille2,
+		taille3,
+		taille4,
+		taille5 {
+			height: auto;
+		}
+
+		span {
+			font-size: 14px;
+			font-weight: bold;
+			color: #57b223;
+		}
+
+		h1,
+		h2,
+		h3 {
+			color: #57b223;
+		}
+
+		.colorwhite {
+			color: white;
+		}
+	</style>
+	<table class="header">
+		<tr>
+			<td class="text-lef">
+				<h1>Facture</h1>
+				<br />
+			</td>
+		</tr>
+		<tr>
+			<td class="text-left">
+				<span>DE</span>
+				<br />
+				<br />
+				{{ facture.vosinfos }}
+				<br />
+			</td>
+			<td class="text-right">
+				<span>FACTURE N°:</span>
+				{{ facture.numfacture }}
+				<br />
+				<br />
+				<span>DATE: </span>
+				{{ facture.datefacture ? facture.datefacture|date('Y-m-d H:i:s') : '' }}
+				<br />
+				<br />
+				<span>N° TVA:</span>
+				{{ facture.numtva }}
+			</td>
+		</tr>
+		<tr>
+			<td class="text-left">
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<span>FACTURÉ À</span>
+				<br />
+				<br />
+				{{ facture.infosclient }}
+				<br />
+			</td>
+			<td class="text-right"></td>
+		</tr>
+	</table>
+	<table class="content">
+		<thead>
+			<tr class="ligne1Content">
+				<td class="text-left couleurgris taille1">
+					<b>DESIGNATION</b>
+				</td>
+				<td class="text-center couleurmoinsgris taille2">
+					<b>QUANTITE</b>
+				</td>
+				<td class="text-center couleurgris taille3">
+					<b>PRIX HT</b>
+				</td>
+				<td class="text-center couleurgris taille5">
+					<b>TAXE</b>
+				</td>
+				<td class="text-center couleurverte taille4 colorwhite">
+					<b>TOTAL HT</b>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="couleurgris">
+				<td class="text-left couleurgris taille1">
+					{{ facture.designation1 }}
+				</td>
+				<td class="text-center couleurmoinsgris taille2">
+					{{ facture.quantite1 }}
+				</td>
+				<td class="text-center taille3">{{ facture.prixht1 }}</td>
+				<td class="text-center taille5">{{ facture.taxe1 }}</td>
+				<td class="text-center couleurverte taille4 colorwhite">
+					{{ facture.quantite1 }} * {{ facture.prixht1 }}
+				</td>
+			</tr>
+
+			<tr class="couleurgris">
+				<td class="text-left couleurgris taille1">
+					{{ facture.designation2 }}
+				</td>
+				<td class="text-center couleurmoinsgris taille2">
+					{{ facture.quantite2 }}
+				</td>
+				<td class="text-center taille3">{{ facture.prixht2 }}</td>
+				<td class="text-center taille5">{{ facture.taxe2 }}</td>
+				<td class="text-center couleurverte taille4 colorwhite">
+					{{ facture.quantite2 }} * {{ facture.prixht2 }}
+				</td>
+			</tr>
+			<tr class="couleurgris">
+				<td class="text-left couleurgris taille1">
+					{{ facture.designation3 }}
+				</td>
+				<td class="text-center couleurmoinsgris taille2">
+					{{ facture.quantite3 }}
+				</td>
+				<td class="text-center taille3">{{ facture.prixht3 }}</td>
+				<td class="text-center taille5">{{ facture.taxe3 }}</td>
+				<td class="text-center couleurverte taille4 colorwhite">
+					{{ facture.quantite3 }} * {{ facture.prixht3 }}
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4" class="text-right tht">TOTAL HT</td>
+				<td class="tht text-center">
+					{{ facture.quantite1 }} * {{ facture.prixht1 }} + {{ facture.quantite2
+					}} * {{ facture.prixht2 }} + {{ facture.quantite3 }} * {{
+					facture.prixht3 }}
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" class="text-right tht">TAXE à {{ facture.taxe1 }}</td>
+				<td class="text-center">{{ facture.taxe2 }}</td>
+			</tr>
+			<tr>
+				<td colspan="4" class="text-right">
+					<h3>TOTAL TTC À PAYER</h3>
+				</td>
+				<td class="text-center">
+					<h3>€</h3>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">
+					<span>CONDITIONS ET MOYENS DE PAIEMENT:</span>
+					<br />
+					{{ facture.conditions }}
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</page>
