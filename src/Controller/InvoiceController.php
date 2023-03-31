@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Spipu\Html2Pdf\Html2Pdf;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Uid\UuidV6;
 
 class InvoiceController extends AbstractController
 {
@@ -28,12 +29,15 @@ class InvoiceController extends AbstractController
 
         $html2pdf->writeHTML($template);
 
-        $html2pdf->output( getcwd() . "/assets/invoice/". $parametersAsArray["id"] . ".pdf","F");
+        $uuid = new UuidV6();
 
+        $html2pdf->output( getcwd() . "/assets/invoice/". $uuid . ".pdf","F");
+       
         return $this->json(
             [
                 "success" => true,
-                "message" => "Invoice created"
+                "message" => "Invoice created",
+                "invoice_id" => $uuid
             ],
             200,
         );
