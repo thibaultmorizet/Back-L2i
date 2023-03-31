@@ -50,6 +50,7 @@ security:
     - { path: ^/ws/authors, roles: PUBLIC_ACCESS }
     - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
     - { path: ^/generate_invoice, roles: PUBLIC_ACCESS }
+    - { path: ^/invoice_is_exist, roles: PUBLIC_ACCESS }
     - { path: ^/mail, roles: PUBLIC_ACCESS }
     - { path: ^/add_image, roles: PUBLIC_ACCESS }
     - { path: ^/delete_image, roles: PUBLIC_ACCESS }

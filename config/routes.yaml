@@ -16,3 +16,6 @@ delete_image:
 generate_invoice:
   path: /generate_invoice
   methods: ["POST"]
+invoice_is_exist:
+  path: /invoice_is_exist
+  methods: ["POST"]
