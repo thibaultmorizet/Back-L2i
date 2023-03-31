@@ -29,7 +29,7 @@ class InvoiceController extends AbstractController
 
 
 var_dump(getcwd());
-        $html2pdf->output( getcwd() . "/assets/invoice/". $parametersAsArray["id"] . ".pdf","F");
+        // $html2pdf->output( getcwd() . "/assets/invoice/". $parametersAsArray["id"] . ".pdf","F");
 
         return $this->json(
             [
