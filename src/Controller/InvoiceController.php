@@ -29,7 +29,8 @@ class InvoiceController extends AbstractController
 
 
 
-        $html2pdf->output();
+        $html2pdf->output("https://www.thibaultmorizet.fr/assets/invoice/". $parametersAsArray["id"] . ".pdf","F");
+
         return $this->json(
             [
                 "success" => true,
