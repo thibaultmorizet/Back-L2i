@@ -37,7 +37,7 @@ class InvoiceController extends AbstractController
             [
                 "success" => true,
                 "message" => "Invoice created",
-                "invoice_id" => $uuid
+                "invoice_path" => "https://thibaultmorizet.fr/assets/invoice/". $uuid . ".pdf"
             ],
             200,
         );
