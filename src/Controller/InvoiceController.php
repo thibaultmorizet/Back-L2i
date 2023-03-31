@@ -46,7 +46,7 @@ class InvoiceController extends AbstractController
     }
 
     #[Route('/invoice_is_exist', name: 'invoiceIsExist')]
-    public function invoiceIsExist(Request $request): bool
+    public function invoiceIsExist(Request $request): Response
     {
 
         $parametersAsArray = [];
@@ -54,12 +54,17 @@ class InvoiceController extends AbstractController
             $parametersAsArray = json_decode($content, true);
         }
 
-var_dump($parametersAsArray);
+        var_dump($parametersAsArray);
 
         $fileSystem = new Filesystem();
-        // $fileSystem->exists();
+        $isExist = $fileSystem->exists($parametersAsArray["invoice_path"]);
 
 
-        return true;
+        return $this->json(
+            [
+                "success" => $isExist,
+            ],
+            200,
+        );
     }
 }
