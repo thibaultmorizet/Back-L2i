@@ -68,6 +68,11 @@ class Order
     #[Groups(["order:read", "order:write"])]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["user:read", "user:write", "order:read", "order:write"])]
+    #[Assert\NotBlank]
+    private ?string $invoicepath = null;
+
     public function __construct()
     {
     }
@@ -156,6 +161,18 @@ class Order
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getInvoicepath(): ?string
+    {
+        return $this->invoicepath;
+    }
+
+    public function setInvoicepath(?string $invoicepath): self
+    {
+        $this->invoicepath = $invoicepath;
 
         return $this;
     }
