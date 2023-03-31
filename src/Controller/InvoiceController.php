@@ -29,12 +29,12 @@ class InvoiceController extends AbstractController
 
 
 
-        $html2pdf->output(getcwd() . "/assets/invoice/". $parametersAsArray["id"] . ".pdf","F");
+        $html2pdf->output( getcwd() . "/assets/invoice/". $parametersAsArray["id"] . ".pdf","F");
 
         return $this->json(
             [
                 "success" => true,
-                "message" => "Invoice created"
+                "message" => getcwd()
             ],
             200,
         );
