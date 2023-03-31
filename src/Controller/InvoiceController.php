@@ -28,7 +28,7 @@ class InvoiceController extends AbstractController
         $html2pdf->writeHTML($template);
 
 
-var_dump(getcwd());
+// var_dump(getcwd());
         // $html2pdf->output( getcwd() . "/assets/invoice/". $parametersAsArray["id"] . ".pdf","F");
 
         return $this->json(
