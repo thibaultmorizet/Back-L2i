@@ -54,7 +54,6 @@ class InvoiceController extends AbstractController
             $parametersAsArray = json_decode($content, true);
         }
 
-        var_dump($parametersAsArray);
 
         $fileSystem = new Filesystem();
         $isExist = $fileSystem->exists($parametersAsArray["invoice_path"]);
