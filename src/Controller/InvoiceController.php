@@ -54,9 +54,21 @@ class InvoiceController extends AbstractController
             $parametersAsArray = json_decode($content, true);
         }
 
+        if (array_key_exists("invoice_path", $parametersAsArray) === false) {
+            return $this->json(
+                [
+                    "success" => false,
+                ],
+                200,
+            );
+        }
+
+
+        $assets_path_pos_in_global_path = strpos($parametersAsArray["invoice_path"], "/assets");
+        $invoice_path = getcwd() . substr($parametersAsArray["invoice_path"], $assets_path_pos_in_global_path);
 
         $fileSystem = new Filesystem();
-        $isExist = $fileSystem->exists($parametersAsArray["invoice_path"]);
+        $isExist = $fileSystem->exists($invoice_path);
 
 
         return $this->json(
