@@ -34,7 +34,7 @@ class InvoiceController extends AbstractController
         return $this->json(
             [
                 "success" => true,
-                "message" => getcwd()
+                "message" => "Invoice created"
             ],
             200,
         );
