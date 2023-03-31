@@ -67,23 +67,22 @@ class HomeController extends AbstractController
                 ],
                 Response::HTTP_BAD_REQUEST
             );
-        } else {
-
-            $fileSystem = new Filesystem();
-
-            $current_dir_path = getcwd() . "/assets/product-images/";
-            $decodePicture = base64_decode($pictureFile);
-
-            $fileSystem->dumpFile($current_dir_path . $pictureName, $decodePicture);
-
-            return $this->json(
-                [
-                    "success" => true,
-                    "message" => "the image is upload"
-                ],
-                200,
-            );
         }
+
+        $fileSystem = new Filesystem();
+
+        $current_dir_path = getcwd() . "/assets/product-images/";
+        $decodePicture = base64_decode($pictureFile);
+
+        $fileSystem->dumpFile($current_dir_path . $pictureName, $decodePicture);
+
+        return $this->json(
+            [
+                "success" => true,
+                "message" => "the image is upload"
+            ],
+            200,
+        );
     }
 
     #[Route('/delete_image', name: 'deleteImage')]
