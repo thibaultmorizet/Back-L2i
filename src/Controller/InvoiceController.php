@@ -22,7 +22,13 @@ class InvoiceController extends AbstractController
         $template = $this->render('invoice/invoice.twig.html', [
             'order' => $parametersAsArray,
         ]);
-
+        return $this->json(
+            [
+                "success" => true,
+                "message" => "Invoice created"
+            ],
+            200,
+        );
         $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
 
         $html2pdf->writeHTML($template);
