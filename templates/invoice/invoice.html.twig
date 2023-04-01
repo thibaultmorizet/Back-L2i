@@ -14,8 +14,8 @@
         display: flex;
     }
 
-    .justify-content-around {
-        justify-content: space-around;
+    .justify-content-between {
+        justify-content: space-between;
     }
 
     .bold {
@@ -57,10 +57,17 @@
     }
 </style>
 <table class="header w-100">
-    <tr class="d-flex justify-content-around w-100">
+    <tr class="d-flex justify-content-between w-100">
         <td>
             <h2>Facture N° {{ order.id }}</h2>
-            <br/>
+        </td>
+        <td>
+           <img
+                src={{logo}}
+                alt="Logo L2i"
+                width="100"
+                height="auto"
+            />
         </td>
         <td>
             <span>DATE: </span>
