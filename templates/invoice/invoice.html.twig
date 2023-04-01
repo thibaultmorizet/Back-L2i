@@ -20,6 +20,10 @@
             margin-bottom: 25px !important;
         }
 
+        .mb-10 {
+            margin-bottom: 50px !important;
+        }
+
         .bold {
             font-weight: bold;
         }
@@ -58,7 +62,7 @@
 
 </head>
 <body>
-<table class="header mb-5">
+<table class="header mb-10">
     <tr class="w-100">
         <td>
             <h2>Facture N° {{ order.id }}</h2>
@@ -76,18 +80,7 @@
         </td>
     </tr>
 </table>
-{#    <table class="w-100 mb-5"> #}
-{#        <span class="bold font-size-h2">Facture N° {{ order.id }}</span> #}
-{#        <img #}
-{#                src="{{ logo }}" #}
-{#                width="100" #}
-{#                height="auto" #}
-{#                alt="Logo-L2i" #}
-{#        class="mx-400"/> #}
-{#        <span>DATE: {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span> #}
-{#    </table> #}
-{#    #}
-<div class="mb-5">
+<div class="mb-10">
         <span>
             FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
         </span>
