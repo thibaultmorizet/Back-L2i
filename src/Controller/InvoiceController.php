@@ -25,7 +25,7 @@ class InvoiceController extends AbstractController
 
 //        $template = ;
 
-        $html2pdf = new Html2Pdf(margins: array(10, 15, 10, 15));
+        $html2pdf = new Html2Pdf();
 
         $html2pdf->writeHTML($this->render('invoice/invoice.twig.html', [
             'order' => $parametersAsArray,
