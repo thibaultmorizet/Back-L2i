@@ -28,15 +28,6 @@
             font-weight: bold;
         }
 
-        .header td {
-            width: 50%;
-            vertical-align: top;
-        }
-
-        .text-left {
-            text-align: left;
-        }
-
         .text-right {
             text-align: right;
         }
@@ -65,34 +56,21 @@
 
 </head>
 <body>{% block body %}
-    <table class="header w-100">
-        <tr class="d-flex justify-content-between w-100">
-            <td>
-                <h2>Facture N° {{ order.id }}</h2>
-            </td>
-            <td>
-                <img
-                        src="{{ logo }}"
-                        width="100"
-                        height="auto"
-                        alt="Logo-L2i"/>
-            </td>
-            <td>
-                <span>DATE: </span>
-                {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}
-            </td>
-        </tr>
-        <tr>
-            <td class="text-left">
-                <br/>
-                <span>
-					FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
-				</span>
-                <br/>
-                <br/>
-            </td>
-        </tr>
-    </table>
+    <div class="d-flex justify-content-between w-100">
+        <h2>Facture N° {{ order.id }}</h2>
+        <img
+                src="{{ logo }}"
+                width="100"
+                height="auto"
+                alt="Logo-L2i"/>
+        <span>DATE: {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
+    </div>
+    <div>
+        <span>
+            FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
+        </span>
+    </div>
+
     <table class="content">
         <thead>
         <tr class="text-center bold">
