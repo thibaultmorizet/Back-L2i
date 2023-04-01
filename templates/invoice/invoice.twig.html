@@ -1,135 +1,131 @@
-<page backtop="0mm" backright="10mm" backbottom="20mm" backleft="10mm">
-	<style type="text/css">
-		<!-- table {
-			width: 100%;
-			border-collapse: collapse;
-			font-size: 16px;
-		}
+<page backtop="0mm" backright="10mm" backbottom="0mm" backleft="10mm">
+    <style type="text/css">
+        <!--
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
 
-		.w-100 {
-			width: 100%!important;
-		}
-		
-		.d-flex {
-			display: flex;
-		}
+        .w-100 {
+            width: 100% !important;
+        }
 
-		.justify-content-around {
-			justify-content: space-around;
-		}
+        .d-flex {
+            display: flex;
+        }
 
-		.bold {
-			font-weight: bold;
-		}
+        .justify-content-around {
+            justify-content: space-around;
+        }
 
-		.header td {
-			width: 50%;
-			vertical-align: top;
-		}
+        .bold {
+            font-weight: bold;
+        }
 
-		.text-left {
-			text-align: left;
-		}
+        .header td {
+            width: 50%;
+            vertical-align: top;
+        }
 
-		.text-right {
-			text-align: right;
-		}
+        .text-left {
+            text-align: left;
+        }
 
-		.text-center {
-			text-align: center;
-		}
+        .text-right {
+            text-align: right;
+        }
 
-		.separator {
-			height: 20px;
-			width: 100%;
-		}
+        .text-center {
+            text-align: center;
+        }
 
-		.content td {
-			border: solid 1px #cfd1d2;
-			padding: 5px;
-		}
+        .content td {
+            border: solid 1px #cfd1d2;
+            padding: 5px;
+        }
 
-		.content th {
-			border: solid 1px #000000;
-			padding: 5px;
-			background-color: #000000;
-			color: #ffffff;
-		}
+        .content th {
+            border: solid 1px #000000;
+            padding: 5px;
+            background-color: #000000;
+            color: #ffffff;
+        }
 
-		span {
-			font-size: 14px;
-			font-weight: bold;
-		}
-	</style>
-	<table class="header w-100">
-		<tr class="d-flex justify-content-between w-100">
-			<td>
-				<h2>Facture N° {{ order.id }}</h2>
-				<br />
-			</td>
-			<td>
-				<img
-					src="https://www.thibaultmorizet.fr/assets/logo/logo-l2i.png"
-					alt="Logo L2i"
-					width="100"
-					height="auto"
-				/>
-			</td>
-			<td>
-				<span>DATE: </span>
-				{{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}
-			</td>
-		</tr>
-		<tr>
-			<td class="text-left">
-				<br />
-				<span>
+        span {
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+    <table class="header w-100">
+        <tr class="d-flex justify-content-around w-100">
+            <td>
+                <h2>Facture N° {{ order.id }}</h2>
+                <br/>
+            </td>
+            <td>
+                <img
+                        src="https://www.thibaultmorizet.fr/assets/logo/logo-l2i.png"
+                        alt="Logo L2i"
+                        width="100"
+                        height="auto"
+                />
+            </td>
+            <td>
+                <span>DATE: </span>
+                {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}
+            </td>
+        </tr>
+        <tr>
+            <td class="text-left">
+                <br/>
+                <span>
 					FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
 				</span>
-				<br />
-				<br />
-			</td>
-		</tr>
-	</table>
-	<table class="content">
-		<thead>
-			<tr class="text-center bold">
-				<td>DÉSIGNATION</td>
-				<td>QUANTITE</td>
-				<td>PRIX</td>
-				<td>TAXE</td>
-				<td>TOTAL</td>
-			</tr>
-		</thead>
-		<tbody>
-			{% for product in order.productlist %}
-			<tr class="text-center">
-				<td>{{ product.title }}</td>
-				<td>{{ product.number_ordered }}</td>
-				<td>{{ product.unitpriceht }} €</td>
-				<td>{{ product.taxe.tva }} %</td>
-				<td>{{ product.totalpriceht }} €</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="4" class="text-right">TOTAL HT</td>
-				<td class="text-center">{{ order.totalpriceht }} €</td>
-			</tr>
-			<tr>
-				<td colspan="4" class="text-right">
-					<h3>TOTAL TTC À PAYER</h3>
-				</td>
-				<td class="text-center">
-					<h3>{{ order.totalpricettc }} €</h3>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="5">
-					<span>CONDITIONS ET MOYENS DE PAIEMENT : Non Renseigné</span>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
+                <br/>
+                <br/>
+            </td>
+        </tr>
+    </table>
+    <table class="content">
+        <thead>
+        <tr class="text-center bold">
+            <td>DÉSIGNATION</td>
+            <td>QUANTITÉ</td>
+            <td>PRIX</td>
+            <td>TAXE</td>
+            <td>TOTAL</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in order.productlist %}
+        <tr class="text-center">
+            <td>{{ product.title }}</td>
+            <td>{{ product.number_ordered }}</td>
+            <td>{{ product.unitpriceht }} €</td>
+            <td>{{ product.taxe.tva }} %</td>
+            <td>{{ product.totalpriceht }} €</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="4" class="text-right">TOTAL HT</td>
+            <td class="text-center">{{ order.totalpriceht }} €</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="text-right">
+                <h3>TOTAL TTC À PAYER</h3>
+            </td>
+            <td class="text-center">
+                <h3>{{ order.totalpricettc }} €</h3>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <span>CONDITIONS ET MOYENS DE PAIEMENT : Non Renseigné</span>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
 </page>
