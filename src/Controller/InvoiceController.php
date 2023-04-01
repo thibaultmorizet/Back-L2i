@@ -23,13 +23,15 @@ class InvoiceController extends AbstractController
             $parametersAsArray = json_decode($content, true);
         }
 
-        $template = $this->render('invoice/invoice.twig.html', [
+//        $template = ;
+
+        $html2pdf = new Html2Pdf(margins: array(10, 15, 10, 15));
+
+        $html2pdf->writeHTML($this->render('invoice/invoice.twig.html', [
             'order' => $parametersAsArray,
-        ]);
+        ]));
 
-        $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
 
-        $html2pdf->writeHTML($template);
 
         $uuid = new UuidV6();
 
