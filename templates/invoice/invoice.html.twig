@@ -61,64 +61,80 @@
             font-size: 14px;
             font-weight: bold;
         }
+
+
+        .exemple-webkit-box-flex-container{ display : -webkit-box; width:650px}
+        .exemple-webkit-box-orient-row  { -webkit-box-orient : horizontal; border-color:#2a712a; }
+        .exemple-webkit-box-flex-item { border:1px dotted #666; display : block; }
+
     </style>
 
 </head>
 <body>
-<span class="bold font-size-h2 mb-5">Facture N° {{ order.id }}</span>
-<img
-        src="{{ logo }}"
-        width="100"
-        height="auto"
-        alt="Logo-L2i"
+    <div class="d-flex w-100 mb-5">
+        <span class="bold font-size-h2">Facture N° {{ order.id }}</span>
+        <img
+                src="{{ logo }}"
+                width="100"
+                height="auto"
+                alt="Logo-L2i"
         class="mx-400"/>
-<span>DATE: {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
-<div class="mb-5">
+        <span>DATE: {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
+    </div>
+
+    <div class="exemple-webkit-box-flex-container exemple-webkit-box-orient-row">
+        <div class="exemple-webkit-box-flex-item exemple-webkit-box-flex-1"><b>-webkit-box-flex: 1; </b></div>
+        <div class="exemple-webkit-box-flex-item exemple-webkit-box-flex-2"><b>-webkit-box-flex: 1.2; </b></div>
+        <div class="exemple-webkit-box-flex-item exemple-webkit-box-flex-3"><b>-webkit-box-flex: 1.3; </b></div>
+        <div class="exemple-webkit-box-flex-item exemple-webkit-box-flex-4"><b>-webkit-box-flex: 2; </b></div>
+    </div>
+
+    <div class="mb-5">
         <span>
             FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
         </span>
-</div>
+    </div>
 
-<table class="content">
-    <thead>
-    <tr class="text-center bold">
-        <td>DÉSIGNATION</td>
-        <td>QUANTITÉ</td>
-        <td>PRIX</td>
-        <td>TAXE</td>
-        <td>TOTAL</td>
-    </tr>
-    </thead>
-    <tbody>
-    {% for product in order.productlist %}
-        <tr class="text-center">
-            <td>{{ product.title }}</td>
-            <td>{{ product.number_ordered }}</td>
-            <td>{{ product.unitpriceht }} €</td>
-            <td>{{ product.taxe.tva }} %</td>
-            <td>{{ product.totalpriceht }} €</td>
+    <table class="content">
+        <thead>
+        <tr class="text-center bold">
+            <td>DÉSIGNATION</td>
+            <td>QUANTITÉ</td>
+            <td>PRIX</td>
+            <td>TAXE</td>
+            <td>TOTAL</td>
         </tr>
-    {% endfor %}
-    </tbody>
-    <tfoot>
-    <tr>
-        <td colspan="4" class="text-right">TOTAL HT</td>
-        <td class="text-center">{{ order.totalpriceht }} €</td>
-    </tr>
-    <tr>
-        <td colspan="4" class="text-right">
-            <h3>TOTAL TTC À PAYER</h3>
-        </td>
-        <td class="text-center">
-            <h3>{{ order.totalpricettc }} €</h3>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="5">
-            <span>CONDITIONS ET MOYENS DE PAIEMENT : Non Renseigné</span>
-        </td>
-    </tr>
-    </tfoot>
-</table>
+        </thead>
+        <tbody>
+        {% for product in order.productlist %}
+            <tr class="text-center">
+                <td>{{ product.title }}</td>
+                <td>{{ product.number_ordered }}</td>
+                <td>{{ product.unitpriceht }} €</td>
+                <td>{{ product.taxe.tva }} %</td>
+                <td>{{ product.totalpriceht }} €</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="4" class="text-right">TOTAL HT</td>
+            <td class="text-center">{{ order.totalpriceht }} €</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="text-right">
+                <h3>TOTAL TTC À PAYER</h3>
+            </td>
+            <td class="text-center">
+                <h3>{{ order.totalpricettc }} €</h3>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <span>CONDITIONS ET MOYENS DE PAIEMENT : Non Renseigné</span>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
 </body>
 </html>
