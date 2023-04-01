@@ -54,6 +54,9 @@
             vertical-align: top;
         }
 
+        .header h2 {
+            margin-top: 20px !important;
+        }
 
     </style>
 
@@ -62,7 +65,7 @@
 <table class="header mb-5">
     <tr class="w-100">
         <td>
-            <h2>Facture N° {{ order.id }}</h2>
+            <span>Facture N° {{ order.id }}</span>
         </td>
         <td>
             <img
@@ -73,7 +76,7 @@
             />
         </td>
         <td>
-            <h2>DATE : {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</h2>
+            <span>DATE : {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
         </td>
     </tr>
 </table>
