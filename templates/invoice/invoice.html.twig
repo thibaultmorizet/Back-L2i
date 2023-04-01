@@ -53,11 +53,16 @@
             width: 33%;
             vertical-align: top;
         }
+
+        .vertically-center{
+            margin-block-start: 0.83em;
+            margin-block-end: 0.83em;
+        }
     </style>
 
 </head>
 <body>
-<table class="header w-100">
+<table class="header mb-5">
     <tr class="w-100">
         <td>
             <h2>Facture N° {{ order.id }}</h2>
@@ -71,7 +76,7 @@
             />
         </td>
         <td>
-            <span>DATE : {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
+            <span class="vertically-center">DATE : {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
         </td>
     </tr>
 </table>
