@@ -21,10 +21,10 @@
         }
 
         .justify-content-between {
-            justify-content: space-between;
+            justify-content: space-between !important;
         }
 
-        .mb-4{
+        .mb-5{
             margin-bottom: 25px !important;
         }
 
@@ -64,7 +64,7 @@
 
 </head>
 <body>{% block body %}
-    <div class="d-flex justify-content-between w-100 mb-4">
+    <div class="d-flex justify-content-between w-100 mb-5">
         <span class="bold font-size-h2">Facture N° {{ order.id }}</span>
         <img
                 src="{{ logo }}"
@@ -73,7 +73,7 @@
                 alt="Logo-L2i"/>
         <span>DATE: {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
     </div>
-    <div>
+    <div class="mb-5">
         <span>
             FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
         </span>
