@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use phpDocumentor\Reflection\Types\Boolean;
+use Spipu\Html2Pdf\Exception\Html2PdfException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,6 +15,9 @@ use Symfony\Component\Filesystem\Filesystem;
 class InvoiceController extends AbstractController
 {
 
+    /**
+     * @throws Html2PdfException
+     */
     #[Route('/generate_invoice', name: 'generateInvoice')]
     public function showInvoice(Request $request): Response
     {
@@ -23,13 +27,13 @@ class InvoiceController extends AbstractController
             $parametersAsArray = json_decode($content, true);
         }
 
-//        $template = ;
-
-        $html2pdf = new Html2Pdf();
-
-        $html2pdf->writeHTML($this->render('invoice/invoice.html.twig', [
+        $template = $this->render('invoice/invoice.html.twig', [
             'order' => $parametersAsArray,
-        ]));
+        ]);
+
+        $html2pdf = new Html2Pdf(margins: array(10, 15, 10, 15));
+
+        $html2pdf->writeHTML($template);
 
 
 
