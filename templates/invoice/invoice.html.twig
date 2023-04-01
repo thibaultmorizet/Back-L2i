@@ -12,16 +12,17 @@
             font-size: 16px;
         }
 
-        .d-flex {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
+        .w-100 {
+            width: 100% !important;
         }
 
-        .flex-column-item {
-            flex-grow: 1;
-            flex-shrink: 0;
-            flex-basis: 40%;
+        .d-flex {
+            display: flex !important;
+        }
+
+        .justify-content-between {
+            justify-content: space-between !important;
+            -webkit-justify-content: space-between !important;
         }
 
         .mb-5 {
@@ -64,15 +65,14 @@
 
 </head>
 <body>{% block body %}
-    <div class="d-flex mb-5">
-        <span class="bold font-size-h2 flex-column-item">Facture N° {{ order.id }}</span>
+    <div class="d-flex justify-content-between w-100 mb-5">
+        <span class="bold font-size-h2">Facture N° {{ order.id }}</span>
         <img
                 src="{{ logo }}"
                 width="100"
                 height="auto"
-                alt="Logo-L2i"
-                class="flex-column-item"/>
-        <span class="flex-column-item">DATE: {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
+                alt="Logo-L2i"/>
+        <span>DATE: {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
     </div>
     <div class="mb-5">
         <span>
