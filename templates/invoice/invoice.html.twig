@@ -20,9 +20,9 @@
             display: flex !important;
         }
 
-        .justify-content-between {
-            justify-content: space-between !important;
-            -webkit-justify-content: space-between !important;
+        .mx-400 {
+            margin-right: 200px !important;
+            margin-left: 200px !important;
         }
 
         .mb-5 {
@@ -64,14 +64,15 @@
     </style>
 
 </head>
-<body class="w-100">{% block body %}
-    <div class="d-flex justify-content-between w-100 mb-5">
+<body>{% block body %}
+    <div class="d-flex w-100 mb-5">
         <span class="bold font-size-h2">Facture N° {{ order.id }}</span>
         <img
                 src="{{ logo }}"
                 width="100"
                 height="auto"
-                alt="Logo-L2i"/>
+                alt="Logo-L2i"
+        class="mx-400"/>
         <span>DATE: {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
     </div>
     <div class="mb-5">
