@@ -65,62 +65,60 @@
 
 </head>
 <body>
-    <div class="d-flex w-100 mb-5">
-        <span class="bold font-size-h2">Facture N° {{ order.id }}</span>
-        <img
-                src="{{ logo }}"
-                width="100"
-                height="auto"
-                alt="Logo-L2i"
+<span class="bold font-size-h2 mb-5">Facture N° {{ order.id }}</span>
+<img
+        src="{{ logo }}"
+        width="100"
+        height="auto"
+        alt="Logo-L2i"
         class="mx-400"/>
-        <span>DATE: {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
-    </div>
-    <div class="mb-5">
+<span>DATE: {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
+<div class="mb-5">
         <span>
             FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
         </span>
-    </div>
+</div>
 
-    <table class="content">
-        <thead>
-        <tr class="text-center bold">
-            <td>DÉSIGNATION</td>
-            <td>QUANTITÉ</td>
-            <td>PRIX</td>
-            <td>TAXE</td>
-            <td>TOTAL</td>
+<table class="content">
+    <thead>
+    <tr class="text-center bold">
+        <td>DÉSIGNATION</td>
+        <td>QUANTITÉ</td>
+        <td>PRIX</td>
+        <td>TAXE</td>
+        <td>TOTAL</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in order.productlist %}
+        <tr class="text-center">
+            <td>{{ product.title }}</td>
+            <td>{{ product.number_ordered }}</td>
+            <td>{{ product.unitpriceht }} €</td>
+            <td>{{ product.taxe.tva }} %</td>
+            <td>{{ product.totalpriceht }} €</td>
         </tr>
-        </thead>
-        <tbody>
-        {% for product in order.productlist %}
-            <tr class="text-center">
-                <td>{{ product.title }}</td>
-                <td>{{ product.number_ordered }}</td>
-                <td>{{ product.unitpriceht }} €</td>
-                <td>{{ product.taxe.tva }} %</td>
-                <td>{{ product.totalpriceht }} €</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        <tfoot>
-        <tr>
-            <td colspan="4" class="text-right">TOTAL HT</td>
-            <td class="text-center">{{ order.totalpriceht }} €</td>
-        </tr>
-        <tr>
-            <td colspan="4" class="text-right">
-                <h3>TOTAL TTC À PAYER</h3>
-            </td>
-            <td class="text-center">
-                <h3>{{ order.totalpricettc }} €</h3>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <span>CONDITIONS ET MOYENS DE PAIEMENT : Non Renseigné</span>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4" class="text-right">TOTAL HT</td>
+        <td class="text-center">{{ order.totalpriceht }} €</td>
+    </tr>
+    <tr>
+        <td colspan="4" class="text-right">
+            <h3>TOTAL TTC À PAYER</h3>
+        </td>
+        <td class="text-center">
+            <h3>{{ order.totalpricettc }} €</h3>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <span>CONDITIONS ET MOYENS DE PAIEMENT : Non Renseigné</span>
+        </td>
+    </tr>
+    </tfoot>
+</table>
 </body>
 </html>
