@@ -27,13 +27,9 @@ class InvoiceController extends AbstractController
             $parametersAsArray = json_decode($content, true);
         }
 
-//        $fileSystem = new Filesystem();
-
-        $logo = getcwd()."/assets/logo/logo-l2i.png";
 
         $template = $this->render('invoice/invoice.html.twig', [
             'order' => $parametersAsArray,
-            'logo' => $logo
         ]);
 
         $html2pdf = new Html2Pdf(margins: array(10, 15, 10, 15));
