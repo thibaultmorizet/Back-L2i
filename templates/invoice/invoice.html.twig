@@ -25,11 +25,15 @@
         }
 
         .mb-4{
-            margin-bottom: 15px !important;
+            margin-bottom: 25px !important;
         }
 
         .bold {
             font-weight: bold;
+        }
+
+        .font-size-h2{
+            font-size: 20px;
         }
 
         .text-right {
@@ -61,7 +65,7 @@
 </head>
 <body>{% block body %}
     <div class="d-flex justify-content-between w-100 mb-4">
-        <h2>Facture N° {{ order.id }}</h2>
+        <span class="bold font-size-h2">Facture N° {{ order.id }}</span>
         <img
                 src="{{ logo }}"
                 width="100"
