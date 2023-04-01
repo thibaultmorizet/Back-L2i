@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use phpDocumentor\Reflection\Types\Boolean;
 use Spipu\Html2Pdf\Exception\Html2PdfException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,7 +26,7 @@ class InvoiceController extends AbstractController
             $parametersAsArray = json_decode($content, true);
         }
 
-        $logo = getcwd()."/assets/logo/logo-l2i.png";
+        $logo = getcwd() . "/assets/logo/logo-l2i.png";
 
         $template = $this->render('invoice/invoice.html.twig', [
             'order' => $parametersAsArray,
@@ -37,7 +36,6 @@ class InvoiceController extends AbstractController
         $html2pdf = new Html2Pdf();
 
         $html2pdf->writeHTML($template);
-
 
 
         $uuid = new UuidV6();
@@ -50,7 +48,6 @@ class InvoiceController extends AbstractController
                 "message" => "Invoice created",
                 "invoice_path" => "https://thibaultmorizet.fr/assets/invoice/" . $uuid . ".pdf"
             ],
-            200,
         );
     }
 
@@ -68,7 +65,6 @@ class InvoiceController extends AbstractController
                 [
                     "success" => false,
                 ],
-                200,
             );
         }
 
@@ -84,7 +80,6 @@ class InvoiceController extends AbstractController
             [
                 "success" => $isExist,
             ],
-            200,
         );
     }
 }
