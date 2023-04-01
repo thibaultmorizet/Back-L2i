@@ -16,25 +16,12 @@
             width: 100% !important;
         }
 
-        .d-flex {
-            display: flex !important;
-        }
-
-        .mx-400 {
-            margin-right: 200px !important;
-            margin-left: 200px !important;
-        }
-
         .mb-5 {
             margin-bottom: 25px !important;
         }
 
         .bold {
             font-weight: bold;
-        }
-
-        .font-size-h2 {
-            font-size: 20px;
         }
 
         .text-right {
@@ -62,82 +49,89 @@
             font-weight: bold;
         }
 
-
-        .exemple-webkit-box-flex-container{ display : -webkit-box; width:650px}
-        .exemple-webkit-box-orient-row  { -webkit-box-orient : horizontal; border-color:#2a712a; }
-        .exemple-webkit-box-flex-item { border:1px dotted #666; display : block; }
-        .exemple-webkit-box-flex-1 { -webkit-box-flex : 1; }
-        .exemple-webkit-box-flex-2 { -webkit-box-flex : 1.2; }
-        .exemple-webkit-box-flex-3 { -webkit-box-flex : 1.3; }
-        .exemple-webkit-box-flex-4 { -webkit-box-flex : 2; }
+        .header td {
+            width: 33%;
+            vertical-align: top;
+        }
     </style>
 
 </head>
 <body>
-    <div class="d-flex w-100 mb-5">
-        <span class="bold font-size-h2">Facture N° {{ order.id }}</span>
-        <img
-                src="{{ logo }}"
-                width="100"
-                height="auto"
-                alt="Logo-L2i"
-        class="mx-400"/>
-        <span>DATE: {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
-    </div>
-
-    <div class="exemple-webkit-box-flex-container exemple-webkit-box-orient-row">
-        <div class="exemple-webkit-box-flex-item exemple-webkit-box-flex-1"><b>-webkit-box-flex: 1; </b></div>
-        <div class="exemple-webkit-box-flex-item exemple-webkit-box-flex-2"><b>-webkit-box-flex: 1.2; </b></div>
-        <div class="exemple-webkit-box-flex-item exemple-webkit-box-flex-3"><b>-webkit-box-flex: 1.3; </b></div>
-        <div class="exemple-webkit-box-flex-item exemple-webkit-box-flex-4"><b>-webkit-box-flex: 2; </b></div>
-    </div>
-
-    <div class="mb-5">
+<table class="header w-100">
+    <tr class="w-100">
+        <td>
+            <h2>Facture N° {{ order.id }}</h2>
+        </td>
+        <td>
+            <img
+                    src="{{ logo }}"
+                    alt="Logo L2i"
+                    width="100"
+                    height="auto"
+            />
+        </td>
+        <td>
+            <span>DATE : {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
+        </td>
+    </tr>
+</table>
+{#    <table class="w-100 mb-5"> #}
+{#        <span class="bold font-size-h2">Facture N° {{ order.id }}</span> #}
+{#        <img #}
+{#                src="{{ logo }}" #}
+{#                width="100" #}
+{#                height="auto" #}
+{#                alt="Logo-L2i" #}
+{#        class="mx-400"/> #}
+{#        <span>DATE: {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span> #}
+{#    </table> #}
+{#    #}
+<div class="mb-5">
         <span>
             FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
         </span>
-    </div>
+</div>
 
-    <table class="content">
-        <thead>
-        <tr class="text-center bold">
-            <td>DÉSIGNATION</td>
-            <td>QUANTITÉ</td>
-            <td>PRIX</td>
-            <td>TAXE</td>
-            <td>TOTAL</td>
+<table class="content">
+    <thead>
+    <tr class="text-center bold">
+        <td>DÉSIGNATION</td>
+        <td>QUANTITÉ</td>
+        <td>PRIX</td>
+        <td>TAXE</td>
+        <td>TOTAL</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in order.productlist %}
+        <tr class="text-center">
+            <td>{{ product.title }}</td>
+            <td>{{ product.number_ordered }}</td>
+            <td>{{ product.unitpriceht }} €</td>
+            <td>{{ product.taxe.tva }} %</td>
+            <td>{{ product.totalpriceht }} €</td>
         </tr>
-        </thead>
-        <tbody>
-        {% for product in order.productlist %}
-            <tr class="text-center">
-                <td>{{ product.title }}</td>
-                <td>{{ product.number_ordered }}</td>
-                <td>{{ product.unitpriceht }} €</td>
-                <td>{{ product.taxe.tva }} %</td>
-                <td>{{ product.totalpriceht }} €</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        <tfoot>
-        <tr>
-            <td colspan="4" class="text-right">TOTAL HT</td>
-            <td class="text-center">{{ order.totalpriceht }} €</td>
-        </tr>
-        <tr>
-            <td colspan="4" class="text-right">
-                <h3>TOTAL TTC À PAYER</h3>
-            </td>
-            <td class="text-center">
-                <h3>{{ order.totalpricettc }} €</h3>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <span>CONDITIONS ET MOYENS DE PAIEMENT : Non Renseigné</span>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4" class="text-right">TOTAL HT</td>
+        <td class="text-center">{{ order.totalpriceht }} €</td>
+    </tr>
+    <tr>
+        <td colspan="4" class="text-right">
+            <h3>TOTAL TTC À PAYER</h3>
+        </td>
+        <td class="text-center">
+            <h3>{{ order.totalpricettc }} €</h3>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <span>CONDITIONS ET MOYENS DE PAIEMENT : Non Renseigné</span>
+        </td>
+    </tr>
+    </tfoot>
+</table>
 </body>
 </html>
