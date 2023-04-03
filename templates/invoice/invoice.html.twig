@@ -57,6 +57,9 @@
 <table class="header">
     <tr class="w-100">
         <td>
+            <span>DATE : {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
+        </td>
+        <td>
             <h2>Facture N° {{ order.id }}</h2>
         </td>
         <td>
@@ -67,9 +70,7 @@
                     height="auto"
             />
         </td>
-        <td>
-            <span>DATE : {{ order.date ? order.date|date('Y-m-d H:i:s') : '' }}</span>
-        </td>
+
     </tr>
 </table>
 <br>
