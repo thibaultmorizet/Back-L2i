@@ -16,14 +16,6 @@
             width: 100% !important;
         }
 
-        .mb-5 {
-            margin-bottom: 25px !important;
-        }
-
-        .mb-10 {
-            margin-bottom: 50px !important;
-        }
-
         .bold {
             font-weight: bold;
         }
@@ -62,7 +54,7 @@
 
 </head>
 <body>
-<table class="header mb-10">
+<table class="header">
     <tr class="w-100">
         <td>
             <h2>Facture N° {{ order.id }}</h2>
@@ -80,12 +72,15 @@
         </td>
     </tr>
 </table>
-<div class="mb-10">
+<br>
+<br>
+<div>
         <span>
             FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
         </span>
 </div>
-
+<br>
+<br>
 <table class="content">
     <thead>
     <tr class="text-center bold">
