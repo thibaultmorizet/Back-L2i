@@ -33,7 +33,7 @@ class InvoiceController extends AbstractController
             'logo' => $logo
         ]);
 
-        $html2pdf = new Html2Pdf(margins: array(15, 10, 15, 10),);
+        $html2pdf = new Html2Pdf(margins: array(10, 10, 10, 10),);
 
         $html2pdf->writeHTML($template);
 
