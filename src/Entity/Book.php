@@ -17,11 +17,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 #[ApiResource(
-    paginationItemsPerPage: 12,
-    paginationClientItemsPerPage: true,
-    normalizationContext: ['groups' => "book:read"],
     denormalizationContext: ['groups' => "book:write"],
-    order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC']
+    normalizationContext: ['groups' => "book:read"],
+    order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'],
+    paginationClientItemsPerPage: true,
+    paginationItemsPerPage: 12
 )]
 #[ApiFilter(
     RangeFilter::class,
@@ -40,7 +40,7 @@ class Book extends Product
     #[ORM\Column(nullable: true)]
     #[Groups(["product:read", "product:write", "book:read", "book:write", "user:read", "user:write"])]
     #[Assert\Isbn(
-        type: Assert\Isbn::ISBN_10,
+        type: Assert\Isbn::ISBN_13,
         message: 'This value is not valid.',
     )]
     #[Assert\NotBlank]

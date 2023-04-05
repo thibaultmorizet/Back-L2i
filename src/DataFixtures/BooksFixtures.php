@@ -2,96 +2,110 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Book;
 use Faker\Factory;
-use App\Entity\Product;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class BooksFixtures extends Fixture
 {
-    public function __construct()
-    {
-    }
-
     public function getDependencies(): array
     {
-        return [AuthorsFixtures::class, FormatsFixtures::class, EditorsFixtures::class, CategoriesFixtures::class, TaxesFixtures::class];
+        return [VideosFixtures::class, AuthorsFixtures::class, FormatsFixtures::class, EditorsFixtures::class, CategoriesFixtures::class, TaxesFixtures::class];
     }
 
     public function load(ObjectManager $manager)
     {
-//        $faker = Factory::create('fr_FR');
-//
-//
-//        $produits = array();
-//
-//        $produits[0] = new Product();
-//        $produits[0]->setTitle("Html 5 - une référence pour le développeur web");
-//        $produits[0]->setSummary("HTML 5 intègre dans sa conception l'architecture à trois piliers qu'est HTML pour la structure, CSS 3 pour l'apparence et JavaScript pour l'interactivité, avec de nombreuses nouvelles API pour concevoir des applications web. L'intégrateur ou le développeur web pourra ainsi découvrir et exploiter les standards du Web, pour proposer au sein de sites performants et accessibles des contenus multimédias (animations, audio et vidéo), mais également interactifs (nouveaux formulaires, glisser-déposer, etc.).
-//        Concevoir des sites riches, performants et accessibles avec HTML 5.
-//        Ce produit fait la lumière sur les spécifications ardues d'HTML 5, dont il explore l'ensemble des nouveautés et des balises, y compris celles ayant existé et évolué depuis les précédentes versions. Après avoir rappelé l'histoire mouvementée de sa conception au W3C et au WhatWG, l'auteur explique au fil des chapitres comment concevoir des sites et applications web performants et accessibles, en y incorporant des éléments médias (audio, vidéo), en créant des zones de dessin interactives et des animations avec Canvas et en exploitant les microformats pour un balisage sémantique qui améliorera l'échange de données et le référencement.
-//        Il détaille pas à pas les interfaces de programmation pour la gestion des fichiers (File API), la géolocalisation, la prise en charge du glisser-déposer (Drag & Drop), et explique comment stocker des données locales dans le navigateur (Web Storage), communiquer en temps réel ou procéder à des échanges interdocuments (Web Sockets, Server-Sent Events et Web Messaging). Il aborde enfin les techniques permettant d'exécuter du JavaScript en multithread (Web Workers) et la réalisation d'applications hors ligne, les bases de données côté navigateur (Indexed Database et Web SQL Database), ainsi que la manipulation avancée de l'historique (History API).
-//        Très illustrée, riche en conseils et bonnes pratiques, la troisième édition de cet ouvrage intègre toutes les dernières évolutions d'HTML 5 - depuis que sa première version a vu le jour-et les nouveautés concrètement implémentées par les navigateurs web. L'approche pragmatique permet de l'utiliser comme référence pour élaborer et modifier des pages web, mais aussi comme guide pour concevoir une application web.
-//        A qui cet ouvrage s'adresse-t-il ?
-//        - Aux développeurs web, intégrateurs qui souhaitent mettre en oeuvre les nouvelles API d'HTML 5 et moderniser leurs bonnes pratiques de développement web.
-//        - Aux designers web qui souhaitent découvrir toutes les possibilités que leur offre HTML 5.
-//        - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
-//        $produits[0]->setYear(2017);
-//        $produits[0]->setImage("https://www.thibaultmorizet.fr/assets/73.jpeg");
-//        $produits[0]->setUnitpricettc(39.00);
-//        $produits[0]->setUnitpriceht(52.99);
-//        $produits[0]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[0]->setIsbn("2212143656");
-//        $produits[0]->setFormat($formats[0]);
-//        $produits[0]->setEditor($editors[0]);
-//        $produits[0]->addAuthor($auteurs[0]);
-//        $produits[0]->addCategory($categories[0]);
-//        $produits[0]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[0]);
-//
-//        $produits[1] = new Product();
-//        $produits[1]->setTitle("Apprendre à développer un site web avec PHP et MySQL");
-//        $produits[1]->setSummary("Ce produit s'adresse à un public de développeurs débutants connaissant déjà le HTML et les CSS et qui souhaitent bien comprendre le fonctionnement d'une application web pour créer leurs propres sites web dynamiques avec PHP et MySQL.
-//            Dans une première partie, le lecteur installera son environnement de développement WAMP puis découvrira les bases du langage PHP (en version 7 au moment de l'écriture), ses principales fonctions et structures de contrôle, ainsi que des explications sur la transmission des données entre les pages et sur la librairie graphique (les effets spéciaux sur une image). Ces apports théoriques sont accompagnés de nombreux exemples.
-//            Il en est de même dans la deuxième partie du produit, consacrée au langage SQL. Le lecteur découvrira ce qu'est une base de données MySQL et les différentes méthodes pour y accéder avec PHP (PDO, SQL Avancé) et comment assurer la sécurité de la base. Un chapitre est également consacré aux premiers pas sur la Programmation Orientée Objet et un autre à la gestion de la configuration et des performances.
-//            Pour que le lecteur puisse se forger une première expérience significative, l'auteur a préparé de nombreux exercices à la fin de chaque chapitre (exemples : comme créer un blog, une newsletter, un module de paiement en ligne PayPal...) et propose aussi leurs corrigés.
-//            ");
-//        $produits[1]->setYear(2018);
-//        $produits[1]->setImage("https://www.thibaultmorizet.fr/assets/74.jpeg");
-//        $produits[1]->setUnitpricettc(29.90);
-//        $produits[1]->setUnitpriceht(52.99);
-//        $produits[1]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[1]->setIsbn("9782409015297");
-//        $produits[1]->setFormat($formats[0]);
-//        $produits[1]->setEditor($editors[1]);
-//        $produits[1]->addAuthor($auteurs[1]);
-//        $produits[1]->addCategory($categories[0]);
-//        $produits[1]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[1]);
-//
-//        $produits[2] = new Product();
-//        $produits[2]->setTitle("CODER PROPREMENT");
-//        $produits[2]->setSummary("
-//        Si un code sale peut fonctionner, il peut également compromettre la pérennité d'une entreprise de développement de logiciels. Chaque année, du temps et des ressources sont gaspillés à cause d'un code mal écrit. Toutefois, ce n'est pas une fatalité.
-//Grâce à cet ouvrage, vous apprendrez à rédiger du bon code, ainsi qu'à le nettoyer « à la volée », et vous obtiendrez des applications plus robustes, plus évolutives et donc plus durables. Concret et pédagogique, ce manuel se base sur les bonnes pratiques d'une équipe de développeurs aguerris réunie autour de Robert C. Martin, expert logiciel reconnu. Il vous inculquera les valeurs d'un artisan du logiciel et fera de vous un meilleur programmeur.
-//Coder proprement est décomposé en trois parties. La première décrit les principes, les motifs et les pratiques employés dans l'écriture d'un code propre. La deuxième est constituée de plusieurs études de cas à la complexité croissante. Chacune d'elles est un exercice de nettoyage: vous partirez d'un exemple de code présentant certains problèmes, et l'auteur vous expliquera comment en obtenir une version saine et performante. La troisième partie, enfin, sera votre récompense. Son unique chapitre contient une liste d'indicateurs éprouvés par l'auteur qui vous seront précieux pour repérer efficacement les défauts de votre code.
-//            ");
-//        $produits[2]->setYear(2019);
-//        $produits[2]->setImage("https://www.thibaultmorizet.fr/assets/75.jpeg");
-//        $produits[2]->setUnitpricettc(38);
-//        $produits[2]->setUnitpriceht(52.99);
-//        $produits[2]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[2]->setIsbn("9782326002272");
-//        $produits[2]->setFormat($formats[0]);
-//        $produits[2]->setEditor($editors[2]);
-//        $produits[2]->addAuthor($auteurs[2]);
-//        $produits[2]->addCategory($categories[0]);
-//        $produits[2]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[2]);
-//
+        $faker = Factory::create('fr_FR');
+
+        $book1 = new Book();
+        $book1->setTitle("Html 5 - une référence pour le développeur web");
+        $book1->setSummary("
+        HTML 5 intègre dans sa conception l'architecture à trois piliers qu'est HTML pour la structure, CSS 3 pour l'apparence et JavaScript pour l'interactivité, avec de nombreuses nouvelles API pour concevoir des applications web. L'intégrateur ou le développeur web pourra ainsi découvrir et exploiter les standards du Web, pour proposer au sein de sites performants et accessibles des contenus multimédias (animations, audio et vidéo), mais également interactifs (nouveaux formulaires, glisser-déposer, etc.).
+        Concevoir des sites riches, performants et accessibles avec HTML 5.
+        Ce produit fait la lumière sur les spécifications ardues d'HTML 5, dont il explore l'ensemble des nouveautés et des balises, y compris celles ayant existé et évolué depuis les précédentes versions. Après avoir rappelé l'histoire mouvementée de sa conception au W3C et au WhatWG, l'auteur explique au fil des chapitres comment concevoir des sites et applications web performants et accessibles, en y incorporant des éléments médias (audio, vidéo), en créant des zones de dessin interactives et des animations avec Canvas et en exploitant les microformats pour un balisage sémantique qui améliorera l'échange de données et le référencement.
+        Il détaille pas à pas les interfaces de programmation pour la gestion des fichiers (File API), la géolocalisation, la prise en charge du glisser-déposer (Drag & Drop), et explique comment stocker des données locales dans le navigateur (Web Storage), communiquer en temps réel ou procéder à des échanges interdocuments (Web Sockets, Server-Sent Events et Web Messaging). Il aborde enfin les techniques permettant d'exécuter du JavaScript en multithread (Web Workers) et la réalisation d'applications hors ligne, les bases de données côté navigateur (Indexed Database et Web SQL Database), ainsi que la manipulation avancée de l'historique (History API).
+        Très illustrée, riche en conseils et bonnes pratiques, la troisième édition de cet ouvrage intègre toutes les dernières évolutions d'HTML 5 - depuis que sa première version a vu le jour-et les nouveautés concrètement implémentées par les navigateurs web. L'approche pragmatique permet de l'utiliser comme référence pour élaborer et modifier des pages web, mais aussi comme guide pour concevoir une application web.
+        A qui cet ouvrage s'adresse-t-il ?
+        - Aux développeurs web, intégrateurs qui souhaitent mettre en oeuvre les nouvelles API d'HTML 5 et moderniser leurs bonnes pratiques de développement web.
+        - Aux designers web qui souhaitent découvrir toutes les possibilités que leur offre HTML 5.
+        - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.
+        ");
+        $book1->setYear(2017);
+        $book1->setImage("https://www.thibaultmorizet.fr/assets/product-images/2.jpeg");
+        $book1->setUnitpriceht(36.86);
+        $book1->setStock($faker->numberBetween(min: 50, max: 600));
+        $book1->setTaxe($this->getReference('taxe1'));
+        $book1->setVisitnumber($faker->numberBetween(max: 500));
+        $book1->setSoldnumber($faker->numberBetween(max: $book1->getVisitnumber()));
+        $book1->setIsbn("978-2-212-14365-2");
+        $book1->setFormat($this->getReference('format1'));
+        $book1->setEditor($this->getReference('editor1'));
+        $book1->addAuthor($this->getReference('author1'));
+        $book1->addCategory($this->getReference('category1'));
+        $manager->persist($book1);
+        $this->addReference('book1', $book1);
+
+        $book2 = new Book();
+        $book2->setTitle("Apprendre à développer un site web avec PHP et MySQL");
+        $book2->setSummary("
+        Ce livre s'adresse à un public de développeurs débutants connaissant déjà le HTML et les CSS et qui souhaitent bien comprendre le fonctionnement d'une application web pour créer leurs propres sites web dynamiques avec PHP et MySQL. 
+
+        Dans une première partie, le lecteur installera son environnement de développement WAMP puis découvrira les bases du langage PHP (en version 7 au moment de l'écriture), ses principales fonctions et structures de contrôle, ainsi que des explications sur la transmission des données entre les pages et sur la librairie graphique (les effets spéciaux sur une image). Ces apports théoriques sont accompagnés de nombreux exemples.
+
+        Il en est de même dans la deuxième partie du livre, consacrée au langage SQL. Le lecteur découvrira ce qu'est une base de données MySQL et les différentes méthodes pour y accéder avec PHP (PDO, SQL Avancé) et comment assurer la sécurité de la base. Un chapitre est également consacré aux premiers pas sur la Programmation Orientée Objet et un autre à la gestion de la configuration et des performances.
+
+        Pour que le lecteur puisse se forger une première expérience significative, l'auteur a préparé de nombreux exercices à la fin de chaque chapitre (exemples : comme créer un blog, une newsletter, un module de paiement en ligne PayPal...) et propose aussi leurs corrigés.
+        ");
+        $book2->setYear(2018);
+        $book2->setImage("https://www.thibaultmorizet.fr/assets/product-images/3.jpeg");
+        $book2->setUnitpriceht(28.25);
+        $book2->setStock($faker->numberBetween(min: 50, max: 600));
+        $book2->setTaxe($this->getReference('taxe1'));
+        $book2->setVisitnumber($faker->numberBetween(max: 500));
+        $book2->setSoldnumber($faker->numberBetween(max: $book2->getVisitnumber()));
+        $book2->setIsbn("978-2-409-01469-7");
+        $book2->setFormat($this->getReference('format1'));
+        $book2->setEditor($this->getReference('editor2'));
+        $book2->addAuthor($this->getReference('author2'));
+        $book2->addCategory($this->getReference('category1'));
+        $manager->persist($book2);
+        $this->addReference('book2', $book2);
+
+        $book3 = new Book();
+        $book3->setTitle("Coder proprement");
+        $book3->setSummary("
+        Si un code sale peut fonctionner, il peut également compromettre la pérennité d'une entreprise de développement de logiciels. Chaque année, du temps et des ressources sont gaspillés à cause d'un code mal écrit. Toutefois, ce n'est pas une fatalité.
+
+        Grâce à cet ouvrage, vous apprendrez à rédiger du bon code, ainsi qu'à le nettoyer « à la volée », et vous obtiendrez des applications plus robustes, plus évolutives et donc plus durables. Concret et pédagogique, ce manuel se base sur les bonnes pratiques d'une équipe de développeurs aguerris réunie autour de Robert C. Martin, expert logiciel reconnu. Il vous inculquera les valeurs d'un artisan du logiciel et fera de vous un meilleur programmeur.
+
+        Coder proprement est décomposé en trois parties. La première décrit les principes, les motifs et les pratiques employés dans l'écriture d'un code propre. La deuxième est constituée de plusieurs études de cas à la complexité croissante. Chacune d'elles est un exercice de nettoyage: vous partirez d'un exemple de code présentant certains problèmes, et l'auteur vous expliquera comment en obtenir une version saine et performante. La troisième partie, enfin, sera votre récompense. Son unique chapitre contient une liste d'indicateurs éprouvés par l'auteur qui vous seront précieux pour repérer efficacement les défauts de votre code.
+
+        Après avoir lu ce livre, vous saurez :
+        -faire la différence entre du bon et du mauvais code ;
+        -écrire du bon code et transformer le mauvais code en bon code ;
+        -choisir des noms, des fonctions, des objets et des classes appropriés ;
+        -mettre en forme le code pour une lisibilité maximale ;
+        -implémenter le traitement des erreurs sans perturber la logique du code ;
+        -mener des tests unitaires et pratiquer le développement piloté par les tests.
+
+        Véritable manuel du savoir-faire en développement agile, cet ouvrage est un outil indispensable à tout développeur, ingénieur logiciel, chef de projet, responsable d'équipe ou analyste des systèmes dont l'objectif est de produire un meilleur code.        ");
+        $book3->setYear(2019);
+        $book3->setImage("https://www.thibaultmorizet.fr/assets/product-images/4.jpeg");
+        $book3->setUnitpriceht(35.91);
+        $book3->setStock($faker->numberBetween(min: 50, max: 600));
+        $book3->setTaxe($this->getReference('taxe1'));
+        $book3->setVisitnumber($faker->numberBetween(max: 500));
+        $book3->setSoldnumber($faker->numberBetween(max: $book3->getVisitnumber()));
+        $book3->setIsbn("978-2326002272");
+        $book3->setFormat($this->getReference('format1'));
+        $book3->setEditor($this->getReference('editor3'));
+        $book3->addAuthor($this->getReference('author2'));
+        $book3->addCategory($this->getReference('category1'));
+        $manager->persist($book3);
+        $this->addReference('book3', $book3);
+
+
 //
 //        $produits[3] = new Product();
 //        $produits[3]->setTitle("PHP et MySQL pour les Nuls");
