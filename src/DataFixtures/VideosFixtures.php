@@ -11,7 +11,7 @@ class VideosFixtures extends Fixture
 {
     public function getDependencies(): array
     {
-        return [BrandsFixtures::class];
+        return [BrandsFixtures::class,TaxesFixtures::class];
     }
 
     public function load(ObjectManager $manager): void
@@ -26,6 +26,7 @@ class VideosFixtures extends Fixture
         $video1->setImage("https://www.thibaultmorizet.fr/assets/product-images/1.jpeg");
         $video1->setUnitpriceht(69.00);
         $video1->setStock($faker->numberBetween(min: 50, max: 200));
+        $video1->setTaxe($this->getReference('taxe1'));
         $manager->persist($video1);
         $this->addReference('video1', $video1);
 
