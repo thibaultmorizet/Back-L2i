@@ -7,7 +7,7 @@ use App\Entity\Address;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Faker;
+use Faker\Factory;
 
 class UserFixtures extends Fixture
 {
@@ -24,7 +24,7 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $faker = Faker\Factory::create('fr_FR');
+        $faker = Factory::create('fr_FR');
 
         $user = new User();
         $user->setEmail('thibaultmorizet@icloud.com');
