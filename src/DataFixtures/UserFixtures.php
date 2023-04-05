@@ -7,6 +7,7 @@ use App\Entity\Address;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Faker;
 
 class UserFixtures extends Fixture
 {
@@ -15,45 +16,54 @@ class UserFixtures extends Fixture
     {
         $this->passwordEncoder = $passwordEncoder;
     }
-    public function load(ObjectManager $manager)
-    { 
-        $address = new Address();
-        $address->setStreet('Impasse des coquelicots');
-        $address->setPostalcode(84000);
-        $address->setCity("Avignon");
-        $address->setCountry("France");
-        $manager->persist($address);
 
-        $address2 = new Address();
-        $address2->setStreet('Rue du Paradis');
-        $address2->setPostalcode(13006);
-        $address2->setCity("Marseille");
-        $address2->setCountry("France");
-        $manager->persist($address2);
-        
+    public function getDependencies(): array
+    {
+        return [AddressFixtures::class];
+    }
+
+    public function load(ObjectManager $manager)
+    {
+        $faker = Faker\Factory::create('fr_FR');
+
         $user = new User();
         $user->setEmail('thibaultmorizet@icloud.com');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setFirstname("Thibault");
         $user->setLastname("Morizet");        
-        $user->setBillingAddress($address);        
-        $user->setDeliveryAddress($address);        
+        $user->setBillingAddress( $this->getReference('address1'));
+        $user->setDeliveryAddress($this->getReference('address1'));
         $user->setPassword($this->passwordEncoder->hashPassword(
             $user,
-            'Thibault14'
+            'Thibault14*'
         ));
         $manager->persist($user);
+
         $user2 = new User();
-        $user2->setEmail('john.wick@gmail.com');
-        $user2->setFirstname("John");
-        $user2->setLastname("Wick");
-        $user2->setBillingAddress($address2);
-        $user2->setDeliveryAddress($address2);
+        $user2->setEmail('moderator@icloud.com');
+        $user2->setRoles(['ROLE_MODERATOR']);
+        $user2->setFirstname($faker->firstName);
+        $user2->setLastname($faker->lastName);
+        $user2->setBillingAddress($this->getReference('address2'));
+        $user2->setDeliveryAddress($this->getReference('address2'));
         $user2->setPassword($this->passwordEncoder->hashPassword(
             $user2,
-            'Wick'
+            'Moderator14*'
         ));
         $manager->persist($user2);
+
+        $user3 = new User();
+        $user3->setEmail('user@icloud.com');
+        $user3->setFirstname($faker->firstName);
+        $user3->setLastname($faker->lastName);
+        $user3->setBillingAddress($this->getReference('address3'));
+        $user3->setDeliveryAddress($this->getReference('address3'));
+        $user3->setPassword($this->passwordEncoder->hashPassword(
+            $user3,
+            'User14*'
+        ));
+        $manager->persist($user3);
+
         $manager->flush();
     }
 }
