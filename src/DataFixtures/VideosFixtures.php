@@ -30,9 +30,6 @@ class VideosFixtures extends Fixture
         $manager->persist($video1);
         $this->addReference('video1', $video1);
 
-        $metadata = $manager->getClassMetaData(get_class($video1));
-        $metadata->setIdGenerator(new \Doctrine\ORM\Id\AssignedGenerator());
-
         $manager->flush();
     }
 }
