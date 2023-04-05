@@ -33,6 +33,7 @@ class UserFixtures extends Fixture
         $user->setLastname("Morizet");        
         $user->setBillingAddress( $this->getReference('address1'));
         $user->setDeliveryAddress($this->getReference('address1'));
+        $user->setLanguage("en");
         $user->setPassword($this->passwordEncoder->hashPassword(
             $user,
             'Thibault14*'
@@ -46,6 +47,7 @@ class UserFixtures extends Fixture
         $user2->setLastname($faker->lastName);
         $user2->setBillingAddress($this->getReference('address2'));
         $user2->setDeliveryAddress($this->getReference('address2'));
+        $user2->setLanguage("en");
         $user2->setPassword($this->passwordEncoder->hashPassword(
             $user2,
             'Moderator14*'
@@ -58,6 +60,7 @@ class UserFixtures extends Fixture
         $user3->setLastname($faker->lastName);
         $user3->setBillingAddress($this->getReference('address3'));
         $user3->setDeliveryAddress($this->getReference('address3'));
+        $user3->setLanguage("fr");
         $user3->setPassword($this->passwordEncoder->hashPassword(
             $user3,
             'User14*'
