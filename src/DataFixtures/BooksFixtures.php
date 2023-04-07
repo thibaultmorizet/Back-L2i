@@ -107,52 +107,56 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         $book3->setIsbn("978-2326002272");
         $book3->setFormat($this->getReference('format1'));
         $book3->setEditor($this->getReference('editor3'));
-        $book3->addAuthor($this->getReference('author2'));
+        $book3->addAuthor($this->getReference('author3'));
         $book3->addCategory($this->getReference('category1'));
         $manager->persist($book3);
         $this->addReference('book3', $book3);
 
+        $book4 = new Book();
+        $book4->setTitle("PHP et MySQL pour les Nuls");
+        $book4->setSummary("
+        Le livre best-seller sur PHP & MySQL !
 
-//
-//        $produits[3] = new Product();
-//        $produits[3]->setTitle("PHP et MySQL pour les Nuls");
-//        $produits[3]->setSummary("
-//        Avec cette 6e édition de PHP et MySQL pour les Nuls version poche, vous verrez qu'il n'est plus nécessaire d'être un as de la programmation pour développer des sites Web dynamiques et interactifs.
-//        Ce produit vous introduira aux toutes dernières évolutions des deux langages. Vous apprendrez à manipuler tous les outils de gestion de sessions, les cookies, gérer le code XML et JavaScript, mettre en place des systèmes de sécurité, et bien d'autres choses encore...
-//                    ");
-//        $produits[3]->setYear(2019);
-//        $produits[3]->setImage("https://www.thibaultmorizet.fr/assets/76.jpeg");
-//        $produits[3]->setUnitpricettc(12.5);
-//        $produits[3]->setUnitpriceht(52.99);
-//        $produits[3]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[3]->setIsbn("9782412043622");
-//        $produits[3]->setFormat($formats[1]);
-//        $produits[3]->setEditor($editors[3]);
-//        $produits[3]->addAuthor($auteurs[3]);
-//        $produits[3]->addCategory($categories[2]);
-//        $produits[3]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[3]);
-//
-//        $produits[4] = new Product();
-//        $produits[4]->setTitle("Les bases du web : Html5, Css3, JavaScript");
-//        $produits[4]->setSummary("
-//        Le web est un domaine en constante évolution. Les technologies évoluent et le web également. Créer un site web ou une application est beaucoup plus facile aujourd'hui qu'hier ! Malgré toutes ces avancées, le web reste un domaine très technique, qui n'est pas facile à appréhender. Le but de ce produit est de vous inculquer les bases du web et de vous permettre de maîtriser les bases du HTML, du CSS et du JavaScript. Vous n'avez pas besoin d'être un \"geek\" pour comprendre ce produit. Vous devez simplement être intéressé par le sujet et avoir la volonté d'élargir votre savoir ! Si votre but est de devenir développeur web et que vous débutez dans ce domaine, ce produit est fait pour vous. Si vous êtes intéressé par le sujet, dans le but de créer un site ou une application web, cette lecture est également appropriée. Dans le chapitre \"Qu'est-ce que le web ?\", vous apprendrez comment le web est né en 1989, qui l'a inventé et pourquoi. Vous apprendrez à maîtriser des concepts tels que Http, Html, les navigateurs web, les cookies ou encore le Cloud Computing.
-//        ");
-//        $produits[4]->setYear(2019);
-//        $produits[4]->setImage("https://www.thibaultmorizet.fr/assets/77.jpeg");
-//        $produits[4]->setUnitpricettc(19.9);
-//        $produits[4]->setUnitpriceht(52.99);
-//        $produits[4]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[4]->setIsbn("9781706785606");
-//        $produits[4]->setFormat($formats[0]);
-//        $produits[4]->setEditor($editors[4]);
-//        $produits[4]->addAuthor($auteurs[4]);
-//        $produits[4]->addCategory($categories[0]);
-//        $produits[4]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[4]);
-//
+        Avec cette 6e édition de PHP et MySQL pour les Nuls version poche, vous verrez qu'il n'est plus nécessaire d'être un as de la programmation pour développer des sites Web dynamiques et interactifs.
+
+        Ce livre vous introduira aux toutes dernières évolutions des deux langages. Vous apprendrez à manipuler tous les outils de gestion de sessions, les cookies, gérer le code XML et JavaScript, mettre en place des systèmes de sécurité, et bien d'autres choses encore...        ");
+        $book4->setYear(2019);
+        $book4->setImage("https://www.thibaultmorizet.fr/assets/product-images/5.jpeg");
+        $book4->setUnitpriceht(23, 15);
+        $book4->setStock($faker->numberBetween(min: 50, max: 600));
+        $book4->setTaxe($this->getReference('taxe1'));
+        $book4->setVisitnumber($faker->numberBetween(max: 500));
+        $book4->setSoldnumber($faker->numberBetween(max: $book4->getVisitnumber()));
+        $book4->setIsbn("978-2412043622");
+        $book4->setFormat($this->getReference('format2'));
+        $book4->setEditor($this->getReference('editor4'));
+        $book4->addAuthor($this->getReference('author4'));
+        $book4->addCategory($this->getReference('category1'));
+        $manager->persist($book4);
+        $this->addReference('book4', $book4);
+
+        $book5 = new Book();
+        $book5->setTitle("Les bases du web : Html5, Css3, JavaScript");
+        $book5->setSummary("
+        Le web est un domaine en constante évolution. Les technologies évoluent et le web également. Créer un site web ou une application est beaucoup plus facile aujourd'hui qu'hier ! Malgré toutes ces avancées, le web reste un domaine très technique, qui n'est pas facile à appréhender. Le but de ce livre est de vous inculquer les bases du web et de vous permettre de maîtriser les bases du HTML, du CSS et du JavaScript. Vous n'avez pas besoin d'être un \"geek\" pour comprendre ce livre. Vous devez simplement être intéressé par le sujet et avoir la volonté d'élargir votre savoir ! Si votre but est de devenir développeur web et que vous débutez dans ce domaine, ce livre est fait pour vous. Si vous êtes intéressé par le sujet, dans le but de créer un site ou une application web, cette lecture est également appropriée. Dans le chapitre \"Qu\'est-ce que le web ?\", vous apprendrez comment le web est né en 1989, qui l\'a inventé et pourquoi . Vous apprendrez à maîtriser des concepts tels que Http, Html, les navigateurs web, les cookies ou encore le Cloud Computing . Dans le chapitre \"Les langages du web\", vous apprendrez à distinguer un langage client d\'un langage serveur, ce qu\'est une base de données et comment y stocker des informations, ce qu\'est une API. Dans le chapitre \"Types de site et d\'applications web\", vous étudierez les sites web Responsive, les applications mobiles et les applications web progressives (Progressive Web Apps). Vous serez alors en mesure de faire un choix entre ces types de sites et d\'applications web pour votre propre projet.Dans le chapitre \"Médias Web\", vous étudierez quels médias utiliser sur le web, comment les utiliser et comment trouver des images, vidéos et icônes adaptés à votre projet. Dans le chapitre \"Bases de réseau pour le développement web\", vous étudierez le modèle OSI, comment fonctionne le réseau Internet, comment acheter un nom de domaine et héberger un site web ou une application.Dans le chapitre \"Introduction au HTML5\", vous apprendrez tous les fondamentaux du HTML5, dans le but de construire le squelette d\'un site web.Dans le chapitre \"Introduction à CSS3\", vous apprendrez à créer des feuilles de style pour votre site web.Dans le chapitre \"Introduction à JavaScript\", vous apprendrez à insérer du code JavaScript dans votre site. JavaScript est un langage de script, permettant d\'ajouter des animations et de l\'interactivité à vos pages web.Dans le chapitre \"Comprendre les moteurs de recherche\", vous apprendrez comment fonctionnent les moteurs de recherche et comment référencer un site ou une application web sur les moteurs de recherche les plus utilisés que sont Google, Bing et Yahoo. Vous apprendrez les bases du référencement web, également connu sous le nom de SEO (Search Engine Optimization).Dans le dernier chapitre, \"Comment devenir développeur web ? \", une présentation des principaux métiers du web vous sera faite. Nous vous présenterons les écoles et les formations sur Internet pour devenir développeur web ou élargir vos connaissances sur le sujet. Je vous donnerai également des trucs et astuces pour ne pas tomber dans les pièges des débutants. Concernant les chapitres techniques, des exercices vous seront proposés avec leurs corrections. Ces exercices ont pour but de vous entraîner à créer un site web. Je vous conseille vivement de les faire.Ce livre est protégé et déposé à l\'INPI. Toute reproduction est interdite. 
+        ");
+        $book5->setYear(2019);
+        $book5->setImage("https://www.thibaultmorizet.fr/assets/product-images/6.jpeg");
+        $book5->setUnitpriceht(23, 15);
+        $book5->setStock($faker->numberBetween(min: 50, max: 600));
+        $book5->setTaxe($this->getReference('taxe1'));
+        $book5->setVisitnumber($faker->numberBetween(max: 500));
+        $book5->setSoldnumber($faker->numberBetween(max: $book5->getVisitnumber()));
+        $book5->setIsbn("978-1706785606");
+        $book5->setFormat($this->getReference('format1'));
+        $book5->setEditor($this->getReference('editor5'));
+        $book5->addAuthor($this->getReference('author5'));
+        $book5->addCategory($this->getReference('category1'));
+        $manager->persist($book5);
+        $this->addReference('book5', $book5);
+
+
+
 //        $produits[5] = new Product();
 //        $produits[5]->setTitle("HTML5 & CSS3 - Créer un site web responsive");
 //        $produits[5]->setSummary("
