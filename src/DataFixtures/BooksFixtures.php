@@ -3,15 +3,22 @@
 namespace App\DataFixtures;
 
 use App\Entity\Book;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Faker\Factory;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
-class BooksFixtures extends Fixture
+class BooksFixtures extends Fixture implements DependentFixtureInterface
 {
     public function getDependencies(): array
     {
-        return [VideosFixtures::class, AuthorsFixtures::class, FormatsFixtures::class, EditorsFixtures::class, CategoriesFixtures::class, TaxesFixtures::class];
+        return [
+            VideosFixtures::class,
+            AuthorsFixtures::class,
+            FormatsFixtures::class,
+            EditorsFixtures::class,
+            CategoriesFixtures::class,
+            TaxesFixtures::class];
     }
 
     public function load(ObjectManager $manager)

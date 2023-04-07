@@ -4,14 +4,18 @@ namespace App\DataFixtures;
 
 use App\Entity\Video;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class VideosFixtures extends Fixture
+class VideosFixtures extends Fixture implements DependentFixtureInterface
 {
     public function getDependencies(): array
     {
-        return [BrandsFixtures::class,TaxesFixtures::class];
+        return [
+            BrandsFixtures::class,
+            TaxesFixtures::class
+        ];
     }
 
     public function load(ObjectManager $manager): void

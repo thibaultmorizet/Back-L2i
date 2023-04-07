@@ -4,12 +4,13 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use App\Entity\Address;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Faker\Factory;
 
-class UserFixtures extends Fixture
+class UserFixtures extends Fixture implements DependentFixtureInterface
 {
     private $passwordEncoder;
     public function __construct(UserPasswordHasherInterface $passwordEncoder)
