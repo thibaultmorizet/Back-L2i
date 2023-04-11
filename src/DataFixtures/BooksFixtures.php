@@ -40,7 +40,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         ");
         $book1->setYear(2017);
         $book1->setImage("https://www.thibaultmorizet.fr/assets/product-images/16.jpeg");
-        $book1->setUnitpriceht(36.86);
+        $book1->setUnitpriceht(36.97);
         $book1->setStock($faker->numberBetween(min: 50, max: 600));
         $book1->setTaxe($this->getReference('taxe1'));
         $book1->setVisitnumber($faker->numberBetween(max: 500));
@@ -66,7 +66,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         ");
         $book2->setYear(2018);
         $book2->setImage("https://www.thibaultmorizet.fr/assets/product-images/17.jpeg");
-        $book2->setUnitpriceht(28.25);
+        $book2->setUnitpriceht(28.34);
         $book2->setStock($faker->numberBetween(min: 50, max: 600));
         $book2->setTaxe($this->getReference('taxe1'));
         $book2->setVisitnumber($faker->numberBetween(max: 500));
@@ -99,7 +99,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         Véritable manuel du savoir-faire en développement agile, cet ouvrage est un outil indispensable à tout développeur, ingénieur logiciel, chef de projet, responsable d'équipe ou analyste des systèmes dont l'objectif est de produire un meilleur code.        ");
         $book3->setYear(2019);
         $book3->setImage("https://www.thibaultmorizet.fr/assets/product-images/18.jpeg");
-        $book3->setUnitpriceht(35.91);
+        $book3->setUnitpriceht(36.02);
         $book3->setStock($faker->numberBetween(min: 50, max: 600));
         $book3->setTaxe($this->getReference('taxe1'));
         $book3->setVisitnumber($faker->numberBetween(max: 500));
@@ -122,7 +122,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         Ce livre vous introduira aux toutes dernières évolutions des deux langages. Vous apprendrez à manipuler tous les outils de gestion de sessions, les cookies, gérer le code XML et JavaScript, mettre en place des systèmes de sécurité, et bien d'autres choses encore...        ");
         $book4->setYear(2019);
         $book4->setImage("https://www.thibaultmorizet.fr/assets/product-images/19.jpeg");
-        $book4->setUnitpriceht(23.15);
+        $book4->setUnitpriceht(32.23);
         $book4->setStock($faker->numberBetween(min: 50, max: 600));
         $book4->setTaxe($this->getReference('taxe1'));
         $book4->setVisitnumber($faker->numberBetween(max: 500));
@@ -142,7 +142,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         ");
         $book5->setYear(2019);
         $book5->setImage("https://www.thibaultmorizet.fr/assets/product-images/20.jpeg");
-        $book5->setUnitpriceht(18.81);
+        $book5->setUnitpriceht(18.85);
         $book5->setStock($faker->numberBetween(min: 50, max: 600));
         $book5->setTaxe($this->getReference('taxe1'));
         $book5->setVisitnumber($faker->numberBetween(max: 500));
@@ -161,7 +161,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5.Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.Dans le chapitre \"Les APIs HTML5\", vous apprendrez à utiliser les principales APIs HTML5 : les canvas, la géolocalisation, le Drag and Drop, le Web Storage, les Web Workers et le concept d'IndexedDB.Dans le chapitre \"Les microdonnées HTML5\", vous apprendrez à implémenter des microdonnées à l'intérieur d'une page HTML. Le but sera de donner du sens à certaines parties de votre site web, pour qu'il soit mieux indexé par les moteurs de recherche.Dans le chapitre \"Les bases de CSS3\", vous apprendrez les bases du CSS3 : comment créer une feuille de style, la syntaxe de base et les unités utilisées.Dans le chapitre \"CSS3 Avancé\", vous apprendrez des notions plus avancées de CSS3 : créer des coins arrondis, des dégradés, des ombres, des effets de texte, intégrer des polices de caractère à son site et utiliser les Flex Box.Dans le dernier chapitre \"Design Web Responsive avec CSS3\", vous apprendrez à créer un site web responsive avec CSS3. Nous verrons les notions de viewport, de grille, les media queries, les images et les vidéos responsive etc.A la fin de ce livre, vous serez en mesure de créer un site web responsive entièrement codé en HTML5 et CSS3. Vous serez parfaitement autonome dans cette tâche. Le livre est ponctué d'exercices dont le but principal est de créer un site web responsive pas à pas. La correction globale se trouve en annexe. Vous pouvez également télécharger le dossier d'exercices et la correction sur notre compte GitHub : https://github.com/webstreet-cie/html5-css3-create-responsive-website.NB : Le livre est traduit en français, mais le projet est entièrement en anglais. Ce livre est protégé auprès de l'INPI. Toute reproduction est totalement interdite et vous vous exposez à des poursuites dans le cas contraire.        ");
         $book6->setYear(2020);
         $book6->setImage("https://www.thibaultmorizet.fr/assets/product-images/21.jpeg");
-        $book6->setUnitpriceht(18.90);
+        $book6->setUnitpriceht(18.95);
         $book6->setStock($faker->numberBetween(min: 50, max: 600));
         $book6->setTaxe($this->getReference('taxe1'));
         $book6->setVisitnumber($faker->numberBetween(max: 500));
@@ -191,7 +191,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         ");
         $book7->setYear(2022);
         $book7->setImage("https://www.thibaultmorizet.fr/assets/product-images/22.jpeg");
-        $book7->setUnitpriceht(28.26);
+        $book7->setUnitpriceht(28.34);
         $book7->setStock($faker->numberBetween(min: 50, max: 600));
         $book7->setTaxe($this->getReference('taxe1'));
         $book7->setVisitnumber($faker->numberBetween(max: 500));
@@ -221,7 +221,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         ");
         $book8->setYear(2023);
         $book8->setImage("https://www.thibaultmorizet.fr/assets/product-images/23.jpeg");
-        $book8->setUnitpriceht(36.85);
+        $book8->setUnitpriceht(36.97);
         $book8->setStock($faker->numberBetween(min: 50, max: 600));
         $book8->setTaxe($this->getReference('taxe1'));
         $book8->setVisitnumber($faker->numberBetween(max: 500));
@@ -249,7 +249,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         ");
         $book9->setYear(2023);
         $book9->setImage("https://www.thibaultmorizet.fr/assets/product-images/24.jpeg");
-        $book9->setUnitpriceht(36.85);
+        $book9->setUnitpriceht(36.97);
         $book9->setStock($faker->numberBetween(min: 50, max: 600));
         $book9->setTaxe($this->getReference('taxe1'));
         $book9->setVisitnumber($faker->numberBetween(max: 500));
