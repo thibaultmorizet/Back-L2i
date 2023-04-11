@@ -122,7 +122,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         Ce livre vous introduira aux toutes dernières évolutions des deux langages. Vous apprendrez à manipuler tous les outils de gestion de sessions, les cookies, gérer le code XML et JavaScript, mettre en place des systèmes de sécurité, et bien d'autres choses encore...        ");
         $book4->setYear(2019);
         $book4->setImage("https://www.thibaultmorizet.fr/assets/product-images/5.jpeg");
-        $book4->setUnitpriceht(23, 15);
+        $book4->setUnitpriceht(23.15);
         $book4->setStock($faker->numberBetween(min: 50, max: 600));
         $book4->setTaxe($this->getReference('taxe1'));
         $book4->setVisitnumber($faker->numberBetween(max: 500));
@@ -131,7 +131,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         $book4->setFormat($this->getReference('format2'));
         $book4->setEditor($this->getReference('editor4'));
         $book4->addAuthor($this->getReference('author4'));
-        $book4->addCategory($this->getReference('category1'));
+        $book4->addCategory($this->getReference('category3'));
         $manager->persist($book4);
         $this->addReference('book4', $book4);
 
@@ -142,7 +142,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         ");
         $book5->setYear(2019);
         $book5->setImage("https://www.thibaultmorizet.fr/assets/product-images/6.jpeg");
-        $book5->setUnitpriceht(23, 15);
+        $book5->setUnitpriceht(18.81);
         $book5->setStock($faker->numberBetween(min: 50, max: 600));
         $book5->setTaxe($this->getReference('taxe1'));
         $book5->setVisitnumber($faker->numberBetween(max: 500));
@@ -155,484 +155,54 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($book5);
         $this->addReference('book5', $book5);
 
+        $book6 = new Book();
+        $book6->setTitle("HTML5 & CSS3 - Créer un site web responsive");
+        $book6->setSummary("
+        Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5.Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.Dans le chapitre \"Les APIs HTML5\", vous apprendrez à utiliser les principales APIs HTML5 : les canvas, la géolocalisation, le Drag and Drop, le Web Storage, les Web Workers et le concept d'IndexedDB.Dans le chapitre \"Les microdonnées HTML5\", vous apprendrez à implémenter des microdonnées à l'intérieur d'une page HTML. Le but sera de donner du sens à certaines parties de votre site web, pour qu'il soit mieux indexé par les moteurs de recherche.Dans le chapitre \"Les bases de CSS3\", vous apprendrez les bases du CSS3 : comment créer une feuille de style, la syntaxe de base et les unités utilisées.Dans le chapitre \"CSS3 Avancé\", vous apprendrez des notions plus avancées de CSS3 : créer des coins arrondis, des dégradés, des ombres, des effets de texte, intégrer des polices de caractère à son site et utiliser les Flex Box.Dans le dernier chapitre \"Design Web Responsive avec CSS3\", vous apprendrez à créer un site web responsive avec CSS3. Nous verrons les notions de viewport, de grille, les media queries, les images et les vidéos responsive etc.A la fin de ce livre, vous serez en mesure de créer un site web responsive entièrement codé en HTML5 et CSS3. Vous serez parfaitement autonome dans cette tâche. Le livre est ponctué d'exercices dont le but principal est de créer un site web responsive pas à pas. La correction globale se trouve en annexe. Vous pouvez également télécharger le dossier d'exercices et la correction sur notre compte GitHub : https://github.com/webstreet-cie/html5-css3-create-responsive-website.NB : Le livre est traduit en français, mais le projet est entièrement en anglais. Ce livre est protégé auprès de l'INPI. Toute reproduction est totalement interdite et vous vous exposez à des poursuites dans le cas contraire.        ");
+        $book6->setYear(2020);
+        $book6->setImage("https://www.thibaultmorizet.fr/assets/product-images/7.jpeg");
+        $book6->setUnitpriceht(18.90);
+        $book6->setStock($faker->numberBetween(min: 50, max: 600));
+        $book6->setTaxe($this->getReference('taxe1'));
+        $book6->setVisitnumber($faker->numberBetween(max: 500));
+        $book6->setSoldnumber($faker->numberBetween(max: $book6->getVisitnumber()));
+        $book6->setIsbn("979-8698662860");
+        $book6->setFormat($this->getReference('format1'));
+        $book6->setEditor($this->getReference('editor5'));
+        $book6->addAuthor($this->getReference('author5'));
+        $book6->addCategory($this->getReference('category1'));
+        $manager->persist($book6);
+        $this->addReference('book6', $book6);
 
+        $book7 = new Book();
+        $book7->setTitle("Réseaux informatiques - Notions fondamentales (9e édition)");
+        $book7->setSummary("
+        Ce livre sur les réseaux s'adresse aussi bien aux personnes désireuses de comprendre les réseaux informatiques et les systèmes d'exploitation, qu'aux informaticiens plus expérimentés souhaitant renforcer et mettre à jour leurs connaissances. 
 
-//        $produits[5] = new Product();
-//        $produits[5]->setTitle("HTML5 & CSS3 - Créer un site web responsive");
-//        $produits[5]->setSummary("
-//        Dans ce produit vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
-//        $produits[5]->setYear(2020);
-//        $produits[5]->setImage("https://www.thibaultmorizet.fr/assets/78.jpeg");
-//        $produits[5]->setUnitpricettc(19.99);
-//        $produits[5]->setUnitpriceht(52.99);
-//        $produits[5]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[5]->setIsbn("9788698662860");
-//        $produits[5]->setFormat($formats[0]);
-//        $produits[5]->setEditor($editors[4]);
-//        $produits[5]->addAuthor($auteurs[4]);
-//        $produits[5]->addCategory($categories[0]);
-//        $produits[5]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[5]);
-//
-//
-//        $produits[6] = new Product();
-//        $produits[6]->setTitle("Réseaux informatiques - Notions fondamentales (9e édition)");
-//        $produits[6]->setSummary("
-//        Ingénieur en Informatique, passionné par la technologie et le partage de la connaissance, José DORDOIGNE est un expert technique dans de nombreux domaines (poste de travail et serveurs Windows, réseau et services réseau, Unix, Linux…) qui exerce aujourd'hui au sein d'une grande compagnie d'assurance française. Il est titulaire de très nombreuses certifications (plusieurs fois Microsoft Certified Systems Engineer, mais aussi Red Hat Certified Engineer Linux). Sa pédagogie et son expertise technique ont notamment été éprouvées au travers d'une expérience de près de 10 ans en tant qu'Ingénieur formateur, de démarches de conseils au sein d'une grande SSII pendant 12 années en tant qu'architecte Infrastructure, ainsi qu'avec l'écriture d'une dizaine de produits sur les systèmes d'exploitation Microsoft et les réseaux TCP/IP.
-//        ");
-//        $produits[6]->setYear(2022);
-//        $produits[6]->setImage("https://www.thibaultmorizet.fr/assets/79.jpeg");
-//        $produits[6]->setUnitpricettc(29.90);
-//        $produits[6]->setUnitpriceht(52.99);
-//        $produits[6]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[6]->setIsbn("9782409035173");
-//        $produits[6]->setFormat($formats[0]);
-//        $produits[6]->setEditor($editors[1]);
-//        $produits[6]->addAuthor($auteurs[5]);
-//        $produits[6]->addCategory($categories[1]);
-//        $produits[6]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[6]);
-//
-//
-//        $produits[7] = new Product();
-//        $produits[7]->setTitle("Html 5 - une référence pour le développeur web");
-//        $produits[7]->setSummary("HTML 5 intègre dans sa conception l'architecture à trois piliers qu'est HTML pour la structure, CSS 3 pour l'apparence et JavaScript pour l'interactivité, avec de nombreuses nouvelles API pour concevoir des applications web. L'intégrateur ou le développeur web pourra ainsi découvrir et exploiter les standards du Web, pour proposer au sein de sites performants et accessibles des contenus multimédias (animations, audio et vidéo), mais également interactifs (nouveaux formulaires, glisser-déposer, etc.).
-//        Concevoir des sites riches, performants et accessibles avec HTML 5.
-//        Ce produit fait la lumière sur les spécifications ardues d'HTML 5, dont il explore l'ensemble des nouveautés et des balises, y compris celles ayant existé et évolué depuis les précédentes versions. Après avoir rappelé l'histoire mouvementée de sa conception au W3C et au WhatWG, l'auteur explique au fil des chapitres comment concevoir des sites et applications web performants et accessibles, en y incorporant des éléments médias (audio, vidéo), en créant des zones de dessin interactives et des animations avec Canvas et en exploitant les microformats pour un balisage sémantique qui améliorera l'échange de données et le référencement.
-//        Il détaille pas à pas les interfaces de programmation pour la gestion des fichiers (File API), la géolocalisation, la prise en charge du glisser-déposer (Drag & Drop), et explique comment stocker des données locales dans le navigateur (Web Storage), communiquer en temps réel ou procéder à des échanges interdocuments (Web Sockets, Server-Sent Events et Web Messaging). Il aborde enfin les techniques permettant d'exécuter du JavaScript en multithread (Web Workers) et la réalisation d'applications hors ligne, les bases de données côté navigateur (Indexed Database et Web SQL Database), ainsi que la manipulation avancée de l'historique (History API).
-//        Très illustrée, riche en conseils et bonnes pratiques, la troisième édition de cet ouvrage intègre toutes les dernières évolutions d'HTML 5 - depuis que sa première version a vu le jour-et les nouveautés concrètement implémentées par les navigateurs web. L'approche pragmatique permet de l'utiliser comme référence pour élaborer et modifier des pages web, mais aussi comme guide pour concevoir une application web.
-//        A qui cet ouvrage s'adresse-t-il ?
-//        - Aux développeurs web, intégrateurs qui souhaitent mettre en oeuvre les nouvelles API d'HTML 5 et moderniser leurs bonnes pratiques de développement web.
-//        - Aux designers web qui souhaitent découvrir toutes les possibilités que leur offre HTML 5.
-//        - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
-//        $produits[7]->setYear(2017);
-//        $produits[7]->setImage("https://www.thibaultmorizet.fr/assets/80.jpeg");
-//        $produits[7]->setUnitpricettc(39.00);
-//        $produits[7]->setUnitpriceht(52.99);
-//        $produits[7]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[7]->setIsbn("2212143656");
-//        $produits[7]->setFormat($formats[0]);
-//        $produits[7]->setEditor($editors[0]);
-//        $produits[7]->addAuthor($auteurs[0]);
-//        $produits[7]->addCategory($categories[0]);
-//        $produits[7]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[7]);
-//
-//        $produits[8] = new Product();
-//        $produits[8]->setTitle("Apprendre à développer un site web avec PHP et MySQL");
-//        $produits[8]->setSummary("Ce produit s'adresse à un public de développeurs débutants connaissant déjà le HTML et les CSS et qui souhaitent bien comprendre le fonctionnement d'une application web pour créer leurs propres sites web dynamiques avec PHP et MySQL.
-//            Dans une première partie, le lecteur installera son environnement de développement WAMP puis découvrira les bases du langage PHP (en version 7 au moment de l'écriture), ses principales fonctions et structures de contrôle, ainsi que des explications sur la transmission des données entre les pages et sur la librairie graphique (les effets spéciaux sur une image). Ces apports théoriques sont accompagnés de nombreux exemples.
-//            Il en est de même dans la deuxième partie du produit, consacrée au langage SQL. Le lecteur découvrira ce qu'est une base de données MySQL et les différentes méthodes pour y accéder avec PHP (PDO, SQL Avancé) et comment assurer la sécurité de la base. Un chapitre est également consacré aux premiers pas sur la Programmation Orientée Objet et un autre à la gestion de la configuration et des performances.
-//            Pour que le lecteur puisse se forger une première expérience significative, l'auteur a préparé de nombreux exercices à la fin de chaque chapitre (exemples : comme créer un blog, une newsletter, un module de paiement en ligne PayPal...) et propose aussi leurs corrigés.
-//            ");
-//        $produits[8]->setYear(2018);
-//        $produits[8]->setImage("https://www.thibaultmorizet.fr/assets/81.jpeg");
-//        $produits[8]->setUnitpricettc(29.90);
-//        $produits[8]->setUnitpriceht(52.99);
-//        $produits[8]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[8]->setIsbn("9782409015297");
-//        $produits[8]->setFormat($formats[0]);
-//        $produits[8]->setEditor($editors[1]);
-//        $produits[8]->addAuthor($auteurs[1]);
-//        $produits[8]->addCategory($categories[0]);
-//        $produits[8]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[8]);
-//
-//        $produits[9] = new Product();
-//        $produits[9]->setTitle("CODER PROPREMENT");
-//        $produits[9]->setSummary("
-//        Si un code sale peut fonctionner, il peut également compromettre la pérennité d'une entreprise de développement de logiciels. Chaque année, du temps et des ressources sont gaspillés à cause d'un code mal écrit. Toutefois, ce n'est pas une fatalité.
-//Grâce à cet ouvrage, vous apprendrez à rédiger du bon code, ainsi qu'à le nettoyer « à la volée », et vous obtiendrez des applications plus robustes, plus évolutives et donc plus durables. Concret et pédagogique, ce manuel se base sur les bonnes pratiques d'une équipe de développeurs aguerris réunie autour de Robert C. Martin, expert logiciel reconnu. Il vous inculquera les valeurs d'un artisan du logiciel et fera de vous un meilleur programmeur.
-//Coder proprement est décomposé en trois parties. La première décrit les principes, les motifs et les pratiques employés dans l'écriture d'un code propre. La deuxième est constituée de plusieurs études de cas à la complexité croissante. Chacune d'elles est un exercice de nettoyage: vous partirez d'un exemple de code présentant certains problèmes, et l'auteur vous expliquera comment en obtenir une version saine et performante. La troisième partie, enfin, sera votre récompense. Son unique chapitre contient une liste d'indicateurs éprouvés par l'auteur qui vous seront précieux pour repérer efficacement les défauts de votre code.
-//            ");
-//        $produits[9]->setYear(2019);
-//        $produits[9]->setImage("https://www.thibaultmorizet.fr/assets/82.jpeg");
-//        $produits[9]->setUnitpricettc(38);
-//        $produits[9]->setUnitpriceht(52.99);
-//        $produits[9]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[9]->setIsbn("9782326002272");
-//        $produits[9]->setFormat($formats[0]);
-//        $produits[9]->setEditor($editors[2]);
-//        $produits[9]->addAuthor($auteurs[2]);
-//        $produits[9]->addCategory($categories[0]);
-//        $produits[9]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[9]);
-//
-//
-//        $produits[10] = new Product();
-//        $produits[10]->setTitle("PHP et MySQL pour les Nuls");
-//        $produits[10]->setSummary("
-//        Avec cette 6e édition de PHP et MySQL pour les Nuls version poche, vous verrez qu'il n'est plus nécessaire d'être un as de la programmation pour développer des sites Web dynamiques et interactifs.
-//        Ce produit vous introduira aux toutes dernières évolutions des deux langages. Vous apprendrez à manipuler tous les outils de gestion de sessions, les cookies, gérer le code XML et JavaScript, mettre en place des systèmes de sécurité, et bien d'autres choses encore...
-//                    ");
-//        $produits[10]->setYear(2019);
-//        $produits[10]->setImage("https://www.thibaultmorizet.fr/assets/83.jpeg");
-//        $produits[10]->setUnitpricettc(12.5);
-//        $produits[10]->setUnitpriceht(52.99);
-//        $produits[10]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[10]->setIsbn("9782412043622");
-//        $produits[10]->setFormat($formats[1]);
-//        $produits[10]->setEditor($editors[3]);
-//        $produits[10]->addAuthor($auteurs[3]);
-//        $produits[10]->addCategory($categories[2]);
-//        $produits[10]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[10]);
-//
-//        $produits[11] = new Product();
-//        $produits[11]->setTitle("Les bases du web : Html5, Css3, JavaScript");
-//        $produits[11]->setSummary("
-//        Le web est un domaine en constante évolution. Les technologies évoluent et le web également. Créer un site web ou une application est beaucoup plus facile aujourd'hui qu'hier ! Malgré toutes ces avancées, le web reste un domaine très technique, qui n'est pas facile à appréhender. Le but de ce produit est de vous inculquer les bases du web et de vous permettre de maîtriser les bases du HTML, du CSS et du JavaScript. Vous n'avez pas besoin d'être un \"geek\" pour comprendre ce produit. Vous devez simplement être intéressé par le sujet et avoir la volonté d'élargir votre savoir ! Si votre but est de devenir développeur web et que vous débutez dans ce domaine, ce produit est fait pour vous. Si vous êtes intéressé par le sujet, dans le but de créer un site ou une application web, cette lecture est également appropriée. Dans le chapitre \"Qu'est-ce que le web ?\", vous apprendrez comment le web est né en 1989, qui l'a inventé et pourquoi. Vous apprendrez à maîtriser des concepts tels que Http, Html, les navigateurs web, les cookies ou encore le Cloud Computing.
-//        ");
-//        $produits[11]->setYear(2019);
-//        $produits[11]->setImage("https://www.thibaultmorizet.fr/assets/84.jpeg");
-//        $produits[11]->setUnitpricettc(19.9);
-//        $produits[11]->setUnitpriceht(52.99);
-//        $produits[11]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[11]->setIsbn("9781706785606");
-//        $produits[11]->setFormat($formats[0]);
-//        $produits[11]->setEditor($editors[4]);
-//        $produits[11]->addAuthor($auteurs[4]);
-//        $produits[11]->addCategory($categories[0]);
-//        $produits[11]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[11]);
-//
-//        $produits[12] = new Product();
-//        $produits[12]->setTitle("HTML5 & CSS3 - Créer un site web responsive");
-//        $produits[12]->setSummary("
-//        Dans ce produit vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
-//        $produits[12]->setYear(2020);
-//        $produits[12]->setImage("https://www.thibaultmorizet.fr/assets/85.jpeg");
-//        $produits[12]->setUnitpricettc(19.99);
-//        $produits[12]->setUnitpriceht(52.99);
-//        $produits[12]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[12]->setIsbn("9788698662860");
-//        $produits[12]->setFormat($formats[0]);
-//        $produits[12]->setEditor($editors[4]);
-//        $produits[12]->addAuthor($auteurs[4]);
-//        $produits[12]->addCategory($categories[0]);
-//        $produits[12]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[12]);
-//
-//
-//        $produits[13] = new Product();
-//        $produits[13]->setTitle("Réseaux informatiques - Notions fondamentales (9e édition)");
-//        $produits[13]->setSummary("
-//        Ingénieur en Informatique, passionné par la technologie et le partage de la connaissance, José DORDOIGNE est un expert technique dans de nombreux domaines (poste de travail et serveurs Windows, réseau et services réseau, Unix, Linux…) qui exerce aujourd'hui au sein d'une grande compagnie d'assurance française. Il est titulaire de très nombreuses certifications (plusieurs fois Microsoft Certified Systems Engineer, mais aussi Red Hat Certified Engineer Linux). Sa pédagogie et son expertise technique ont notamment été éprouvées au travers d'une expérience de près de 10 ans en tant qu'Ingénieur formateur, de démarches de conseils au sein d'une grande SSII pendant 12 années en tant qu'architecte Infrastructure, ainsi qu'avec l'écriture d'une dizaine de produits sur les systèmes d'exploitation Microsoft et les réseaux TCP/IP.
-//        ");
-//        $produits[13]->setYear(2022);
-//        $produits[13]->setImage("https://www.thibaultmorizet.fr/assets/86.jpeg");
-//        $produits[13]->setUnitpricettc(29.90);
-//        $produits[13]->setUnitpriceht(52.99);
-//        $produits[13]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[13]->setIsbn("9782409035173");
-//        $produits[13]->setFormat($formats[0]);
-//        $produits[13]->setEditor($editors[1]);
-//        $produits[13]->addAuthor($auteurs[5]);
-//        $produits[13]->addCategory($categories[1]);
-//        $produits[13]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[13]);
-//
-//
-//        $produits[14] = new Product();
-//        $produits[14]->setTitle("Html 5 - une référence pour le développeur web");
-//        $produits[14]->setSummary("HTML 5 intègre dans sa conception l'architecture à trois piliers qu'est HTML pour la structure, CSS 3 pour l'apparence et JavaScript pour l'interactivité, avec de nombreuses nouvelles API pour concevoir des applications web. L'intégrateur ou le développeur web pourra ainsi découvrir et exploiter les standards du Web, pour proposer au sein de sites performants et accessibles des contenus multimédias (animations, audio et vidéo), mais également interactifs (nouveaux formulaires, glisser-déposer, etc.).
-//        Concevoir des sites riches, performants et accessibles avec HTML 5.
-//        Ce produit fait la lumière sur les spécifications ardues d'HTML 5, dont il explore l'ensemble des nouveautés et des balises, y compris celles ayant existé et évolué depuis les précédentes versions. Après avoir rappelé l'histoire mouvementée de sa conception au W3C et au WhatWG, l'auteur explique au fil des chapitres comment concevoir des sites et applications web performants et accessibles, en y incorporant des éléments médias (audio, vidéo), en créant des zones de dessin interactives et des animations avec Canvas et en exploitant les microformats pour un balisage sémantique qui améliorera l'échange de données et le référencement.
-//        Il détaille pas à pas les interfaces de programmation pour la gestion des fichiers (File API), la géolocalisation, la prise en charge du glisser-déposer (Drag & Drop), et explique comment stocker des données locales dans le navigateur (Web Storage), communiquer en temps réel ou procéder à des échanges interdocuments (Web Sockets, Server-Sent Events et Web Messaging). Il aborde enfin les techniques permettant d'exécuter du JavaScript en multithread (Web Workers) et la réalisation d'applications hors ligne, les bases de données côté navigateur (Indexed Database et Web SQL Database), ainsi que la manipulation avancée de l'historique (History API).
-//        Très illustrée, riche en conseils et bonnes pratiques, la troisième édition de cet ouvrage intègre toutes les dernières évolutions d'HTML 5 - depuis que sa première version a vu le jour-et les nouveautés concrètement implémentées par les navigateurs web. L'approche pragmatique permet de l'utiliser comme référence pour élaborer et modifier des pages web, mais aussi comme guide pour concevoir une application web.
-//        A qui cet ouvrage s'adresse-t-il ?
-//        - Aux développeurs web, intégrateurs qui souhaitent mettre en oeuvre les nouvelles API d'HTML 5 et moderniser leurs bonnes pratiques de développement web.
-//        - Aux designers web qui souhaitent découvrir toutes les possibilités que leur offre HTML 5.
-//        - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
-//        $produits[14]->setYear(2017);
-//        $produits[14]->setImage("https://www.thibaultmorizet.fr/assets/87.jpeg");
-//        $produits[14]->setUnitpricettc(39.00);
-//        $produits[14]->setUnitpriceht(52.99);
-//        $produits[14]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[14]->setIsbn("2212143656");
-//        $produits[14]->setFormat($formats[0]);
-//        $produits[14]->setEditor($editors[0]);
-//        $produits[14]->addAuthor($auteurs[0]);
-//        $produits[14]->addCategory($categories[0]);
-//        $produits[14]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[14]);
-//
-//        $produits[15] = new Product();
-//        $produits[15]->setTitle("Apprendre à développer un site web avec PHP et MySQL");
-//        $produits[15]->setSummary("Ce produit s'adresse à un public de développeurs débutants connaissant déjà le HTML et les CSS et qui souhaitent bien comprendre le fonctionnement d'une application web pour créer leurs propres sites web dynamiques avec PHP et MySQL.
-//            Dans une première partie, le lecteur installera son environnement de développement WAMP puis découvrira les bases du langage PHP (en version 7 au moment de l'écriture), ses principales fonctions et structures de contrôle, ainsi que des explications sur la transmission des données entre les pages et sur la librairie graphique (les effets spéciaux sur une image). Ces apports théoriques sont accompagnés de nombreux exemples.
-//            Il en est de même dans la deuxième partie du produit, consacrée au langage SQL. Le lecteur découvrira ce qu'est une base de données MySQL et les différentes méthodes pour y accéder avec PHP (PDO, SQL Avancé) et comment assurer la sécurité de la base. Un chapitre est également consacré aux premiers pas sur la Programmation Orientée Objet et un autre à la gestion de la configuration et des performances.
-//            Pour que le lecteur puisse se forger une première expérience significative, l'auteur a préparé de nombreux exercices à la fin de chaque chapitre (exemples : comme créer un blog, une newsletter, un module de paiement en ligne PayPal...) et propose aussi leurs corrigés.
-//            ");
-//        $produits[15]->setYear(2018);
-//        $produits[15]->setImage("https://www.thibaultmorizet.fr/assets/88.jpeg");
-//        $produits[15]->setUnitpricettc(29.90);
-//        $produits[15]->setUnitpriceht(52.99);
-//        $produits[15]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[15]->setIsbn("9782409015297");
-//        $produits[15]->setFormat($formats[0]);
-//        $produits[15]->setEditor($editors[1]);
-//        $produits[15]->addAuthor($auteurs[1]);
-//        $produits[15]->addCategory($categories[0]);
-//        $produits[15]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[15]);
-//
-//        $produits[16] = new Product();
-//        $produits[16]->setTitle("CODER PROPREMENT");
-//        $produits[16]->setSummary("
-//        Si un code sale peut fonctionner, il peut également compromettre la pérennité d'une entreprise de développement de logiciels. Chaque année, du temps et des ressources sont gaspillés à cause d'un code mal écrit. Toutefois, ce n'est pas une fatalité.
-//Grâce à cet ouvrage, vous apprendrez à rédiger du bon code, ainsi qu'à le nettoyer « à la volée », et vous obtiendrez des applications plus robustes, plus évolutives et donc plus durables. Concret et pédagogique, ce manuel se base sur les bonnes pratiques d'une équipe de développeurs aguerris réunie autour de Robert C. Martin, expert logiciel reconnu. Il vous inculquera les valeurs d'un artisan du logiciel et fera de vous un meilleur programmeur.
-//Coder proprement est décomposé en trois parties. La première décrit les principes, les motifs et les pratiques employés dans l'écriture d'un code propre. La deuxième est constituée de plusieurs études de cas à la complexité croissante. Chacune d'elles est un exercice de nettoyage: vous partirez d'un exemple de code présentant certains problèmes, et l'auteur vous expliquera comment en obtenir une version saine et performante. La troisième partie, enfin, sera votre récompense. Son unique chapitre contient une liste d'indicateurs éprouvés par l'auteur qui vous seront précieux pour repérer efficacement les défauts de votre code.
-//            ");
-//        $produits[16]->setYear(2019);
-//        $produits[16]->setImage("https://www.thibaultmorizet.fr/assets/89.jpeg");
-//        $produits[16]->setUnitpricettc(38);
-//        $produits[16]->setUnitpriceht(52.99);
-//        $produits[16]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[16]->setIsbn("9782326002272");
-//        $produits[16]->setFormat($formats[0]);
-//        $produits[16]->setEditor($editors[2]);
-//        $produits[16]->addAuthor($auteurs[2]);
-//        $produits[16]->addCategory($categories[0]);
-//        $produits[16]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[16]);
-//
-//
-//        $produits[17] = new Product();
-//        $produits[17]->setTitle("PHP et MySQL pour les Nuls");
-//        $produits[17]->setSummary("
-//        Avec cette 6e édition de PHP et MySQL pour les Nuls version poche, vous verrez qu'il n'est plus nécessaire d'être un as de la programmation pour développer des sites Web dynamiques et interactifs.
-//        Ce produit vous introduira aux toutes dernières évolutions des deux langages. Vous apprendrez à manipuler tous les outils de gestion de sessions, les cookies, gérer le code XML et JavaScript, mettre en place des systèmes de sécurité, et bien d'autres choses encore...
-//                    ");
-//        $produits[17]->setYear(2019);
-//        $produits[17]->setImage("https://www.thibaultmorizet.fr/assets/90.jpeg");
-//        $produits[17]->setUnitpricettc(12.5);
-//        $produits[17]->setUnitpriceht(52.99);
-//        $produits[17]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[17]->setIsbn("9782412043622");
-//        $produits[17]->setFormat($formats[1]);
-//        $produits[17]->setEditor($editors[3]);
-//        $produits[17]->addAuthor($auteurs[3]);
-//        $produits[17]->addCategory($categories[2]);
-//        $produits[17]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[17]);
-//
-//        $produits[18] = new Product();
-//        $produits[18]->setTitle("Les bases du web : Html5, Css3, JavaScript");
-//        $produits[18]->setSummary("
-//        Le web est un domaine en constante évolution. Les technologies évoluent et le web également. Créer un site web ou une application est beaucoup plus facile aujourd'hui qu'hier ! Malgré toutes ces avancées, le web reste un domaine très technique, qui n'est pas facile à appréhender. Le but de ce produit est de vous inculquer les bases du web et de vous permettre de maîtriser les bases du HTML, du CSS et du JavaScript. Vous n'avez pas besoin d'être un \"geek\" pour comprendre ce produit. Vous devez simplement être intéressé par le sujet et avoir la volonté d'élargir votre savoir ! Si votre but est de devenir développeur web et que vous débutez dans ce domaine, ce produit est fait pour vous. Si vous êtes intéressé par le sujet, dans le but de créer un site ou une application web, cette lecture est également appropriée. Dans le chapitre \"Qu'est-ce que le web ?\", vous apprendrez comment le web est né en 1989, qui l'a inventé et pourquoi. Vous apprendrez à maîtriser des concepts tels que Http, Html, les navigateurs web, les cookies ou encore le Cloud Computing.
-//        ");
-//        $produits[18]->setYear(2019);
-//        $produits[18]->setImage("https://www.thibaultmorizet.fr/assets/91.jpeg");
-//        $produits[18]->setUnitpricettc(19.9);
-//        $produits[18]->setUnitpriceht(52.99);
-//        $produits[18]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[18]->setIsbn("9781706785606");
-//        $produits[18]->setFormat($formats[0]);
-//        $produits[18]->setEditor($editors[4]);
-//        $produits[18]->addAuthor($auteurs[4]);
-//        $produits[18]->addCategory($categories[0]);
-//        $produits[18]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[18]);
-//
-//        $produits[19] = new Product();
-//        $produits[19]->setTitle("HTML5 & CSS3 - Créer un site web responsive");
-//        $produits[19]->setSummary("
-//        Dans ce produit vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
-//        $produits[19]->setYear(2020);
-//        $produits[19]->setImage("https://www.thibaultmorizet.fr/assets/92.jpeg");
-//        $produits[19]->setUnitpricettc(19.99);
-//        $produits[19]->setUnitpriceht(52.99);
-//        $produits[19]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[19]->setIsbn("9788698662860");
-//        $produits[19]->setFormat($formats[0]);
-//        $produits[19]->setEditor($editors[4]);
-//        $produits[19]->addAuthor($auteurs[4]);
-//        $produits[19]->addCategory($categories[0]);
-//        $produits[19]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[19]);
-//
-//
-//        $produits[20] = new Product();
-//        $produits[20]->setTitle("Réseaux informatiques - Notions fondamentales (9e édition)");
-//        $produits[20]->setSummary("
-//        Ingénieur en Informatique, passionné par la technologie et le partage de la connaissance, José DORDOIGNE est un expert technique dans de nombreux domaines (poste de travail et serveurs Windows, réseau et services réseau, Unix, Linux…) qui exerce aujourd'hui au sein d'une grande compagnie d'assurance française. Il est titulaire de très nombreuses certifications (plusieurs fois Microsoft Certified Systems Engineer, mais aussi Red Hat Certified Engineer Linux). Sa pédagogie et son expertise technique ont notamment été éprouvées au travers d'une expérience de près de 10 ans en tant qu'Ingénieur formateur, de démarches de conseils au sein d'une grande SSII pendant 12 années en tant qu'architecte Infrastructure, ainsi qu'avec l'écriture d'une dizaine de produits sur les systèmes d'exploitation Microsoft et les réseaux TCP/IP.
-//        ");
-//        $produits[20]->setYear(2022);
-//        $produits[20]->setImage("https://www.thibaultmorizet.fr/assets/93.jpeg");
-//        $produits[20]->setUnitpricettc(29.90);
-//        $produits[20]->setUnitpriceht(52.99);
-//        $produits[20]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[20]->setIsbn("9782409035173");
-//        $produits[20]->setFormat($formats[0]);
-//        $produits[20]->setEditor($editors[1]);
-//        $produits[20]->addAuthor($auteurs[5]);
-//        $produits[20]->addCategory($categories[1]);
-//        $produits[20]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[20]);
-//
-//
-//        $produits[21] = new Product();
-//        $produits[21]->setTitle("Html 5 - une référence pour le développeur web");
-//        $produits[21]->setSummary("HTML 5 intègre dans sa conception l'architecture à trois piliers qu'est HTML pour la structure, CSS 3 pour l'apparence et JavaScript pour l'interactivité, avec de nombreuses nouvelles API pour concevoir des applications web. L'intégrateur ou le développeur web pourra ainsi découvrir et exploiter les standards du Web, pour proposer au sein de sites performants et accessibles des contenus multimédias (animations, audio et vidéo), mais également interactifs (nouveaux formulaires, glisser-déposer, etc.).
-//        Concevoir des sites riches, performants et accessibles avec HTML 5.
-//        Ce produit fait la lumière sur les spécifications ardues d'HTML 5, dont il explore l'ensemble des nouveautés et des balises, y compris celles ayant existé et évolué depuis les précédentes versions. Après avoir rappelé l'histoire mouvementée de sa conception au W3C et au WhatWG, l'auteur explique au fil des chapitres comment concevoir des sites et applications web performants et accessibles, en y incorporant des éléments médias (audio, vidéo), en créant des zones de dessin interactives et des animations avec Canvas et en exploitant les microformats pour un balisage sémantique qui améliorera l'échange de données et le référencement.
-//        Il détaille pas à pas les interfaces de programmation pour la gestion des fichiers (File API), la géolocalisation, la prise en charge du glisser-déposer (Drag & Drop), et explique comment stocker des données locales dans le navigateur (Web Storage), communiquer en temps réel ou procéder à des échanges interdocuments (Web Sockets, Server-Sent Events et Web Messaging). Il aborde enfin les techniques permettant d'exécuter du JavaScript en multithread (Web Workers) et la réalisation d'applications hors ligne, les bases de données côté navigateur (Indexed Database et Web SQL Database), ainsi que la manipulation avancée de l'historique (History API).
-//        Très illustrée, riche en conseils et bonnes pratiques, la troisième édition de cet ouvrage intègre toutes les dernières évolutions d'HTML 5 - depuis que sa première version a vu le jour-et les nouveautés concrètement implémentées par les navigateurs web. L'approche pragmatique permet de l'utiliser comme référence pour élaborer et modifier des pages web, mais aussi comme guide pour concevoir une application web.
-//        A qui cet ouvrage s'adresse-t-il ?
-//        - Aux développeurs web, intégrateurs qui souhaitent mettre en oeuvre les nouvelles API d'HTML 5 et moderniser leurs bonnes pratiques de développement web.
-//        - Aux designers web qui souhaitent découvrir toutes les possibilités que leur offre HTML 5.
-//        - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.");
-//        $produits[21]->setYear(2017);
-//        $produits[21]->setImage("https://www.thibaultmorizet.fr/assets/94.jpeg");
-//        $produits[21]->setUnitpricettc(39.00);
-//        $produits[21]->setUnitpriceht(52.99);
-//        $produits[21]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[21]->setIsbn("2212143656");
-//        $produits[21]->setFormat($formats[0]);
-//        $produits[21]->setEditor($editors[0]);
-//        $produits[21]->addAuthor($auteurs[0]);
-//        $produits[21]->addCategory($categories[0]);
-//        $produits[21]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[21]);
-//
-//        $produits[22] = new Product();
-//        $produits[22]->setTitle("Apprendre à développer un site web avec PHP et MySQL");
-//        $produits[22]->setSummary("Ce produit s'adresse à un public de développeurs débutants connaissant déjà le HTML et les CSS et qui souhaitent bien comprendre le fonctionnement d'une application web pour créer leurs propres sites web dynamiques avec PHP et MySQL.
-//            Dans une première partie, le lecteur installera son environnement de développement WAMP puis découvrira les bases du langage PHP (en version 7 au moment de l'écriture), ses principales fonctions et structures de contrôle, ainsi que des explications sur la transmission des données entre les pages et sur la librairie graphique (les effets spéciaux sur une image). Ces apports théoriques sont accompagnés de nombreux exemples.
-//            Il en est de même dans la deuxième partie du produit, consacrée au langage SQL. Le lecteur découvrira ce qu'est une base de données MySQL et les différentes méthodes pour y accéder avec PHP (PDO, SQL Avancé) et comment assurer la sécurité de la base. Un chapitre est également consacré aux premiers pas sur la Programmation Orientée Objet et un autre à la gestion de la configuration et des performances.
-//            Pour que le lecteur puisse se forger une première expérience significative, l'auteur a préparé de nombreux exercices à la fin de chaque chapitre (exemples : comme créer un blog, une newsletter, un module de paiement en ligne PayPal...) et propose aussi leurs corrigés.
-//            ");
-//        $produits[22]->setYear(2018);
-//        $produits[22]->setImage("https://www.thibaultmorizet.fr/assets/95.jpeg");
-//        $produits[22]->setUnitpricettc(29.90);
-//        $produits[22]->setUnitpriceht(52.99);
-//        $produits[22]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[22]->setIsbn("9782409015297");
-//        $produits[22]->setFormat($formats[0]);
-//        $produits[22]->setEditor($editors[1]);
-//        $produits[22]->addAuthor($auteurs[1]);
-//        $produits[22]->addCategory($categories[0]);
-//        $produits[22]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[22]);
-//
-//        $produits[23] = new Product();
-//        $produits[23]->setTitle("CODER PROPREMENT");
-//        $produits[23]->setSummary("
-//        Si un code sale peut fonctionner, il peut également compromettre la pérennité d'une entreprise de développement de logiciels. Chaque année, du temps et des ressources sont gaspillés à cause d'un code mal écrit. Toutefois, ce n'est pas une fatalité.
-//Grâce à cet ouvrage, vous apprendrez à rédiger du bon code, ainsi qu'à le nettoyer « à la volée », et vous obtiendrez des applications plus robustes, plus évolutives et donc plus durables. Concret et pédagogique, ce manuel se base sur les bonnes pratiques d'une équipe de développeurs aguerris réunie autour de Robert C. Martin, expert logiciel reconnu. Il vous inculquera les valeurs d'un artisan du logiciel et fera de vous un meilleur programmeur.
-//Coder proprement est décomposé en trois parties. La première décrit les principes, les motifs et les pratiques employés dans l'écriture d'un code propre. La deuxième est constituée de plusieurs études de cas à la complexité croissante. Chacune d'elles est un exercice de nettoyage: vous partirez d'un exemple de code présentant certains problèmes, et l'auteur vous expliquera comment en obtenir une version saine et performante. La troisième partie, enfin, sera votre récompense. Son unique chapitre contient une liste d'indicateurs éprouvés par l'auteur qui vous seront précieux pour repérer efficacement les défauts de votre code.
-//            ");
-//        $produits[23]->setYear(2019);
-//        $produits[23]->setImage("https://www.thibaultmorizet.fr/assets/96.jpeg");
-//        $produits[23]->setUnitpricettc(38);
-//        $produits[23]->setUnitpriceht(52.99);
-//        $produits[23]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[23]->setIsbn("9782326002272");
-//        $produits[23]->setFormat($formats[0]);
-//        $produits[23]->setEditor($editors[2]);
-//        $produits[23]->addAuthor($auteurs[2]);
-//        $produits[23]->addCategory($categories[0]);
-//        $produits[23]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[23]);
-//
-//
-//        $produits[24] = new Product();
-//        $produits[24]->setTitle("PHP et MySQL pour les Nuls");
-//        $produits[24]->setSummary("
-//        Avec cette 6e édition de PHP et MySQL pour les Nuls version poche, vous verrez qu'il n'est plus nécessaire d'être un as de la programmation pour développer des sites Web dynamiques et interactifs.
-//        Ce produit vous introduira aux toutes dernières évolutions des deux langages. Vous apprendrez à manipuler tous les outils de gestion de sessions, les cookies, gérer le code XML et JavaScript, mettre en place des systèmes de sécurité, et bien d'autres choses encore...
-//                    ");
-//        $produits[24]->setYear(2019);
-//        $produits[24]->setImage("https://www.thibaultmorizet.fr/assets/97.jpeg");
-//        $produits[24]->setUnitpricettc(12.5);
-//        $produits[24]->setUnitpriceht(52.99);
-//        $produits[24]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[24]->setIsbn("9782412043622");
-//        $produits[24]->setFormat($formats[1]);
-//        $produits[24]->setEditor($editors[3]);
-//        $produits[24]->addAuthor($auteurs[3]);
-//        $produits[24]->addCategory($categories[2]);
-//        $produits[24]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[24]);
-//
-//        $produits[25] = new Product();
-//        $produits[25]->setTitle("Les bases du web : Html5, Css3, JavaScript");
-//        $produits[25]->setSummary("
-//        Le web est un domaine en constante évolution. Les technologies évoluent et le web également. Créer un site web ou une application est beaucoup plus facile aujourd'hui qu'hier ! Malgré toutes ces avancées, le web reste un domaine très technique, qui n'est pas facile à appréhender. Le but de ce produit est de vous inculquer les bases du web et de vous permettre de maîtriser les bases du HTML, du CSS et du JavaScript. Vous n'avez pas besoin d'être un \"geek\" pour comprendre ce produit. Vous devez simplement être intéressé par le sujet et avoir la volonté d'élargir votre savoir ! Si votre but est de devenir développeur web et que vous débutez dans ce domaine, ce produit est fait pour vous. Si vous êtes intéressé par le sujet, dans le but de créer un site ou une application web, cette lecture est également appropriée. Dans le chapitre \"Qu'est-ce que le web ?\", vous apprendrez comment le web est né en 1989, qui l'a inventé et pourquoi. Vous apprendrez à maîtriser des concepts tels que Http, Html, les navigateurs web, les cookies ou encore le Cloud Computing.
-//        ");
-//        $produits[25]->setYear(2019);
-//        $produits[25]->setImage("https://www.thibaultmorizet.fr/assets/98.jpeg");
-//        $produits[25]->setUnitpricettc(19.9);
-//        $produits[25]->setUnitpriceht(52.99);
-//        $produits[25]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[25]->setIsbn("9781706785606");
-//        $produits[25]->setFormat($formats[0]);
-//        $produits[25]->setEditor($editors[4]);
-//        $produits[25]->addAuthor($auteurs[4]);
-//        $produits[25]->addCategory($categories[0]);
-//        $produits[25]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[25]);
-//
-//        $produits[26] = new Product();
-//        $produits[26]->setTitle("HTML5 & CSS3 - Créer un site web responsive");
-//        $produits[26]->setSummary("
-//        Dans ce produit vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5. Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.        ");
-//        $produits[26]->setYear(2020);
-//        $produits[26]->setImage("https://www.thibaultmorizet.fr/assets/99.jpeg");
-//        $produits[26]->setUnitpricettc(19.99);
-//        $produits[26]->setUnitpriceht(52.99);
-//        $produits[26]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[26]->setIsbn("9788698662860");
-//        $produits[26]->setFormat($formats[0]);
-//        $produits[26]->setEditor($editors[4]);
-//        $produits[26]->addAuthor($auteurs[4]);
-//        $produits[26]->addCategory($categories[0]);
-//        $produits[26]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[26]);
-//
-//
-//        $produits[27] = new Product();
-//        $produits[27]->setTitle("Réseaux informatiques - Notions fondamentales (9e édition)");
-//        $produits[27]->setSummary("
-//        Ingénieur en Informatique, passionné par la technologie et le partage de la connaissance, José DORDOIGNE est un expert technique dans de nombreux domaines (poste de travail et serveurs Windows, réseau et services réseau, Unix, Linux…) qui exerce aujourd'hui au sein d'une grande compagnie d'assurance française. Il est titulaire de très nombreuses certifications (plusieurs fois Microsoft Certified Systems Engineer, mais aussi Red Hat Certified Engineer Linux). Sa pédagogie et son expertise technique ont notamment été éprouvées au travers d'une expérience de près de 10 ans en tant qu'Ingénieur formateur, de démarches de conseils au sein d'une grande SSII pendant 12 années en tant qu'architecte Infrastructure, ainsi qu'avec l'écriture d'une dizaine de produits sur les systèmes d'exploitation Microsoft et les réseaux TCP/IP.
-//        ");
-//        $produits[27]->setYear(2022);
-//        $produits[27]->setImage("https://www.thibaultmorizet.fr/assets/100.jpeg");
-//        $produits[27]->setUnitpricettc(29.90);
-//        $produits[27]->setUnitpriceht(52.99);
-//        $produits[27]->setStock($faker->numberBetween($min = 10, $max = 50));
-//        $produits[27]->setIsbn("9782409035173");
-//        $produits[27]->setFormat($formats[0]);
-//        $produits[27]->setEditor($editors[1]);
-//        $produits[27]->addAuthor($auteurs[5]);
-//        $produits[27]->addCategory($categories[1]);
-//        $produits[27]->setVisitnumber($faker->numberBetween($min = 0, $max = 30));
-//
-//        $manager->persist($produits[27]);
-//
+        Le lecteur identifie les contextes d'accès aux réseaux d'aujourd'hui grâce notamment à des illustrations détaillant clairement les composants et technologies mis en jeu. De nombreux exemples reposant sur une approche client/serveur lui permettent de passer en revue les systèmes d'exploitation les plus courants, ainsi que les matériels associés. La tolérance de panne et le stockage sont également détaillés avec les différentes typologies de disque ainsi que les notions telles que NAS, SAN, zoning, Fibre Channel, FCoE ou encore iSCSI. Les protocoles de réplication entre baies sont également décrits ainsi que le fonctionnement de la déduplication pour les sauvegardes et le principe des WAAS. Une synthèse sur la virtualisation est proposée permettant au lecteur de bien comprendre les enjeux, les avantages et inconvénients apportés par les différentes solutions du marché. 
+
+        Avec une approche pragmatique, l'auteur permet ensuite au lecteur de mieux comprendre le modèle OSI en couches réseau de référence. Puis, de manière exhaustive, les principes de base sont présentés (normes, architectures courantes, câblages, codage des données, topologie, réseaux sans fil, interconnexions de réseaux, boucle locale optique de la fibre...) puis les différents protocoles qui comptent dans les réseaux informatiques (PXE, WOL, Ethernet, Wi-Fi, Bluetooth, ADSL, WiMax, téléphonie 2G à 5G…) sont déclinés d'un point de vue opérationnel sans noyer le lecteur dans un discours trop théorique. Une partie sur les orbites basses permet de donner une visibilité sur les solutions en cours et les projets à venir. Un panorama des objets connectés IoT est également proposé. 
+
+        Les couches basses sont décrites de façon détaillée en proposant de nombreuses illustrations sur la connectique et les matériels utilisés (codage, signaux, connectique coaxiale, cuivre, fibre). La configuration réseau est examinée pour Windows, Linux, macOS, iOS et Android. Les méthodes d'accès au support CSMA/CA, CSMA/CD ainsi que le jeton passant sont expliqués. D'un point de vue réseau, les équipements agissant au niveau des différentes couches OSI sont examinés : répéteur, pont, routeur, passerelle. L'algorithme du Spanning Tree ainsi que le fonctionnement des VLANs sont expliqués au travers d'exemples détaillés. Le fonctionnement de VSS et les protocoles liés au routage (RIP, OSPF, BGP, HSRP) sont passés en revue. Des exemples de configuration sont proposés au travers de Packet Tracer et les technologies FDDI, ATM, SONET et autres relais de trames sont également étudiés. 
+
+        Les protocoles TCP/IP sont présentés en détail, en particulier la décomposition en sous-réseaux en IPv4, ainsi qu'une approche complète de l'adressage IPv6 (dont la voix sur IP). Les services réseau tels que DHCP, DNS, NTP ou SNMP sont également décrits. Le principe des méthodes d'authentification NTLM et Kerberos est abordé. Un chapitre traite des principes de base de la sécurité face aux menaces qui pèsent sur un réseau en proposant de nombreux liens vers des sites gratuits d'investigation. 
+
+        En annexe est fournie une liste des acronymes les plus significatifs dans le monde des réseaux informatiques. 
+        ");
+        $book7->setYear(2022);
+        $book7->setImage("https://www.thibaultmorizet.fr/assets/product-images/8.jpeg");
+        $book7->setUnitpriceht(28.26);
+        $book7->setStock($faker->numberBetween(min: 50, max: 600));
+        $book7->setTaxe($this->getReference('taxe1'));
+        $book7->setVisitnumber($faker->numberBetween(max: 500));
+        $book7->setSoldnumber($faker->numberBetween(max: $book7->getVisitnumber()));
+        $book7->setIsbn("978-2-409-03517-3");
+        $book7->setFormat($this->getReference('format1'));
+        $book7->setEditor($this->getReference('editor2'));
+        $book7->addAuthor($this->getReference('author6'));
+        $book7->addCategory($this->getReference('category1'));
+        $manager->persist($book7);
+        $this->addReference('book7', $book7);
 
         $manager->flush();
     }
