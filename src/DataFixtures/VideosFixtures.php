@@ -30,6 +30,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         $video1->setImage("https://www.thibaultmorizet.fr/assets/product-images/1.jpeg");
         $video1->setUnitpriceht(65.40);
         $video1->setStock($faker->numberBetween(min: 50, max: 600));
+        $video1->addAuthor($this->getReference('author9'));
         $video1->setTaxe($this->getReference('taxe1'));
         $video1->setVisitnumber($faker->numberBetween(max: 500));
         $video1->setSoldnumber($faker->numberBetween(max:$video1->getVisitnumber()));
