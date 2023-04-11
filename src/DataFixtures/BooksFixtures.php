@@ -39,7 +39,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.
         ");
         $book1->setYear(2017);
-        $book1->setImage("https://www.thibaultmorizet.fr/assets/product-images/2.jpeg");
+        $book1->setImage("https://www.thibaultmorizet.fr/assets/product-images/16.jpeg");
         $book1->setUnitpriceht(36.86);
         $book1->setStock($faker->numberBetween(min: 50, max: 600));
         $book1->setTaxe($this->getReference('taxe1'));
@@ -65,7 +65,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         Pour que le lecteur puisse se forger une première expérience significative, l'auteur a préparé de nombreux exercices à la fin de chaque chapitre (exemples : comme créer un blog, une newsletter, un module de paiement en ligne PayPal...) et propose aussi leurs corrigés.
         ");
         $book2->setYear(2018);
-        $book2->setImage("https://www.thibaultmorizet.fr/assets/product-images/3.jpeg");
+        $book2->setImage("https://www.thibaultmorizet.fr/assets/product-images/17.jpeg");
         $book2->setUnitpriceht(28.25);
         $book2->setStock($faker->numberBetween(min: 50, max: 600));
         $book2->setTaxe($this->getReference('taxe1'));
@@ -98,7 +98,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
 
         Véritable manuel du savoir-faire en développement agile, cet ouvrage est un outil indispensable à tout développeur, ingénieur logiciel, chef de projet, responsable d'équipe ou analyste des systèmes dont l'objectif est de produire un meilleur code.        ");
         $book3->setYear(2019);
-        $book3->setImage("https://www.thibaultmorizet.fr/assets/product-images/4.jpeg");
+        $book3->setImage("https://www.thibaultmorizet.fr/assets/product-images/18.jpeg");
         $book3->setUnitpriceht(35.91);
         $book3->setStock($faker->numberBetween(min: 50, max: 600));
         $book3->setTaxe($this->getReference('taxe1'));
@@ -121,7 +121,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
 
         Ce livre vous introduira aux toutes dernières évolutions des deux langages. Vous apprendrez à manipuler tous les outils de gestion de sessions, les cookies, gérer le code XML et JavaScript, mettre en place des systèmes de sécurité, et bien d'autres choses encore...        ");
         $book4->setYear(2019);
-        $book4->setImage("https://www.thibaultmorizet.fr/assets/product-images/5.jpeg");
+        $book4->setImage("https://www.thibaultmorizet.fr/assets/product-images/19.jpeg");
         $book4->setUnitpriceht(23.15);
         $book4->setStock($faker->numberBetween(min: 50, max: 600));
         $book4->setTaxe($this->getReference('taxe1'));
@@ -141,7 +141,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         Le web est un domaine en constante évolution. Les technologies évoluent et le web également. Créer un site web ou une application est beaucoup plus facile aujourd'hui qu'hier ! Malgré toutes ces avancées, le web reste un domaine très technique, qui n'est pas facile à appréhender. Le but de ce livre est de vous inculquer les bases du web et de vous permettre de maîtriser les bases du HTML, du CSS et du JavaScript. Vous n'avez pas besoin d'être un \"geek\" pour comprendre ce livre. Vous devez simplement être intéressé par le sujet et avoir la volonté d'élargir votre savoir ! Si votre but est de devenir développeur web et que vous débutez dans ce domaine, ce livre est fait pour vous. Si vous êtes intéressé par le sujet, dans le but de créer un site ou une application web, cette lecture est également appropriée. Dans le chapitre \"Qu\'est-ce que le web ?\", vous apprendrez comment le web est né en 1989, qui l\'a inventé et pourquoi . Vous apprendrez à maîtriser des concepts tels que Http, Html, les navigateurs web, les cookies ou encore le Cloud Computing . Dans le chapitre \"Les langages du web\", vous apprendrez à distinguer un langage client d\'un langage serveur, ce qu\'est une base de données et comment y stocker des informations, ce qu\'est une API. Dans le chapitre \"Types de site et d\'applications web\", vous étudierez les sites web Responsive, les applications mobiles et les applications web progressives (Progressive Web Apps). Vous serez alors en mesure de faire un choix entre ces types de sites et d\'applications web pour votre propre projet.Dans le chapitre \"Médias Web\", vous étudierez quels médias utiliser sur le web, comment les utiliser et comment trouver des images, vidéos et icônes adaptés à votre projet. Dans le chapitre \"Bases de réseau pour le développement web\", vous étudierez le modèle OSI, comment fonctionne le réseau Internet, comment acheter un nom de domaine et héberger un site web ou une application.Dans le chapitre \"Introduction au HTML5\", vous apprendrez tous les fondamentaux du HTML5, dans le but de construire le squelette d\'un site web.Dans le chapitre \"Introduction à CSS3\", vous apprendrez à créer des feuilles de style pour votre site web.Dans le chapitre \"Introduction à JavaScript\", vous apprendrez à insérer du code JavaScript dans votre site. JavaScript est un langage de script, permettant d\'ajouter des animations et de l\'interactivité à vos pages web.Dans le chapitre \"Comprendre les moteurs de recherche\", vous apprendrez comment fonctionnent les moteurs de recherche et comment référencer un site ou une application web sur les moteurs de recherche les plus utilisés que sont Google, Bing et Yahoo. Vous apprendrez les bases du référencement web, également connu sous le nom de SEO (Search Engine Optimization).Dans le dernier chapitre, \"Comment devenir développeur web ? \", une présentation des principaux métiers du web vous sera faite. Nous vous présenterons les écoles et les formations sur Internet pour devenir développeur web ou élargir vos connaissances sur le sujet. Je vous donnerai également des trucs et astuces pour ne pas tomber dans les pièges des débutants. Concernant les chapitres techniques, des exercices vous seront proposés avec leurs corrections. Ces exercices ont pour but de vous entraîner à créer un site web. Je vous conseille vivement de les faire.Ce livre est protégé et déposé à l\'INPI. Toute reproduction est interdite. 
         ");
         $book5->setYear(2019);
-        $book5->setImage("https://www.thibaultmorizet.fr/assets/product-images/6.jpeg");
+        $book5->setImage("https://www.thibaultmorizet.fr/assets/product-images/20.jpeg");
         $book5->setUnitpriceht(18.81);
         $book5->setStock($faker->numberBetween(min: 50, max: 600));
         $book5->setTaxe($this->getReference('taxe1'));
@@ -160,7 +160,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         $book6->setSummary("
         Dans ce livre vous apprendrez à créer un site web responsive statique en utilisant HTML5 et CSS3.Dans le chapitre \"Les bases de HTML5\", vous apprendrez à utiliser un éditeur de texte, à coder votre première page web et à utiliser les principales balises HTML5.Dans le chapitre \"Les médias HTML5\", vous apprendrez à insérer des médias dans vos pages HTML : documents, images, vidéos, fichiers audios, plug-ins, vidéos YouTube, éléments de dessin SVG. Des ressources intéressantes vous seront fournies pour trouver des médias facilement sur le web pour votre site ou application.Dans le chapitre \"Les formulaires HTML5\", vous apprendrez à créer des formulaires avec HTML5.Dans le chapitre \"Les APIs HTML5\", vous apprendrez à utiliser les principales APIs HTML5 : les canvas, la géolocalisation, le Drag and Drop, le Web Storage, les Web Workers et le concept d'IndexedDB.Dans le chapitre \"Les microdonnées HTML5\", vous apprendrez à implémenter des microdonnées à l'intérieur d'une page HTML. Le but sera de donner du sens à certaines parties de votre site web, pour qu'il soit mieux indexé par les moteurs de recherche.Dans le chapitre \"Les bases de CSS3\", vous apprendrez les bases du CSS3 : comment créer une feuille de style, la syntaxe de base et les unités utilisées.Dans le chapitre \"CSS3 Avancé\", vous apprendrez des notions plus avancées de CSS3 : créer des coins arrondis, des dégradés, des ombres, des effets de texte, intégrer des polices de caractère à son site et utiliser les Flex Box.Dans le dernier chapitre \"Design Web Responsive avec CSS3\", vous apprendrez à créer un site web responsive avec CSS3. Nous verrons les notions de viewport, de grille, les media queries, les images et les vidéos responsive etc.A la fin de ce livre, vous serez en mesure de créer un site web responsive entièrement codé en HTML5 et CSS3. Vous serez parfaitement autonome dans cette tâche. Le livre est ponctué d'exercices dont le but principal est de créer un site web responsive pas à pas. La correction globale se trouve en annexe. Vous pouvez également télécharger le dossier d'exercices et la correction sur notre compte GitHub : https://github.com/webstreet-cie/html5-css3-create-responsive-website.NB : Le livre est traduit en français, mais le projet est entièrement en anglais. Ce livre est protégé auprès de l'INPI. Toute reproduction est totalement interdite et vous vous exposez à des poursuites dans le cas contraire.        ");
         $book6->setYear(2020);
-        $book6->setImage("https://www.thibaultmorizet.fr/assets/product-images/7.jpeg");
+        $book6->setImage("https://www.thibaultmorizet.fr/assets/product-images/21.jpeg");
         $book6->setUnitpriceht(18.90);
         $book6->setStock($faker->numberBetween(min: 50, max: 600));
         $book6->setTaxe($this->getReference('taxe1'));
@@ -190,7 +190,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         En annexe est fournie une liste des acronymes les plus significatifs dans le monde des réseaux informatiques. 
         ");
         $book7->setYear(2022);
-        $book7->setImage("https://www.thibaultmorizet.fr/assets/product-images/8.jpeg");
+        $book7->setImage("https://www.thibaultmorizet.fr/assets/product-images/22.jpeg");
         $book7->setUnitpriceht(28.26);
         $book7->setStock($faker->numberBetween(min: 50, max: 600));
         $book7->setTaxe($this->getReference('taxe1'));
@@ -200,9 +200,67 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         $book7->setFormat($this->getReference('format1'));
         $book7->setEditor($this->getReference('editor2'));
         $book7->addAuthor($this->getReference('author6'));
-        $book7->addCategory($this->getReference('category1'));
+        $book7->addCategory($this->getReference('category2'));
         $manager->persist($book7);
         $this->addReference('book7', $book7);
+
+        $book8 = new Book();
+        $book8->setTitle("Les réseaux informatiques - Guide pratique pour l'administration");
+        $book8->setSummary("
+        Ce livre sur les réseaux informatiques s'adresse aussi bien aux administrateurs réseau, techniciens ou ingénieurs en charge de la conception, de l'administration, de la sécurité et de la mise en place de solutions de supervision d'un réseau, qu'aux étudiants souhaitant disposer de connaissances théoriques et techniques nécessaires pour exercer le métier d'administrateur réseau au sens large. 
+
+        En s'appuyant sur les standards définis par l'IEEE ou l'IETF, l'auteur propose au lecteur un guide opérationnel alliant toute la théorie nécessaire sur les concepts étudiés illustrée à l'aide de nombreux schémas à des cas concrets de mise en pratique teintés de toute la réalité technique du terrain. 
+
+        Pour mieux poser le contexte dans lequel s'inscrit le métier d'administrateur réseau, le premier chapitre du livre est consacré à un historique de l'évolution des réseaux informatiques. Dans les chapitres qui suivent, l'auteur présente les techniques de conception d'un réseau local ainsi que la gestion des routeurs, des commutateurs et des différents équipements déployés en matière de configuration, d'inventaire et de sauvegarde. 
+
+        L'auteur fait ensuite le point sur les différentes méthodes pour mettre en place de la redondance et de la haute disponibilité. Le lecteur sera ainsi en mesure de solutionner plus sereinement des problèmes d'interruption de services. La problématique de la sécurité du réseau étant également incontournable, deux chapitres lui sont dédiés avec, pour le premier, une orientation plus précise sur la gestion des accès au réseau LAN au travers de pare-feux. Dans le second, l’auteur propose de vous mettre dans la peau d’un pirate afin d’expliquer par des exemples concrets les différentes phases d’une attaque informatique, dont les méthodes d’intrusion illustrées à l’aide des outils très utilisés dans le monde de la cybersécurité comme NMAP et Metasploit. 
+
+        Les moyens d'observation de la santé du réseau sont également détaillés à travers les outils de supervision et les techniques de métrologie. L'auteur décrit ainsi les protocoles et les méthodes qui entrent en jeu et qui permettent d'extraire des indicateurs concrets pour mesurer les performances d'un réseau et des applications. 
+
+        Pour finir, un chapitre présente concrètement les concepts relativement nouveaux de virtualisation réseau, de SDN ( Software Defined Network ) et de SD-WAN, notamment dans le cadre d'architectures réseau au sein de datacenters ou dans le Cloud. 
+        ");
+        $book8->setYear(2023);
+        $book8->setImage("https://www.thibaultmorizet.fr/assets/product-images/23.jpeg");
+        $book8->setUnitpriceht(36.85);
+        $book8->setStock($faker->numberBetween(min: 50, max: 600));
+        $book8->setTaxe($this->getReference('taxe1'));
+        $book8->setVisitnumber($faker->numberBetween(max: 500));
+        $book8->setSoldnumber($faker->numberBetween(max: $book8->getVisitnumber()));
+        $book8->setIsbn("978-2-409-03838-9");
+        $book8->setFormat($this->getReference('format1'));
+        $book8->setEditor($this->getReference('editor2'));
+        $book8->addAuthor($this->getReference('author7'));
+        $book8->addCategory($this->getReference('category2'));
+        $manager->persist($book8);
+        $this->addReference('book8', $book8);
+
+        $book9 = new Book();
+        $book9->setTitle("Git - Maîtrisez la gestion de vos versions");
+        $book9->setSummary("
+        Ce livre s’adresse principalement aux développeurs et aux chefs de projet mais également aux professionnels appelés à modifier des codes sources (graphiste, webdesigner, etc.). 
+
+        Le livre présente tout d’abord l’historique des solutions de gestion de versions et leur intérêt. Il permet ensuite au lecteur d’installer et de configurer Git puis de l’utiliser tout au long de cinq chapitres progressifs (fonctionnement des branches, partage d’un dépôt, outils internes...). Un chapitre permet au lecteur de bien appréhender git-flow, une méthode pour gérer efficacement les différentes versions d’un projet en entreprise. 
+
+        Deux chapitres présentent la gestion de versions de manière très pragmatique en utilisant deux scénarios mettant en oeuvre des développeurs. Le premier scénario reprend les bases de l’utilisation de Git et montre l’utilisation des principales commandes dans des cas quasi-réels. Le deuxième scénario met en scène une équipe de développeurs : de l’installation de Git- Lab, jusqu’à une utilisation de la méthode git-flow par l’équipe. Ce chapitre détaille les principales étapes par lesquelles l’équipe doit passer pour versionner un projet existant. 
+
+        Un chapitre présente une liste d’alias et de commandes prêtes à l’emploi, fruit d’années de pratique de Git de l’auteur, afin que le lecteur utilise Git plus efficacement et puisse obtenir des solutions de problèmes communs. Le dernier chapitre présente un cas réel d’intégration continue 100% Git dans le cadre d’un développement web avec le framework Django. 
+
+        En annexe, un aide-mémoire permet de visualiser rapidement les principales commandes et leurs principales options. Une présentation de la plateforme GitHub et des changements qu’elle apporte dans la collaboration entre développeurs est également proposée par l’auteur.
+        ");
+        $book9->setYear(2023);
+        $book9->setImage("https://www.thibaultmorizet.fr/assets/product-images/24.jpeg");
+        $book9->setUnitpriceht(36.85);
+        $book9->setStock($faker->numberBetween(min: 50, max: 600));
+        $book9->setTaxe($this->getReference('taxe1'));
+        $book9->setVisitnumber($faker->numberBetween(max: 500));
+        $book9->setSoldnumber($faker->numberBetween(max: $book9->getVisitnumber()));
+        $book9->setIsbn("978-2-409-03838-9");
+        $book9->setFormat($this->getReference('format1'));
+        $book9->setEditor($this->getReference('editor2'));
+        $book9->addAuthor($this->getReference('author8'));
+        $book9->addCategory($this->getReference('category4'));
+        $manager->persist($book9);
+        $this->addReference('book9', $book9);
 
         $manager->flush();
     }

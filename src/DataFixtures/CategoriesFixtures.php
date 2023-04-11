@@ -25,6 +25,11 @@ class CategoriesFixtures extends Fixture
         $manager->persist($category3);
         $this->addReference('category3', $category3);
 
+        $category4 = new Category();
+        $category4->setName("Git");
+        $manager->persist($category4);
+        $this->addReference('category4', $category4);
+
         $manager->flush();
     }
 }
