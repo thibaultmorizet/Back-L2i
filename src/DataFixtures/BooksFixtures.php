@@ -262,6 +262,124 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($book9);
         $this->addReference('book9', $book9);
 
+        $book10 = new Book();
+        $book10->setTitle("Git par la pratique");
+        $book10->setSummary("
+        Grâce à son modèle de gestion de versions, Git est devenu un puissant outil de collaboration, indispensable dans tous les types de projets informatiques. Prenez les rênes de Git sous la houlette de David Demaree, qui fait la lumière sur le déroulement du processus en ligne de commande, les subtilités des repositories et des branches, les ingrédients d'un message de commit pertinent et bien d'autres aspects... Avec lui, vous découvrirez les tâches courantes du suivi de version et des conseils avisés pour les scénarios plus complexes. Avec ce petit guide pratique, vous avez entre les mains un outil précieux pour faire de Git votre allié et celui de toute votre équipe.        ");
+        $book10->setYear(2017);
+        $book10->setImage("https://www.thibaultmorizet.fr/assets/product-images/25.jpeg");
+        $book10->setUnitpriceht(14.22);
+        $book10->setStock($faker->numberBetween(min: 50, max: 600));
+        $book10->setTaxe($this->getReference('taxe1'));
+        $book10->setVisitnumber($faker->numberBetween(max: 500));
+        $book10->setSoldnumber($faker->numberBetween(max: $book10->getVisitnumber()));
+        $book10->setIsbn("978-2-212-67441-5");
+        $book10->setFormat($this->getReference('format1'));
+        $book10->setEditor($this->getReference('editor1'));
+        $book10->addAuthor($this->getReference('author10'));
+        $book10->addCategory($this->getReference('category4'));
+        $manager->persist($book10);
+        $this->addReference('book10', $book10);
+
+        $book11 = new Book();
+        $book11->setTitle("Concevez votre site web avec PHP et MySQL");
+        $book11->setSummary("
+        Vous connaissez le HTML et vous avez toujours rêvé de créer un site web dynamique, avec votre propre blog, vos forums et votre espace membres ? Ne cherchez plus ! Découvrez dans cet ouvrage dédié aux débutants comment utiliser les outils les plus célèbres du web dynamique : PHP et MySQL !
+      
+        Qu'allez-vous apprendre ?
+        Les bases de PHP
+        Les variables et conditions
+        Les boucles, tableaux et fonctions
+        Au secours ! Mon script plante !
+        Inclure des portions de page
+ 
+        Transmettre des données de page en page
+        Transmettre des données avec l'URL et les formulaires
+        Protéger une page par mot de passe
+        Variables superglobales
+        Sessions et cookies
+ 
+        Stocker des informations dans une base de données
+        phpMyAdmin
+        Lire et écrire des données
+        Les fonctions SQL
+        Les jointures entre tables
+        ");
+        $book11->setYear(2022);
+        $book11->setImage("https://www.thibaultmorizet.fr/assets/product-images/26.jpeg");
+        $book11->setUnitpriceht(27.49);
+        $book11->setStock($faker->numberBetween(min: 50, max: 600));
+        $book11->setTaxe($this->getReference('taxe1'));
+        $book11->setVisitnumber($faker->numberBetween(max: 500));
+        $book11->setSoldnumber($faker->numberBetween(max: $book11->getVisitnumber()));
+        $book11->setIsbn("978-2-416-00885-6");
+        $book11->setFormat($this->getReference('format1'));
+        $book11->setEditor($this->getReference('editor1'));
+        $book11->addAuthor($this->getReference('author11'));
+        $book11->addCategory($this->getReference('category3'));
+        $manager->persist($book11);
+        $this->addReference('book11', $book11);
+
+        $book12 = new Book();
+        $book12->setTitle("L'intelligence artificielle en pratique avec Python");
+        $book12->setSummary("
+        Un livre à la fois théorique et pratique
+        
+        Cet ouvrage à vocation pédagogique a pour but d'aider les débutants et même les praticiens confirmés de l'intelligence artificielle à mieux faire le tri entre certains mécanismes algorithmiques propres à cette discipline et souvent confondus dont les trois fondamentaux : « la recherche », « l'optimisation » et « l'apprentissage ». Même si le Web regorge de solutions algorithmiques et de codes clés en main mis à disposition des internautes, ces codes constituent rarement la bonne solution pour faire face à un problème. En effet, il faut souvent prendre du recul, et c'est précisément ce que propose cet ouvrage, pour pouvoir trancher entre les différentes offres algorithmiques (les trois fondamentaux) et choisir celle qui sera la plus appropriée au cas de figure que l'on rencontre. Dix problèmes très classiques de l'univers algorithmique et de l'IA sont abordés dans la 2e édition ce livre. Pour chacun, nous allons détailler l'une ou l'autre méthode issue d'un des trois mécanismes fondamentaux (recherche, optimisation ou apprentissage) :
+        
+        le jeu du taquin ;
+        l'algorithme du plus court chemin (celui qu'on trouve dans les GPS) ;
+        le jeu du sudoku ;
+        le jeu de Puissance 4 à deux joueurs ;
+        le jeu du Tetris ; (Mis à jour)
+        le jeu du Snake ;
+        la séparation des spams et des non-spams ;
+        les règles d'accès au crédit ; (Nouveau)
+        les aides au tri de la presse ou des avis de clients ; (Nouveau)
+        la reconnaissance sur photo de chiens ou de chats.
+        
+        À qui s'adresse cet ouvrage ?
+        Aux étudiants, en informatique ou pas, qui découvrent l'IA dans leur parcours académique
+        Aux informaticiens, même les plus confirmés, qui se sentent de plus en plus décontenancés devant l'offre pléthorique des recettes d'IA dont ils n'arrivent pas toujours à comprendre « qui fait quoi »
+        ");
+        $book12->setYear(2023);
+        $book12->setImage("https://www.thibaultmorizet.fr/assets/product-images/27.jpeg");
+        $book12->setUnitpriceht(30.33);
+        $book12->setStock($faker->numberBetween(min: 50, max: 600));
+        $book12->setTaxe($this->getReference('taxe1'));
+        $book12->setVisitnumber($faker->numberBetween(max: 500));
+        $book12->setSoldnumber($faker->numberBetween(max: $book12->getVisitnumber()));
+        $book12->setIsbn("978-2-416-01094-1");
+        $book12->setFormat($this->getReference('format2'));
+        $book12->setEditor($this->getReference('editor1'));
+        $book12->addAuthor($this->getReference('author12'));
+        $book12->addAuthor($this->getReference('author13'));
+        $book12->addCategory($this->getReference('category5'));
+        $manager->persist($book12);
+        $this->addReference('book12', $book12);
+
+        $book12 = new Book();
+        $book12->setTitle("70 concepts mathématiques expliqués avec Python");
+        $book12->setSummary("
+        Largement inspiré des travaux de Seymour Papert (mathématicien et pionnier des technologies éducatives, ancien professeur au MIT), l'objectif de cet ouvrage est de démystifier les grandes idées mathématiques en dotant les lecteurs du meilleur outil pour les comprendre et jouer avec : la programmation.
+        Chaque concept ou idée mathématique est traité sous la forme d'une double page mettant en vis-à-vis la présentation du concept étayée d'éléments de contexte historiques et épistémologiques, et son illustration à l'aide de codes Python.
+        Les codes sources sont tous accessibles et manipulables en ligne via la page de présentation de l'ouvrage sur le site dunod.com.
+        ");
+        $book12->setYear(2023);
+        $book12->setImage("https://www.thibaultmorizet.fr/assets/product-images/28.jpeg");
+        $book12->setUnitpriceht(21.8);
+        $book12->setStock($faker->numberBetween(min: 50, max: 600));
+        $book12->setTaxe($this->getReference('taxe1'));
+        $book12->setVisitnumber($faker->numberBetween(max: 500));
+        $book12->setSoldnumber($faker->numberBetween(max: $book12->getVisitnumber()));
+        $book12->setIsbn("978-2100836130");
+        $book12->setFormat($this->getReference('format2'));
+        $book12->setEditor($this->getReference('editor6'));
+        $book12->addAuthor($this->getReference('author14'));
+        $book12->addCategory($this->getReference('category5'));
+        $manager->persist($book12);
+        $this->addReference('book12', $book12);
+
         $manager->flush();
     }
 }

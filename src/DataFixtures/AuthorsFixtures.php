@@ -73,6 +73,50 @@ class AuthorsFixtures extends Fixture
         $manager->persist($author9);
         $this->addReference('author9', $author9);
 
+        $author10 = new Author();
+        $author10->setLastname("Demaree");
+        $author10->setFirstname("David");
+        $author10->setLanguage('FR');
+        $manager->persist($author10);
+        $this->addReference('author10', $author10);
+
+        $author11 = new Author();
+        $author11->setLastname("Nebra");
+        $author11->setFirstname("Mathieu");
+        $author11->setLanguage('FR');
+        $manager->persist($author11);
+        $this->addReference('author11', $author11);
+
+        $author12 = new Author();
+        $author12->setLastname("Bersini");
+        $author12->setFirstname("Hugues");
+        $author12->setLanguage('FR');
+        $manager->persist($author12);
+        $this->addReference('author12', $author12);
+
+        $author13 = new Author();
+        $author13->setLastname("Hasselmann");
+        $this->getSetFirstname($author13);
+        $author13->setLanguage('FR');
+        $manager->persist($author13);
+        $this->addReference('author13', $author13);
+
+        $author14 = new Author();
+        $author14->setLastname("Saupin");
+        $author14->setFirstname("Guillaume");
+        $author14->setLanguage('FR');
+        $manager->persist($author14);
+        $this->addReference('author14', $author14);
+
         $manager->flush();
+    }
+
+    /**
+     * @param Author $author13
+     * @return void
+     */
+    public function getSetFirstname(Author $author13): void
+    {
+        $author13->setFirstname("Ken");
     }
 }

@@ -30,6 +30,11 @@ class CategoriesFixtures extends Fixture
         $manager->persist($category4);
         $this->addReference('category4', $category4);
 
+        $category5 = new Category();
+        $category5->setName("Python");
+        $manager->persist($category5);
+        $this->addReference('category5', $category5);
+
         $manager->flush();
     }
 }

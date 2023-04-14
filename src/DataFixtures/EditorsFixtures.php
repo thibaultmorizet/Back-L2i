@@ -35,6 +35,11 @@ class EditorsFixtures extends Fixture
         $manager->persist($editor5);
         $this->addReference('editor5', $editor5);
 
+        $editor6 = new Editor();
+        $editor6->setName("Dunod");
+        $manager->persist($editor6);
+        $this->addReference('editor6', $editor6);
+
         $manager->flush();
     }
 }
