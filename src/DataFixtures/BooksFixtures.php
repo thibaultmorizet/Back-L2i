@@ -380,6 +380,34 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($book13);
         $this->addReference('book13', $book13);
 
+        $book14 = new Book();
+        $book14->setTitle("Tout JavaScript");
+        $book14->setSummary("
+        Ce livre s'adresse à tous les développeurs web, qu'ils soient débutants ou avancés.
+        Le JavaScript sert avant tout à rendre les pages web interactives et dynamiques du côté de l'utilisateur, mais il est également de plus en plus utilisé pour créer des applications complètes, y compris côté serveur.La première partie de ce livre couvre l'ensemble des fonctionnalités du JavaScript (version ECMAScript 6 jusque ES2020) et passe en revue les bonnes pratiques de programmation.
+        La deuxième partie porte sur l'interactivité avec les utilisateurs (interfaces, formulaires, gestion des erreurs, appels asynchrones, géolocalisation, notifications, dessin...).
+        La troisième partie permet de s'initier aux aspects les plus avancés du JavaScript tels que Node.js, React, Vue.js, jQuery ou les Web Workers.
+        Une première annexe guide le développeur web dans l'installation en local de son environnement de travail complet avec serveur web, PHP et base de données, grâce à Docker. Une deuxième introduit l'usage du JavaScript dans l'environnement cloud Google Sheets, et une dernière concerne CSS.
+        Les renvois de type tjs.ovh/nomScript qui sont présents au fil des pages sont des compléments interactifs à ce livre. Ils affichent :
+        Le rendu de l'exécution du script.
+        Un émulateur de la console du navigateur.
+        Le code source complet de l'exemple avec une coloration syntaxique, des commentaires et des liens vers les fiches de la référence JS du site toutjavascript.com.
+        ");
+        $book14->setYear(2023);
+        $book14->setImage("https://www.thibaultmorizet.fr/assets/product-images/29.jpeg");
+        $book14->setUnitpriceht(28.34);
+        $book14->setStock($faker->numberBetween(min: 50, max: 600));
+        $book14->setTaxe($this->getReference('taxe1'));
+        $book14->setVisitnumber($faker->numberBetween(max: 500));
+        $book14->setSoldnumber($faker->numberBetween(max: $book14->getVisitnumber()));
+        $book14->setIsbn("978-2100846276");
+        $book14->setFormat($this->getReference('format2'));
+        $book14->setEditor($this->getReference('editor6'));
+        $book14->addAuthor($this->getReference('author15'));
+        $book14->addCategory($this->getReference('category6'));
+        $manager->persist($book14);
+        $this->addReference('book14', $book14);
+
         $manager->flush();
     }
 }

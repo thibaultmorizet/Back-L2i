@@ -35,6 +35,11 @@ class CategoriesFixtures extends Fixture
         $manager->persist($category5);
         $this->addReference('category5', $category5);
 
+        $category6 = new Category();
+        $category6->setName("Javascript");
+        $manager->persist($category6);
+        $this->addReference('category6', $category6);
+
         $manager->flush();
     }
 }

@@ -96,7 +96,7 @@ class AuthorsFixtures extends Fixture
 
         $author13 = new Author();
         $author13->setLastname("Hasselmann");
-        $this->getSetFirstname($author13);
+        $author13->setFirstname("Ken");
         $author13->setLanguage('FR');
         $manager->persist($author13);
         $this->addReference('author13', $author13);
@@ -108,15 +108,13 @@ class AuthorsFixtures extends Fixture
         $manager->persist($author14);
         $this->addReference('author14', $author14);
 
-        $manager->flush();
-    }
+        $author15 = new Author();
+        $author15->setLastname("Hondermarck");
+        $author15->setFirstname("Olivier");
+        $author15->setLanguage('FR');
+        $manager->persist($author15);
+        $this->addReference('author15', $author15);
 
-    /**
-     * @param Author $author13
-     * @return void
-     */
-    public function getSetFirstname(Author $author13): void
-    {
-        $author13->setFirstname("Ken");
+        $manager->flush();
     }
 }
