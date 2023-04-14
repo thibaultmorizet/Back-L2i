@@ -358,27 +358,27 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($book12);
         $this->addReference('book12', $book12);
 
-        $book12 = new Book();
-        $book12->setTitle("70 concepts mathématiques expliqués avec Python");
-        $book12->setSummary("
+        $book13 = new Book();
+        $book13->setTitle("70 concepts mathématiques expliqués avec Python");
+        $book13->setSummary("
         Largement inspiré des travaux de Seymour Papert (mathématicien et pionnier des technologies éducatives, ancien professeur au MIT), l'objectif de cet ouvrage est de démystifier les grandes idées mathématiques en dotant les lecteurs du meilleur outil pour les comprendre et jouer avec : la programmation.
         Chaque concept ou idée mathématique est traité sous la forme d'une double page mettant en vis-à-vis la présentation du concept étayée d'éléments de contexte historiques et épistémologiques, et son illustration à l'aide de codes Python.
         Les codes sources sont tous accessibles et manipulables en ligne via la page de présentation de l'ouvrage sur le site dunod.com.
         ");
-        $book12->setYear(2023);
-        $book12->setImage("https://www.thibaultmorizet.fr/assets/product-images/28.jpeg");
-        $book12->setUnitpriceht(21.8);
-        $book12->setStock($faker->numberBetween(min: 50, max: 600));
-        $book12->setTaxe($this->getReference('taxe1'));
-        $book12->setVisitnumber($faker->numberBetween(max: 500));
-        $book12->setSoldnumber($faker->numberBetween(max: $book12->getVisitnumber()));
-        $book12->setIsbn("978-2100836130");
-        $book12->setFormat($this->getReference('format2'));
-        $book12->setEditor($this->getReference('editor6'));
-        $book12->addAuthor($this->getReference('author14'));
-        $book12->addCategory($this->getReference('category5'));
-        $manager->persist($book12);
-        $this->addReference('book12', $book12);
+        $book13->setYear(2023);
+        $book13->setImage("https://www.thibaultmorizet.fr/assets/product-images/28.jpeg");
+        $book13->setUnitpriceht(21.8);
+        $book13->setStock($faker->numberBetween(min: 50, max: 600));
+        $book13->setTaxe($this->getReference('taxe1'));
+        $book13->setVisitnumber($faker->numberBetween(max: 500));
+        $book13->setSoldnumber($faker->numberBetween(max: $book13->getVisitnumber()));
+        $book13->setIsbn("978-2100836130");
+        $book13->setFormat($this->getReference('format2'));
+        $book13->setEditor($this->getReference('editor6'));
+        $book13->addAuthor($this->getReference('author14'));
+        $book13->addCategory($this->getReference('category5'));
+        $manager->persist($book13);
+        $this->addReference('book13', $book13);
 
         $manager->flush();
     }
