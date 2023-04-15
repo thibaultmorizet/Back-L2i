@@ -15,6 +15,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         return [
             BrandsFixtures::class,
             AuthorsFixtures::class,
+            CategoriesFixtures::class,
             TaxesFixtures::class
         ];
     }
@@ -32,6 +33,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         $video1->setUnitpriceht(65.40);
         $video1->setStock($faker->numberBetween(min: 50, max: 600));
         $video1->addAuthor($this->getReference('author9'));
+        $video1->addCategory($this->getReference('category7'));
         $video1->setTaxe($this->getReference('taxe1'));
         $video1->setVisitnumber($faker->numberBetween(max: 500));
         $video1->setSoldnumber($faker->numberBetween(max: $video1->getVisitnumber()));
@@ -69,6 +71,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         $video2->setUnitpriceht(18.95);
         $video2->setStock($faker->numberBetween(min: 50, max: 600));
         $video2->addAuthor($this->getReference('author17'));
+        $video2->addCategory($this->getReference('category3'));
         $video2->setTaxe($this->getReference('taxe1'));
         $video2->setVisitnumber($faker->numberBetween(max: 500));
         $video2->setSoldnumber($faker->numberBetween(max: $video2->getVisitnumber()));
@@ -93,6 +96,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         $video3->setImage("https://www.thibaultmorizet.fr/assets/product-images/3.jpeg");
         $video3->setUnitpriceht(47.38);
         $video3->setStock($faker->numberBetween(min: 50, max: 600));
+        $video3->addCategory($this->getReference('category3'));
         $video3->setTaxe($this->getReference('taxe1'));
         $video3->setVisitnumber($faker->numberBetween(max: 500));
         $video3->setSoldnumber($faker->numberBetween(max: $video3->getVisitnumber()));
@@ -127,45 +131,12 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         $video4->setUnitpriceht(104.26);
         $video4->setStock($faker->numberBetween(min: 50, max: 600));
         $video4->addAuthor($this->getReference('author18'));
+        $video4->addCategory($this->getReference('category1'));
         $video4->setTaxe($this->getReference('taxe1'));
         $video4->setVisitnumber($faker->numberBetween(max: 500));
         $video4->setSoldnumber($faker->numberBetween(max: $video4->getVisitnumber()));
         $manager->persist($video4);
         $this->addReference('video4', $video4);
-
-        $video5 = new Video();
-        $video5->setTitle("HTML et CSS - Le Cours Complet");
-        $video5->setBrand($this->getReference('marque2'));
-        $video5->setSummary("
-        Vous souhaitez devenir développeur web? 
-        Vous voulez être capable de créer un site Internet? 
-        Vous êtes un débutant dans ce domaine? 
-        Alors vous êtes exactement là ou vous devez être !
-        
-        Dans ce cours on va apprendre ensemble les bases du web, c'est à dire HTML et CSS.
-        
-        HTML c'est quoi?
-        C'est un langage composé de ce que l'on appelle des tags qui vont nous permettre de représenter la structure de nos pages Web: un titre, un paragraphe, des images, etc...
-        Maintenant, il faut savoir que HTML sans CSS c'est pas très joli !
-        C'est pourquoi HTML vient souvent avec son fidéle compagnon: le CSS.
-
-        CSS c'est quoi?
-        C'est un langage qui va décorer notre HTML, il est responsable des couleurs, des tailles, de la mise en page, etc...
-        
-        Dans ce cours vous allez construire un site Web depuis 0 avec uniquement de l'HTML et du CSS.
-        Vous allez taper vos premiéres lignes de code ! Je vous assisterai et vous expliquerai en détails chacune des étapes.
-        Allez ! Au boulot ! On passe à l'action !
-            ");
-        $video5->setYear(2022);
-        $video5->setImage("https://www.thibaultmorizet.fr/assets/product-images/4.jpeg");
-        $video5->setUnitpriceht(104.26);
-        $video5->setStock($faker->numberBetween(min: 50, max: 600));
-        $video5->addAuthor($this->getReference('author18'));
-        $video5->setTaxe($this->getReference('taxe1'));
-        $video5->setVisitnumber($faker->numberBetween(max: 500));
-        $video5->setSoldnumber($faker->numberBetween(max: $video5->getVisitnumber()));
-        $manager->persist($video5);
-        $this->addReference('video5', $video5);
 
         $manager->flush();
     }

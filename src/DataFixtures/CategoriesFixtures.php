@@ -40,6 +40,11 @@ class CategoriesFixtures extends Fixture
         $manager->persist($category6);
         $this->addReference('category6', $category6);
 
+        $category7 = new Category();
+        $category7->setName("Référencement");
+        $manager->persist($category7);
+        $this->addReference('category7', $category7);
+
         $manager->flush();
     }
 }
