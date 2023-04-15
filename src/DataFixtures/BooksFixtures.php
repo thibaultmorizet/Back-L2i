@@ -404,6 +404,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         $book14->setFormat($this->getReference('format2'));
         $book14->setEditor($this->getReference('editor6'));
         $book14->addAuthor($this->getReference('author15'));
+        $book14->addCategory($this->getReference('category1'));
         $book14->addCategory($this->getReference('category6'));
         $manager->persist($book14);
         $this->addReference('book14', $book14);
@@ -435,6 +436,7 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         $book15->setFormat($this->getReference('format2'));
         $book15->setEditor($this->getReference('editor1'));
         $book15->addAuthor($this->getReference('author16'));
+        $book15->addCategory($this->getReference('category1'));
         $book15->addCategory($this->getReference('category6'));
         $manager->persist($book15);
         $this->addReference('book15', $book15);

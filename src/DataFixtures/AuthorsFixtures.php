@@ -136,6 +136,48 @@ class AuthorsFixtures extends Fixture
         $manager->persist($author18);
         $this->addReference('author18', $author18);
 
+        $author19 = new Author();
+        $author19->setLastname("Vanderstraeten");
+        $author19->setFirstname("Gilles");
+        $author19->setLanguage('FR');
+        $manager->persist($author19);
+        $this->addReference('author19', $author19);
+
+        $author20 = new Author();
+        $author20->setLastname("Leuillet");
+        $author20->setFirstname("Louis Nicolas");
+        $author20->setLanguage('FR');
+        $manager->persist($author20);
+        $this->addReference('author20', $author20);
+
+        $author21 = new Author();
+        $author21->setLastname("Williams");
+        $author21->setFirstname("Trevoir");
+        $author21->setLanguage('EN');
+        $manager->persist($author21);
+        $this->addReference('author21', $author21);
+
+        $author22 = new Author();
+        $author22->setLastname("Piatakha");
+        $author22->setFirstname("Andrii");
+        $author22->setLanguage('EN');
+        $manager->persist($author22);
+        $this->addReference('author22', $author22);
+
+        $author23 = new Author();
+        $author23->setLastname("Williams");
+        $author23->setFirstname("Doron");
+        $author23->setLanguage('EN');
+        $manager->persist($author23);
+        $this->addReference('author23', $author23);
+
+        $author24 = new Author();
+        $author24->setLastname("INSTITUTE");
+        $author24->setFirstname("PROPER DOT");
+        $author24->setLanguage('EN');
+        $manager->persist($author24);
+        $this->addReference('author24', $author24);
+
         $manager->flush();
     }
 }

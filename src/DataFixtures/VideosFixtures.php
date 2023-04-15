@@ -138,6 +138,160 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($video4);
         $this->addReference('video4', $video4);
 
+        $video5 = new Video();
+        $video5->setTitle("VRAIMENT Bien Comprendre Javascript");
+        $video5->setBrand($this->getReference('marque2'));
+        $video5->setSummary("
+        Ce cours est spécial: rien que le titre déjà: VRAIMENT Bien Comprendre Javascript !!! C’est pas un peu exagéré tout ça ? Et bien non… Sachez que c’est le cours le plus compliqué que j’ai fait jusqu’à présent.
+        
+        Pourquoi compliqué ?
+        
+        Parce qu’on va rentrer dans les détails des détails. Vous allez réellement comprendre comment fonctionne Javascript en profondeur. D’ailleurs pour vous lancer dans ce cours, vous devez déjà connaître un minimum les bases de Javascript.
+        
+        Le but c’est de comprendre toutes les subtilités de ce langage. Au final, vous ferez partie du peu de gens qui peuvent se vanter de maîtriser Javascript Vous pourrez déchirer vos entretiens ! 
+
+        Et oui ! Vous serez capable de répondre à tous ces petits tests qu’adorent donner les recruteurs. Mais surtout, vous comprendrez enfin l’envers du décor et ça fera de vous des meilleurs développeurs.
+         
+        Mais alors attention ! Devenir un monstre en Javascript a un prix ! Il va falloir vous accrocher car je vous préviens tout de suite: vous allez transpirer du cerveau… c’est pour ça que j’ai mis une casquette d’ailleurs. Bref dans ce cours, il va falloir vous donner à 100%.
+        ");
+        $video5->setYear(2022);
+        $video5->setImage("https://www.thibaultmorizet.fr/assets/product-images/5.jpeg");
+        $video5->setUnitpriceht(104.26);
+        $video5->setStock($faker->numberBetween(min: 50, max: 600));
+        $video5->addAuthor($this->getReference('author18'));
+        $video5->addCategory($this->getReference('category1'));
+        $video5->addCategory($this->getReference('category6'));
+        $video5->setTaxe($this->getReference('taxe1'));
+        $video5->setVisitnumber($faker->numberBetween(max: 500));
+        $video5->setSoldnumber($faker->numberBetween(max: $video5->getVisitnumber()));
+        $manager->persist($video5);
+        $this->addReference('video5', $video5);
+
+        $video6 = new Video();
+        $video6->setTitle("Conception de bases de données et langage SQL");
+        $video6->setBrand($this->getReference('marque2'));
+        $video6->setSummary("
+        Prérequis
+
+        Les bases de l'informatique.
+        Un peu d'anglais... mais un anglais d'aéroport suffit.
+        Une machine sous Windows, Linux ou Mac OS.
+        Une forte motivation !
+        
+        À qui ce cours s'adresse-t-il ?
+        
+        Développeurs web débutants ou intermédiaires désireux de consolider leurs connaissances théoriques et leur maîtrise du langage SQL.
+        ");
+        $video6->setYear(2022);
+        $video6->setImage("https://www.thibaultmorizet.fr/assets/product-images/6.jpeg");
+        $video6->setUnitpriceht(104.26);
+        $video6->setStock($faker->numberBetween(min: 50, max: 600));
+        $video6->addAuthor($this->getReference('author19'));
+        $video6->addCategory($this->getReference('category3'));
+        $video6->setTaxe($this->getReference('taxe1'));
+        $video6->setVisitnumber($faker->numberBetween(max: 500));
+        $video6->setSoldnumber($faker->numberBetween(max: $video6->getVisitnumber()));
+        $manager->persist($video6);
+        $this->addReference('video6', $video6);
+
+        $video7 = new Video();
+        $video7->setTitle("JavaScript : la formation ULTIME");
+        $video7->setBrand($this->getReference('marque2'));
+        $video7->setSummary("
+        JavaScript est vraiment LE langage de programmation que vous devez connaître si vous voulez vous lancer dans le développement web. Et ça tombe bien : avec ce cours, vous êtes sûr de ne pas passer à côté d’une notion importante, car il est complet ! En plus de ça, ce cours vous permettra de réaliser 8 projets, des dizaines d’exercices et une cinquantaine de challenges en cours de vidéo !
+
+        Vous êtes sur le cours le plus complet, le plus pédagogique et le plus clair concernant JavaScript, et en plus : il est continuellement mis à jour ! Le plan de ce cours a été réalisé après des semaines de travail, en concordance avec ce qu’il y a de mieux en terme de pédagogie pour apprendre et surtout retenir chaque concept évoqué.
+
+        Ce n’est pas un cours dans lequel vous êtes jeté dans la jungle : vous serez continuellement suivi avec la possibilité de poser des questions à n’importe quel moment pour avoir une réponse précise de notre équipe.
+
+        Que vous soyez débutant ou déjà bien avancé avec le JavaScript, ce cours vous apprendra de nouvelles choses et de nouvelles façons de programmer, tant il est complet.
+
+        Si vous êtes motivé, intéressé par JavaScript, et que vous recherchez un cours dans lequel vous ne serez pas déçu : arrêtez-vous. Vous êtes à la bonne porte !
+
+        J'aurai plaisir à vous aider à atteindre vos objectifs.
+        ");
+        $video7->setYear(2022);
+        $video7->setImage("https://www.thibaultmorizet.fr/assets/product-images/7.jpeg");
+        $video7->setUnitpriceht(113.64);
+        $video7->setStock($faker->numberBetween(min: 50, max: 600));
+        $video7->addAuthor($this->getReference('author20'));
+        $video7->addCategory($this->getReference('category1'));
+        $video7->addCategory($this->getReference('category6'));
+        $video7->setTaxe($this->getReference('taxe1'));
+        $video7->setVisitnumber($faker->numberBetween(max: 500));
+        $video7->setSoldnumber($faker->numberBetween(max: $video7->getVisitnumber()));
+        $manager->persist($video7);
+        $this->addReference('video7', $video7);
+
+        $video8 = new Video();
+        $video8->setTitle("PHP et MySQL : la formation ULTIME");
+        $video8->setBrand($this->getReference('marque2'));
+        $video8->setSummary("
+        Envie de devenir un pro en PHP ? D’utiliser des données utilisateurs grâce à MySQL ? De créer le prochain Google ? Un nouveau Facebook ? Ou une startup ? Ce cours est fait pour vous.
+        
+        Mon objectif ? Faire de cette formation LA formation ULTIME sur PHP et MySQL.
+        ");
+        $video8->setYear(2022);
+        $video8->setImage("https://www.thibaultmorizet.fr/assets/product-images/8.jpeg");
+        $video8->setUnitpriceht(104.26);
+        $video8->setStock($faker->numberBetween(min: 50, max: 600));
+        $video8->addAuthor($this->getReference('author20'));
+        $video8->addCategory($this->getReference('category1'));
+        $video8->addCategory($this->getReference('category3'));
+        $video8->setTaxe($this->getReference('taxe1'));
+        $video8->setVisitnumber($faker->numberBetween(max: 500));
+        $video8->setSoldnumber($faker->numberBetween(max: $video8->getVisitnumber()));
+        $manager->persist($video8);
+        $this->addReference('video8', $video8);
+
+        $video9 = new Video();
+        $video9->setTitle("Modern PHP Web Development w/ MySQL, GitHub & Heroku");
+        $video9->setBrand($this->getReference('marque2'));
+        $video9->setSummary("
+        This course is designed to equip students with the skills required for creating dynamic web pages using PHP and MySQL. It further equips students with the fundamentals of PHP programming, while providing them with advanced features of the language. Immerse yourself in an end-to-end full-stack development experience, as we explore user interface design, business logic and hosting activities.
+        
+        By the end of this course, you will be able to build an attractive PHP application; styled using Bootstrap 4; track and manage changes with GitHub and deploy a fully data-driven application to Heroku Cloud Hosting.
+        
+        Why Learn Development with PHP 
+        
+        PHP was designed to make web development easier, and many beginners find it effortless to pick up and get started with. In fact, PHP code was so easy to pick up, many non-programmers end up being able to write PHP application in no time!
+        ");
+        $video9->setYear(2022);
+        $video9->setImage("https://www.thibaultmorizet.fr/assets/product-images/9.jpeg");
+        $video9->setUnitpriceht(18.95);
+        $video9->setStock($faker->numberBetween(min: 50, max: 600));
+        $video9->addAuthor($this->getReference('author21'));
+        $video9->addAuthor($this->getReference('author22'));
+        $video9->addAuthor($this->getReference('author23'));
+        $video9->addCategory($this->getReference('category1'));
+        $video9->addCategory($this->getReference('category3'));
+        $video9->addCategory($this->getReference('category4'));
+        $video9->setTaxe($this->getReference('taxe1'));
+        $video9->setVisitnumber($faker->numberBetween(max: 500));
+        $video9->setSoldnumber($faker->numberBetween(max: $video9->getVisitnumber()));
+        $manager->persist($video9);
+        $this->addReference('video9', $video9);
+
+        $video10 = new Video();
+        $video10->setTitle("JavaScript And PHP And Python Programming Complete Course");
+        $video10->setBrand($this->getReference('marque2'));
+        $video10->setSummary("
+        JavaScript And PHP And Python Programming language Complete Course
+        ");
+        $video10->setYear(2022);
+        $video10->setImage("https://www.thibaultmorizet.fr/assets/product-images/10.jpeg");
+        $video10->setUnitpriceht(18.95);
+        $video10->setStock($faker->numberBetween(min: 50, max: 600));
+        $video10->addAuthor($this->getReference('author24'));
+        $video10->addCategory($this->getReference('category1'));
+        $video10->addCategory($this->getReference('category5'));
+        $video10->addCategory($this->getReference('category6'));
+        $video10->setTaxe($this->getReference('taxe1'));
+        $video10->setVisitnumber($faker->numberBetween(max: 500));
+        $video10->setSoldnumber($faker->numberBetween(max: $video10->getVisitnumber()));
+        $manager->persist($video10);
+        $this->addReference('video10', $video10);
+
         $manager->flush();
     }
 }
