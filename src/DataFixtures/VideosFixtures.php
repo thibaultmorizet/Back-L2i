@@ -292,6 +292,113 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($video10);
         $this->addReference('video10', $video10);
 
+        $video11 = new Video();
+        $video11->setTitle("Formation Git et GitHub: de Débutant à Confirmé");
+        $video11->setBrand($this->getReference('marque2'));
+        $video11->setSummary("
+        Bonjour à tous et bienvenue dans cette formation sur l’outil git et la plateforme github, je m'appelle Arnaud Mercier et je serai votre formateur tout au long de ce cours.
+        
+        Dans cette formation Git et GitHub, nous allons apprendre à gérer les versions de notre projet comme un vrai pro à l’aide de ces deux outils: Git est totalement gratuit et GitHub possède une formule gratuite offrant la majorités des fonctionnalités.
+        
+        Git est un logiciel de gestion de version parmi les plus populaires avec plus de 12 000 000 d’utilisateurs. Il est présent dans la grande majorité des entreprises de développement et est clairement l’incontournable des projets open source. Alors qu’attendez vous pour rejoindre le groupe?
+        
+        Github est une plateforme de collaboration pour les développeurs basée sur Git. Github va vous permettre non seulement d'héberger vos dépôts Git mais aussi vous fournir de nombreux outils qui vous aideront dans le développement en équipe. Il faut savoir qu’une grande partie des projets open source ont leur dépôt de référence hébergé sur cette plateforme. Pour ne citer qu’un exemple: Vim, qui est un des éditeur de texte le plus utilisé sous Linux. 
+        
+        Pour finir, GitHub à été racheté par Microsoft en 2018, plaçant encore une fois l'outil Git et la plateforme GitHub comme un incontournable pour tout bon développeur qui se respecte.
+        
+        Au plaisir de partager cette formation avec vous !
+        
+        Arnaud
+        ");
+        $video11->setYear(2022);
+        $video11->setImage("https://www.thibaultmorizet.fr/assets/product-images/11.jpeg");
+        $video11->setUnitpriceht(104.26);
+        $video11->setStock($faker->numberBetween(min: 50, max: 600));
+        $video11->addAuthor($this->getReference('author25'));
+        $video11->addCategory($this->getReference('category4'));
+        $video11->setTaxe($this->getReference('taxe1'));
+        $video11->setVisitnumber($faker->numberBetween(max: 500));
+        $video11->setSoldnumber($faker->numberBetween(max: $video11->getVisitnumber()));
+        $manager->persist($video11);
+        $this->addReference('video11', $video11);
+
+        $video12 = new Video();
+        $video12->setTitle("Formation Python 2022 - Débutant à Expert");
+        $video12->setBrand($this->getReference('marque2'));
+        $video12->setSummary("
+        Pourquoi apprendre Python ?
+
+        Python est sans aucun doute le langage de programmation le plus populaire au monde. Les chiffres ne mentent pas, plusieurs sondages effectués le provent, que ce soit le PYPL (Popularity of Programming Languages) ou Stack Overflow, leurs sondages montrent que les développeurs aiment utiliser Python pour leurs projets.
+
+        Vous connaissez surement des entreprises comme Google, DropBox, Netflix ou Facebook.  Vous allez être surpris de savoir que Python est l'un des langages de programmation principaux utilisé pour le développement de leur produits. De nos jours, peu importe votre industrie, Python vous permettra de simplifier le développement de vos applications.
+
+        Des centaines de milliers de développeurs ont déjà adopté ce langage de programmation. Tout ce qu'il vous faut pour débuter est un ordinateur avec une connection internet et les connaissances que vous allez acquérir dans cette formation.
+
+        Python est aussi très versatile, facile à apprendre, très recherché dans le domaine de l'emploi, et la liste des avantages est encore très longue.
+        ");
+        $video12->setYear(2022);
+        $video12->setImage("https://www.thibaultmorizet.fr/assets/product-images/12.jpeg");
+        $video12->setUnitpriceht(104.26);
+        $video12->setStock($faker->numberBetween(min: 50, max: 600));
+        $video12->addAuthor($this->getReference('author26'));
+        $video12->addCategory($this->getReference('category1'));
+        $video12->addCategory($this->getReference('category5'));
+        $video12->setTaxe($this->getReference('taxe1'));
+        $video12->setVisitnumber($faker->numberBetween(max: 500));
+        $video12->setSoldnumber($faker->numberBetween(max: $video12->getVisitnumber()));
+        $manager->persist($video12);
+        $this->addReference('video12', $video12);
+
+        $video13 = new Video();
+        $video13->setTitle("Le Guide complet du SEO — Le Référencement Naturel de A à Z");
+        $video13->setBrand($this->getReference('marque2'));
+        $video13->setSummary("
+        Le but de cette formation sur le SEO pour optimiser votre référencement naturel ?
+        
+        Vous guider pas à pas pour que vous soyez autonomes sur l'optimisation SEO (du référencement naturel) de votre site internet !
+        
+        Vous êtes une personne débutante en marketing digital et/ou en SEO ? Ou une personne qui a besoin de se rafraîchir la mémoire ?
+        
+        À l'issue de cette formation, vous pourrez ainsi :
+        
+        Améliorer le positionnement de votre site internet sur Google
+        
+        Attirer plus de visiteurs sur votre internet et développer votre trafic naturellement
+        
+        Être plus à l'aise dans les échanges pour travailler avec une agence ou freelance SEO / de développement web / de webmarketing
+        ");
+        $video13->setYear(2023);
+        $video13->setImage("https://www.thibaultmorizet.fr/assets/product-images/13.jpeg");
+        $video13->setUnitpriceht(104.26);
+        $video13->setStock($faker->numberBetween(min: 50, max: 600));
+        $video13->addAuthor($this->getReference('author27'));
+        $video13->addCategory($this->getReference('category7'));
+        $video13->setTaxe($this->getReference('taxe1'));
+        $video13->setVisitnumber($faker->numberBetween(max: 500));
+        $video13->setSoldnumber($faker->numberBetween(max: $video13->getVisitnumber()));
+        $manager->persist($video13);
+        $this->addReference('video13', $video13);
+
+        $video14 = new Video();
+        $video14->setTitle("Tout savoir des réseaux informatiques en quelques heures");
+        $video14->setBrand($this->getReference('marque2'));
+        $video14->setSummary("
+        Ce cours s'adresse à un public novice qui souhaite comprendre le fonctionnement des réseaux informatiques. Pas besoin d'avoir de notions particulières au préalable, le cours est progressif et étudie les couches du modèle OSI une par une, jusqu'à maîtrise de tous les éléments de base.
+        
+        Il est très important de maîtriser les bases théoriques des réseaux informatiques. Cependant, la pratique est tout aussi nécessaire, et c'est pourquoi, nous aborderons le fonctionnement des switches et des routeurs grâce à l'outil Cisco Packet Tracer qui nous permettra de mettre en oeuvre les compétences acquises préalablement.
+        ");
+        $video14->setYear(2022);
+        $video14->setImage("https://www.thibaultmorizet.fr/assets/product-images/14.jpeg");
+        $video14->setUnitpriceht(104.26);
+        $video14->setStock($faker->numberBetween(min: 50, max: 600));
+        $video14->addAuthor($this->getReference('author28'));
+        $video14->addCategory($this->getReference('category2'));
+        $video14->setTaxe($this->getReference('taxe1'));
+        $video14->setVisitnumber($faker->numberBetween(max: 500));
+        $video14->setSoldnumber($faker->numberBetween(max: $video14->getVisitnumber()));
+        $manager->persist($video14);
+        $this->addReference('video14', $video14);
+
         $manager->flush();
     }
 }
