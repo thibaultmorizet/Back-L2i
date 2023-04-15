@@ -42,19 +42,6 @@ class Video extends Product
     #[Groups(["product:read", "product:write", "video:read", "video:write", "user:read", "user:write"])]
     private ?Brand $brand = null;
 
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'videos', cascade: ['persist'])]
-    #[Groups(["product:read", "product:write", "video:read", "video:write", "user:read", "user:write"])]
-    private Collection $category;
-
-    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'videos', cascade: ['persist'])]
-    #[Groups(["product:read", "product:write", "video:read", "video:write", "user:read", "user:write"])]
-    private Collection $author;
-
-    public function __construct()
-    {
-        $this->author = new ArrayCollection();
-        $this->category = new ArrayCollection();
-    }
 
     public function getBrand(): ?Brand
     {
@@ -68,51 +55,4 @@ class Video extends Product
         return $this;
     }
 
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategory(): Collection
-    {
-        return $this->category;
-    }
-
-    public function addCategory(Category $bookCategory): self
-    {
-        if (!$this->category->contains($bookCategory)) {
-            $this->category->add($bookCategory);
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Category $bookCategory): self
-    {
-        $this->category->removeElement($bookCategory);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Author>
-     */
-    public function getAuthor(): Collection
-    {
-        return $this->author;
-    }
-
-    public function addAuthor(Author $videoAuthor): self
-    {
-        if (!$this->author->contains($videoAuthor)) {
-            $this->author->add($videoAuthor);
-        }
-
-        return $this;
-    }
-
-    public function removeAuthor(Author $videoAuthor): self
-    {
-        $this->author->removeElement($videoAuthor);
-
-        return $this;
-    }
 }

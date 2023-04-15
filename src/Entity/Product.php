@@ -102,9 +102,19 @@ class Product
     #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write",])]
     private Collection $comments;
 
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'products', cascade: ['persist'])]
+    #[Groups(["product:read", "product:write", "video:read", "video:write", "book:read", "book:write", "user:read", "user:write"])]
+    private Collection $category;
+
+    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'products', cascade: ['persist'])]
+    #[Groups(["product:read", "product:write", "video:read", "video:write", "book:read", "book:write", "user:read", "user:write"])]
+    private Collection $author;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->author = new ArrayCollection();
+        $this->category = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -249,4 +259,53 @@ class Product
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $productCategory): self
+    {
+        if (!$this->category->contains($productCategory)) {
+            $this->category->add($productCategory);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $productCategory): self
+    {
+        $this->category->removeElement($productCategory);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Author>
+     */
+    public function getAuthor(): Collection
+    {
+        return $this->author;
+    }
+
+    public function addAuthor(Author $productAuthor): self
+    {
+        if (!$this->author->contains($productAuthor)) {
+            $this->author->add($productAuthor);
+        }
+
+        return $this;
+    }
+
+    public function removeAuthor(Author $productAuthor): self
+    {
+        $this->author->removeElement($productAuthor);
+
+        return $this;
+    }
+
 }
