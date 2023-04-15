@@ -28,11 +28,11 @@ use App\Filter\CustomMultipleSearchFilter;
 )]
 #[ApiFilter(
     SearchFilter::class,
-    properties: ['brand.name' => "iexact"]
+    properties: ['brand.name' => "iexact", 'category.name' => "iexact"]
 )]
 #[ApiFilter(
     CustomMultipleSearchFilter::class,
-    properties: ['title' => "ipartial"]
+    properties: ['title' => "ipartial", 'author.firstname' => "ipartial", 'author.lastname' => "ipartial"]
 )]
 class Video extends Product
 {
