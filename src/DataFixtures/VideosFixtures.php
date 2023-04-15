@@ -399,6 +399,30 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($video14);
         $this->addReference('video14', $video14);
 
+        $video15 = new Video();
+        $video15->setTitle("Hacking Éthique : Sécurité des réseaux");
+        $video15->setBrand($this->getReference('marque2'));
+        $video15->setSummary("
+        Bienvenue dans ce cours vidéo sur la sécurité réseau !
+        
+        Vous allez apprendre les bases fondamentales qui forment Internet, et comment sécuriser vos réseaux informatiques.
+        
+        Le cours se veut à la fois pratique et interactif, vous aurez de quoi vous entraîner sur vos systèmes sans rien casser et vous pourrez poser vos questions à tout moment si vous en avez.
+        
+        Nous parlerons des cyberattaques réseaux les plus populaires dans ce cours, notamment au niveau du réseau local (Wifi).
+        ");
+        $video15->setYear(2023);
+        $video15->setImage("https://www.thibaultmorizet.fr/assets/product-images/15.jpeg");
+        $video15->setUnitpriceht(104.26);
+        $video15->setStock($faker->numberBetween(min: 50, max: 600));
+        $video15->addAuthor($this->getReference('author29'));
+        $video15->addCategory($this->getReference('category2'));
+        $video15->setTaxe($this->getReference('taxe1'));
+        $video15->setVisitnumber($faker->numberBetween(max: 500));
+        $video15->setSoldnumber($faker->numberBetween(max: $video15->getVisitnumber()));
+        $manager->persist($video15);
+        $this->addReference('video15', $video15);
+
         $manager->flush();
     }
 }
