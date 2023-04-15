@@ -408,6 +408,37 @@ class BooksFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($book14);
         $this->addReference('book14', $book14);
 
+        $book15 = new Book();
+        $book15->setTitle("Oh my code, je parle le JavaScript !");
+        $book15->setSummary("
+        Mettez-vous au javascript à travers 14 projets !
+        Vous souhaitez apprendre à coder en JavaScript, le langage qui rendra vos pages web interactives et dynamiques ? C'est justement l'objet de cet ouvrage qui vous guidera pas à pas dans la création de 14 projets concrets que vous pourrez intégrer à n'importe quel site Internet. Vous y découvrirez aussi la méthodologie à suivre pour décomposer votre code en microétapes et anticiper son écriture. En outre, de nombreuses cartes mentales vous accompagneront tout au long de votre lecture pour visualiser les bons outils JavaScript à utiliser. Enfin, sur le site compagnon de l'ouvrage, vous trouverez les fichiers sources des 14 projets ainsi qu'un forum pour échanger, poser des questions et suivre l'actualité JavaScript.
+
+        Vous apprendrez notamment à :
+        utiliser la méthode des 3S pour structurer vos programmes
+        récupérer les données de vos visiteurs
+        utiliser des API (Application Programming Interface)
+        et bien plus encore...
+
+        À qui s'adresse ce livre ?
+        Aux débutantes et débutants en JavaScript
+        Aux développeuses et développeurs web        
+        ");
+        $book15->setYear(2021);
+        $book15->setImage("https://www.thibaultmorizet.fr/assets/product-images/30.jpeg");
+        $book15->setUnitpriceht(20.85);
+        $book15->setStock($faker->numberBetween(min: 50, max: 600));
+        $book15->setTaxe($this->getReference('taxe1'));
+        $book15->setVisitnumber($faker->numberBetween(max: 500));
+        $book15->setSoldnumber($faker->numberBetween(max: $book15->getVisitnumber()));
+        $book15->setIsbn("978-2-416-00461-2");
+        $book15->setFormat($this->getReference('format2'));
+        $book15->setEditor($this->getReference('editor1'));
+        $book15->addAuthor($this->getReference('author16'));
+        $book15->addCategory($this->getReference('category6'));
+        $manager->persist($book15);
+        $this->addReference('book15', $book15);
+
         $manager->flush();
     }
 }
