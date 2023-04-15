@@ -15,6 +15,11 @@ class BrandsFixtures extends Fixture
         $manager->persist($marque1);
         $this->addReference('marque1', $marque1);
 
+        $marque2 = new Brand();
+        $marque2->setName("Udemy");
+        $manager->persist($marque2);
+        $this->addReference('marque2', $marque2);
+
         $manager->flush();
     }
 }
