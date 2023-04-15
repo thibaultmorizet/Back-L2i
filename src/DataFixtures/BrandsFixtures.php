@@ -20,6 +20,16 @@ class BrandsFixtures extends Fixture
         $manager->persist($marque2);
         $this->addReference('marque2', $marque2);
 
+        $marque3 = new Brand();
+        $marque3->setName("Temia");
+        $manager->persist($marque3);
+        $this->addReference('marque3', $marque3);
+
+        $marque4 = new Brand();
+        $marque4->setName("Avanquest");
+        $manager->persist($marque4);
+        $this->addReference('marque4', $marque4);
+
         $manager->flush();
     }
 }

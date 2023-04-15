@@ -129,6 +129,13 @@ class AuthorsFixtures extends Fixture
         $manager->persist($author17);
         $this->addReference('author17', $author17);
 
+        $author18 = new Author();
+        $author18->setLastname("Taieb");
+        $author18->setFirstname("John");
+        $author18->setLanguage('FR');
+        $manager->persist($author18);
+        $this->addReference('author18', $author18);
+
         $manager->flush();
     }
 }
