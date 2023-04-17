@@ -70,7 +70,6 @@ class Order
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["user:read", "user:write", "order:read", "order:write"])]
-    #[Assert\NotBlank]
     private ?string $invoicepath = null;
 
     public function __construct()
