@@ -107,25 +107,25 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         $video4->setTitle("HTML et CSS - Le Cours Complet");
         $video4->setBrand($this->getReference('marque2'));
         $video4->setSummary("
-        Vous souhaitez devenir développeur web? 
-        Vous voulez être capable de créer un site Internet? 
-        Vous êtes un débutant dans ce domaine? 
+        Vous souhaitez devenir développeur web ?
+        Vous voulez être capable de créer un site Internet ?
+        Vous êtes un débutant dans ce domaine ?
         Alors vous êtes exactement là ou vous devez être !
         
         Dans ce cours on va apprendre ensemble les bases du web, c'est à dire HTML et CSS.
         
-        HTML c'est quoi?
+        HTML c'est quoi ?
         C'est un langage composé de ce que l'on appelle des tags qui vont nous permettre de représenter la structure de nos pages Web: un titre, un paragraphe, des images, etc...
         Maintenant, il faut savoir que HTML sans CSS c'est pas très joli !
         C'est pourquoi HTML vient souvent avec son fidéle compagnon: le CSS.
 
-        CSS c'est quoi?
+        CSS c'est quoi ?
         C'est un langage qui va décorer notre HTML, il est responsable des couleurs, des tailles, de la mise en page, etc...
         
         Dans ce cours vous allez construire un site Web depuis 0 avec uniquement de l'HTML et du CSS.
         Vous allez taper vos premiéres lignes de code ! Je vous assisterai et vous expliquerai en détails chacune des étapes.
         Allez ! Au boulot ! On passe à l'action !
-            ");
+        ");
         $video4->setYear(2022);
         $video4->setImage("https://www.thibaultmorizet.fr/assets/product-images/4.jpeg");
         $video4->setUnitpriceht(104.26);
@@ -148,7 +148,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         
         Parce qu’on va rentrer dans les détails des détails. Vous allez réellement comprendre comment fonctionne Javascript en profondeur. D’ailleurs pour vous lancer dans ce cours, vous devez déjà connaître un minimum les bases de Javascript.
         
-        Le but c’est de comprendre toutes les subtilités de ce langage. Au final, vous ferez partie du peu de gens qui peuvent se vanter de maîtriser Javascript Vous pourrez déchirer vos entretiens ! 
+        Le but c’est de comprendre toutes les subtilités de ce langage. Au final, vous ferez partie du peu de gens qui peuvent se vanter de maîtriser Javascript Vous pourrez déchirer vos entretiens !
 
         Et oui ! Vous serez capable de répondre à tous ces petits tests qu’adorent donner les recruteurs. Mais surtout, vous comprendrez enfin l’envers du décor et ça fera de vous des meilleurs développeurs.
          
@@ -252,9 +252,9 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         
         By the end of this course, you will be able to build an attractive PHP application; styled using Bootstrap 4; track and manage changes with GitHub and deploy a fully data-driven application to Heroku Cloud Hosting.
         
-        Why Learn Development with PHP 
+        Why Learn Development with PHP
         
-        PHP was designed to make web development easier, and many beginners find it effortless to pick up and get started with. In fact, PHP code was so easy to pick up, many non-programmers end up being able to write PHP application in no time!
+        PHP was designed to make web development easier, and many beginners find it effortless to pick up and get started with. In fact, PHP code was so easy to pick up, many non-programmers end up being able to write PHP application in no time !
         ");
         $video9->setYear(2022);
         $video9->setImage("https://www.thibaultmorizet.fr/assets/product-images/9.jpeg");
@@ -300,9 +300,9 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         
         Dans cette formation Git et GitHub, nous allons apprendre à gérer les versions de notre projet comme un vrai pro à l’aide de ces deux outils: Git est totalement gratuit et GitHub possède une formule gratuite offrant la majorités des fonctionnalités.
         
-        Git est un logiciel de gestion de version parmi les plus populaires avec plus de 12 000 000 d’utilisateurs. Il est présent dans la grande majorité des entreprises de développement et est clairement l’incontournable des projets open source. Alors qu’attendez vous pour rejoindre le groupe?
+        Git est un logiciel de gestion de version parmi les plus populaires avec plus de 12 000 000 d’utilisateurs. Il est présent dans la grande majorité des entreprises de développement et est clairement l’incontournable des projets open source. Alors qu’attendez vous pour rejoindre le groupe ?
         
-        Github est une plateforme de collaboration pour les développeurs basée sur Git. Github va vous permettre non seulement d'héberger vos dépôts Git mais aussi vous fournir de nombreux outils qui vous aideront dans le développement en équipe. Il faut savoir qu’une grande partie des projets open source ont leur dépôt de référence hébergé sur cette plateforme. Pour ne citer qu’un exemple: Vim, qui est un des éditeur de texte le plus utilisé sous Linux. 
+        Github est une plateforme de collaboration pour les développeurs basée sur Git. Github va vous permettre non seulement d'héberger vos dépôts Git mais aussi vous fournir de nombreux outils qui vous aideront dans le développement en équipe. Il faut savoir qu’une grande partie des projets open source ont leur dépôt de référence hébergé sur cette plateforme. Pour ne citer qu’un exemple: Vim, qui est un des éditeur de texte le plus utilisé sous Linux.
         
         Pour finir, GitHub à été racheté par Microsoft en 2018, plaçant encore une fois l'outil Git et la plateforme GitHub comme un incontournable pour tout bon développeur qui se respecte.
         
