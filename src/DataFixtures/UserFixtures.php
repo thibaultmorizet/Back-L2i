@@ -13,6 +13,7 @@ use Faker\Factory;
 class UserFixtures extends Fixture implements DependentFixtureInterface
 {
     private $passwordEncoder;
+
     public function __construct(UserPasswordHasherInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
@@ -31,8 +32,8 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $user->setEmail('thibaultmorizet@icloud.com');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setFirstname("Thibault");
-        $user->setLastname("Morizet");        
-        $user->setBillingAddress( $this->getReference('address1'));
+        $user->setLastname("Morizet");
+        $user->setBillingAddress($this->getReference('address1'));
         $user->setDeliveryAddress($this->getReference('address1'));
         $user->setLanguage("en");
         $user->setPassword($this->passwordEncoder->hashPassword(

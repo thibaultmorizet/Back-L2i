@@ -60,7 +60,7 @@ class HomeController extends AbstractController
 
         $extension = strtolower($spl->getExtension());
 
-        if ($extension != "jpeg" and $extension != "png" and $extension != "jpg") {
+        if ($extension != "jpeg" && $extension != "png" && $extension != "jpg") {
 
             return $this->json(
                 [
@@ -73,10 +73,10 @@ class HomeController extends AbstractController
 
         $fileSystem = new Filesystem();
 
-        $current_dir_path = getcwd() . "/assets/product-images/";
+        $currentDirPath = getcwd() . "/assets/product-images/";
         $decodePicture = base64_decode($pictureFile);
 
-        $fileSystem->dumpFile($current_dir_path . $pictureName, $decodePicture);
+        $fileSystem->dumpFile($currentDirPath . $pictureName, $decodePicture);
 
         return $this->json(
             [

@@ -33,7 +33,7 @@ class InvoiceController extends AbstractController
             'logo' => $logo
         ]);
 
-        $html2pdf = new Html2Pdf(margins: array(10, 10, 10, 10),);
+        $html2pdf = new Html2Pdf(margins: array(10, 10, 10, 10));
 
         $html2pdf->writeHTML($template);
 
@@ -69,11 +69,11 @@ class InvoiceController extends AbstractController
         }
 
 
-        $assets_path_pos_in_global_path = strpos($parametersAsArray["invoice_path"], "/assets");
-        $invoice_path = getcwd() . substr($parametersAsArray["invoice_path"], $assets_path_pos_in_global_path);
+        $assetsPathPosInGlobalPath = strpos($parametersAsArray["invoice_path"], "/assets");
+        $invoicePath = getcwd() . substr($parametersAsArray["invoice_path"], $assetsPathPosInGlobalPath);
 
         $fileSystem = new Filesystem();
-        $isExist = $fileSystem->exists($invoice_path);
+        $isExist = $fileSystem->exists($invoicePath);
 
 
         return $this->json(
