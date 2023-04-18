@@ -75,10 +75,6 @@ class Order
     #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE])]
     private ?string $invoicepath = null;
 
-    public function __construct()
-    {
-    }
-
     public function getId(): ?int
     {
         return $this->id;

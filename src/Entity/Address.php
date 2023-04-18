@@ -56,10 +56,6 @@ class Address
     #[ORM\OneToMany(mappedBy: 'deliveryAddress', targetEntity: User::class, cascade: ['persist'])]
     private Collection $usersDelivery;
 
-    public function __construct()
-    {
-    }
-
     public function getId(): ?int
     {
         return $this->id;
