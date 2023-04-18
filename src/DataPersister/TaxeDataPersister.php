@@ -20,8 +20,7 @@ class TaxeDataPersister implements ContextAwareDataPersisterInterface
     }
 
     public function persist($data, array $context = [])
-    {        
-
+    {
         $this->em->persist($data);
         $this->em->flush();
     }
