@@ -12,10 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
+const FORMAT_READ = "format:read";
+const FORMAT_WRITE = "format:write";
+
 #[ORM\Entity(repositoryClass: FormatRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => "format:read"],
-    denormalizationContext: ['groups' => "format:write"]
+    denormalizationContext: ['groups' => FORMAT_WRITE],
+    normalizationContext: ['groups' => FORMAT_READ]
 )]
 
 #[ApiFilter(
@@ -27,16 +30,16 @@ class Format
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "format:read", "format:write", "user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, FORMAT_READ, FORMAT_WRITE, USER_READ])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "format:read", "format:write", "user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, FORMAT_READ, FORMAT_WRITE, USER_READ])]
     #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'format', targetEntity: Book::class, cascade: ['persist'])]
-    #[Groups(["format:read"])]
+    #[Groups([FORMAT_READ])]
     private Collection $books;
 
     public function __construct()

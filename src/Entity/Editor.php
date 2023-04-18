@@ -12,10 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
+const EDITOR_READ = "editor:read";
+const EDITOR_WRITE = "editor:write";
+
 #[ORM\Entity(repositoryClass: EditorRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => "editor:read"],
-    denormalizationContext: ['groups' => "editor:write"]
+    denormalizationContext: ['groups' => EDITOR_WRITE],
+    normalizationContext: ['groups' => EDITOR_READ]
 )]
 #[ApiFilter(
     SearchFilter::class,
@@ -26,16 +29,16 @@ class Editor
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "editor:read", "editor:write", "user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, EDITOR_READ, EDITOR_WRITE, USER_READ])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "editor:read", "editor:write", "user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, EDITOR_READ, EDITOR_WRITE, USER_READ])]
     #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'editor', targetEntity: Book::class, cascade: ['persist'])]
-    #[Groups(["editor:read"])]
+    #[Groups([EDITOR_READ])]
     private Collection $books;
 
     public function __construct()

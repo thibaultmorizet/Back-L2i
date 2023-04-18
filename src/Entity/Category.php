@@ -10,30 +10,33 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Validator\Constraints as Assert;
 
+const CATEGORY_READ = "category:read";
+const CATEGORY_WRITE = "category:write";
+
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => "category:read"],
-    denormalizationContext: ['groups' => "category:write"]
+    denormalizationContext: ['groups' => CATEGORY_WRITE],
+    normalizationContext: ['groups' => CATEGORY_READ]
 )]
 class Category
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "category:read", "category:write", "user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, CATEGORY_READ, CATEGORY_WRITE, USER_READ])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "category:read", "category:write", "user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, CATEGORY_READ, CATEGORY_WRITE, USER_READ])]
     #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'category', cascade: ['persist'])]
-    #[Groups(["category:read"])]
+    #[Groups([CATEGORY_READ])]
     private Collection $books;
 
     #[ORM\ManyToMany(targetEntity: Video::class, mappedBy: 'category', cascade: ['persist'])]
-    #[Groups(["category:read"])]
+    #[Groups([CATEGORY_READ])]
     private Collection $videos;
 
     public function __construct()

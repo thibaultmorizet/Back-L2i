@@ -10,39 +10,42 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
+const ADDRESS_READ="address:read";
+const ADDRESS_WRITE="address:write";
+
 #[ORM\Entity(repositoryClass: AddressRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => "address:read"],
-    denormalizationContext: ['groups' => "address:write"]
+    denormalizationContext: ['groups' => ADDRESS_WRITE],
+    normalizationContext: ['groups' => ADDRESS_READ]
 )]
 class Address
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
+    #[Groups([USER_READ, USER_WRITE, ADDRESS_READ, ADDRESS_WRITE, ORDER_READ, ORDER_WRITE])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
+    #[Groups([USER_READ, USER_WRITE, ADDRESS_READ, ADDRESS_WRITE, ORDER_READ, ORDER_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $street;
 
     #[ORM\Column(type: 'string', length: 10)]
-    #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
+    #[Groups([USER_READ, USER_WRITE, ADDRESS_READ, ADDRESS_WRITE, ORDER_READ, ORDER_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $postalcode;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
+    #[Groups([USER_READ, USER_WRITE, ADDRESS_READ, ADDRESS_WRITE, ORDER_READ, ORDER_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $city;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["user:read", "user:write", "address:read", "address:write", "order:read", "order:write"])]
+    #[Groups([USER_READ, USER_WRITE, ADDRESS_READ, ADDRESS_WRITE, ORDER_READ, ORDER_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $country;

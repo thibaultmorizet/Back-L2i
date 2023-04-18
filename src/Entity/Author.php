@@ -12,40 +12,43 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
+const AUTHOR_READ = "author:read";
+const AUTHOR_WRITE = "author:write";
+
 #[ORM\Entity(repositoryClass: AuthorRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => "author:read"],
-    denormalizationContext: ['groups' => "author:write"]
+    denormalizationContext: ['groups' => AUTHOR_WRITE],
+    normalizationContext: ['groups' => AUTHOR_READ]
 )]
 class Author
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "author:read", "author:write", "user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, AUTHOR_READ, AUTHOR_WRITE, USER_READ])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "author:read", "author:write", "user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, AUTHOR_READ, AUTHOR_WRITE, USER_READ])]
     #[Assert\NotBlank]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "author:read", "author:write", "user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, AUTHOR_READ, AUTHOR_WRITE, USER_READ])]
     #[Assert\NotBlank]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "book:read", "book:write", "video:read", "video:write", "author:read", "author:write", "user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, AUTHOR_READ, AUTHOR_WRITE, USER_READ])]
     #[Assert\NotBlank]
     private ?string $language = null;
 
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'author', cascade: ['persist'])]
-    #[Groups(["author:read"])]
+    #[Groups([AUTHOR_READ])]
     private Collection $books;
 
     #[ORM\ManyToMany(targetEntity: Video::class, mappedBy: 'author', cascade: ['persist'])]
-    #[Groups(["author:read"])]
+    #[Groups([AUTHOR_READ])]
     private Collection $videos;
 
     public function __construct()

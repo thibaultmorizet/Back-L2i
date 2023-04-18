@@ -10,26 +10,29 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
+const BRAND_READ = "brand:read";
+const BRAND_WRITE = "brand:write";
+
 #[ORM\Entity(repositoryClass: BrandRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => "brand:read"],
-    denormalizationContext: ['groups' => "brand:write"]
+    denormalizationContext: ['groups' => BRAND_WRITE],
+    normalizationContext: ['groups' => BRAND_READ]
 )]
 class Brand
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write", "video:read", "video:write", "brand:read", "brand:write", "user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, VIDEO_READ, VIDEO_WRITE, BRAND_READ, BRAND_WRITE, USER_READ])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["product:read", "product:write", "video:read", "video:write", "brand:read", "brand:write", "user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, VIDEO_READ, VIDEO_WRITE, BRAND_READ, BRAND_WRITE, USER_READ])]
     #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'brand', targetEntity: Video::class, cascade: ['persist'])]
-    #[Groups(["brand:read"])]
+    #[Groups([BRAND_READ])]
     private Collection $videos;
 
     public function __construct()

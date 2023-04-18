@@ -12,12 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
+const TAXE_READ = "taxe:read";
+const TAXE_WRITE = "taxe:write";
+
 #[ORM\Entity(repositoryClass: TaxeRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => "taxe:read"],
-    denormalizationContext: ['groups' => "taxe:write"]
+    denormalizationContext: ['groups' => TAXE_WRITE],
+    normalizationContext: ['groups' => TAXE_READ]
 )]
-
 #[ApiFilter(
     NumericFilter::class,
     properties: ["tva" => "exact"]
@@ -27,16 +29,16 @@ class Taxe
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["product:read", "product:write","video:read", "video:write","book:read", "book:write", "taxe:read", "taxe:write","user:read"])]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, VIDEO_READ, VIDEO_WRITE, BOOK_READ, BOOK_WRITE, TAXE_READ, TAXE_WRITE, USER_READ])]
     private ?int $id = null;
 
-    #[ORM\Column(length:255, nullable: true)]
-    #[Groups(["product:read", "product:write","video:read", "video:write","book:read", "book:write", "taxe:read", "taxe:write","user:read"])]
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups([PRODUCT_READ, PRODUCT_WRITE, VIDEO_READ, VIDEO_WRITE, BOOK_READ, BOOK_WRITE, TAXE_READ, TAXE_WRITE, USER_READ])]
     #[Assert\NotBlank]
     private ?float $tva = null;
 
     #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Product::class, cascade: ['persist'])]
-    #[Groups(["taxe:read"])]
+    #[Groups([TAXE_READ])]
     private Collection $products;
 
     public function __construct()
