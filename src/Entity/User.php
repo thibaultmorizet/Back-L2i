@@ -42,25 +42,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE, PRODUCT_READ, BOOK_READ, VIDEO_READ, COMMENT_READ, COMMENT_WRITE])]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
     #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE, PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, COMMENT_READ])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $lastname;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
     #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE, PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, COMMENT_READ])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $firstname;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true, unique: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: false, unique: true)]
     #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE, PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $email;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
     #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
@@ -80,7 +80,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups([USER_READ])]
     private Collection $orders;
 
-    #[ORM\Column(type: 'json')]
+    #[ORM\Column(type: 'json', nullable: false)]
     #[Groups([USER_READ, USER_WRITE, PRODUCT_READ])]
     private $roles = [];
 
