@@ -15,8 +15,6 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-const USER_READ = "user:read";
-const USER_WRITE = "user:write";
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -25,8 +23,8 @@ const USER_WRITE = "user:write";
         "get", "post"
     ],
     itemOperations: ["get", "put", "patch", "delete"],
-    denormalizationContext: ['groups' => USER_WRITE],
-    normalizationContext: ['groups' => USER_READ],
+    denormalizationContext: ['groups' => User::USER_WRITE],
+    normalizationContext: ['groups' => User::USER_READ],
     paginationClientItemsPerPage: true,
     paginationItemsPerPage: 12,
 )]
@@ -36,68 +34,71 @@ const USER_WRITE = "user:write";
 )]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    const USER_READ = "user:read";
+    const USER_WRITE = "user:write";
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE, PRODUCT_READ, BOOK_READ, VIDEO_READ, COMMENT_READ, COMMENT_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE, Product::PRODUCT_READ, Book::BOOK_READ, Video::VIDEO_READ, Comment::COMMENT_READ, Comment::COMMENT_WRITE])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: false)]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE, PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, COMMENT_READ])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE, Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Comment::COMMENT_READ])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $lastname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: false)]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE, PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, COMMENT_READ])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE, Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Comment::COMMENT_READ])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: false, unique: true)]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE, PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE, Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $email;
 
     #[ORM\Column(type: 'string', length: 255, nullable: false)]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $password;
 
     #[ORM\ManyToOne(inversedBy: 'usersBilling', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     private ?Address $billingAddress = null;
 
     #[ORM\ManyToOne(inversedBy: 'usersDelivery', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     private ?Address $deliveryAddress = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class, cascade: ['persist'])]
-    #[Groups([USER_READ])]
+    #[Groups([User::USER_READ])]
     private Collection $orders;
 
     #[ORM\Column(type: 'json', nullable: false)]
-    #[Groups([USER_READ, USER_WRITE, PRODUCT_READ])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Product::PRODUCT_READ])]
     private $roles = [];
 
     #[ORM\Column(type: 'string', length: 2, nullable: false)]
-    #[Groups([USER_READ, USER_WRITE, PRODUCT_READ])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Product::PRODUCT_READ])]
     private $language;
 
     #[ORM\Column(type: 'string', length: 1000, nullable: true)]
-    #[Groups([USER_READ, USER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE])]
     private $token;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    #[Groups([USER_READ, USER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE])]
     private $forceToUpdatePassword;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
-    #[Groups([USER_READ, USER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE])]
     private Collection $comments;
 
     public function __construct()

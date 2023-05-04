@@ -11,14 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-const COMMENT_READ = "comment:read";
-const COMMENT_WRITE = "comment:write";
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 #[ORM\Table(name: '`comment`')]
 #[ApiResource(
-    denormalizationContext: ['groups' => COMMENT_WRITE],
-    normalizationContext: ['groups' => COMMENT_READ],
+    denormalizationContext: ['groups' => Comment::COMMENT_WRITE],
+    normalizationContext: ['groups' => Comment::COMMENT_READ],
     order: ['createdAt' => 'DESC']
 )]
 #[ApiFilter(
@@ -27,34 +25,37 @@ const COMMENT_WRITE = "comment:write";
 )]
 class Comment
 {
+    const COMMENT_READ = "comment:read";
+    const COMMENT_WRITE = "comment:write";
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, COMMENT_READ, COMMENT_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Comment::COMMENT_READ, Comment::COMMENT_WRITE, User::USER_READ, User::USER_WRITE])]
     private ?int $id = null;
 
     #[ORM\Column(length: 500)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, COMMENT_READ, COMMENT_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Comment::COMMENT_READ, Comment::COMMENT_WRITE, User::USER_READ, User::USER_WRITE])]
     #[Assert\NotBlank]
     private ?string $text = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, options: ["default" => 'CURRENT_TIMESTAMP'])]
-    #[Groups([PRODUCT_READ, BOOK_READ, VIDEO_READ, COMMENT_READ, COMMENT_WRITE, USER_READ])]
+    #[Groups([Product::PRODUCT_READ, Book::BOOK_READ, Video::VIDEO_READ, Comment::COMMENT_READ, Comment::COMMENT_WRITE, User::USER_READ])]
     private ?\DateTimeInterface $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups([PRODUCT_READ, BOOK_READ, VIDEO_READ, COMMENT_READ, COMMENT_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Book::BOOK_READ, Video::VIDEO_READ, Comment::COMMENT_READ, Comment::COMMENT_WRITE])]
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups([COMMENT_READ, COMMENT_WRITE, USER_READ])]
+    #[Groups([Comment::COMMENT_READ, Comment::COMMENT_WRITE, User::USER_READ])]
     private ?Product $product = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, COMMENT_READ, COMMENT_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Comment::COMMENT_READ, Comment::COMMENT_WRITE, User::USER_READ, User::USER_WRITE])]
     private ?Commentstatut $commentstatut = null;
 
     public function getId(): ?int

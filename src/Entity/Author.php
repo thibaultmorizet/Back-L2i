@@ -12,43 +12,44 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-const AUTHOR_READ = "author:read";
-const AUTHOR_WRITE = "author:write";
 
 #[ORM\Entity(repositoryClass: AuthorRepository::class)]
 #[ApiResource(
-    denormalizationContext: ['groups' => AUTHOR_WRITE],
-    normalizationContext: ['groups' => AUTHOR_READ]
+    denormalizationContext: ['groups' => Author::AUTHOR_WRITE],
+    normalizationContext: ['groups' => Author::AUTHOR_READ]
 )]
 class Author
 {
+    const AUTHOR_READ = "author:read";
+    const AUTHOR_WRITE = "author:write";
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, AUTHOR_READ, AUTHOR_WRITE, USER_READ])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Author::AUTHOR_READ, Author::AUTHOR_WRITE, User::USER_READ])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, AUTHOR_READ, AUTHOR_WRITE, USER_READ])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Author::AUTHOR_READ, Author::AUTHOR_WRITE, User::USER_READ])]
     #[Assert\NotBlank]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, AUTHOR_READ, AUTHOR_WRITE, USER_READ])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Author::AUTHOR_READ, Author::AUTHOR_WRITE, User::USER_READ])]
     #[Assert\NotBlank]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, AUTHOR_READ, AUTHOR_WRITE, USER_READ])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Author::AUTHOR_READ, Author::AUTHOR_WRITE, User::USER_READ])]
     #[Assert\NotBlank]
     private ?string $language = null;
 
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'author', cascade: ['persist'])]
-    #[Groups([AUTHOR_READ])]
+    #[Groups([Author::AUTHOR_READ])]
     private Collection $books;
 
     #[ORM\ManyToMany(targetEntity: Video::class, mappedBy: 'author', cascade: ['persist'])]
-    #[Groups([AUTHOR_READ])]
+    #[Groups([Author::AUTHOR_READ])]
     private Collection $videos;
 
     public function __construct()

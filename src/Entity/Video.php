@@ -14,13 +14,11 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Filter\CustomMultipleSearchFilter;
 
-const VIDEO_READ = "video:read";
-const VIDEO_WRITE = "video:write";
 
 #[ORM\Entity(repositoryClass: VideoRepository::class)]
 #[ApiResource(
-    denormalizationContext: ['groups' => VIDEO_WRITE],
-    normalizationContext: ['groups' => VIDEO_READ],
+    denormalizationContext: ['groups' => Video::VIDEO_WRITE],
+    normalizationContext: ['groups' => Video::VIDEO_READ],
     order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'],
     paginationClientItemsPerPage: true,
     paginationItemsPerPage: 12
@@ -39,10 +37,12 @@ const VIDEO_WRITE = "video:write";
 )]
 class Video extends Product
 {
+    const VIDEO_READ = "video:read";
+    const VIDEO_WRITE = "video:write";
 
     #[ORM\ManyToOne(inversedBy: 'videos', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, VIDEO_READ, VIDEO_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, User::USER_READ, User::USER_WRITE])]
     private ?Brand $brand = null;
 
 

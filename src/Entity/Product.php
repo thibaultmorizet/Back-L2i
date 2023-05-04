@@ -18,8 +18,6 @@ use Doctrine\ORM\Mapping\InheritanceType;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-const PRODUCT_READ = "product:read";
-const PRODUCT_WRITE = "product:write";
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[ApiResource(
@@ -27,8 +25,8 @@ const PRODUCT_WRITE = "product:write";
         "get", "post"
     ],
     itemOperations: ["get", "put", "patch", "delete"],
-    denormalizationContext: ['groups' => PRODUCT_WRITE],
-    normalizationContext: ['groups' => PRODUCT_READ],
+    denormalizationContext: ['groups' => Product::PRODUCT_WRITE],
+    normalizationContext: ['groups' => Product::PRODUCT_READ],
 
     order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'],
     paginationClientItemsPerPage: true,
@@ -53,64 +51,67 @@ const PRODUCT_WRITE = "product:write";
 
 class Product
 {
+    const PRODUCT_READ = "product:read";
+    const PRODUCT_WRITE = "product:write";
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, COMMENT_READ, COMMENT_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Comment::COMMENT_READ, Comment::COMMENT_WRITE])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, USER_READ, USER_WRITE, COMMENT_READ, COMMENT_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, User::USER_READ, User::USER_WRITE, Comment::COMMENT_READ, Comment::COMMENT_WRITE])]
     #[Assert\NotBlank]
     private ?string $title = null;
 
     #[ORM\Column(length: 10000, nullable: true)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, User::USER_READ, User::USER_WRITE])]
     #[Assert\NotBlank]
     private ?string $summary = null;
 
     #[ORM\Column]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, User::USER_READ, User::USER_WRITE])]
     #[Assert\NotBlank]
     private ?float $unitpriceht = null;
 
     #[ORM\Column]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, User::USER_READ, User::USER_WRITE])]
     #[Assert\NotBlank]
     private ?int $stock = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, USER_READ, USER_WRITE, COMMENT_READ, COMMENT_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, User::USER_READ, User::USER_WRITE, Comment::COMMENT_READ, Comment::COMMENT_WRITE])]
     #[Assert\NotBlank]
     private ?string $image = null;
 
     #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, User::USER_READ, User::USER_WRITE])]
     private ?Taxe $taxe = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, User::USER_READ, User::USER_WRITE])]
     private ?string $year = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE,])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE,])]
     private ?int $visitnumber = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE,])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE,])]
     private ?int $soldnumber = null;
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Comment::class, orphanRemoval: true)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, VIDEO_READ, VIDEO_WRITE,])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE,])]
     private Collection $comments;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'products', cascade: ['persist'])]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, VIDEO_READ, VIDEO_WRITE, BOOK_READ, BOOK_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, User::USER_READ, User::USER_WRITE])]
     private Collection $category;
 
     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'products', cascade: ['persist'])]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, VIDEO_READ, VIDEO_WRITE, BOOK_READ, BOOK_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, User::USER_READ, User::USER_WRITE])]
     private Collection $author;
 
     public function __construct()

@@ -10,42 +10,43 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-const ADDRESS_READ="address:read";
-const ADDRESS_WRITE="address:write";
 
 #[ORM\Entity(repositoryClass: AddressRepository::class)]
 #[ApiResource(
-    denormalizationContext: ['groups' => ADDRESS_WRITE],
-    normalizationContext: ['groups' => ADDRESS_READ]
+    denormalizationContext: ['groups' => Address::ADDRESS_WRITE],
+    normalizationContext: ['groups' => Address::ADDRESS_READ]
 )]
 class Address
 {
+    const ADDRESS_READ="address:read";
+    const ADDRESS_WRITE="address:write";
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups([USER_READ, USER_WRITE, ADDRESS_READ, ADDRESS_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Address::ADDRESS_READ, Address::ADDRESS_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups([USER_READ, USER_WRITE, ADDRESS_READ, ADDRESS_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Address::ADDRESS_READ, Address::ADDRESS_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $street;
 
     #[ORM\Column(type: 'string', length: 10)]
-    #[Groups([USER_READ, USER_WRITE, ADDRESS_READ, ADDRESS_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Address::ADDRESS_READ, Address::ADDRESS_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $postalcode;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups([USER_READ, USER_WRITE, ADDRESS_READ, ADDRESS_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Address::ADDRESS_READ, Address::ADDRESS_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $city;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups([USER_READ, USER_WRITE, ADDRESS_READ, ADDRESS_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Address::ADDRESS_READ, Address::ADDRESS_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private $country;

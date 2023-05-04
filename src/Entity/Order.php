@@ -13,13 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-const ORDER_READ = "order:read";
-const ORDER_WRITE = "order:write";
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ApiResource(
-    denormalizationContext: ['groups' => ORDER_WRITE],
-    normalizationContext: ['groups' => ORDER_READ],
+    denormalizationContext: ['groups' => Order::ORDER_WRITE],
+    normalizationContext: ['groups' => Order::ORDER_READ],
     order: ['id' => 'DESC']
 )]
 #[ApiFilter(
@@ -29,50 +27,53 @@ const ORDER_WRITE = "order:write";
 #[ORM\Table(name: '`order`')]
 class Order
 {
+    const ORDER_READ = "order:read";
+    const ORDER_WRITE = "order:write";
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups([USER_READ, ORDER_READ])]
+    #[Groups([User::USER_READ, Order::ORDER_READ])]
 
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     #[Assert\NotBlank]
     private ?float $totalpricettc = null;
 
     #[ORM\Column]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     #[Assert\NotBlank]
     private ?float $totalpriceht = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     #[Assert\NotBlank]
     private ?string $deliveryaddress = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     #[Assert\NotBlank]
     private ?string $billingaddress = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     #[Assert\NotBlank]
     #[Assert\NotNull]
     private array $productlist = [];
 
     #[ORM\ManyToOne(inversedBy: 'orders', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups([ORDER_READ, ORDER_WRITE])]
+    #[Groups([Order::ORDER_READ, Order::ORDER_WRITE])]
     private ?User $user = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups([USER_READ, USER_WRITE, ORDER_READ, ORDER_WRITE])]
+    #[Groups([User::USER_READ, User::USER_WRITE, Order::ORDER_READ, Order::ORDER_WRITE])]
     private ?string $invoicepath = null;
 
     public function getId(): ?int

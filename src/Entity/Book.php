@@ -15,13 +15,11 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Filter\CustomMultipleSearchFilter;
 use Symfony\Component\Validator\Constraints as Assert;
 
-const BOOK_READ = "book:read";
-const BOOK_WRITE = "book:write";
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 #[ApiResource(
-    denormalizationContext: ['groups' => BOOK_WRITE],
-    normalizationContext: ['groups' => BOOK_READ],
+    denormalizationContext: ['groups' => Book::BOOK_WRITE],
+    normalizationContext: ['groups' => Book::BOOK_READ],
     order: ['soldnumber' => 'DESC', 'visitnumber' => 'DESC'],
     paginationClientItemsPerPage: true,
     paginationItemsPerPage: 12
@@ -40,8 +38,10 @@ const BOOK_WRITE = "book:write";
 )]
 class Book extends Product
 {
+    const BOOK_READ = "book:read";
+    const BOOK_WRITE = "book:write";
     #[ORM\Column(nullable: true)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, User::USER_READ, User::USER_WRITE])]
     #[Assert\Isbn(
         type: Assert\Isbn::ISBN_13,
         message: 'This value is not valid.',
@@ -51,12 +51,12 @@ class Book extends Product
 
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, User::USER_READ, User::USER_WRITE])]
     private ?Format $format = null;
 
     #[ORM\ManyToOne(inversedBy: 'books', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, BOOK_READ, BOOK_WRITE, USER_READ, USER_WRITE])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, User::USER_READ, User::USER_WRITE])]
     private ?Editor $editor = null;
 
     public function getIsbn(): ?string

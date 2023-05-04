@@ -12,13 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-const TAXE_READ = "taxe:read";
-const TAXE_WRITE = "taxe:write";
 
 #[ORM\Entity(repositoryClass: TaxeRepository::class)]
 #[ApiResource(
-    denormalizationContext: ['groups' => TAXE_WRITE],
-    normalizationContext: ['groups' => TAXE_READ]
+    denormalizationContext: ['groups' => Taxe::TAXE_WRITE],
+    normalizationContext: ['groups' => Taxe::TAXE_READ]
 )]
 #[ApiFilter(
     NumericFilter::class,
@@ -26,19 +24,22 @@ const TAXE_WRITE = "taxe:write";
 )]
 class Taxe
 {
+    const TAXE_READ = "taxe:read";
+    const TAXE_WRITE = "taxe:write";
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, VIDEO_READ, VIDEO_WRITE, BOOK_READ, BOOK_WRITE, TAXE_READ, TAXE_WRITE, USER_READ])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Taxe::TAXE_READ, Taxe::TAXE_WRITE, User::USER_READ])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups([PRODUCT_READ, PRODUCT_WRITE, VIDEO_READ, VIDEO_WRITE, BOOK_READ, BOOK_WRITE, TAXE_READ, TAXE_WRITE, USER_READ])]
+    #[Groups([Product::PRODUCT_READ, Product::PRODUCT_WRITE, Video::VIDEO_READ, Video::VIDEO_WRITE, Book::BOOK_READ, Book::BOOK_WRITE, Taxe::TAXE_READ, Taxe::TAXE_WRITE, User::USER_READ])]
     #[Assert\NotBlank]
     private ?float $tva = null;
 
     #[ORM\OneToMany(mappedBy: 'taxe', targetEntity: Product::class, cascade: ['persist'])]
-    #[Groups([TAXE_READ])]
+    #[Groups([Taxe::TAXE_READ])]
     private Collection $products;
 
     public function __construct()
