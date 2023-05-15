@@ -54,10 +54,6 @@
             width: 50%;
             display: block;
         }
-
-        .display-block {
-            display: block;
-        }
     </style>
 
 </head>
@@ -88,12 +84,14 @@
 <br>
 <br>
 <div>
-        <span class="display-block">
-            FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
-        </span>
-        <span class="display-block">
-            {{ order.billingaddress }}
-        </span>
+    <span>
+        FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
+    </span>
+</div>
+<div>
+    <span>
+        {{ order.billingaddress }}
+    </span>
 </div>
 <br>
 <br>
