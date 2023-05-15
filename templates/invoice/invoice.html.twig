@@ -51,7 +51,11 @@
         }
 
         .max-width-title {
-            width: 20%;
+            width: 40%;
+            display: block;
+        }
+
+        .display-block {
             display: block;
         }
     </style>
@@ -87,7 +91,7 @@
         <span>
             FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
         </span>
-        <span>
+        <span class="display-block">
             {{ order.billingaddress }}
         </span>
 </div>
