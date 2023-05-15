@@ -50,6 +50,10 @@
             vertical-align: top;
         }
 
+        .max-width-title {
+            width: 20%;
+            display: block;
+        }
     </style>
 
 </head>
@@ -83,6 +87,9 @@
         <span>
             FACTURÉ À {{ order.user.lastname }} {{ order.user.firstname }}
         </span>
+        <span>
+            {{ order.billingaddress }}
+        </span>
 </div>
 <br>
 <br>
@@ -103,7 +110,7 @@
     <tbody>
     {% for product in order.productlist %}
         <tr class="text-center">
-            <td>{{ product.title }}</td>
+            <td class="max-width-title">{{ product.title }}</td>
             <td>{{ product.number_ordered }}</td>
             <td>{{ product.unitpriceht }} €</td>
             <td>{{ product.taxe.tva }} %</td>
