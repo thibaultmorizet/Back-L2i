@@ -13,15 +13,15 @@ class CommentstatutsFixture extends Fixture
     {
 
         $commentstatut1 = new Commentstatut();
-        $commentstatut1->setName("being_validated");
+        $commentstatut1->setName("commentstatut_name.being_validated");
         $manager->persist($commentstatut1);
 
         $commentstatut2 = new Commentstatut();
-        $commentstatut2->setName("accepted");
+        $commentstatut2->setName("commentstatut_name.accepted");
         $manager->persist($commentstatut2);
 
         $commentstatut3 = new Commentstatut();
-        $commentstatut3->setName("rejected");
+        $commentstatut3->setName("commentstatut_name.rejected");
         $manager->persist($commentstatut3);
 
 
