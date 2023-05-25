@@ -12,7 +12,7 @@ class ProductTest extends ApiTestCase
 
         $client = static::createClient();
         $client->request('GET', '/ws/products');
-        var_dump($client);
+//        var_dump($client);
 
 
 //        $this->assertResponseStatusCodeSame(406);
