@@ -34,7 +34,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $user->setFirstname("Thibault");
         $user->setLastname("Morizet");
         $user->setBillingAddress($this->getReference('address1'));
-        $user->setDeliveryAddress($this->getReference('address1'));
+        $user->setDeliveryAddress($this->getReference('address2'));
         $user->setLanguage("en");
         $user->setPassword($this->passwordEncoder->hashPassword(
             $user,
@@ -47,8 +47,8 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $user2->setRoles(['ROLE_MODERATOR']);
         $user2->setFirstname($faker->firstName);
         $user2->setLastname($faker->lastName);
-        $user2->setBillingAddress($this->getReference('address2'));
-        $user2->setDeliveryAddress($this->getReference('address2'));
+        $user2->setBillingAddress($this->getReference('address3'));
+        $user2->setDeliveryAddress($this->getReference('address4'));
         $user2->setLanguage("en");
         $user2->setPassword($this->passwordEncoder->hashPassword(
             $user2,
@@ -60,8 +60,8 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $user3->setEmail('user@icloud.com');
         $user3->setFirstname($faker->firstName);
         $user3->setLastname($faker->lastName);
-        $user3->setBillingAddress($this->getReference('address3'));
-        $user3->setDeliveryAddress($this->getReference('address3'));
+        $user3->setBillingAddress($this->getReference('address5'));
+        $user3->setDeliveryAddress($this->getReference('address6'));
         $user3->setLanguage("fr");
         $user3->setPassword($this->passwordEncoder->hashPassword(
             $user3,

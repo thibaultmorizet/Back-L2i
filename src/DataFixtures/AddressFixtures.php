@@ -20,14 +20,8 @@ class AddressFixtures extends Fixture
         $address1->setCountry("France");
         $manager->persist($address1);
         $this->addReference('address1', $address1);
-
-        $address2 = new Address();
-        $address2->setStreet($faker->streetName);
-        $address2->setPostalcode($faker->postcode);
-        $address2->setCity($faker->city);
-        $address2->setCountry("France");
-        $manager->persist($address2);
-        $this->addReference('address2', $address2);
+        $manager->persist($address1);
+        $this->addReference('address2', $address1);
 
         $address3 = new Address();
         $address3->setStreet($faker->streetName);
@@ -36,6 +30,18 @@ class AddressFixtures extends Fixture
         $address3->setCountry("France");
         $manager->persist($address3);
         $this->addReference('address3', $address3);
+        $manager->persist($address3);
+        $this->addReference('address4', $address3);
+
+        $address5 = new Address();
+        $address5->setStreet($faker->streetName);
+        $address5->setPostalcode($faker->postcode);
+        $address5->setCity($faker->city);
+        $address5->setCountry("France");
+        $manager->persist($address5);
+        $this->addReference('address5', $address5);
+        $manager->persist($address5);
+        $this->addReference('address6', $address5);
 
         $manager->flush();
     }
