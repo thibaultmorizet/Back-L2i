@@ -29,7 +29,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $faker = Factory::create('fr_FR');
 
         $user = new User();
-        $user->setEmail('thibaultmorizet@icloud.com');
+        $user->setEmail('admin@icloud.com');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setFirstname("Thibault");
         $user->setLastname("Morizet");
@@ -38,7 +38,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $user->setLanguage("en");
         $user->setPassword($this->passwordEncoder->hashPassword(
             $user,
-            'Thibault14*'
+            'Admin14*'
         ));
         $manager->persist($user);
 
