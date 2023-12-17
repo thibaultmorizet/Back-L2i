@@ -36,7 +36,7 @@ class VideoTest extends ApiTestCase
             "title" => "Video Test",
             "summary" => "Formation SEO de l'éditeur Elephorm, présentée par Olivier Andrieu, élu meilleur référenceur naturel de France. Avec cette formation vous allez acquérir toutes les notions fondamentales pour optimiser la présence de votre site Web sur les moteurs de recherche.",
             "year" => "2014",
-            "image" => "https://l2i.thibaultmorizet.fr/assets/product-images/1.jpeg",
+            "image" => "https://back-l2i.thibaultmorizet.fr/assets/product-images/1.jpeg",
             "unitpriceht" => 65.40,
             "stock" => 500,
             "visitnumber" => 450,

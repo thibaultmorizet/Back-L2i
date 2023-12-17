@@ -29,7 +29,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         $video1->setBrand($this->getReference('marque1'));
         $video1->setSummary("Formation SEO de l'éditeur Elephorm, présentée par Olivier Andrieu, élu meilleur référenceur naturel de France. Avec cette formation vous allez acquérir toutes les notions fondamentales pour optimiser la présence de votre site Web sur les moteurs de recherche.");
         $video1->setYear(2014);
-        $video1->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/1.jpeg");
+        $video1->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/1.jpeg");
         $video1->setUnitpriceht(65.40);
         $video1->setStock($faker->numberBetween(min: 50, max: 600));
         $video1->addAuthor($this->getReference('author9'));
@@ -67,7 +67,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         L'acquisition de cette compétence vous rendra indispensable en cette ère de l'information car MySQL en tant que cours est un outil très utile à avoir. Il ne nécessite pas d'expertise technique ou d'expérience avant d'apprendre à utiliser MySQL car il est destiné aux débutants
         ");
         $video2->setYear(2023);
-        $video2->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/2.jpeg");
+        $video2->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/2.jpeg");
         $video2->setUnitpriceht(18.95);
         $video2->setStock($faker->numberBetween(min: 50, max: 600));
         $video2->addAuthor($this->getReference('author17'));
@@ -93,7 +93,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         Grâce à notre programme vous obtenez une solution programmatique individuelle lequel vous pouvez régler selon vos besoins. N'importe quand vous pouvez vous – mêmes modifier les structures des objets qui sont en cours de traitement et ajouter de nouvelles structures. Ainsi le programme vous aidera à simplifier le comptage de vos objets et facilitera considérablement votre travail.
         ");
         $video3->setYear(2016);
-        $video3->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/3.jpeg");
+        $video3->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/3.jpeg");
         $video3->setUnitpriceht(47.38);
         $video3->setStock($faker->numberBetween(min: 50, max: 600));
         $video3->addCategory($this->getReference('category3'));
@@ -127,7 +127,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         Allez ! Au boulot ! On passe à l'action !
         ");
         $video4->setYear(2022);
-        $video4->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/4.jpeg");
+        $video4->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/4.jpeg");
         $video4->setUnitpriceht(104.26);
         $video4->setStock($faker->numberBetween(min: 50, max: 600));
         $video4->addAuthor($this->getReference('author18'));
@@ -155,7 +155,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         Mais alors attention ! Devenir un monstre en Javascript a un prix ! Il va falloir vous accrocher car je vous préviens tout de suite: vous allez transpirer du cerveau… c’est pour ça que j’ai mis une casquette d’ailleurs. Bref dans ce cours, il va falloir vous donner à 100%.
         ");
         $video5->setYear(2022);
-        $video5->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/5.jpeg");
+        $video5->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/5.jpeg");
         $video5->setUnitpriceht(104.26);
         $video5->setStock($faker->numberBetween(min: 50, max: 600));
         $video5->addAuthor($this->getReference('author18'));
@@ -183,7 +183,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         Développeurs web débutants ou intermédiaires désireux de consolider leurs connaissances théoriques et leur maîtrise du langage SQL.
         ");
         $video6->setYear(2022);
-        $video6->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/6.jpeg");
+        $video6->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/6.jpeg");
         $video6->setUnitpriceht(104.26);
         $video6->setStock($faker->numberBetween(min: 50, max: 600));
         $video6->addAuthor($this->getReference('author19'));
@@ -211,7 +211,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         J'aurai plaisir à vous aider à atteindre vos objectifs.
         ");
         $video7->setYear(2022);
-        $video7->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/7.jpeg");
+        $video7->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/7.jpeg");
         $video7->setUnitpriceht(113.64);
         $video7->setStock($faker->numberBetween(min: 50, max: 600));
         $video7->addAuthor($this->getReference('author20'));
@@ -232,7 +232,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         Mon objectif ? Faire de cette formation LA formation ULTIME sur PHP et MySQL.
         ");
         $video8->setYear(2022);
-        $video8->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/8.jpeg");
+        $video8->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/8.jpeg");
         $video8->setUnitpriceht(104.26);
         $video8->setStock($faker->numberBetween(min: 50, max: 600));
         $video8->addAuthor($this->getReference('author20'));
@@ -257,7 +257,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         PHP was designed to make web development easier, and many beginners find it effortless to pick up and get started with. In fact, PHP code was so easy to pick up, many non-programmers end up being able to write PHP application in no time !
         ");
         $video9->setYear(2022);
-        $video9->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/9.jpeg");
+        $video9->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/9.jpeg");
         $video9->setUnitpriceht(18.95);
         $video9->setStock($faker->numberBetween(min: 50, max: 600));
         $video9->addAuthor($this->getReference('author21'));
@@ -279,7 +279,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         JavaScript And PHP And Python Programming language Complete Course
         ");
         $video10->setYear(2022);
-        $video10->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/10.jpeg");
+        $video10->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/10.jpeg");
         $video10->setUnitpriceht(18.95);
         $video10->setStock($faker->numberBetween(min: 50, max: 600));
         $video10->addAuthor($this->getReference('author24'));
@@ -311,7 +311,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         Arnaud
         ");
         $video11->setYear(2022);
-        $video11->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/11.jpeg");
+        $video11->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/11.jpeg");
         $video11->setUnitpriceht(104.26);
         $video11->setStock($faker->numberBetween(min: 50, max: 600));
         $video11->addAuthor($this->getReference('author25'));
@@ -337,7 +337,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         Python est aussi très versatile, facile à apprendre, très recherché dans le domaine de l'emploi, et la liste des avantages est encore très longue.
         ");
         $video12->setYear(2022);
-        $video12->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/12.jpeg");
+        $video12->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/12.jpeg");
         $video12->setUnitpriceht(104.26);
         $video12->setStock($faker->numberBetween(min: 50, max: 600));
         $video12->addAuthor($this->getReference('author26'));
@@ -368,7 +368,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         Être plus à l'aise dans les échanges pour travailler avec une agence ou freelance SEO / de développement web / de webmarketing
         ");
         $video13->setYear(2023);
-        $video13->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/13.jpeg");
+        $video13->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/13.jpeg");
         $video13->setUnitpriceht(104.26);
         $video13->setStock($faker->numberBetween(min: 50, max: 600));
         $video13->addAuthor($this->getReference('author27'));
@@ -388,7 +388,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         Il est très important de maîtriser les bases théoriques des réseaux informatiques. Cependant, la pratique est tout aussi nécessaire, et c'est pourquoi, nous aborderons le fonctionnement des switches et des routeurs grâce à l'outil Cisco Packet Tracer qui nous permettra de mettre en oeuvre les compétences acquises préalablement.
         ");
         $video14->setYear(2022);
-        $video14->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/14.jpeg");
+        $video14->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/14.jpeg");
         $video14->setUnitpriceht(104.26);
         $video14->setStock($faker->numberBetween(min: 50, max: 600));
         $video14->addAuthor($this->getReference('author28'));
@@ -412,7 +412,7 @@ class VideosFixtures extends Fixture implements DependentFixtureInterface
         Nous parlerons des cyberattaques réseaux les plus populaires dans ce cours, notamment au niveau du réseau local (Wifi).
         ");
         $video15->setYear(2023);
-        $video15->setImage("https://l2i.thibaultmorizet.fr/assets/product-images/15.jpeg");
+        $video15->setImage("https://back-l2i.thibaultmorizet.fr/assets/product-images/15.jpeg");
         $video15->setUnitpriceht(104.26);
         $video15->setStock($faker->numberBetween(min: 50, max: 600));
         $video15->addAuthor($this->getReference('author29'));
