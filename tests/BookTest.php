@@ -44,7 +44,7 @@ class BookTest extends ApiTestCase
         - Aux designers web qui souhaitent découvrir toutes les possibilités que leur offre HTML 5.
         - À tous ceux qui souhaitent acquérir une méthodologie cohérente du développement web, combinant qualité et accessibilité.",
             "year" => "2017",
-            "image" => "https://www.thibaultmorizet.fr/assets/product-images/16.jpeg",
+            "image" => "https://l2i.thibaultmorizet.fr/assets/product-images/16.jpeg",
             "unitpriceht" => 36.97,
             "stock" => 500,
             "visitnumber" => 450,
